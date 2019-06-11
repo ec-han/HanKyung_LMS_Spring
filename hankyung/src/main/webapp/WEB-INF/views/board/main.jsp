@@ -177,6 +177,10 @@ width: 100%;
     border-radius: .35rem;
     white-space: nowrap;
 }
+.collapse_item:hover {
+    background-color: #f4f7ff;
+    /* #eaecf4 */
+}
 .rounded{
     border-radius: .35rem;
 }
@@ -289,6 +293,7 @@ width: 100%;
 #topNav .navbar_nav .nav_item {
     display: inline-block;
     position: relative;
+    top: -8px;
     left: 1050px;
 }
 #topNav i {
@@ -310,11 +315,12 @@ width: 100%;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
-    padding: 15px .75rem 15px;
+	padding: 0px .75rem 0px;
+    height: 4.375rem;
 }
 #topNav .dropdown_menu {
     position: absolute;
-    top: 121%;
+    top: 100%;
     right: -15%;
     z-index: 1000;
     min-width: 10rem;
@@ -326,6 +332,7 @@ width: 100%;
     background-clip: padding-box;
     border: 1px solid #e3e6f0;
     border-radius: .35rem;
+    overflow: hidden;
     display: none;
 }
 .alert_border{
@@ -365,6 +372,7 @@ width: 100%;
 .dropdown_header {
     background-color: #404988;
     border: 1px solid #404988;
+    border-radius: .35rem .35rem 0 0;
     padding-top: .75rem;
     padding-bottom: .75rem;
     color: #fff;
@@ -390,7 +398,8 @@ width: 100%;
 .dropdown_item:hover {
     color: #2e2f37;
     text-decoration: none;
-    background-color: #f8f9fc;
+    background-color: #f4f7ff;
+    /* #e9eeff #f8f9fc */
 }
 .font_weight_bold {
     font-weight: 600;
@@ -481,6 +490,38 @@ width: 100%;
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .35rem;
+}
+/* top 버튼 */
+#topBtn {
+	position: fixed;
+    bottom: -113px;
+    right: -90px;
+    font-size: 25px;
+    width: 180px;
+    height: 180px;
+    /* background: #404988; */
+    /*background: linear-gradient(20deg, #217dfd 0%, #404988 100%);*/
+    background-image: linear-gradient(180deg,#404988 10%,#2D314F 100%);
+    opacity: 0.7;
+    color: white;
+	border: 3px dashed #eaecf4;	
+    cursor: pointer;
+    outline: none;
+    display: none;
+    text-align: center;
+    transition: 0.5s;
+    transform: rotate(315deg);
+}
+#topBtn span {
+    position: relative;
+    left: 17.5px;
+}
+#topBtn:hover {
+	opacity: 1;
+}
+#topBtn:hover span {
+	transform: scale(1.3);
+	font-weight: bold;
 }
 </style>
 </head>
@@ -692,7 +733,7 @@ width: 100%;
 			</div>
 			<div class="footer"  id="sticky_footer">
 				<div class="copyright text_center">
-					<span>Copyright &copy; HANKUNG LMS 2019</span>
+					<span>Copyright &copy; HanKyung LMS 2019</span>
 				</div>
 				<div class="footer_sns">
 					<a href="https://www.instagram.com/" target="_blank" class="sns_btn">
@@ -708,9 +749,25 @@ width: 100%;
 			</div>
 		</div>
 	</div>
- 
+ 	<!-- Scroll to Top Button-->
+	<a id="topBtn" href="#">
+		<span>TOP</span>
+	  <!-- <i class="fas fa-caret-up"></i> -->
+	</a>
+	
 	<script type="text/javascript">
 	    $(function(){
+			$(window).scroll(function(){
+				var scrollValue = $(this).scrollTop();
+				if(scrollValue > 40){
+					$('#topBtn').fadeIn();
+				} else {
+					$('#topBtn').fadeOut();
+				}
+			});
+			$('#topBtn').click(function(){
+				$('html,body').animate({scrollTop:0},150);
+			});
 			// 사이드 바 열고 닫힘
 			var state = false;
 			$('#sidebarToggle').click(function(){
@@ -735,25 +792,27 @@ width: 100%;
 	            $('#accordionSidebar .nav_link > span').css('display','none');
 	            $('.sidebar_heading').css('display','none');
 	        });*/
+	
+			// nav dropdown
 	        $('#messagesDropdown').click(function(){
 	            $('#dropbox_msg').slideToggle('fast');                
-	        });
-	        $('#messagesDropdown').focusout(function(){
-	            $('#dropbox_msg').css('display','none');            
 	        });
 	        $('#alertsDropdown').click(function(){
 	            $('#dropbox_alert').slideToggle('fast');           
 	        });
-	        $('#alertsDropdown').focusout(function(){
-	            $('#dropbox_alert').css('display','none');                
-	        });
 	        $('#usersDropdown').click(function(){
 	            $('#dropdown_menu_right').slideToggle('fast');               
 	        });
+ 			$('#alertsDropdown').focusout(function(){
+	            $('#dropbox_alert').css('display','none');                
+	        });
+			$('#messagesDropdown').focusout(function(){
+				$('#dropbox_msg').css('display','none');            
+		    });
 	        $('#usersDropdown').focusout(function(){
 	            $('#dropdown_menu_right').css('display','none');                
-	        });
-	        
+	        }); 
+	        // aside dropdown
 	        $('#collapseTwo_parent').click(function(){
 	            $('#collapseTwo').slideToggle(500);   
 	        });
@@ -763,7 +822,7 @@ width: 100%;
 	        $('#collapsePages_parent').click(function(){
 	            $('#collapsePages').slideToggle(500); 
 	        });
-	        $('#collapseTwo_parent').focusout(function(){
+	       /*  $('#collapseTwo_parent').focusout(function(){
 	            $('#collapseTwo').css('display','none');            
 	        });
 	        $('#collapseUtilities_parent').focusout(function(){
@@ -771,7 +830,7 @@ width: 100%;
 	        });
 	        $('#collapsePages_parent').focusout(function(){
 	            $('#collapsePages').css('display','none');            
-	        });
+	        }); */
 	        
 	        
 	    });
