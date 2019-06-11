@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: light;
+    color: #444;
+    font-size: 14px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+li {
+	list-style: none;
+}
+a:link, a:visited {
+	text-decoration: none;
+	color: #444;
+}
+
+
+/* 
+민트, 남색, 노랑
+color: #79CDCF;
+color: #2D314F;
+color: #FFC000;
+
+관리페이지 메인 바탕색
+color: #F8F9FC;
+ */
