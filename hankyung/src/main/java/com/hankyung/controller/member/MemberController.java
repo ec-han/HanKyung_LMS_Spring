@@ -23,14 +23,18 @@ public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public String home() {
+	@RequestMapping(value = "/constract", method = RequestMethod.GET)
+	public String constract() {
+		log.info("회원가입 동의 화면");
+		
+		return "member/constract";
+	}
+	
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String create() {
 		log.info("회원가입 화면");
 		
-		return "member/insert";
+		return "member/create";
 	}
 	
 }
