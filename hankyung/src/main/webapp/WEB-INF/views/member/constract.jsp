@@ -9,10 +9,11 @@
 <title>Insert title here</title>
 <style type="text/css">
 	.background_box{
-		background-color: skyblue;
-		padding-top: 50px;
+		background-color: #2D314F;
+		padding-top: 110px;
 		width: 100vw;
-		height: 150vh;
+		height: 100vh;
+		box-sizing: border-box;
 	}
 	.main_box{
 		background-color: white;
@@ -22,7 +23,7 @@
 		height: 620px;
 	}
 	.img_box1{
-		background-color: yellow;
+		background-color: lightgray;
 		width: 450px;
 		height: 100%;
 		position: relative;
@@ -75,7 +76,7 @@
 	}
 	.agree_box{
 		margin: 100px auto 0;
-		width: 900px;
+		width: 901px;
 		height: 700px;
 		background-color: white;
 		box-sizing: border-box;
@@ -104,7 +105,7 @@
 	}
 	.agree_msg{
 		height: 80%;
-		border: 1px solid red;
+		border: 1px solid lightgray;
 		overflow: auto;
 	}
 	.detail_btn{
@@ -127,11 +128,11 @@
 		height: 100%;
 		border: none;
 		outline: none;
-		background-color: blue;
+		background-color: #79CCCE;
 		color:white;
 	}
 	.agree_btn:hover{
-		background-color: skyblue;
+		background-color: #70b9bb; 
 		transition:0.2s;
 		cursor: pointer;
 	}
@@ -161,15 +162,31 @@
 		color: mediumseagreen;
 	}
 	
-	.one_agree_btn{
+	.one_agree{
 		margin: 20 auto;
-	    border: 1px solid black;
+	    border: 1px solid #79CCCE;
 	    width: 200px;
 	    height: 40px;
 	    text-align: center;
 	    line-height: 40px;
 	    border-radius: 30px;
+	    background-color: #79CCCE;
+	    color:white;
 	}
+	.one_agree:hover{
+		border: 1px solid #70b9bb;
+		background-color: #70b9bb;
+		transition:0.2s;
+		cursor: pointer;
+	}
+	
+	
+	/* 
+		#79CCCE 민트
+		#FFC000  노랑
+		#2D314F 남색
+	
+	 */
 </style>
 </head>
 <body>
@@ -193,7 +210,7 @@
 				<div class="space_dot"></div>
 				
 				<div class="check"> 	
-					<input type="checkbox" id="onecheck" class="ckboxs">
+					<input type="checkbox" id="onecheck" class="ckboxs frist_input">
 					<label for="onecheck">
 						HANKYUNG_LMS 이용약관 동의
 						<span class="ck_icon"><i class="fas fa-check-circle"></i></span>
@@ -365,15 +382,15 @@
 							</div>
 
 						</div>	
-						<div class="one_agree_btn">동 의</div>	
+						<div class="one_agree first_agree">동 의</div>	
 					</div>
 				</div>
 				
 				
 				<div class="check"> 	
-					<input type="checkbox" id="twocheck"  class="ckboxs">			
+					<input type="checkbox" id="twocheck"  class="ckboxs second_input">			
 					<label for="twocheck">
-						두번째 동의 체크
+						개인정보 수집 및 이용 동의
 						<span class="ck_icon"><i class="fas fa-check-circle"></i></span>
 					</label>
 				</div>
@@ -385,19 +402,62 @@
 				</div>
 				<div class="modal_box modal">
 					<div class="agree_box">
-						<div class="agree_title">
-							두번째 약관
-							<div class="x_btn">X</div>
+						<div class="agree_maintitle">
+							HANKYUNG_LMS 개인정보 수집 및 이용 동의 동의
+							<div class="x_btn"><i class="fas fa-times"></i></div>
 						</div>
-						<div class="agree_msg">약관내용2</div>
+						<div class="agree_msg">약관내용2
+							<div class="agree_title">
+								제 1 조 (목적)
+							</div>
+							<div>
+								HANKYUNG_LMS은 「개인정보보호법」 제15조제1항제1호, 제17조제1항제1호, 제23조제1호, 제24조제1항 제1호에 따라 
+								아래와 같이 개인정보의 수집. 이용에 관하여 귀하의 동의를 얻고자 합니다. <br>
+
+								HANKYUNG_LMS은 이용자의 사전 동의 없이는 이용자의 개인정보를 함부로 공개하지 않으며, 수집된 정보는 아래와 같이 이용하고 있습니다. 
+								이용자가 제공한 모든 정보는 아래의 목적에 필요한 용도 이외로는 사용되지 않으며 이용 목적이 변경될 시에는 이를 알리고 동의를 구할 것입니다.
+							</div>
+							<div class="agree_title">
+								개인정보의 수집 및 이용 동의
+							</div>
+							<div>
+								1. 개인정보의 수집 및 이용 목적<br>
+								가. 서비스 제공에 관한 업무 이행 - 컨텐츠 제공, 특정 맞춤 서비스 제공(마이페이지, 뉴스레터 등), 기업 애로상담<br>
+								나. 회원관리 <br>
+								- 회원제 서비스 이용 및 제한적 본인 확인제에 따른 본인확인, 개인식별, 가입의사 확인, 가입 및 가입횟수 제한, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 공지사항 전달<br><br>
+								2. 수집하는 개인정보의 항목<br>
+								<span style="font-weight: 600;"><개인회원 가입></span>
+								필수항목 : 아이디, 비밀번호, 이름, 핸드폰번호, 이메일<br>
+								선택항목 : 이메일 수신여부, 문자수신여부, 웹진구독여부<br>
+								<span style="font-weight: 600;"><기업회원 가입></span>
+								필수항목 : 아이디, 비밀번호, 담당자 이름, 담당자 전화번호, 핸드폰번호, 이메일, (법인기업의 경우 법인등록번호), 기업정보(회사명, 대표자명, 사업자등록번호, 회사전화번호, 주소, 지역, 대표업종)<br>
+								선택항목 : 팩스번호, 홈페이지주소, 회사이메일주소, 창업일자, 부업종, 매출액, 수출액, 상시근로자 수, 주요생산품명, 이메일 수신여부, 문자수신여부, 이메일 수신여부, 문자수신여부, 웹진구독여부<br>
+								<span style="font-weight: 600;"><전문가 가입></span>
+								필수항목 : 아이디, 비밀번호, 이름, 핸드폰번호, 이메일, 협약사항, 지역<br>
+								선택항목 : 소속기관명, 대표자명, 사업자번호, 소속기관 전화번호<br>
+								전문가정보는 기업애로상담을 위한 목적으로 수집하나 보유하지 않고 비즈니스사업단으로 시스템연계 제공<br>
+								<span style="font-weight: 600;"><자동수집></span>
+								IP주소, 쿠키, 서비스 이용기록, 방문기록 등<br><br>
+								3. 개인정보의 보유 및 이용기간<br>
+								HANKYUNG_LMS은 원칙적으로 보유기간의 경과, 개인정보의 수집 및 이용목적의 달성 등 그 개인정보가 불필요하게 되었을 때에는 지체 없이 파기합니다. 다만, 다른 법령에 따라 보존하여야 하는 경우에는 그러하지 않을 수 있습니다. 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다.<br>
+								회원정보<br>
+								- 탈퇴 후 지체없이 파기<br>
+								전문가정보<br>
+								- 전문가 정보는 기업애로상담을 위한 목적으로 수집하나 보유하지 않고 비즈니스사업단으로 시스템연계 제공함<br><br>
+								4. 동의거부권 및 불이익<br>
+								정보주체는 개인정보 수집에 동의를 거부할 권리가 있습니다. 다만, 필수 항목에 대한 동의를 거부할 시 저희가 제공하는 서비스를 이용할 수 없습니다.
+							</div>
+								
+						</div>
+						<div class="one_agree second_agree">동 의</div>
 					</div>
 				</div>
 				
 				
 				<div class="check"> 
-					<input type="checkbox" id="threecheck"  class="ckboxs">
+					<input type="checkbox" id="threecheck"  class="ckboxs third_input">
 					<label for="threecheck">
-						세번째 동의 체크
+						마케팅/홍보의 수집의 이용 동의
 						<span class="ck_icon"><i class="fas fa-check-circle"></i></span>
 					</label>
 				</div>
@@ -409,17 +469,35 @@
 				</div>
 				<div class="modal_box modal">
 					<div class="agree_box">
-						<div class="agree_title">
-							세번째 약관
-							<div class="x_btn">X</div>
+						<div class="agree_maintitle">
+							마케팅/홍보의 수집의 이용 동의
+							<div class="x_btn"><i class="fas fa-times"></i></div>
 						</div>
-						<div class="agree_msg">약관내용3</div>
+						<div class="agree_msg">
+							<div class="agree_title">
+								제 1 조 (목적)
+							</div>
+							<div>
+								<span style="font-weight: 600;">1. 개인정보의 수집 및 이용 목적</span><br>
+								신규 서비스 개발 및 마케팅ㆍ광고에의 활용<br>
+								- 신규 서비스 개발, 이벤트 및 광고성 정보 제공 및 참여기회 제공, 접속 빈도 등 회원의 서비스 이용에 대한 통계<br><br>
+								
+								<span style="font-weight: 600;">2. 수집하는 개인정보의 항목</span><br>
+								필수항목 : 이름<br>
+								선택항목 : 이메일, 연락처(휴대전화번호, 유선전화번호 중 1개 선택)<br><br>
+								<span style="font-weight: 600;">3. 개인정보의 보유 및 이용기간</span><br>
+								이용목적의 달성 후 지체없이 파기<br><br>
+								<span style="font-weight: 600;">4. 동의거부권 및 불이익</span><br>
+								개인정보의 마케팅/홍보의 수집 및 이용 동의를 거부하시더라도 회원 가입 시 제한은 없습니다. 다만, 마케팅 활용 서비스 안내 및 참여에 제한이 있을 수 있습니다.
+							</div>
+								
+						</div>
+						<div class="one_agree third_agree">동 의</div>
 					</div>
 				</div>
-				<div class="err_msg">
-					
-					
-				</div>
+				
+				<div class="err_msg"></div>
+				
 				<div class="btn_box">
 					<button class="agree_btn">동 의</button>
 				</div>
@@ -448,6 +526,20 @@
 				}
 			});
 			
+ 			$('.first_agree').click(function() {		
+				$('.frist_input').prop('checked', true);
+				$('.modal').css("display", "none");
+			}); 
+ 			$('.second_agree').click(function() {		
+				$('.second_input').prop('checked', true);
+				$('.modal').css("display", "none");
+			}); 
+ 			$('.third_agree').click(function() {		
+				$('.third_input').prop('checked', true);
+				$('.modal').css("display", "none");
+			}); 
+			
+			
 			//동의 버튼을 눌렀을 때 3개다 체크가 되어있다면 전체 동의도 on, 전체동의 일때 다른체크를 해제한다면 전체동의도 off
 			$('.ckboxs').click(function(event) {
 				var ckleng = $('.ckboxs:checkbox:checked').length;
@@ -457,6 +549,15 @@
 				} else {
 					$('#allcheck').prop('checked', false);
 					$('.all_check > label > .ck_icon').css('color', 'lightgray');
+				}
+			});
+			
+			$('.agree_btn').click(function(event) {
+				var ckleng = $('.ckboxs:checkbox:checked').length;
+				if (ckleng == 3) {
+					location.href="${path}/member/create";
+				} else {
+					$('.err_msg').text('가입에 동의하지 않으셨습니다.').css('color', 'tomato');
 				}
 			});
 			
