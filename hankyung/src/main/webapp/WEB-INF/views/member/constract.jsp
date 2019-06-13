@@ -179,13 +179,12 @@
 		transition:0.2s;
 		cursor: pointer;
 	}
-	
-	
+
 	/* 
 		#79CCCE 민트
 		#FFC000  노랑
 		#2D314F 남색
-	
+		gitignore실험
 	 */
 </style>
 </head>
@@ -517,7 +516,7 @@
 			
 			
 			$('#allcheck').click(function() {
-				var flag = $(this).is(':checked');				
+				var flag = $(this).is(':checked');	
 				if(flag == true){
 					$('.ckboxs').prop('checked', true);
 					

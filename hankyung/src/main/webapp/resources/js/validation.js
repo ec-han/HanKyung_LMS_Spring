@@ -96,6 +96,23 @@ var joinValidate = {
 		}
 		
 	},
+	checkName : function(name){
+		var regEmpty = /\s/g;
+		var nameReg = RegExp(/^[가-힣]{2,5}$/);
+		
+		if (name == '') {
+			return this.resultCode.empty_val;		
+			
+		} else if (name.match(regEmpty)) {
+			return this.resultCode.space_length_val;
+			
+		} else if (!idReg.test(name)) {
+			return this.resultCode.invalid_name;
+			
+		} else { 
+			return this.resultCode.success_name;
+		}
+	},
 	checkId : function(memId){
 		var regEmpty = /\s/g;
 		var idReg = RegExp(/^[a-zA-Z0-9-_]{1,15}$/);
