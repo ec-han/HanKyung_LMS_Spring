@@ -72,11 +72,11 @@
 				  <a class="dropdown_item text_center small more_info" href="#">쪽지 더 읽어오기</a>
 				</div>
 			</li>
-      		<div class="topbar_divider d-none d-sm-block"></div>
+      		<!-- <div class="topbar_divider d-none d-sm-block"></div> -->
 			<!-- Nav Item - User Information -->
 			<li class="nav_item dropdown no-arrow" id="user_item">
 				<a class="nav_link" href="#" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    <span>한은체</span>
+				    <span>${sessionScope.name}</span>
 				     <i class="fas fa-user"></i>
 				</a>
 				<!-- Dropdown - User Information -->
@@ -148,7 +148,7 @@
 		    });
 	        $('#usersDropdown').focusout(function(){
 	            $('#dropdown_menu_right').css('display','none');                
-	        }); 
+	        });
 	        
 	        
 	    });

@@ -4,6 +4,7 @@
 *::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-size: 1em;
 }
 .text_center{
 	text-align: center;
@@ -38,17 +39,7 @@ sup { /* 첨자 텍스트 */
     position: absolute;
     padding-left: 240px;
 }
-.aside_wrapper{
-	z-index: 999;
-    width: 240px;
-    height: 100%;
-    border: 1px solid blue;
-    position: fixed;
-    left: 0;
-}
-.aside{
-	height: 100%;
-}
+
 .nav{
 	order: 1;
 	display: flex;
@@ -73,6 +64,17 @@ sup { /* 첨자 텍스트 */
     flex-direction: column;
 }
 /* sidebar */
+.aside_wrapper{
+	z-index: 999;
+    width: 240px;
+    height: 100%;
+    border: 1px solid blue;
+    position: fixed;
+    left: 0;
+}
+.aside{
+	height: 100%;
+}
 .navbar_nav {
     padding-left: 0;
     margin-bottom: 0;
@@ -92,6 +94,10 @@ sup { /* 첨자 텍스트 */
     font-size: 14px;
     justify-content: center;
     align-items: center;
+}
+.toggled {
+	width: 120px!important;
+	overflow: visible;
 }
 .sidebar_divider{
     border-top: 1px solid rgba(255,255,255,.15);
@@ -122,6 +128,7 @@ sup { /* 첨자 텍스트 */
     color: white;
     margin-left: 1rem;
     margin-right: 1rem;
+    text-transform: none;
 }
 .sidebar_brand-icon{
     font-size: 2rem;
@@ -140,8 +147,9 @@ sup { /* 첨자 텍스트 */
 #accordionSidebar .nav_link > span{
     color: rgba(255,255,255,.8);
 }
-#accordionSidebar .nav_link > span: hover{
-    color: #fff;
+#accordionSidebar .nav_link > span:hover{
+    color: white;
+    /* font-weight: bold; */
 }
 #accordionSidebar .nav_link > i {
     color: rgba(255,255,255,.3);
@@ -161,6 +169,15 @@ sup { /* 첨자 텍스트 */
     padding-bottom: .5rem;
     width: 225px;
     height: auto;
+}
+.collapse_inner_toggled {
+	position: relative;
+    left: 122px;
+    top: -40px;
+    width: 80px;
+    box-sizing: border-box;
+    z-index: 995;
+    overflow: auto;
 }
 .collapse_header {
     margin: 0;
@@ -189,6 +206,7 @@ sup { /* 첨자 텍스트 */
 }
 #sidebarToggle{
     background-color: rgba(255,255,255,.2);
+    color: rgba(255,255,255,.5);
     width: 30px;
     height: 30px;
     text-align: center;
@@ -202,9 +220,8 @@ sup { /* 첨자 텍스트 */
     background-color: #79CDCF;
 }
 #sidebarToggle:after {
-    color: rgba(255,255,255,.5);
     font-weight: 900;
-    content: '\f104';
+    /* content: '\f104'; */
     font-family: 'Font Awesome 5 Free';
     margin-right: .1rem;
 }
@@ -227,6 +244,9 @@ sup { /* 첨자 텍스트 */
     -webkit-box-align: center;
     align-items: center;
     padding: .5rem 1rem;
+}
+#search_frm{
+	margin-right: auto;
 }
 #searchArea{
     width: 290px;
@@ -273,7 +293,6 @@ sup { /* 첨자 텍스트 */
 #topNav .navbar_nav .nav_item {
     display: flex;
     position: relative;
-    left: 1050px;
 }
 #alert_item {
 	order: 1;
@@ -287,6 +306,11 @@ sup { /* 첨자 텍스트 */
 }
 #topNav i {
     font-size: 18px;
+}
+#usersDropdown {
+	border-left: 1px solid #e3e6f0;
+    height: 50px!important;
+    top: 10px;
 }
 #usersDropdown span {
     color: #858796;
@@ -306,11 +330,12 @@ sup { /* 첨자 텍스트 */
     align-items: center;
 	padding: 0px .75rem 0px;
     height: 4.375rem;
+    margin-left: auto;
 }
 #topNav .dropdown_menu {
     position: absolute;
     top: 115%;
-    right: -15%;
+    right: 10%;
     z-index: 1000;
     min-width: 10rem;
     margin: .125rem 0 0;
