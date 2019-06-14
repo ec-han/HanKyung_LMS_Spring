@@ -76,5 +76,11 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value = "/losspw", method = RequestMethod.POST)
+	public String losspw(MemberDTO mDto) {
+		log.info("비밀번호 찾기");
+		service.losspw(mDto);
+		return"";
+	}
 	
 }

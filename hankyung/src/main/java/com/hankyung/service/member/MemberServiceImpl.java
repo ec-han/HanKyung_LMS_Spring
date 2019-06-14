@@ -38,4 +38,10 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public void losspw(MemberDTO mDto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

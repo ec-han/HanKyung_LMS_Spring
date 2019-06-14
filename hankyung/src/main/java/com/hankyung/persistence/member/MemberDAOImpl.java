@@ -26,5 +26,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberDTO login(MemberDTO mDto) {
 		return sqlSession.selectOne("member.login", mDto);
 	}
+
+	@Override
+	public void losspw(MemberDTO mDto) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
