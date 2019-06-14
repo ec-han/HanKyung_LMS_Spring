@@ -5,35 +5,10 @@
 <html>
 <head>
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/member.css?v=1">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.background_box{
-	background-color: skyblue;
-	padding-top: 50px;
-	width: 100vw;
-	height: 150vh;
-}
-.main_box{
-	background-color: white;
-	width: 1100px;
-	display: flex;
-	margin: 0 auto;
-	height: 620px;
-}
-.img_box1{
-	background-color: yellow;
-	width: 450px;
-	height: 100%;
-	position: relative;
-}
-.img_box1 > img{
-	position: absolute;
-	bottom: 0;
-	left: 30px;
-	width: 90%;
-	
-}
 .text_box{
 	box-sizing: border-box;
 	padding: 50px;
@@ -86,20 +61,12 @@
 	height: 45px;
 }
 .insert_btn{
-	border-radius: 30px;
-	width: 100%;
-	height: 100%;
+
 	border: none;
 	outline: none;
-	background-color: blue;
-	color:white;
 	text-align: center;
 }
-.insert_btn:hover{
-	background-color: skyblue;
-	transition:0.2s;
-	cursor: pointer;
-}
+
 .underbar{
 	margin: 15px 0;
 	border-top:2px solid lightgray;
@@ -127,7 +94,7 @@
 				<img alt="" src="${path}/resources/img/cat.png">
 			</div>
 			<div class="text_box">
-				<form action="" id="frm_mem" name="frm_mem">
+				<form action="${path}/member/create" method="POST" id="frm_mem" name="frm_mem">
 					<div class="title">Create an Account!</div>
 					
 					<div class="info">
@@ -157,6 +124,7 @@
 						<span class="input_box secondbox">
 							<input type="text" id="input_phone3" name="phone3" class="input_class input_phone" maxlength="4">
 						</span>
+						<input type="hidden" id="phone" name="phone">
 					</div>
 
 					<div class="info">
@@ -167,11 +135,11 @@
 							<input type="password" id="input_repw" name="repw" class="input_class" maxlength="15" placeholder="비밀번호확인">
 						</span>
 					</div>
-					<div class="err_msg">
-						
-					</div>
+					
+					<div class="err_msg"></div>
+					
 					<div class="btn_box">
-						<button class="insert_btn" type="button">회 원 가 입</button>
+						<button class="insert_btn o_btn" type="button">회 원 가 입</button>
 					</div>
 					<div class="underbar"></div>
 					<div class="login_box">
@@ -369,7 +337,7 @@
 		var phoneflag = 0;
 		$('.input_phone').keyup(function(event) {
 			var phone = $.trim($('#input_phone1').val()+$('#input_phone2').val()+$('#input_phone3').val());
-
+			$('#phone').val(phone);
 			if (phone == '') {
 				$('.err_msg').css('color', '#ff1212')
 							 .text('* 필수입력 정보입니다.');
@@ -471,11 +439,9 @@
 		});
 		
 		$('.insert_btn').click(function(event) {
-			
 			var flag = nameflag + idflag + mailflag + phoneflag + pwflag + repwflag;
-			alert(flag);
 			if(flag == 6){
-				location.href="#";
+				$('#frm_mem').submit();
 			}
 			else{
 				$('.err_msg').css('color', '#ff1212')
@@ -492,10 +458,8 @@
 					$('#input_pw').focus();
 				} else if(repwflag < 1){
 					$('#input_repw').focus();
-				} else {
-					$('#frm_mem').submit();
 				}
-						    
+				return false;		    
 			} 
 		});
 			

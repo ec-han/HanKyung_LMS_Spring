@@ -5,36 +5,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/member.css?v=1">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.background_box{
-		background-color: #2D314F;
-		padding-top: 110px;
-		width: 100vw;
-		height: 100vh;
-		box-sizing: border-box;
-	}
-	.main_box{
-		background-color: white;
-		width: 1100px;
-		display: flex;
-		margin: 0 auto;
-		height: 620px;
-	}
-	.img_box1{
-		background-color: lightgray;
-		width: 450px;
-		height: 100%;
-		position: relative;
-	}
-	.img_box1 > img{
-		position: absolute;
-		bottom: 0;
-		left: 30px;
-		width: 90%;
-		
-	}
+	
 	.text_box{
 		box-sizing: border-box;
 		padding: 50px;
@@ -122,20 +97,7 @@
 	.btn_box{
 		height: 45px;
 	}
-	.agree_btn{
-		border-radius: 30px;
-		width: 100%;
-		height: 100%;
-		border: none;
-		outline: none;
-		background-color: #79CCCE;
-		color:white;
-	}
-	.agree_btn:hover{
-		background-color: #70b9bb; 
-		transition:0.2s;
-		cursor: pointer;
-	}
+
 	.check > input{
 		visibility:hidden;
 	}
@@ -498,7 +460,7 @@
 				<div class="err_msg"></div>
 				
 				<div class="btn_box">
-					<button class="agree_btn">동 의</button>
+					<button class="agree_btn o_btn">동 의</button>
 				</div>
 			</div>
 		</div>

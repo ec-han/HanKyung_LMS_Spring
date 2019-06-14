@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="member">
+
+	<insert id="create" parameterType="com.hankyung.domain.member.MemberDTO">
+		INSERT INTO hk_member(name, id, email, phone, pw)
+		VALUES(#{name}, #{id}, #{email}, #{phone}, #{pw})
+	</insert>
+	
+	<select id="login" parameterType="com.hankyung.domain.member.MemberDTO" resultType="com.hankyung.domain.member.MemberDTO">
+		SELECT * FROM hk_member
+		WHERE id=#{id} AND pw = #{pw}
+	</select>
+	
+</mapper>
