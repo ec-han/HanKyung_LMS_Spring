@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>샘플페이지</title>
 <style type="text/css">
-#test {
+#test { /* 복사할 필요 없음  */
 	display: flex;
 	flex-direction: column;
 }

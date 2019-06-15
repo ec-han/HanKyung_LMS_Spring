@@ -16,7 +16,14 @@ public class BoardController {
 	public String home() {
 		log.info(">>>LMS 메인 화면");
 		
-		return "board/main";
+		return "board/sample";
+	}
+	
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public String notice() {
+		log.info(">>>LMS 공지사항");
+		
+		return "board/notice";
 	}
 	
 }

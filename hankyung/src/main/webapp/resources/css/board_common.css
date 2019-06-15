@@ -1,4 +1,7 @@
 /* @charset "UTF-8";  */
+html{
+	scroll-behavior: smooth;
+}
 *,
 *::before,
 *::after {
@@ -196,6 +199,8 @@ sup { /* 첨자 텍스트 */
     text-decoration: none;
     border-radius: .35rem;
     white-space: nowrap;
+    -webkit-transition: 0.3s background-color ease;
+    /* transition: background-color 0.3s; */
 }
 .collapse_item:hover {
     background-color: #f4f7ff;
@@ -532,7 +537,7 @@ sup { /* 첨자 텍스트 */
     outline: none;
     display: none;
     text-align: center;
-    transition: 0.5s;
+    transition: opacity 0.5s;
     transform: rotate(315deg);
     z-index: 998;
 }
