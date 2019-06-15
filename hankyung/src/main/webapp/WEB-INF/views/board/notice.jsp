@@ -36,24 +36,27 @@
     border-bottom: 1px solid #e3e6f0;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    height: 3rem;
+    order: 1;
 }
 .text-primary {
     color: #4e73df;
     font-weight: bold;
     font-size: 1rem;
     line-height: 1.2;
+    margin: 0;
 }
 .card-body {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
+    order: 2;
 }
 .table-responsive {
     display: block;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
 }
 div.table-responsive>div.dataTables_wrapper>div.row {
     margin: 0;
@@ -94,6 +97,7 @@ label {
 }
 div.dataTables_wrapper div.dataTables_filter input {
     margin-left: 0.5em;
+    margin-right: 0.5em;
     display: inline-block;
     width: auto;
 }
@@ -150,6 +154,8 @@ table.dataTable {
 }
 .table {
     width: 100%;
+    text-align: left;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     color: #858796;
 }
@@ -202,12 +208,16 @@ div.dataTables_wrapper div.dataTables_info {
 div.dataTables_wrapper div.dataTables_paginate {
     margin: 0;
     white-space: nowrap;
+    float: right;
     text-align: right;
+    position: absolute;
+    right: 1rem;
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin: 2px 0;
     white-space: nowrap;
     justify-content: flex-end;
+    position: relatvie;
 }
 .pagination {
     display: -webkit-box;
@@ -236,6 +246,52 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     border-top-right-radius: .35rem;
     border-bottom-right-radius: .35rem;
 }
+
+#dataTable_wrapper {
+	display: flex;
+	flex-direction: column;
+}
+.table_wrapper {
+	width: 100%;
+}
+.order-1 {
+	order: 1;
+}
+.order-2 {
+	order: 2;
+}
+.order-3 {
+	order: 3;
+}
+#length_filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.margin-right{
+	margin-right: auto;
+}
+.margin-left{
+	margin-left: auto;
+}
+#dataTable_filter{
+    position: relative;
+}
+.flex_r {
+	display: flex;
+    flex-direction: row;
+}
+#dataTable_info {
+	display: inline-block;
+    margin-right: 50%;
+    float: left;
+    flex: 1;
+}
+#pagenation_wrapper {
+    display: inline-block;
+    margin-left: 70%;
+    flex: 1;
+}
 </style>
 </head>
 <body>
@@ -255,8 +311,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 			            <div class="card-body">
 			              <div class="table-responsive">
 			              	<div id="dataTable_wrapper" class="dataTables_wrapper">
-			              		<div class="row">
-				              		<div class="col-sm-12 col-md-6">
+			              		<div class="row order-1" id="length_filter">
+				              		<div class="col-sm-12 col-md-6 order-1 margin-right">
 				              			<div class="dataTables_length" id="dataTable_length">
 				              					<label>
 				              							보기
@@ -268,8 +324,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 				              					</label>
 				              			</div>
 				              		</div>
-				              		<div class="col-sm-12 col-md-6">
-				              			<div id="dataTables_filter" class="dataTables_filter">
+				              		<div class="col-sm-12 col-md-6 order-2 margin-left">
+				              			<div id="dataTable_filter" class="dataTables_filter">
 				              				<label>
 				              					검색:
 				              					<input type="search" class="form-control form-control-sm" placeholder="검색" aria-controls="dataTable">
@@ -277,16 +333,16 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 				              			</div>
 				              		</div>
 				              	</div>
-				              	<div class="row">
-				              		<div class="col-sm-12">
+				              	<div class="row order-2 table_wrapper">
+				              		<div class="col-sm-12 table_wrapper">
 				              			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 						                  <thead>
 						                    <tr>
 						                      <th>No.</th>
 						                      <th>제목</th>
-						                      <th>작성일</th>
-						                      <th>좋아요</th>
+						                      <th>작성자</th>
 						                      <th>조회수</th>
+						                      <th>작성일</th>
 						                      <th>첨부</th>
 						                    </tr>
 						                  </thead>
@@ -314,12 +370,12 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 				                		</table>
 				              		</div>
 				              	</div>
-				              	<div class="row">
-				              		<div class="col-sm-12 col-md-5">
-				              			<div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+				              	<div class="row order-3">
+				              		<div class="col-sm-12 col-md-5 flex_r">
+				              			<div class="dataTables_info order-1" id="dataTable_info" role="status" aria-live="polite">
 				              				57건 중 21건부터 30건까지 
 				              			</div>
-				              			<div class="col-sm-12 col-md-7">
+				              			<div class="col-sm-12 col-md-7 order-2" id="pagenation_wrapper">
 				              				<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
 				              					<ul class="pagination">
 				              						<li class="paginate_button page-item previous" id="dataTable_previous">
