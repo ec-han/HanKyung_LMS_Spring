@@ -7,8 +7,11 @@
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
-<title>샘플페이지</title>
+<title>공지사항</title>
 <style type="text/css">
+input, select {
+	outline: none;
+}
 .shadow {
     box-shadow: 0 2px 35px 0 rgba(235, 237, 242, 0.7);
 }
@@ -241,6 +244,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     color: #4e73df;
     background-color: #fff;
     border: 1px solid #dddfeb;
+    outline: none;
 }
 .page-item:last-child .page-link {
     border-top-right-radius: .35rem;
