@@ -76,7 +76,7 @@
 			<!-- Nav Item - User Information -->
 			<li class="nav_item dropdown no-arrow" id="user_item">
 				<a class="nav_link" href="#" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    <span>${sessionScope.name}</span>
+				     <span>${sessionScope.name}</span>
 				     <i class="fas fa-user"></i>
 				</a>
 				<!-- Dropdown - User Information -->

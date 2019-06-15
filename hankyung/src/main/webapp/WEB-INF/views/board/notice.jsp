@@ -16,20 +16,18 @@ input, select {
     box-shadow: 0 2px 35px 0 rgba(235, 237, 242, 0.7);
 }
 .card {
+	-webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
     position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid #e3e6f0;
-    border-radius: .35rem;
     margin-bottom: 1.5rem
 }
 .card-header {
@@ -332,7 +330,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 				              			<div id="dataTable_filter" class="dataTables_filter">
 				              				<label>
 				              					검색:
-				              					<input type="search" class="form-control form-control-sm" placeholder="검색" aria-controls="dataTable">
+				              					<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
 				              				</label>
 				              			</div>
 				              		</div>
@@ -345,8 +343,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 						                      <th>No.</th>
 						                      <th>제목</th>
 						                      <th>작성자</th>
-						                      <th>조회수</th>
 						                      <th>작성일</th>
+						                      <th>조회수</th>
 						                      <th>첨부</th>
 						                    </tr>
 						                  </thead>
@@ -365,8 +363,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 						                      <td>1</td>
 						                      <td>디자인 중</td>
 						                      <td>한은체</td>
-						                      <td>3</td>
 						                      <td>2019/06/15</td>
+						                      <td>3</td>
 						                      <td></td>
 						                    </tr>
 						                    
