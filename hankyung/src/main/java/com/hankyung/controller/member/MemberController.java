@@ -123,8 +123,11 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
-	
-	
+	@RequestMapping(value="/info", method=RequestMethod.GET)
+	public String info() {
+		log.info(">>>>> 학생조회 페이지 출력");
+		return "member/student_info";
+	}
 	
 	
 	

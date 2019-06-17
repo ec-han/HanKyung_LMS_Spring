@@ -1,4 +1,4 @@
-package com.hankyung.controller.student;
+package com.hankyung.controller.lector;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -19,18 +19,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("student/*")
+@RequestMapping("lector/*")
 public class StudentInfoController {
 	
 	@Inject
 	private MemberService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(StudentInfoController.class);
-	
-	@RequestMapping(value="/info", method=RequestMethod.GET)
-	public String info() {
-		log.info(">>>>> 학생조회 페이지 출력");
-		return "student/info";
-	}
 	
 }
