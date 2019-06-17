@@ -1,0 +1,35 @@
+-- HanKyung 프로젝트 (김박한 팀)
+-- 김도연: 회원 테이블
+DROP TABLE hk_member;
+CREATE TABLE hk_member(
+    id VARCHAR2(100) PRIMARY KEY, 
+    name VARCHAR2(80) NOT NULL, 
+    email VARCHAR2(300) NOT NULL,
+    phone VARCHAR2(30) UNIQUE NOT NULL,
+    pw VARCHAR2(30) NOT NULL,
+    regdate DATE DEFAULT SYSDATE 
+);
+
+INSERT INTO hk_member(name, id, email, phone, pw)
+VALUES('한은체', 'user01', 'user01@gmail.com', 01011112222, 1234);
+
+-- 한은체: 관리자 공지사항 테이블
+DROP SEQUENCE seq_admin_notice;
+CREATE SEQUENCE seq_admin_notice
+START WITH 1
+INCREMENT BY 1;
+
+DROP TABLE hk_admin_notice;
+CREATE TABLE hk_admin_notice(
+    adnno NUMBER PRIMARY KEY,
+    title VARCHAR2(200) NOT NULL,
+    content VARCHAR2(4000) NOT NULL,
+    writer VARCHAR(30) DEFAULT '관리자' NOT NULL,
+    viewcnt NUMBER DEFAULT 0,
+    regdate DATE DEFAULT SYSDATE   
+);
+SELECT * FROM hk_admin_notice
+ORDER BY adnno DESC;
+
+INSERT INTO hk_admin_notice(adnno, title, content)
+VALUES(seq_admin_notice.NEXTVAL, '공지사항1','공지');
