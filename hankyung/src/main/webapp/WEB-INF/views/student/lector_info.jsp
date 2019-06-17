@@ -23,8 +23,7 @@
         font-size: 30px;
     }
 	.info_all {
-		border: 1px solid blue;
-	    padding: 40px 0px;
+	    padding: 25px 0px 5px;
 	}
 	.lector_top {
 		display: flex;
@@ -91,10 +90,11 @@
 	.lector_btn {
 		display: inline-block;
 		width: 100px;
-		height: 43px;
-		line-height: 43px;
+		height: 40px;
+		line-height: 40px;
 		text-align: center;
 		font-size: 15px;
+		border-radius: 20px;
 	}
 	.white_btn {
 		border: 1px solid #ddd;

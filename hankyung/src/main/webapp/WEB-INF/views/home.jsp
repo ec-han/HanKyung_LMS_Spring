@@ -151,6 +151,7 @@
           100% { background-position: 500%; }
       }
       .center_btn {
+      	  color: white;
           position: relative;
           z-index: 10;
       }
@@ -457,13 +458,13 @@
                     </div>
                     <div class="navi_div">
                         <span class="navi_span">
-                            <a href="#footer_box" class="navi navi5" id="login">로그인</a>
+                            <a href="${path}/login" class="navi navi5" id="login">로그인</a>
                         </span>
                         <span class="navi_bar"></span>
                     </div>
                     <div class="navi_div">
                         <span class="navi_span">
-                            <a href="#footer_box" class="navi navi6" id="join">회원가입</a>
+                            <a href="${path}/create" class="navi navi6" id="join">회원가입</a>
                         </span>
                         <span class="navi_bar"></span>
                     </div>
@@ -476,7 +477,7 @@
                     <br>온라인 이러닝 학습 서비스, <span class="header_point">지금 바로 시작</span>하세요.
                 </div>
                 <div>
-                    <a class="center_bottom">
+                    <a href="${path}/login" class="center_bottom">
                         <span class="center_btn">START</span>
                     </a>
                 </div>

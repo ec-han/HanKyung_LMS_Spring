@@ -5,6 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -13,17 +14,15 @@
 	    text-decoration: none;
 	}
 	.student_info {
-        border: 1px solid red;
         width: 100%;
         min-width: 800px;
-        padding: 20px;
+        padding: 50px;
         box-sizing: border-box;
     }
     .info_title {
         font-size: 30px;
     }
     .info_top {
-        border: 1px solid blue;
         padding: 40px 0px;
         display: flex;
         margin-bottom: 30px;
@@ -159,98 +158,112 @@
 </style>
 </head>
 <body>
-	<div class="student_info">
-        <div class="info_title">학생정보</div>
-        <div class="info_top">
-            <div class="top_box top_box1">
-                <span class="top_box_bar1"></span>
-                <div class="top_title">출석률</div>
-                <div class="top_content">
-                    <div class="content_bar">
-                        <span class="bar_back">
-                            <span class="bar_percent percent_attend"></span>
-                            <span class="content_text">67%</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="top_box stop_box2">
-                <span class="top_box_bar2"></span>
-                <div class="top_title">진행률</div>
-                <div class="top_content">
-                    <div  class="content_bar">
-                        <span class="bar_back">
-                            <span class="bar_percent percent_class"></span>
-                            <span class="content_text">70%</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="info_center">
-            <div class="center_box center_box1">
-                <div class="center_title">수강중인 과정</div>
-                <div class="center_text class_text">
-                	<div class="content_box">
-	                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
-	                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
-                    </div>
-                    <div class="content_box">
-	                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
-	                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
-                    </div>
-                    <div class="content_box">
-	                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
-	                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
-                    </div>
-                    <div class="content_box">
-	                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
-	                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
-                    </div>
-                </div>
-            </div>
-            <div class="center_box center_box2">
-                <div class="center_title">나의 Q&A</div>
-                <div class="center_text qna_text">
-                	<div class="content_box">
-	                    <a class="qna_title">SQL이 어려워요</a>
-	                    <div class="qna_day">
-	                        2019.03.12
-	                        <span class="qna_answer">
-	                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
-	                        </span>
-	                    </div>
-                    </div>
-                    <div class="content_box">
-	                    <a class="qna_title">SQL이 어려워요</a>
-	                    <div class="qna_day">
-	                        2019.03.12
-	                        <span class="qna_answer">
-	                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
-	                        </span>
-	                    </div>
-                    </div>
-                    <div class="content_box">
-	                    <a class="qna_title">SQL이 어려워요</a>
-	                    <div class="qna_day">
-	                        2019.03.12
-	                        <span class="qna_answer">
-	                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
-	                        </span>
-	                    </div>
-                    </div>
-                    <div class="content_box">
-	                    <a class="qna_title">SQL이 어려워요</a>
-	                    <div class="qna_day">
-	                        2019.03.12
-	                        <span class="qna_answer">
-	                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
-	                        </span>
-	                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="big_wrapper">
+		<%@ include file="../include/board_aside.jsp" %>
+		<div class="content_wrapper">
+			<%@ include file="../include/board_nav.jsp" %>
+	
+			<div class="container">
+				<div class="container_box" id="test">
+					<div class="student_info">
+				        <div class="info_title">학생정보</div>
+				        <div class="info_top">
+				            <div class="top_box top_box1">
+				                <span class="top_box_bar1"></span>
+				                <div class="top_title">출석률</div>
+				                <div class="top_content">
+				                    <div class="content_bar">
+				                        <span class="bar_back">
+				                            <span class="bar_percent percent_attend"></span>
+				                            <span class="content_text">67%</span>
+				                        </span>
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="top_box stop_box2">
+				                <span class="top_box_bar2"></span>
+				                <div class="top_title">진행률</div>
+				                <div class="top_content">
+				                    <div  class="content_bar">
+				                        <span class="bar_back">
+				                            <span class="bar_percent percent_class"></span>
+				                            <span class="content_text">70%</span>
+				                        </span>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				        <div class="info_center">
+				            <div class="center_box center_box1">
+				                <div class="center_title">수강중인 과정</div>
+				                <div class="center_text class_text">
+				                	<div class="content_box">
+					                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
+					                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
+				                    </div>
+				                    <div class="content_box">
+					                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
+					                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
+				                    </div>
+				                    <div class="content_box">
+					                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
+					                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
+				                    </div>
+				                    <div class="content_box">
+					                    <a class="class_title">MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉</a>
+					                    <div class="class_day"><span class="point_span">기간ㅣ</span>2018.12.27 ~ 2019.04.05</div>
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="center_box center_box2">
+				                <div class="center_title">나의 Q&A</div>
+				                <div class="center_text qna_text">
+				                	<div class="content_box">
+					                    <a class="qna_title">SQL이 어려워요</a>
+					                    <div class="qna_day">
+					                        2019.03.12
+					                        <span class="qna_answer">
+					                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
+					                        </span>
+					                    </div>
+				                    </div>
+				                    <div class="content_box">
+					                    <a class="qna_title">SQL이 어려워요</a>
+					                    <div class="qna_day">
+					                        2019.03.12
+					                        <span class="qna_answer">
+					                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
+					                        </span>
+					                    </div>
+				                    </div>
+				                    <div class="content_box">
+					                    <a class="qna_title">SQL이 어려워요</a>
+					                    <div class="qna_day">
+					                        2019.03.12
+					                        <span class="qna_answer">
+					                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
+					                        </span>
+					                    </div>
+				                    </div>
+				                    <div class="content_box">
+					                    <a class="qna_title">SQL이 어려워요</a>
+					                    <div class="qna_day">
+					                        2019.03.12
+					                        <span class="qna_answer">
+					                        	<span class="point_span">답변ㅣ</span><span class="qna_result">완료</span>
+					                        </span>
+					                    </div>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			
+			<%@ include file="../include/board_footer.jsp" %>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
