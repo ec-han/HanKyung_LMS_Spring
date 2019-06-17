@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hankyung.domain.member.MemberDTO;
 import com.hankyung.service.member.MemberService;
@@ -34,9 +35,9 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-		log.info("로그인 화면");
-		
+	public String login(HttpSession session) {
+		log.info("로그인 페이지");
+		session.removeAttribute("loginck");
 		return "member/login";
 	}
 	
@@ -49,7 +50,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String createView() {
-		log.info("회원가입 화면");
+		log.info("회원가입 페이지");
 		
 		return "member/create";
 	}
@@ -65,9 +66,11 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberDTO mDto, HttpSession session, Model model) {
 		log.info("로그인 체크");
+		session.removeAttribute("loginck");
 		boolean result = service.login(mDto, session);
 		if(result == false) {
 			log.info("로그인 실패");
+			session.setAttribute("loginck", "* 아이디 혹은 패스워드가 잘못되었습니다.");
 			return "member/login";
 		} else {
 			log.info("로그인 성공");
@@ -76,11 +79,53 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping(value = "/losspw", method = RequestMethod.POST)
-	public String losspw(MemberDTO mDto) {
-		log.info("비밀번호 찾기");
-		service.losspw(mDto);
-		return"";
+	@RequestMapping(value = "/loss_info", method = RequestMethod.GET)
+	public String loss_info(MemberDTO mDto, HttpSession session) {
+		log.info("아이디, 비밀번호 찾기 페이지");
+
+		return"member/loss_info";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/loss_id", method = RequestMethod.POST)
+	public String loss_id(MemberDTO mDto, HttpSession session) {
+		log.info("아이디 찾기");
+		String id = service.loss_id(mDto, session);
+		log.info(id);
+		String flag = "-1";
+		if(id != null) {
+			flag = "1";
+		}
+		log.info(flag);
+		return flag;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/loss_pw", method = RequestMethod.POST)
+	public String loss_pw(MemberDTO mDto, HttpSession session) {
+		log.info("패스워드 찾기");
+		int pw = service.loss_pw(mDto, session);
+		log.info(""+pw);
+		
+		String flag = "-1";
+		if(pw > 0) {
+			flag = "1";
+		}
+		log.info(flag);
+		return flag;
+	}
+	
+	@RequestMapping(value = "/loss_update", method = RequestMethod.POST)
+	public String loss_update(MemberDTO mDto) {
+		log.info("비밀번호 변경");
+		service.loss_update(mDto);
+		
+		return "redirect:/member/login";
+	}
+	
+	
+	
+	
+	
 	
 }

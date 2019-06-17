@@ -39,9 +39,25 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void losspw(MemberDTO mDto) {
-		// TODO Auto-generated method stub
-		
+	public int loss_info(MemberDTO mDto) {
+		return mDao.loss_info(mDto);
+	}
+
+	@Override
+	public String loss_id(MemberDTO mDto, HttpSession session) {
+		mDto.setId(mDao.loss_id(mDto));
+		session.setAttribute("id", mDto.getId());
+		return mDao.loss_id(mDto);
+	}
+
+	@Override
+	public int loss_pw(MemberDTO mDto, HttpSession session) {
+		return mDao.loss_pw(mDto);
+	}
+
+	@Override
+	public int loss_update(MemberDTO mDto) {
+		return mDao.loss_update(mDto);
 	}
 
 }

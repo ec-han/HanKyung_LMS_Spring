@@ -28,9 +28,23 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void losspw(MemberDTO mDto) {
-		// TODO Auto-generated method stub
-		
+	public int loss_info(MemberDTO mDto) {
+		return sqlSession.selectOne("member.loss_info", mDto);
+	}
+
+	@Override
+	public String loss_id(MemberDTO mDto) {
+		return sqlSession.selectOne("member.loss_id", mDto);
+	}
+
+	@Override
+	public int loss_pw(MemberDTO mDto) {
+		return sqlSession.selectOne("member.loss_pw", mDto);
+	}
+
+	@Override
+	public int loss_update(MemberDTO mDto) {
+		return sqlSession.update("member.loss_update", mDto);
 	}
 	
 }

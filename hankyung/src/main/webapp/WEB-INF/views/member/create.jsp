@@ -48,7 +48,7 @@
 .input_class{
 	margin: 0 auto;
 	height: 94%;
-	width: 90%;
+	width: 80%;
 	border:none;
 	outline:none;
 	font-size:20px;
@@ -80,7 +80,7 @@
 .login{
 	cursor: pointer;
 }
-.loss_pw{
+.loss_info{
 	cursor: pointer;
 }
 </style>
@@ -144,7 +144,7 @@
 					<div class="underbar"></div>
 					<div class="login_box">
 						<span class="login">로그인</span> | 
-						<span class="loss_pw">비밀번호 찾기</span>
+						<span class="loss_info">아이디, 비밀번호 찾기</span>
 					</div>
 
 				</form>
@@ -157,10 +157,10 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.login').click(function() {
-				location.href="#";
+				location.href="${path}/member/login";
 			});
-			$('.loss_pw').click(function() {
-				location.href="#";
+			$('.loss_info').click(function() {
+				location.href="${path}/member/loss_info";
 			});
 			
 			

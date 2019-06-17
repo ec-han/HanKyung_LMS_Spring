@@ -48,6 +48,7 @@
 .err_msg{
 	line-height: 45px;
 	height: 45px;
+	color : tomato;
 }
 .btn_box{
 	height: 45px;
@@ -65,7 +66,7 @@
 .insert{
 	cursor: pointer;
 }
-.loss_pw{
+.loss_info{
 	cursor: pointer;
 }
 
@@ -94,7 +95,7 @@
 						</span>
 					</div>
 					<div class="err_msg">
-						* err msg
+						${sessionScope.loginck}
 					</div>
 					<div class="btn_box">
 						<button class="login_btn o_btn" type="button">로 그 인</button>
@@ -102,7 +103,7 @@
 					<div class="underbar"></div>
 					<div class="login_box">
 						<span class="insert">회원가입 </span> | 
-						<span class="loss_pw">비밀번호 찾기</span>
+						<span class="loss_info">아이디, 비밀번호 찾기</span>
 					</div>
 				</form>
 			</div>
@@ -116,10 +117,10 @@
 				$('#frm_mem').submit();
 			});
 			$('.insert').click(function() {
-				location.href="#";
+				location.href="${path}/member/constract";
 			});
-			$('.loss_pw').click(function() {
-				location.href="#";
+			$('.loss_info').click(function() {
+				location.href="${path}/member/loss_info";
 			});
 		});
 	</script>	

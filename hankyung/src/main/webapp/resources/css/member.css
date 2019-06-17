@@ -20,7 +20,7 @@
 	}
 	.img_box1 > img{
 		position: absolute;
-		bottom: 0;
+		bottom: 30px;
 		left: 30px;
 		width: 90%;	
 	}

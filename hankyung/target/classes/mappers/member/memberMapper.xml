@@ -16,4 +16,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id=#{id} AND pw = #{pw}
 	</select>
 	
+	<select id="loss_info" parameterType="com.hankyung.domain.member.MemberDTO">
+		SELECT COUNT(*) FROM hk_member
+		WHERE id=#{id} AND email = #{email}
+	</select>
+	
+	<select id="loss_id" parameterType="com.hankyung.domain.member.MemberDTO" resultType="String">
+		SELECT id FROM hk_member
+		WHERE name = #{name} AND email = #{email}
+	</select>
+	
+	<select id="loss_pw" parameterType="com.hankyung.domain.member.MemberDTO" resultType="int">
+		SELECT COUNT(*) FROM hk_member
+		WHERE id = #{id} AND email = #{email}
+	</select>
+	
+	<update id="loss_update"  parameterType="com.hankyung.domain.member.MemberDTO">
+		UPDATE hk_member
+		   SET pw = #{pw}
+		 WHERE id = #{id}
+	</update>
+	
+	
 </mapper>
