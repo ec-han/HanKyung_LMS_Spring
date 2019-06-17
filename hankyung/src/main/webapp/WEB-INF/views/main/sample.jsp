@@ -25,7 +25,7 @@
 			<%@ include file="../include/board_nav.jsp" %>
 	
 			<div class="container">
-				<div class="center_box" id="test">
+				<div class="container_box" id="test">
 			<!-- 본문 내용에 따라 바뀔 곳 시작 : body라 생각하면 됨  -->
 					<h1 class="">내용이 들어올 곳</h1>
 					<div class="flex_test">1</div>

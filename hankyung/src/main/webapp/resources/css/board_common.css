@@ -594,7 +594,7 @@ sup { /* 첨자 텍스트 */
 	flex: 8;
 	border: 1px solid orange;	
 }
-.center_box {
+.container_box {
 	border: 1px solid green;
 	padding: 35px;
 	width: 100%;

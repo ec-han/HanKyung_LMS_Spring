@@ -294,6 +294,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-left: 70%;
     flex: 1;
 }
+
 </style>
 </head>
 <body>
@@ -303,7 +304,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 			<%@ include file="../include/board_nav.jsp" %>
 	
 			<div class="container">
-				<div class="center_box">
+				<div class="container_box">
 					<h1 class="">공지사항</h1>
 					<!-- DataTales Example -->
 			        <div class="card shadow">
@@ -348,16 +349,6 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 						                      <th>첨부</th>
 						                    </tr>
 						                  </thead>
-						                  <tfoot>
-						                    <tr>
-						                      <th>1</th>
-						                      <th>2</th>
-						                      <th>3</th>
-						                      <th>4</th>
-						                      <th>5</th>
-						                      <th>6</th>
-						                    </tr>
-						                  </tfoot>
 						                  <tbody>
 						                    <tr>
 						                      <td>1</td>
