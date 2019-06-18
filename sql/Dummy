@@ -13,23 +13,52 @@ CREATE TABLE hk_member(
 INSERT INTO hk_member(name, id, email, phone, pw)
 VALUES('한은체', 'user01', 'user01@gmail.com', 01011112222, 1234);
 
--- 한은체: 관리자 공지사항 테이블
-DROP SEQUENCE seq_admin_notice;
-CREATE SEQUENCE seq_admin_notice
+-- 한은체: 게시판 테이블
+--HK 게시판
+--모든 게시글 시퀀스
+DROP SEQUENCE seq_hkboard;
+CREATE SEQUENCE seq_hkboard
 START WITH 1
 INCREMENT BY 1;
 
-DROP TABLE hk_admin_notice;
-CREATE TABLE hk_admin_notice(
-    adnno NUMBER PRIMARY KEY,
+--공지 게시글 시퀀스
+DROP SEQUENCE seq_hkboard_notice;
+CREATE SEQUENCE seq_hkboard_notice
+START WITH 1
+INCREMENT BY 1;
+--QnA 게시글 시퀀스
+DROP SEQUENCE seq_hkboard_qna;
+CREATE SEQUENCE seq_hkboard_qna
+START WITH 1
+INCREMENT BY 1;
+--평가 게시글 시퀀스
+DROP SEQUENCE seq_hkboard_evltn;
+CREATE SEQUENCE seq_hkboard_evltn
+START WITH 1
+INCREMENT BY 1;
+
+--게시글 타입
+0 공지
+1 QnA
+2 평가
+
+DROP TABLE hk_board;
+CREATE TABLE hk_board(
+    bno NUMBER PRIMARY KEY,
+    tnum NUMBER NOT NULL,
+    btype VARCHAR2(20) DEFAULT 0,
     title VARCHAR2(200) NOT NULL,
     content VARCHAR2(4000) NOT NULL,
-    writer VARCHAR(30) DEFAULT '관리자' NOT NULL,
-    viewcnt NUMBER DEFAULT 0,
+    writer VARCHAR(30) NOT NULL,
     regdate DATE DEFAULT SYSDATE   
 );
-SELECT * FROM hk_admin_notice
-ORDER BY adnno DESC;
 
-INSERT INTO hk_admin_notice(adnno, title, content)
-VALUES(seq_admin_notice.NEXTVAL, '공지사항1','공지');
+--공지사항 작성
+INSERT INTO hk_board(bno, tnum, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, '공지사항1','공지', 'USER01');
+--QnA 게시글 작성
+INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, '1','QnA1','질문', 'USER01');
+--평가 게시글 작성
+INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요', 'USER01');
