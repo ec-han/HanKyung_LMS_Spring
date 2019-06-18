@@ -396,12 +396,12 @@
                     		<i class="fas fa-shopping-basket basket_icon"></i>
                     	</a>
                     	<div class="section_img">
-                        	<a>
+                        	<a href="${path}/lecture/view">
                         		<img src="">
                        		</a>
                        	</div>
                         <div class="section_name">
-                        	<a>
+                        	<a href="${path}/lecture/view">
                             	Python과 함께하는 응용 데이터 과학
                             </a>
                         </div>
@@ -417,12 +417,12 @@
                     		<i class="fas fa-shopping-basket basket_icon"></i>
                     	</a>
                     	<div class="section_img">
-                        	<a>
+                        	<a href="${path}/lecture/view">
                         		<img src="">
                        		</a>
                        	</div>
                         <div class="section_name">
-                        	<a>
+                        	<a href="${path}/lecture/view">
                             	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
                             </a>
                         </div>

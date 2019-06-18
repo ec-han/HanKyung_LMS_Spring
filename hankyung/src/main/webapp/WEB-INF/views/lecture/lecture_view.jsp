@@ -15,7 +15,6 @@
 		.lecture_info {
 			position: relative;
 			z-index: 1;
-            border: 1px solid red;
             width: 100%;
             min-width: 1350px;
             padding: 150px 0px 0px;
@@ -23,9 +22,10 @@
             transition: .3s;
         }
         .info_title {
+        	width: 1350px;
             font-size: 30px;
-            padding-left: 20px;
-            margin-bottom: 60px;
+            margin: 0px auto;
+            padding: 0px 25px 40px;
         }
 		
 
@@ -37,7 +37,9 @@
 
 
 		.header_button {
-			padding: 0px 20px;
+			width: 1350px;
+			margin: 0px auto;
+			padding: 20px 25px;
 		}
 		.button_left {
 			display: inline-block;
@@ -85,30 +87,44 @@
 
 
 
-		.info_all {
-            padding: 25px 0px 0px;
+		.lecture_top {
+			position: relative;
+			width: 100%;
+			height: 330px;
 		}
 		.lecture_img {
 			overflow: hidden;
-			position: absolute;
-			z-index: -1;
-			right: 0;
+			position: relative;
+			top: 0;
 		}
-		.img {
-			display: inline-block;
-			width: 380px;
-			height: 230px;
-			background: #ddd;
-		}
-		.lecture_top {
+		.lecture_img_back {
 			background: #333;
-			width: 81%;
-			height: 230px;
+			width: 100%;
+			height: 330px;
+		}
+		.right_img {
+			display: inline-block;
+			position: absolute;
+			z-index: 10;
+			float: right;
+			width: 450px;
+			height: 330px;
+			background: #ddd;
+			right: 0;
+			top: 0;
+		}
+		.lecture_content {
+			position: absolute;
+			top: 0px;
+			left: 10%;
+			width: 1350px;
+			height: 330px;
+			padding: 45px;
 		}
 		.index_box {
 			color: white;
 			font-size: 20px;
-			margin-left: 8%;
+			z-index: 11;
 		}
 		.lecture_title {
 			font-size: 32px;
@@ -118,14 +134,21 @@
 		.lecture_day {
 			padding-bottom: 5px;
 		}
+		
+		
+		
+		
+		
+		
+
 		.lecture_center {
-			width: 81%;
-			box-sizing: border-box;
-			padding: 100px 6.5% 100px;
+			width: 1350px;
+			margin: 0px auto;
+			padding: 70px 25px;
 		}
 		.center_title {
-			font-size: 32px;
-			padding-bottom: 20px;
+			font-size: 30px;
+			padding-bottom: 30px;
 		}
 
 
@@ -136,7 +159,7 @@
 
 		
 		.lecture_bottom {
-			margin-top: 60px;
+			margin-top: 20px;
 			padding: 100px 0px 110px;
 			background: #eee;
 		}
@@ -199,85 +222,84 @@
         <div class="info_title">과정 정보</div>
         <div class="header_button">
 			<div class="button_left">
-				<a class="lecture_btn white_btn">뒤로가기</a>
+				<a href="${path}/" class="lecture_btn white_btn">뒤로가기</a>
 			</div>
 			<div class="button_right">
 				<a class="lecture_btn white_btn">수정</a>
 				<a class="lecture_btn color_btn">삭제</a>
 			</div>
 		</div>
-        <div class="info_all">
-       		<div class="lecture_top">
-        		<div class="lecture_img">
-        			<span class="img">span대신 img넣기</span>
-        		</div>
-        		<div class="lecture_content">
-        			<div class="index_box lecture_title">
-       					MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉
-        			</div>
-        			<div class="index_box lecture_day">
-        				<span class="text_box">과정기간ㅣ</span>2018.12.27 ~ 2019.04.05
-        			</div>
-        			<div class="index_box lecture_name">
-        				<span class="text_box">강사명ㅣ</span>최철웅
-        			</div>
-        		</div>
+		<div class="lecture_top">
+       		<div class="lecture_img">
+       		    <div class="lecture_img_back"></div>
+       			<div class="right_img">span대신 img넣기</div>
        		</div>
-       		<div class="lecture_center">
-       			<div class="center_title">
-       				강의 소개
+       		<div class="lecture_content">
+       			<div class="index_box lecture_title">
+      					MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉
        			</div>
-       			<div>
-       				sdfalsdjfalsdfjlsdfsdfsdf!<br>
-       				sdflkasdgkewg<br>
-       				Fkalsdfjasdl;gjerl<br>
-       				dsgsdlfksdflerglfs
+       			<div class="index_box lecture_day">
+       				<span class="text_box">과정기간ㅣ</span>2018.12.27 ~ 2019.04.05
+       			</div>
+       			<div class="index_box lecture_name">
+       				<span class="text_box">강사명ㅣ</span>최철웅
        			</div>
        		</div>
-       		<div class="lecture_bottom">
-       			<div class="bottom_title">
-       				BEST 수강 후기
-       			</div>
-       			<div class="bottom_content">
-       				<div class="bottom_box">
-       					<div class="bottom_bar bottom_bar1"></div>
-       					<div class="box_title">
-       						좋은 학습 방법입니다.
-       					</div>
-       					<div class="box_text">
-       						누군가에게 무언가를 설명하려면 평소 알고 있었던 지식이라도 다시 한 번 돌아보고 다듬어야 하며 효율적인 전달 방법을 고민해야 합니다. 그 과정을 반복하며 보다 나은 실력을 쌓을 수 있습니다.
-       					</div>
-       					<div class="box_name">
-       						백기선
-       					</div>
-       				</div>
-       				<div class="bottom_box">
-       					<div class="bottom_bar bottom_bar2"></div>
-       					<div class="box_title">
-       						커리어적인 신뢰도를 높일 수 있었습니다.
-       					</div>
-       					<div class="box_text">
-       						인프런에 올린 강의로 시작해서 지금 오프라인 강의도 하고 있는 거고. 또 다른 회사에서 내 이력서를 볼 때, 신뢰도가 더 높아졌죠.
-       					</div>
-       					<div class="box_name">
-       						이정주
-       					</div>
-       				</div>
-       				<div class="bottom_box">
-       					<div class="bottom_bar bottom_bar3"></div>
-       					<div class="box_title">
-       						인프런은 지식에 가치를 부여하는 좋은 사례인 것 같아요.
-       					</div>
-       					<div class="box_text">
-       						우리나라는 자기 경력에 관련한 교육의 가가 낮은 경우가 많아요. 인프런은 강사와 학습자 모두가 만족하는 좋은 사례를 만들어 가고 있다고 생각합니다.
-       					</div>
-       					<div class="box_name">
-       						이동욱
-       					</div>
-       				</div>
-       			</div>
-       		</div>
-        </div>
+    	</div>
+   		<div class="lecture_center">
+   			<div class="center_title">
+   				강의 소개
+   			</div>
+   			<div>
+   				sdfalsdjfalsdfjlsdfsdfsdf!<br>
+   				sdflkasdgkewg<br>
+   				Fkalsdfjasdl;gjerl<br>
+   				dsgsdlfksdflerglfs
+   			</div>
+   		</div>
+   		<div class="lecture_bottom">
+   			<div class="bottom_title">
+   				BEST 수강 후기
+   			</div>
+   			<div class="bottom_content">
+   				<div class="bottom_box">
+   					<div class="bottom_bar bottom_bar1"></div>
+   					<div class="box_title">
+   						좋은 학습 방법입니다.
+   					</div>
+   					<div class="box_text">
+   						누군가에게 무언가를 설명하려면 평소 알고 있었던 지식이라도 다시 한 번 돌아보고 다듬어야 하며 효율적인 전달 방법을 고민해야 합니다. 그 과정을 반복하며 보다 나은 실력을 쌓을 수 있습니다.
+   					</div>
+   					<div class="box_name">
+   						백기선
+   					</div>
+   				</div>
+   				<div class="bottom_box">
+   					<div class="bottom_bar bottom_bar2"></div>
+   					<div class="box_title">
+   						커리어적인 신뢰도를 높일 수 있었습니다.
+   					</div>
+   					<div class="box_text">
+   						인프런에 올린 강의로 시작해서 지금 오프라인 강의도 하고 있는 거고. 또 다른 회사에서 내 이력서를 볼 때, 신뢰도가 더 높아졌죠.
+   					</div>
+   					<div class="box_name">
+   						이정주
+   					</div>
+   				</div>
+   				<div class="bottom_box">
+   					<div class="bottom_bar bottom_bar3"></div>
+   					<div class="box_title">
+   						인프런은 지식에 가치를 부여하는 좋은 사례인 것 같아요.
+   					</div>
+   					<div class="box_text">
+   						우리나라는 자기 경력에 관련한 교육의 가가 낮은 경우가 많아요. 인프런은 강사와 학습자 모두가 만족하는 좋은 사례를 만들어 가고 있다고 생각합니다.
+   					</div>
+   					<div class="box_name">
+   						이동욱
+   					</div>
+   				</div>
+   			</div>
+   		</div>
     </div>
     <%@ include file = "../include/home_footer.jsp" %>
 </body>

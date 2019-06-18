@@ -89,7 +89,7 @@
         <div class="home_header_box1">
             <div class="home_header_navi">
                 <div class="home_navi_left">
-                    <span class="home_navi_span"><a class="home_navi1">HanKyung LMS</a></span>
+                    <span class="home_navi_span"><a href="${path}/" "home_navi1">HanKyung LMS</a></span>
                 </div>
                 <div class="home_navi_right">
                     <div class="home_navi_div">
@@ -119,10 +119,12 @@
             var scrollValue = $(this).scrollTop();
             if (scrollValue >= 100) {
                 $('.home_header_navi').css("position", "fixed")
-                                  .css('box-shadow', '2px 2px 20px rgba(0, 0, 0, 0.15)');
+                                  .css('box-shadow', '2px 2px 20px rgba(0, 0, 0, 0.15)')
+                                  .css('border', '0px');
                 } else {
                 	$('.home_header_navi').css("position", "absolute")
-                                 .css('box-shadow', 'none');
+                                 .css('box-shadow', 'none')
+                                 .css('border-bottom', '1px solid #ddd');
             }
         });
 	</script>
