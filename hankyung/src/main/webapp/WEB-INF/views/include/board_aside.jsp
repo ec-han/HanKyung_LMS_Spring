@@ -161,7 +161,7 @@
 					$('#accordionSidebar').addClass('toggled');
 					$('.nav_content_footer').css('padding-left','0');
 					$('.sidebar_brand-text').text("");
-					$('.sidebar_brand-icon').css('margin-left','45px');
+					$('.sidebar_brand-icon').css('margin-left','2.5rem');
 					$('.collapse_inner').addClass('collapse_inner_toggled');
 					$('#accordionSidebar .nav_item').css('height','50px');
 				    $('#sidebarToggle').html('<i class="fas fa-angle-right"></i>');
