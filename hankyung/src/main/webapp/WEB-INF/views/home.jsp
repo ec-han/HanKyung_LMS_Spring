@@ -22,10 +22,10 @@
       html {
           scroll-behavior: smooth;
       }
-      .header_box1 {
+      .home_header_box1 {
           height: 1000px;
       }
-      .header_img {
+      .home_header_img {
           display: inline-block;
           width: 100%;
           height: 1000px;
@@ -33,12 +33,12 @@
           position: absolute;
           z-index: -1;
       }
-      .main_img {
+      .home_main_img {
           width: 100%;
           min-width: 1500px;
           filter: brightness(20%);
       }
-      .header_navi {
+      .home_header_navi {
           width: 100%;
           min-width: 1350px;
           padding: 30px 0px 30px;
@@ -50,57 +50,67 @@
           top: 0px;
           z-index: 50;
       }
-      .navi_left {
+      .home_navi_left {
           display: inline-block;
           margin-left: 10%;
       }
-      .navi_right {
+      .home_navi_right {
           display: inline-block;
           float: right;
           margin-right: 10%;
       }
-      .navi_div {
+      .home_navi_div {
           display: inline-block;
           position: relative;
       }
-      .navi_span {
+      .home_navi_span {
           display: inline-block;
           text-align: center;
       }
-      .navi {
+      .home_navi {
           display: inline-block;
-          width: 115px;
+          width: 105px;
           transition: .3s;
           opacity: .5;
       }
-      .navi1 {
+      .home_navi1 {
           width: 150px;
       }
       #about, #projects, #contact {
       	color: white;
       }
-      #login, #join {
+      #login, #join, #basket {
+      	  display: inline-block;
           font-family: 'Noto Sans KR', sans-serif;
           font-weight: normal;
           font-size: 18px;
+          transition: .3s;
+          opacity: .5;
+          margin: 0px 17px;
           color: white;
       }
-      #login:hover, #join:hover {
+      #login:hover, #join:hover, #basket:hover {
           color: #FFC000!important;
           opacity: 1!important;
       }
-      .navi:hover {
+      .home_navi:hover {
           opacity: 1!important;
       }
-      .navi_bar {
+      .home_navi_bar {
           display: none;
-          width: 120px;
+          width: 108px;
           height: 5px;
           position: absolute;
           background: #79CDCF;
           bottom: -30px;
           left: -2px;
       }
+      
+      
+      
+      
+      
+      
       .header_center {
           min-width: 1350px;
           text-align: center;
@@ -200,273 +210,124 @@
 
 
 
-
-
-
-
-
-      .footer_box {
-          width: 100%;
-          height: 1100px;
-          position: relative;
-          color: white;
-          font-size: 16px;
-      }
-      .box_back {
-          width: 100%;
-          height: 1100px;
-          position: absolute;
-          z-index: -3;
-          background: #222;
-      }
-      .img_back {
-          background: #222;
-          width: 100%;
-          min-width: 1350px;
-          height: 800px;
-          position: absolute;
-          top: 0;
-          z-index: -1;
-          opacity: .7;
-      }
-      .footer_img > img {
-          width: 100%;
-          min-width: 1350px;
-          position: absolute;
-          top: 0;
-          z-index: -2;
-      }
-      .footer_head {
-          padding: 170px 0px 160px;
-          text-align: center;
-      }
-      #plane {
-          font-size: 40px;
-      }
-      .footer_title {
-          font-size: 35px;
-          font-family: 'Nunito', sans-serif;
-          padding: 20px 0px 30px;
-      }
-      .input_div {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-      }
-      .footer_input {
-          outline: none;
-          width: 400px;
-          height: 54px;
-          border: 0px;
-          border-radius: 5px;
-          padding: 0px 20px;
-          margin-right: 10px;
-          font-size: 15px;
-          box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
-      }
-      .footer_btn {
-          width: 100px;
-          padding: 16px;
-          border-radius: 5px;
-          background: #79CDCF;
-          font-family: 'Nunito', sans-serif;
-          font-weight: 600;
-          transition: .3s;
-          overflow: hidden;
-          position: relative;
-          box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
-      }
-      .footer_btn:before {
-          content: '';
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          right: 0px;
-          bottom: 0px;
-          z-index: -5;
-          background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-          background-size: 500%;
-          border-radius: 5px;
-          transition: 0.3s;
-      }
-      .footer_btn:hover:before {
-          z-index: 1;
-          animation: animate 10s linear infinite;
-      }
-      .footer_btn > span {
-          position: relative;
-          z-index: 2;
-      }
-      .footer_center {
-          padding: 30px 0px;
-          display: flex;
-          justify-content: center;
-          text-align: center;
-      }
-      .footer_content {
-          display: inline-block;
-          width: 300px;
-          background: white;
-          color: #444;
-          margin-left: 30px;
-          border-radius: 5px;
-          padding: 44px 0px 45px;
-          position: relative;
-          overflow: hidden;
-      }
-      .footer_content:nth-child(1) {
-          margin-left: 0px;
-      }
-      #address, #email, #tell {
-          color: #79CDCF;
-          padding: 10px;
-      }
-      .content_Bar {
-          display: inline-block;
-          margin: 20px 0px;
-          width: 50px;
-          height: 3px;
-          background: #79CDCF;
-      }
-      .content_text {
-          font-family: 'Nanum Gothic', sans-serif;
-          font-size: 14px;
-      }
-      .content_adress {
-          line-height: 20px;
-      }
-      .content_email, .content_tell {
-          margin-top: 10px;
-      }
-      .bottom_bar {
-          width: 300px;
-          height: 5px;
-          background: #79CDCF;
-          position: absolute;
-          bottom: 0px;
-      }
-      .footer_icon {
-          display: flex;
-          justify-content: center;
-          padding: 50px;
-      }
-      .icon_btn {
-          padding: 12px;
-          border-radius: 25px;
-          background: #444;
-          text-align: center;
-          font-size: 20px;
-          color: #aaa;
-          margin-left: 15px;
-          transition: .3s;
-      }
-      .icon_btn:hover {
-          background: #666;
-      }
-      .fotter_final {
-          text-align: center;
-          font-family: 'Nanum Gothic', sans-serif;
-          font-size: 14px;
-          padding: 40px 0px;
-          color: #777;
-      }
-
-
-
-
-
-
-
-
-
-
       .section_box {
-          width: 100%;
-          min-width: 1350px;
-          padding: 100px 0px 160px;
-      }
-      .best_class {
-          padding: 40px 0px 80px;
-      }
-      .section_title {
-          text-align: center;
-          font-size: 25px;
-          color: #2D314F;
-          font-weight: 600;
-          padding: 20px;
-      }
-      .section_content {
-          display: flex;
-          justify-content: center;
-      }
-      .content_box {
-          width: 380px;
-          padding: 12px;
-      }
-      .section_img {
-          width: 100%;
-          height: 230px;
-          border-radius: 5px;
-          overflow: hidden;
-          background: #333;
-      }
-      .section_name {
-          font-size: 16px;
-          padding: 15px 0px 10px;
-          color: #2D314F;
-          font-weight: 600;
-          border-bottom: 1px solid #dadada;
-      }
-      .section_teacher {
-          display: inline-block;
-          padding: 10px 0px 3px;
-      }
-      .section_teacher, .section_day {
-          color: #888;
-          font-weight: 600;
-      }
+			width: 100%;
+			min-width: 1350px;
+			padding: 150px 0px;
+		}
+		.best_class, .new_class {
+			padding-bottom: 20px;
+		}
+		.section_title {
+			text-align: center;
+			font-size: 25px;
+			color: #2D314F;
+			font-weight: 600;
+			padding-bottom: 20px;
+		}
+		.section_content {
+			display: flex;
+			justify-content: center;
+		}
+		.content_box {
+			position: relative;
+			width: 380px;
+			padding: 12px 12px 70px;
+		}
+		.basket_icon {
+			position: absolute;
+			right: 26px;
+			top: 26px;
+			font-size: 22px;
+			color: white;
+			opacity: .3;
+			transition: .3s;
+		}
+		.basket_icon:hover {
+			opacity: 1;
+		}
+		.section_img {
+			width: 100%;
+			height: 230px;
+			border-radius: 5px;
+			overflow: hidden;
+			background: #333;
+		}
+		.section_name {
+			font-size: 16px;
+			padding: 15px 0px 10px;
+			color: #2D314F;
+			font-weight: 600;
+			border-bottom: 1px solid #dadada;
+		}
+		.section_teacher {
+			display: inline-block;
+			padding: 10px 0px 3px;
+		}
+		.section_teacher, .section_day {
+			color: #888;
+			font-weight: 600;
+		}
+		.class_more {
+			display: block;
+			margin: 10px auto;
+			text-align: center;
+			width: 110px;
+			height: 36px;
+			background: #79CDCF;
+			line-height: 35px;
+			color: white;
+			border-radius: 20px;
+			transition: .3s;
+		}
+		.class_more:hover {
+			background: #2D314F;
+		}
 </style>
 </head>
 <body>
 	<header>
-        <div class="header_box1">
-            <div class="header_img">
-                <img  class="main_img" src="${path}/resources/img/student_849825.jpg">
+        <div class="home_header_box1">
+            <div class="home_header_img">
+                <img  class="home_main_img" src="${path}/resources/img/student_849825.jpg">
             </div>
-            <div class="header_navi">
-                <div class="navi_left">
-                    <span class="navi_span"><a class="navi1">HanKyung LMS</a></span>
+            <div class="home_header_navi">
+                <div class="home_navi_left">
+                    <span class="home_navi_span"><a class="home_navi1">HanKyung LMS</a></span>
                 </div>
-                <div class="navi_right">
-                    <div class="navi_div">
-                        <span class="navi_span">
-                            <a href="#header_box2" class="navi navi2" id="about">About</a>
+                <div class="home_navi_right">
+                    <div class="home_navi_div">
+                        <span class="home_navi_span">
+                            <a href="#header_box2" class="home_navi home_navi2" id="about">About</a>
                         </span>
-                        <span class="navi_bar"></span>
+                        <span class="home_navi_bar"></span>
                     </div>
-                    <div class="navi_div">
-                        <span class="navi_span">
-                            <a href="#section_box" class="navi navi3" id="projects">Projects</a>
+                    <div class="home_navi_div">
+                        <span class="home_navi_span">
+                            <a href="#section_box" class="home_navi home_navi3" id="projects">Projects</a>
                         </span>
-                        <span class="navi_bar"></span>
+                        <span class="home_navi_bar"></span>
                     </div>
-                    <div class="navi_div">
-                        <span class="navi_span">
-                            <a href="#footer_box" class="navi navi4" id="contact">Contact</a>
+                    <div class="home_navi_div">
+                        <span class="home_navi_span">
+                            <a href="#home_footer_box" class="home_navi home_navi4" id="contact">Contact</a>
                         </span>
-                        <span class="navi_bar"></span>
+                        <span class="home_navi_bar"></span>
                     </div>
-                    <div class="navi_div">
-                        <span class="navi_span">
-                            <a href="${path}/login" class="navi navi5" id="login">로그인</a>
+                    <div class="home_navi_div">
+                        <span class="home_navi_span">
+                            <a href="${path}/login" class="home_navi_btn home_navi5" id="login">로그인</a>
                         </span>
-                        <span class="navi_bar"></span>
                     </div>
-                    <div class="navi_div">
-                        <span class="navi_span">
-                            <a href="${path}/create" class="navi navi6" id="join">회원가입</a>
+                    <div class="home_navi_div">
+                        <span class="home_navi_span">
+                            <a href="${path}/create" class="home_navi_btn home_navi6" id="join">회원가입</a>
                         </span>
-                        <span class="navi_bar"></span>
+                    </div>
+                    <div class="home_navi_div">
+                        <span class="home_navi_span">
+                            <a href="${path}/" class="home_navi_btn home_navi7" id="basket">수강바구니</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -510,9 +371,18 @@
                 </div>
                 <div class="section_content">
                     <div class="content_box">
-                        <div class="section_img"><img src=""></div>
+                    	<a>
+                    		<i class="fas fa-shopping-basket basket_icon"></i>
+                    	</a>
+                        <div class="section_img">
+                        	<a href="${path}/lecture/view">
+                        		<img src="">
+                       		</a>
+                       	</div>
                         <div class="section_name">
-                            혁신을 관리하고 생각을 디자인하기
+                        	<a href="${path}/lecture/view">
+                            	혁신을 관리하고 생각을 디자인하기
+                            </a>
                         </div>
                         <div class="section_text">
                             <span class="section_teacher">강사ㅣ</span>최철웅
@@ -522,9 +392,18 @@
                         </div>
                     </div>
                     <div class="content_box">
-                        <div class="section_img"><img src=""></div>
+                    	<a>
+                    		<i class="fas fa-shopping-basket basket_icon"></i>
+                    	</a>
+                    	<div class="section_img">
+                        	<a>
+                        		<img src="">
+                       		</a>
+                       	</div>
                         <div class="section_name">
-                            Python과 함께하는 응용 데이터 과학
+                        	<a>
+                            	Python과 함께하는 응용 데이터 과학
+                            </a>
                         </div>
                         <div class="section_text">
                             <span class="section_teacher">강사ㅣ</span>최철웅
@@ -534,9 +413,18 @@
                         </div>
                     </div>
                     <div class="content_box">
-                        <div class="section_img"><img src=""></div>
+                    	<a>
+                    		<i class="fas fa-shopping-basket basket_icon"></i>
+                    	</a>
+                    	<div class="section_img">
+                        	<a>
+                        		<img src="">
+                       		</a>
+                       	</div>
                         <div class="section_name">
-                            MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
+                        	<a>
+                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
+                            </a>
                         </div>
                         <div class="section_text">
                             <span class="section_teacher">강사ㅣ</span>최철웅
@@ -553,9 +441,18 @@
                 </div>
                 <div class="section_content">
                     <div class="content_box">
-                        <div class="section_img"><img src=""></div>
+                    	<a>
+                    		<i class="fas fa-shopping-basket basket_icon"></i>
+                    	</a>
+                    	<div class="section_img">
+                        	<a>
+                        		<img src="">
+                       		</a>
+                       	</div>
                         <div class="section_name">
-                            혁신을 관리하고 생각을 디자인하기
+                        	<a>
+                            	혁신을 관리하고 생각을 디자인하기
+                            </a>
                         </div>
                         <div class="section_text">
                             <span class="section_teacher">강사ㅣ</span>최철웅
@@ -565,9 +462,18 @@
                         </div>
                     </div>
                     <div class="content_box">
-                        <div class="section_img"><img src=""></div>
+                    	<a>
+                    		<i class="fas fa-shopping-basket basket_icon"></i>
+                    	</a>
+                    	<div class="section_img">
+                        	<a>
+                        		<img src="">
+                       		</a>
+                       	</div>
                         <div class="section_name">
-                            Python과 함께하는 응용 데이터 과학
+                        	<a>
+                            	Python과 함께하는 응용 데이터 과학
+                            </a>
                         </div>
                         <div class="section_text">
                             <span class="section_teacher">강사ㅣ</span>최철웅
@@ -577,9 +483,18 @@
                         </div>
                     </div>
                     <div class="content_box">
-                        <div class="section_img"><img src=""></div>
+                    	<a>
+                    		<i class="fas fa-shopping-basket basket_icon"></i>
+                    	</a>
+                    	<div class="section_img">
+                        	<a>
+                        		<img src="">
+                       		</a>
+                       	</div>
                         <div class="section_name">
-                            MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
+                        	<a>
+                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
+                            </a>
                         </div>
                         <div class="section_text">
                             <span class="section_teacher">강사ㅣ</span>최철웅
@@ -590,65 +505,13 @@
                     </div>
                 </div>
             </div>
+            <a href="${path}/">
+            	<span class="class_more">강좌 더 보기</span>
+            </a>
         </div>
     </section>
-
-
-
-    <footer>
-        <div class="footer_box" id="footer_box">
-            <div class="box_back"></div>
-            <div class="img_back"></div>
-            <div class="footer_img">
-                <img src="${path}/resources/img/laptop_2559795.png">
-            </div>
-            <div class="footer_head">
-                <span><i class="far fa-paper-plane" id="plane"></i></span>
-                <div class="footer_title">
-                    Subscribe to receive updates!
-                </div>
-                <div class="input_div">
-                    <input type="text" name="" class="footer_input" placeholder="이메일을 입력해주세요.">
-                    <a class="footer_btn"><span>SUBSCRIBE</span></a>
-                </div>
-            </div>
-            <div class="footer_center">
-                <div class="footer_content">
-                    <i class="fas fa-map-marked-alt" id="address"></i>
-                    <div>ADDRESS</div>
-                    <span class="content_Bar"></span>
-                    <div class="content_text content_adress">광주광역시 북구 중흥1동<br>경양로 170 한국경영원 인재개발원</div>
-                    <div class="bottom_bar"></div>
-                </div>
-                <div class="footer_content">
-                    <i class="fas fa-envelope" id="email"></i>
-                    <div>EMAIL</div>
-                    <span class="content_Bar"></span>
-                    <div class="content_text content_email">seonmi0325@gmail.com</div>
-                    <div class="bottom_bar"></div>
-                </div>
-                <div class="footer_content">
-                    <i class="fas fa-mobile-alt" id="tell"></i>
-                    <div>TELL</div>
-                    <span class="content_Bar"></span>
-                    <div class="content_text content_tell">062-720-4800</div>
-                    <div class="bottom_bar"></div>
-                </div>
-            </div>
-            <div class="footer_icon">
-                <a class="icon_btn">
-                    <i class="fab fa-twitter" id="twitter"></i>
-                </a>
-                <a class="icon_btn">
-                    <i class="fab fa-instagram" id="instagram"></i>
-                </a>
-                <a class="icon_btn">
-                    <i class="fab fa-github" id="github"></i>
-                </a>
-            </div>
-            <div class="fotter_final">Copyright © HankungLMS Design By KimParkHan 2019</div>
-        </div>
-    </footer>
+	<%@ include file="include/home_footer.jsp" %>
+	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -657,55 +520,61 @@
         $(window).scroll(function(event) {
             var scrollValue = $(this).scrollTop();
             if (scrollValue >= 150) {
-                $('.header_navi').css("position", "fixed")
+                $('.home_header_navi').css("position", "fixed")
                                   .css("background", "white")
-                                  .css('box-shadow', '2px 2px 20px rgba(0, 0, 0, 0.25)');
-                $('.navi1').css("color", "#444");
-                $('.navi5').css("color", "#444");
-                $('.navi6').css("color", "#444");
-                $('.navi').css("opacity", "1");
+                                  .css('box-shadow', '2px 2px 20px rgba(0, 0, 0, 0.15)');
+                $('.home_navi1').css("color", "#444");
+                $('.home_navi5').css("color", "#444");
+                $('.home_navi6').css("color", "#444");
+                $('.home_navi7').css("color", "#444");
+                $('.home_navi').css("opacity", "1");
+                $('.home_navi_btn').css("opacity", "1");
                 if (scrollValue > 900 && scrollValue < 2000) {
-                    $('.navi2').css("color", "#79CDCF")
+                    $('.home_navi2').css("color", "#79CDCF")
                                .css("opacity", "1");
-                    $('.navi3').css("color", "#444");
-                    $('.navi4').css("color", "#444");
-                    $('.navi_bar').eq(0).css("display", "inline-block");
-                       $('.navi_bar').eq(1).css("display", "none");
-                    $('.navi_bar').eq(2).css("display", "none");
-                } else if (scrollValue >= 2000 && scrollValue < 2500) {
-                    $('.navi3').css("color", "#79CDCF")
+                    $('.home_navi3').css("color", "#444");
+                    $('.home_navi4').css("color", "#444");
+                    $('.home_navi_bar').eq(0).css("display", "inline-block");
+                       $('.home_navi_bar').eq(1).css("display", "none");
+                    $('.home_navi_bar').eq(2).css("display", "none");
+                } else if (scrollValue >= 2000 && scrollValue < 3250) {
+                    $('.home_navi3').css("color", "#79CDCF")
                                .css("opacity", "1");
-                    $('.navi2').css("color", "#444");
-                    $('.navi4').css("color", "#444");
-                    $('.navi_bar').eq(0).css("display", "none");
-                       $('.navi_bar').eq(1).css("display", "inline-block");
-                    $('.navi_bar').eq(2).css("display", "none");
-                } else if (scrollValue >= 2500) {
-                    $('.navi4').css("color", "#79CDCF")
+                    $('.home_navi2').css("color", "#444");
+                    $('.home_navi4').css("color", "#444");
+                    $('.home_navi_bar').eq(0).css("display", "none");
+                       $('.home_navi_bar').eq(1).css("display", "inline-block");
+                    $('.home_navi_bar').eq(2).css("display", "none");
+                } else if (scrollValue >= 3250) {
+                    $('.home_navi4').css("color", "#79CDCF")
                                .css("opacity", "1");
-                    $('.navi2').css("color", "#444");
-                    $('.navi3').css("color", "#444");
-                    $('.navi_bar').eq(0).css("display", "none");
-                       $('.navi_bar').eq(1).css("display", "none");
-                    $('.navi_bar').eq(2).css("display", "inline-block");
+                    $('.home_navi2').css("color", "#444");
+                    $('.home_navi3').css("color", "#444");
+                    $('.home_navi_bar').eq(0).css("display", "none");
+                       $('.home_navi_bar').eq(1).css("display", "none");
+                    $('.home_navi_bar').eq(2).css("display", "inline-block");
                 } else {
-                $('.navi_bar').eq(0).css("display", "none");
-                $('.navi_bar').eq(1).css("display", "none");
-                $('.navi_bar').eq(2).css("display", "none");
-                $('.navi').css("color", "#444");
+                $('.home_navi_bar').eq(0).css("display", "none");
+                $('.home_navi_bar').eq(1).css("display", "none");
+                $('.home_navi_bar').eq(2).css("display", "none");
+                $('.home_navi').css("color", "#444");
+                $('.home_navi_btn').css("color", "#444");
                 }
             } else if (scrollValue < 150) {
-                $('.header_navi').css("position", "relative")
+                $('.home_header_navi').css("position", "relative")
                                  .css("background", "none")
                                  .css('box-shadow', 'none');
-                $('.navi').css("color", "white")
-                          .css("opacity", "0.5");
-                $('.navi1').css("color", "white");
-                $('.navi5').css("color", "white");
-                $('.navi6').css("color", "white");
-                $('.navi_bar').eq(0).css("display", "none");
-                $('.navi_bar').eq(1).css("display", "none");
-                $('.navi_bar').eq(2).css("display", "none");
+                $('.home_navi').css("color", "white")
+                         		.css("opacity", "0.5");
+                $('.home_navi_btn').css("color", "white")
+                				.css("opacity", "0.5");
+                $('.home_navi1').css("color", "white");
+                $('.home_navi5').css("color", "white");
+                $('.home_navi6').css("color", "white");
+                $('.home_navi7').css("color", "white");
+                $('.home_navi_bar').eq(0).css("display", "none");
+                $('.home_navi_bar').eq(1).css("display", "none");
+                $('.home_navi_bar').eq(2).css("display", "none");
             }
         });
 

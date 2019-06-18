@@ -27,4 +27,10 @@ public class LectureController {
 		return "lecture/cart";
 	}
 	
+	@RequestMapping(value="view", method = RequestMethod.GET)
+	public String lectureView() {
+		
+		return "lecture/lecture_view";
+	}
+	
 }
