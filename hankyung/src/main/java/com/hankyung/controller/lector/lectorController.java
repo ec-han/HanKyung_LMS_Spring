@@ -20,11 +20,18 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("lector/*")
-public class StudentInfoController {
+public class lectorController {
 	
 	@Inject
 	private MemberService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(StudentInfoController.class);
+	private static final Logger logger = LoggerFactory.getLogger(lectorController.class);
+	
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	public String cart() {
+		logger.info(">>>>> 메인페이지입니다");
+		
+		return "lector/cart";
+	}
 	
 }
