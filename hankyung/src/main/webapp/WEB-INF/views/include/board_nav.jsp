@@ -12,13 +12,13 @@
         <ul class="navbar_nav">
         <!-- Nav Item - Alerts -->
 	        <li class="nav_item" id="alert_item">
-		        <a class="nav_link" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        <a class="nav_link" href="#" id="alertsDropdown">
 		           <i class="fas fa-bell fa-fw"></i>
 		           <!-- Counter - Alerts -->
 		           <span class="badge">3+</span>
 		        </a>
 		        <!-- Dropdown - Alerts -->
-		        <div class="dropdown_list dropdown_menu" id="dropbox_alert" aria-labelledby="alertsDropdown">
+		        <div class="dropdown_list dropdown_menu" id="dropbox_alert">
 			        <h6 class="dropdown_header">
 			            알림
 			        </h6>
@@ -50,13 +50,13 @@
     
 			<!-- Nav Item - Messages -->
 			<li class="nav_item" id="message_item">
-				<a class="nav_link" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav_link" href="#" id="messagesDropdown">
 				  <i class="fas fa-envelope fa-fw"></i>
 				  <!-- Counter - Messages -->
 				  <span class="badge">7</span>
 				</a>
 				<!-- Dropdown - Messages -->
-				<div class="dropdown_list dropdown_menu" id="dropbox_msg" aria-labelledby="messagesDropdown">
+				<div class="dropdown_list dropdown_menu" id="dropbox_msg">
 				  <h6 class="dropdown_header">
 				           쪽지
 				  </h6>
@@ -75,12 +75,12 @@
       		<!-- <div class="topbar_divider d-none d-sm-block"></div> -->
 			<!-- Nav Item - User Information -->
 			<li class="nav_item dropdown no-arrow" id="user_item">
-				<a class="nav_link" href="#" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav_link" href="#" id="usersDropdown">
 				     <span>${sessionScope.name}</span>
 				     <i class="fas fa-user"></i>
 				</a>
 				<!-- Dropdown - User Information -->
-				<div class="dropdown_menu" id="dropdown_menu_right" aria-labelledby="userDropdown">
+				<div class="dropdown_menu" id="dropdown_menu_right">
 				    <a class="dropdown_item" href="#">
 				    	<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 				             내 프로필
@@ -94,7 +94,7 @@
 				            활동기록
 				  	</a>
 				  	<div class="dropdown_divider"></div>
-				  	<a class="dropdown_item" href="#" data-toggle="modal" data-target="#logoutModal">
+				  	<a class="dropdown_item" id="nav_logout" href="${path}/member/logout">
 				    	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 				            로그아웃
 				       <!-- session지우고 controller타고 home.jsp 으로 이동 -->
@@ -128,6 +128,20 @@
    					$('#topBtn').fadeOut();
    				}
    			});
+   			/* $("#nav_logout").click(function(){
+				alert("로그아웃버튼 클릭");
+				$.ajax({
+					url: "${path}/main/logout",
+					type: "POST",
+					success: function() {
+						alert("로그아웃 성공!!");
+						location.href="${path}/";
+					},
+					error:function(){
+						alert("System Error!!");
+					}
+				});
+			}); */
    			$('#topBtn').click(function(){
    				$('html,body').animate({scrollTop:0},150);
    			});
@@ -141,7 +155,7 @@
 	        $('#usersDropdown').click(function(){
 	            $('#dropdown_menu_right').slideToggle('fast');               
 	        });
- 			$('#alertsDropdown').focusout(function(){
+ 			/* $('#alertsDropdown').focusout(function(){
 	            $('#dropbox_alert').css('display','none');                
 	        });
 			$('#messagesDropdown').focusout(function(){
@@ -149,8 +163,7 @@
 		    });
 	        $('#usersDropdown').focusout(function(){
 	            $('#dropdown_menu_right').css('display','none');                
-	        });
-	        
+	        }); */
 	        
 	    });
      </script>

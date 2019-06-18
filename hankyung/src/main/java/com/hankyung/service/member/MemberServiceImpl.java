@@ -60,4 +60,9 @@ public class MemberServiceImpl implements MemberService{
 		return mDao.loss_update(mDto);
 	}
 
+	@Override
+	public void logout(HttpSession session) {
+		session.invalidate();
+	}
+
 }

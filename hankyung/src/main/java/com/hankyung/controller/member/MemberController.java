@@ -79,6 +79,14 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value="/logout", method = RequestMethod.GET)	
+	public String logout(HttpSession session) {
+		log.info(">>>>> 로그아웃"+session);
+		service.logout(session);
+		
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value = "/loss_info", method = RequestMethod.GET)
 	public String loss_info(MemberDTO mDto, HttpSession session) {
 		log.info("아이디, 비밀번호 찾기 페이지");

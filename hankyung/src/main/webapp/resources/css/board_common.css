@@ -511,6 +511,9 @@ sup { /* 첨자 텍스트 */
     vertical-align: baseline;
     border-radius: .35rem;
 }
+#nav_logout {
+	cursor: pointer;
+}
 /* content */
 .flex_test {
 	width: 150px;

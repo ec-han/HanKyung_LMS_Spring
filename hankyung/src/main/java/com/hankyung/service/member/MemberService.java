@@ -11,5 +11,5 @@ public interface MemberService {
 	public String loss_id(MemberDTO mDto, HttpSession session);
 	public int loss_pw(MemberDTO mDto, HttpSession session);
 	public int loss_update(MemberDTO mDto);
-	
+	public void logout(HttpSession session);
 }
