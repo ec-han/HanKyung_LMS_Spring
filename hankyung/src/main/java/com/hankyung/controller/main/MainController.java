@@ -1,8 +1,17 @@
 package com.hankyung.controller.main;
 
+import java.util.HashMap;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.hankyung.domain.board.BoardDTO;
+import com.hankyung.service.board.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,6 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("main/*")
 public class MainController {
+	
+	@Inject
+	private BoardService service;
 	
 	@RequestMapping(value = "/old", method = RequestMethod.GET)
 	public String home() {
@@ -27,9 +39,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String notice() {
-		log.info(">>> 관리자 공지사항 페이지 이동");
-		
+	public String notice(Model model) {
+		log.info(">>> 공지사항 페이지 이동");
+		int btype = 0;
+		List<BoardDTO> list = service.list(btype);
+//		HashMap<String, Object> map = new HashMap<>();
+//		
+//		map.put("boardList", list);
+		model.addAttribute("boardList", list);
 		return "main/notice";
 	}
 	

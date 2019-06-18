@@ -137,65 +137,67 @@
 </style>
 </head>
 <body>
-	<div class="big_wrapper">
-		<%@ include file="../include/board_aside.jsp" %>
-		<div class="content_wrapper">
-			<%@ include file="../include/board_nav.jsp" %>
 	
-			<div class="container">
-				<div class="container_box" id="test">
-					 <!-- 가장 큰 박스 -->
-					<div class="cart_box">
-						<!-- 강좌바구니 -->
-						<div class="lecture_container">
-							<div class="lecture_title">강좌바구니</div>
+
+<div class="content_area_wrapper">
+		<%@ include file="../include/board_aside.jsp" %>
+		<div class="nav_content_footer">
+			<%@ include file="../include/board_nav.jsp" %>
+			<div class="content_area">
+				<!-- 가장 큰 박스 -->
+				<div class="cart_box">
+				
+					<!-- 강좌바구니 -->
+					<div class="lecture_container">
+						<div class="lecture_title">강좌바구니</div>
+						<c:forEach items="${cartList}" var="cartview">
 							<div class="lecture_box">
 								<div class="lecture_img">사진</div>
 								<div class="lecture_text">
-									<div>java기반 웹 하이브리드</div>
-									<div>19.1 ~ 19.7</div>									
+									<div>${cartview.lname}</div>
+									<div>${cartview.startdate} ~ ${cartview.enddate}</div>									
 								</div>
 								<div class="lecture_paytext"> 
 									<div class="lecture_flexbox">
-										<div class="price">￦22,000</div>
+										<div class="price">￦${cartview.price}</div>
 										<div class="other_btn">위시리스트로 이동</div>
 										<div class="other_btn">장바구니에서 삭제</div>
 									</div>								
 								</div>
 							</div>
-						</div>
-						<!-- 결제 -->
-						<div class="pay_container">
-							<div class="pay_box_title">강좌바구니 > 결제 > 결제완료</div>
-							<div class="pay_box">
-								<div class="price_title_box">
-									<span class="price_title">총계</span>
-									<span class="price">￦22,000</span>
-								</div>
-								<div class="pay_info_box">
-									<div>이름</div>
-									<input type="text" id="name" name="name" class="info_box">
-								</div>
-								<div class="pay_info_box">
-									<div>전화번호(숫자만)</div>
-									<input type="text" id="name" name="name" class="info_box">
-								</div>
-								<div class="pay_info_box">
-									<div>이메일</div>
-									<input type="text" id="name" name="name" class="info_box">
-									<span class="pay_check">
-										<input type="checkbox" id="onecheck">
-										<label for="onecheck">[필수] 구매조건 및 결제대항 서비스 약관 동의</label>
-										<span class="pay_view">(보기)</span>
-									</span>
-								</div>
-								<div class="o_btn">결 제 하 기</div>
+						</c:forEach>
+					</div>
+					
+					<!-- 결제 -->
+					<div class="pay_container">
+						<div class="pay_box_title">강좌바구니 > 결제 > 결제완료</div>
+						<div class="pay_box">
+							<div class="price_title_box">
+								<span class="price_title">총계</span>
+								<span class="price">￦22,000</span>
 							</div>
+							<div class="pay_info_box">
+								<div>이름</div>
+								<input type="text" id="name" name="name" class="info_box">
+							</div>
+							<div class="pay_info_box">
+								<div>전화번호(숫자만)</div>
+								<input type="text" id="name" name="name" class="info_box">
+							</div>
+							<div class="pay_info_box">
+								<div>이메일</div>
+								<input type="text" id="name" name="name" class="info_box">
+								<span class="pay_check">
+									<input type="checkbox" id="onecheck">
+									<label for="onecheck">[필수] 구매조건 및 결제대항 서비스 약관 동의</label>
+									<span class="pay_view">(보기)</span>
+								</span>
+							</div>
+							<div class="o_btn">결 제 하 기</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
 			<%@ include file="../include/board_footer.jsp" %>
 		</div>
 	</div>

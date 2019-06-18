@@ -349,15 +349,28 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 						                    </tr>
 						                  </thead>
 						                  <tbody>
+						                  <c:forEach items="${boardList}" var="board">
+						                 	<jsp:useBean id="now" class="java.util.Date"/>
+											<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today"/>
+											<fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd" var="regdate"/>
 						                    <tr>
-						                      <td>1</td>
-						                      <td>디자인 중</td>
-						                      <td>한은체</td>
-						                      <td>2019/06/15</td>
-						                      <td>3</td>
+						                      <td>${board.tnum}</td>
+						                      <td>${board.title}</td>
+						                      <td>${board.writer}</td>
+						                      <td>
+						                      	<c:choose>
+													<c:when test="${today == regdate}">
+														<fmt:formatDate pattern="hh:mm:ss" value="${board.regdate}" />
+													</c:when>
+													<c:otherwise>
+														<fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" />		
+													</c:otherwise>
+												</c:choose>		
+											  </td>
+						                      <td>${board.viewcnt}</td>
 						                      <td></td>
 						                    </tr>
-						                    
+						                   </c:forEach>
 						                  </tbody>
 				                		</table>
 				              		</div>
