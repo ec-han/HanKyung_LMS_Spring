@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 <div id="topNav" class="nav">
@@ -120,14 +118,14 @@
 
 <script type="text/javascript">
      	 $(function(){
-   			$(window).scroll(function(){
+   			/* $(window).scroll(function(){
    				var scrollValue = $(this).scrollTop();
    				if(scrollValue > 40){
    					$('#topBtn').fadeIn();
    				} else {
    					$('#topBtn').fadeOut();
    				}
-   			});
+   			}); */
    			/* $("#nav_logout").click(function(){
 				alert("로그아웃버튼 클릭");
 				$.ajax({

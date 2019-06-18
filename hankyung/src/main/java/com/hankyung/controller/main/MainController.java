@@ -12,11 +12,18 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("main/*")
 public class MainController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/old", method = RequestMethod.GET)
 	public String home() {
-		log.info(">>>LMS 메인 화면");
+		log.info(">>>이전 샘플 페이지");
 		
-		return "main/sample";
+		return "main/old_sample";
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String test() {
+		log.info(">>>test페이지");
+		
+		return "main/real_new_sample";
 	}
 	
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)

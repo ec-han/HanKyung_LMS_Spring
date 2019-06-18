@@ -177,7 +177,7 @@ table.dataTable td, table.dataTable th {
     border: 1px solid #e3e6f0;
 }
 .table td, .table th {
-    padding: .75rem;
+    padding: .55rem;
     vertical-align: top;
     border-top: 1px solid #e3e6f0;
 }
@@ -298,21 +298,20 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 </style>
 </head>
 <body>
-	<div class="big_wrapper">
+
+	<div class="content_area_wrapper">
 		<%@ include file="../include/board_aside.jsp" %>
-		<div class="content_wrapper">
+		<div class="nav_content_footer">
 			<%@ include file="../include/board_nav.jsp" %>
-	
-			<div class="container">
-				<div class="container_box">
-					<h1 class="">공지사항</h1>
-					<!-- DataTales Example -->
-			        <div class="card shadow">
-			            <div class="card-header">
-			              <h6 class="text-primary">공지사항</h6>
-			            </div>
-			            <div class="card-body">
-			              <div class="table-responsive">
+			<div class="content_area">
+				<h1 class="">공지사항</h1>
+				<!-- DataTales Example -->
+		        <div class="card shadow">
+		            <div class="card-header">
+		              <h6 class="text-primary">공지사항</h6>
+		            </div>
+		            <div class="card-body">
+						<div class="table-responsive">
 			              	<div id="dataTable_wrapper" class="dataTables_wrapper">
 			              		<div class="row order-1" id="length_filter">
 				              		<div class="col-sm-12 col-md-6 order-1 margin-right">
@@ -340,13 +339,13 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 				              		<div class="col-sm-12 table_wrapper">
 				              			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 						                  <thead>
-						                    <tr>
-						                      <th>No.</th>
-						                      <th>제목</th>
-						                      <th>작성자</th>
-						                      <th>작성일</th>
-						                      <th>조회수</th>
-						                      <th>첨부</th>
+						                    <tr style="width: 10px">
+						                      <th style="width: 50px">No.</th>
+						                      <th style="width: 300px">제목</th>
+						                      <th style="width: 100px">작성자</th>
+						                      <th style="width: 130px">작성일</th>
+						                      <th style="width: 85px">조회수</th>
+						                      <th style="width: 70px">첨부</th>
 						                    </tr>
 						                  </thead>
 						                  <tbody>
@@ -412,17 +411,18 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 				              			</div>
 				              		</div>
 				              	</div>
-			              	</div>
-			              </div>
-		            	</div>
-		          	</div>
-		        <!-- /.container-fluid -->
-				</div>
+			              	 </div>
+		              	</div>
+	            	</div>
+	          	</div>
+	          	
+	          	
 			</div>
-			
 			<%@ include file="../include/board_footer.jsp" %>
 		</div>
 	</div>
+
+
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
