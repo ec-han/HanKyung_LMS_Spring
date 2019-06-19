@@ -27,5 +27,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE rownum <= 3
 		]]>
 	</select>
+	
+	<select id="countArticle" resultType="int">
+		SELECT COUNT(*)
+		FROM hk_lecture WHERE
+		<choose>
+			<when test="search_option != 'all'">
+				<if test="search_option == 'title'">
+					lname LIKE #{keyword}
+				</if>
+				<if test="search_option == 'writer'">
+					tname LIKE #{keyword}
+				</if>
+			</when>
+			<otherwise>
+				lname LIKE #{keyword}
+				OR tname LIKE #{keyword}
+			</otherwise>
+		</choose>
+	</select>
 
+	<select id="lectureList" resultType="com.hankyung.domain.lecture.LectureDTO">
+		SELECT * FROM
+			(SELECT rownum AS rnum, A.* FROM
+				( SELECT *
+				FROM hk_lecture
+				<choose>
+					<when test="search_option != 'all'">
+						<if test="search_option == 'title'">
+							WHERE lname LIKE #{keyword}
+						</if>
+						<if test="search_option == 'writer'">
+							WHERE tname LIKE #{keyword}
+						</if>
+					</when>
+					<otherwise>
+						WHERE lname LIKE #{keyword}
+						OR tname LIKE #{keyword}
+					</otherwise>
+				</choose>
+				<if test="sort_option == 'new'">
+				ORDER BY lno DESC
+				</if>
+				<if test="sort_option == 'good'">
+				ORDER BY rgstrmem DESC, lno DESC
+				</if>
+				)
+			A)
+		WHERE rnum BETWEEN #{start} AND #{end}
+	</select>
 </mapper>

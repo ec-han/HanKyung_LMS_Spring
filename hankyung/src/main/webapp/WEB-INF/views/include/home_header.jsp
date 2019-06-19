@@ -104,6 +104,11 @@
                     </div>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
+                            <a href="${path}/login" class="home_navi home_navi2" id="login">강좌보기</a>
+                        </span>
+                    </div>
+                    <div class="home_navi_div">
+                        <span class="home_navi_span">
                             <a href="${path}/" class="home_navi home_navi4" id="basket">수강바구니</a>
                         </span>
                     </div>

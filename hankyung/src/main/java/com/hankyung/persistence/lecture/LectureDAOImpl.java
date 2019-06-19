@@ -1,6 +1,8 @@
 package com.hankyung.persistence.lecture;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -32,5 +34,25 @@ public class LectureDAOImpl implements LectureDAO{
 	public List<LectureDTO> newList() {
 		return sqlSession.selectList("lecture.newList");
 	}
-
+	
+	@Override
+	public int countArticle(String search_option, String keyword) {
+		Map<String, String> map = new HashMap<>();
+		map.put("search_option", search_option);
+		map.put("keyword", "%"+keyword+"%");
+		log.info(keyword);
+		
+		return sqlSession.selectOne("lecture.countArticle", map);
+	}
+	
+	@Override
+	public List<LectureDTO> lectureList(String sort_option, String search_option, String keyword, int start, int end) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("sort_option", sort_option);
+		map.put("search_option", search_option);
+		map.put("keyword", "%"+keyword+"%");
+		map.put("start", start);
+		map.put("end", end);
+		return sqlSession.selectList("lecture.lectureList", map);
+	}
 }

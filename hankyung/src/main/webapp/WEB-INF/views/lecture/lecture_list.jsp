@@ -53,11 +53,13 @@
 			opacity: 1;
 		}
 		.section_img {
-			width: 100%;
-			height: 230px;
+			width: 380px;
+			height: 247px;
 			border-radius: 5px;
 			overflow: hidden;
-			background: #333;
+		}
+		.lecture_img {
+			width: 380px;
 		}
 		.section_name {
 			font-size: 16px;
@@ -100,7 +102,7 @@
 
 		
 		.all_class {
-			width: 1149px;
+			width: 1219px;
 			margin: 0px auto;
 			padding-top: 20px;
 			padding-bottom: 20px;
@@ -111,9 +113,61 @@
 		.all_content_box {
 			display: inline-block;
 			position: relative;
-			width: 380px;
+			width: 404px;
 			padding: 12px 12px 70px;
 			box-sizing: border-box;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/* 페이지 이동 */
+		.board_navi > ul {
+			display: flex;
+			justify-content: center;
+			margin-top: 10px;
+		}
+		.board_navi ul li a {
+			font-family: 'Noto Sans KR', sans-serif;
+			display: inline-block;
+			border-collapse: collapse;
+			color: #666;
+			border: 1px solid #ddd;
+			border-right: 0px;
+			width: 27px;
+			height: 27px;
+			line-height: 25px;
+			text-align: center;
+			transition: .3s;
+		}
+		.board_navi ul li:last-child a {
+			border-right: 1px solid #ddd;
+		}
+		.navi_icon {
+			margin-top: 5.5px;
+		}
+		.board_navi ul li a:hover {
+			color: #E65D6E;
+		}
+		.board_navi ul li a:hover .navi_icon {
+			color: #E65D6E;
+		}
+		#active a {
+		background: #333;
+		border: 1px solid #333;
+		color: white;
+		}
+		#active a:hover {
+			color: white;
+		}
+		#no_hover:hover {
+			color: inherit;
 		}
 </style>
 </head>
@@ -124,201 +178,58 @@
         	<div class="info_title">과정 및 강좌 목록</div>
             <div class="all_class">
                 <div class="all_content">
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	혁신을 관리하고 생각을 디자인하기
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.02.21 ~ 2019.06.22
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	Python과 함께하는 응용 데이터 과학
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2018.12.27 ~ 2019.04.05
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
-                    <div class="all_content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
+                	<c:forEach items="${map.list}" var="list">
+	                    <div class="all_content_box">
+	                    	<a>
+	                    		<i class="fas fa-shopping-basket basket_icon"></i>
+	                    	</a>
+	                    	<div class="section_img">
+	                        	<a>
+	                        		<img class="lecture_img" src="${path}/resources/img/${list.limg}">
+	                       		</a>
+	                       	</div>
+	                        <div class="section_name">
+	                        	<a>
+	                            	${list.lname}
+	                            </a>
+	                        </div>
+	                        <div class="section_text">
+	                            <span class="section_teacher">강사ㅣ</span>${list.tname}
+	                        </div>
+	                        <div class="section_text">
+	                            <span class="section_day">기간ㅣ</span>${list.startdate} ~ ${list.enddate}
+	                        </div>
+	                    </div>
+                    </c:forEach>
                 </div>
             </div>
-            <a href="${path}/">
-            	<span class="class_more">강좌 더 보기</span>
-            </a>
-        </div>
+            
+            
+            
+        	<div class="board_navi">
+        		<ul>
+        			<c:if test="${map.pager.curBlock > 1}">
+	        			<li><a href="${path}/lecture/list?curPage=${map.pager.blockBegin-10}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}"><i class="fas fa-angle-left navi_icon"></i></a></li>
+	        			<li><a href="${path}/lecture/list?curPage=1&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}">1</a></li>
+	        			<li><a id="no_hover">...</a></li>
+        			</c:if>
+        			
+        			<c:forEach begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}" var="idx">
+				    	<li <c:out value="${map.pager.curPage == idx?'id=active':''}"/>>
+				    		<a href="${path}/lecture/list?curPage=${idx}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="navi_btn">
+				    			${idx}
+				    		</a>
+				    	</li>
+				    </c:forEach>
+				    
+				    <c:if test="${map.pager.curBlock < map.pager.totBlock}">
+					    <li><a id="no_hover">...</a></li>
+					    <li><a href="${path}/lecture/list?curPage=${map.pager.totPage}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}">${map.pager.totPage}</a></li>
+					    <li><a href="${path}/lecture/list?curPage=${map.pager.blockEnd + 1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}"><i class="fas fa-angle-right navi_icon"></i></a></li>
+				    </c:if>
+				</ul>
+        	</div>
+       	</div>
     </section>
     <%@ include file = "../include/home_footer.jsp" %>
 </body>

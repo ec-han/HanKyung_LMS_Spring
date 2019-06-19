@@ -28,20 +28,24 @@ public class LectureServiceImpl implements LectureService{
 	}
 
 	@Override
-	public HashMap<String, List<LectureDTO>> lectureList() {
+	public HashMap<String, List<LectureDTO>> homeList() {
 		List<LectureDTO> pList = lDao.popularList();
 		List<LectureDTO> nList = lDao.newList();
 		HashMap<String, List<LectureDTO>> map = new HashMap<>();
 		map.put("pList", pList);
 		map.put("nList", nList);
 		
-		for (LectureDTO lectureDTO : pList) {
-			log.info(lectureDTO.toString());
-		}
-		for (LectureDTO lectureDTO : nList) {
-			log.info(lectureDTO.toString());
-		}
-		// log.info("????" + map.get(pList.get(0)));
 		return map;
 	}
+
+	@Override
+	public int countArticle(String search_option, String keyword) {
+		return lDao.countArticle(search_option, keyword);
+	}
+	
+	@Override
+	public List<LectureDTO> lectureList(String sort_option, String search_option, String keyword, int start, int end) {
+		return lDao.lectureList(sort_option, search_option, keyword, start, end);
+	}
+
 }

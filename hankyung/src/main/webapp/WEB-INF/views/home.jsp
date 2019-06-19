@@ -79,17 +79,17 @@
       #about, #projects, #contact {
       	color: white;
       }
-      #login, #join, #basket {
+      #login, #join, #main, #lecture, #basket {
       	  display: inline-block;
           font-family: 'Noto Sans KR', sans-serif;
           font-weight: normal;
           font-size: 18px;
           transition: .3s;
           opacity: .5;
-          margin: 0px 17px;
+          margin: 0px 15px;
           color: white;
       }
-      #login:hover, #join:hover, #basket:hover {
+      #login:hover, #join:hover, #main:hover, #lecture:hover, #basket:hover {
           color: #FFC000!important;
           opacity: 1!important;
       }
@@ -247,11 +247,13 @@
 			opacity: 1;
 		}
 		.section_img {
-			width: 100%;
-			height: 230px;
+			width: 380px;
+			height: 247px;
 			border-radius: 5px;
 			overflow: hidden;
-			background: #333;
+		}
+		.lecture_img {
+			width: 380px;
 		}
 		.section_name {
 			font-size: 16px;
@@ -314,19 +316,35 @@
                         </span>
                         <span class="home_navi_bar"></span>
                     </div>
+                    <c:choose>
+                    	<c:when test="${!empty sessionScope.id}">
+		                    <div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">나의강의실</a>
+		                        </span>
+		                    </div>
+	                    </c:when>
+	                    <c:otherwise>
+		                    <div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/member/login" class="home_navi_btn right_navi" id="login">로그인</a>
+		                        </span>
+		                    </div>
+		                    <div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/member/constract" class="home_navi_btn right_navi" id="join">회원가입</a>
+		                        </span>
+		                    </div>
+	                    </c:otherwise>
+                    </c:choose>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/member/login" class="home_navi_btn home_navi5" id="login">로그인</a>
+                            <a href="${path}/lecture/list" class="home_navi_btn right_navi" id="lecture">강좌보기</a>
                         </span>
                     </div>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/member/constractor" class="home_navi_btn home_navi6" id="join">회원가입</a>
-                        </span>
-                    </div>
-                    <div class="home_navi_div">
-                        <span class="home_navi_span">
-                            <a href="${path}/" class="home_navi_btn home_navi7" id="basket">수강바구니</a>
+                            <a href="${path}/lecture/cart" class="home_navi_btn right_navi" id="basket">수강바구니</a>
                         </span>
                     </div>
                 </div>
@@ -338,9 +356,18 @@
                     <br>온라인 이러닝 학습 서비스, <span class="header_point">지금 바로 시작</span>하세요.
                 </div>
                 <div>
-                    <a href="${path}/login" class="center_bottom">
-                        <span class="center_btn">START</span>
-                    </a>
+                	<c:choose>
+	                	<c:when test="${!empty sessionScope.id}">
+		                    <a href="${path}/main/" class="center_bottom">
+		                        <span class="center_btn">START</span>
+		                    </a>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<a href="${path}/member/login" class="center_bottom">
+		                        <span class="center_btn">START</span>
+		                    </a>
+	                    </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -377,7 +404,7 @@
 	                    	</a>
 	                        <div class="section_img">
 	                        	<a href="${path}/lecture/view">
-	                        		<img src="${path}/resources/img/${best.limg}">
+	                        		<img class="lecture_img" src="${path}/resources/img/${best.limg}">
 	                       		</a>
 	                       	</div>
 	                        <div class="section_name">
@@ -389,7 +416,7 @@
 	                            <span class="section_teacher">강사ㅣ</span>${best.tname}
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_day">기간ㅣ</span>2019.02.21 ~ 2019.06.22
+	                            <span class="section_day">기간ㅣ</span>${best.startdate} ~ ${best.enddate}
 	                        </div>
 	                    </div>
                     </c:forEach>
@@ -400,72 +427,32 @@
                     새로 생긴 과정 및 강좌
                 </div>
                 <div class="section_content">
-                    <div class="content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	혁신을 관리하고 생각을 디자인하기
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.02.21 ~ 2019.06.22
-                        </div>
-                    </div>
-                    <div class="content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	Python과 함께하는 응용 데이터 과학
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2018.12.27 ~ 2019.04.05
-                        </div>
-                    </div>
-                    <div class="content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a>
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a>
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
+                	<c:forEach items="${map.nList}" var="new_DTO">
+	                    <div class="content_box">
+	                    	<a>
+	                    		<i class="fas fa-shopping-basket basket_icon"></i>
+	                    	</a>
+	                        <div class="section_img">
+	                        	<a href="${path}/lecture/view">
+	                        		<img class="lecture_img" src="${path}/resources/img/${new_DTO.limg}">
+	                       		</a>
+	                       	</div>
+	                        <div class="section_name">
+	                        	<a href="${path}/lecture/view">
+	                            	${new_DTO.lname}
+	                            </a>
+	                        </div>
+	                        <div class="section_text">
+	                            <span class="section_teacher">강사ㅣ</span>${new_DTO.tname}
+	                        </div>
+	                        <div class="section_text">
+	                            <span class="section_day">기간ㅣ</span>${new_DTO.startdate} ~ ${new_DTO.enddate}
+	                        </div>
+	                    </div>
+                    </c:forEach>
                 </div>
             </div>
-            <a href="${path}/">
+            <a href="${path}/lecture/list">
             	<span class="class_more">강좌 더 보기</span>
             </a>
         </div>
@@ -484,9 +471,7 @@
                                   .css("background", "white")
                                   .css('box-shadow', '2px 2px 20px rgba(0, 0, 0, 0.15)');
                 $('.home_navi1').css("color", "#444");
-                $('.home_navi5').css("color", "#444");
-                $('.home_navi6').css("color", "#444");
-                $('.home_navi7').css("color", "#444");
+                $('.right_navi').css("color", "#444");
                 $('.home_navi').css("opacity", "1");
                 $('.home_navi_btn').css("opacity", "1");
                 if (scrollValue > 900 && scrollValue < 2000) {
@@ -529,9 +514,7 @@
                 $('.home_navi_btn').css("color", "white")
                 				.css("opacity", "0.5");
                 $('.home_navi1').css("color", "white");
-                $('.home_navi5').css("color", "white");
-                $('.home_navi6').css("color", "white");
-                $('.home_navi7').css("color", "white");
+                $('.right_navi').css("color", "white");
                 $('.home_navi_bar').eq(0).css("display", "none");
                 $('.home_navi_bar').eq(1).css("display", "none");
                 $('.home_navi_bar').eq(2).css("display", "none");

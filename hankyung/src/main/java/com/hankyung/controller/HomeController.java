@@ -35,7 +35,7 @@ public class HomeController {
 	public String home(Model model) {
 		logger.info(">>>>> 메인페이지입니다");
 		
-		HashMap<String, List<LectureDTO>> map = service.lectureList();
+		HashMap<String, List<LectureDTO>> map = service.homeList();
 		
 		model.addAttribute("map", map);
 		
