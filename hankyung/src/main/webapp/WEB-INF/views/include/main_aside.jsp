@@ -180,7 +180,9 @@
 				}
 			});
 	        
-	
+			$('.sidebar_brand').click(function(){
+				location.href="${path}/";
+			});
 	       
 	        
 	        

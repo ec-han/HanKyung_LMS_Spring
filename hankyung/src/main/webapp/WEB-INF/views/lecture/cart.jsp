@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
-<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <meta charset="UTF-8">
 <title>샘플페이지</title>
 <style type="text/css">
@@ -140,9 +140,9 @@
 	
 
 <div class="content_area_wrapper">
-		<%@ include file="../include/board_aside.jsp" %>
+		<%@ include file="../include/main_aside.jsp" %>
 		<div class="nav_content_footer">
-			<%@ include file="../include/board_nav.jsp" %>
+			<%@ include file="../include/main_nav.jsp" %>
 			<div class="content_area">
 				<!-- 가장 큰 박스 -->
 				<div class="cart_box">
@@ -198,7 +198,7 @@
 					</div>
 				</div>
 			</div>
-			<%@ include file="../include/board_footer.jsp" %>
+			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
 

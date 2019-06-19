@@ -18,9 +18,9 @@
 </head>
 <body>
 	<div class="big_wrapper">
-		<%@ include file="../include/board_aside.jsp" %>
+		<%@ include file="../include/main_aside.jsp" %>
 		<div class="content_wrapper">
-			<%@ include file="../include/board_nav.jsp" %>
+			<%@ include file="../include/main_nav.jsp" %>
 			<div class="container">
 				<div class="container_box" id="test">
 			<!-- 본문 내용에 따라 바뀔 곳 시작 : body라 생각하면 됨  -->
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			
-			<%@ include file="../include/board_footer.jsp" %>
+			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
-<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -159,9 +159,9 @@
 </head>
 <body>
 	<div class="big_wrapper">
-		<%@ include file="../include/board_aside.jsp" %>
+		<%@ include file="../include/main_aside.jsp" %>
 		<div class="content_wrapper">
-			<%@ include file="../include/board_nav.jsp" %>
+			<%@ include file="../include/main_nav.jsp" %>
 	
 			<div class="container">
 				<div class="container_box" id="test">
@@ -261,7 +261,7 @@
 				</div>
 			</div>
 			
-			<%@ include file="../include/board_footer.jsp" %>
+			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
