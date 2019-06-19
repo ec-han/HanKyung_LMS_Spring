@@ -321,7 +321,7 @@
                     </div>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/member/create" class="home_navi_btn home_navi6" id="join">회원가입</a>
+                            <a href="${path}/member/constract" class="home_navi_btn home_navi6" id="join">회원가입</a>
                         </span>
                     </div>
                     <div class="home_navi_div">
