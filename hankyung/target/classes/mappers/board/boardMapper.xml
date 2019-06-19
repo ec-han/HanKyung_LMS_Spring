@@ -9,5 +9,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM hk_board
 		 WHERE btype = #{btype}
 	</select>
-
+	
+	<insert id="create">
+		INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
+		<if test="btype == 0">
+			VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
+		</if>
+		<if  test="btype == 1">
+			VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
+		</if>
+	</insert>
 </mapper>

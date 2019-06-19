@@ -92,11 +92,20 @@
 				            활동기록
 				  	</a>
 				  	<div class="dropdown_divider"></div>
-				  	<a class="dropdown_item" id="nav_logout" href="${path}/member/logout">
-				    	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-				            로그아웃
-				       <!-- session지우고 controller타고 home.jsp 으로 이동 -->
-				  	</a>
+				  	<c:choose>
+						<c:when test="${empty sessionScope.name}">
+						  	<a class="dropdown_item" id="nav_login" href="${path}/member/login">
+						    	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+						            로그인
+						  	</a>
+						</c:when>
+						<c:otherwise>
+							<a class="dropdown_item" id="nav_logout" href="#">
+						    	<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+						            로그아웃
+						  	</a>
+						</c:otherwise>
+				  	</c:choose>
 				</div>
 			</li>
 	        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -115,55 +124,55 @@
 	<span>TOP</span>
   <!-- <i class="fas fa-caret-up"></i> -->
 </a>
-
 <script type="text/javascript">
-     	 $(function(){
-   			/* $(window).scroll(function(){
-   				var scrollValue = $(this).scrollTop();
-   				if(scrollValue > 40){
-   					$('#topBtn').fadeIn();
-   				} else {
-   					$('#topBtn').fadeOut();
-   				}
-   			}); */
-   			/* $("#nav_logout").click(function(){
-				alert("로그아웃버튼 클릭");
-				$.ajax({
-					url: "${path}/main/logout",
-					type: "POST",
-					success: function() {
-						alert("로그아웃 성공!!");
-						location.href="${path}/";
-					},
-					error:function(){
-						alert("System Error!!");
-					}
-				});
-			}); */
-   			$('#topBtn').click(function(){
-   				$('html,body').animate({scrollTop:0},150);
-   			});
-			// nav dropdown
-	        $('#messagesDropdown').click(function(){
-	            $('#dropbox_msg').slideToggle('fast');                
-	        });
-	        $('#alertsDropdown').click(function(){
-	            $('#dropbox_alert').slideToggle('fast');           
-	        });
-	        $('#usersDropdown').click(function(){
-	            $('#dropdown_menu_right').slideToggle('fast');               
-	        });
- 			/* $('#alertsDropdown').focusout(function(){
-	            $('#dropbox_alert').css('display','none');                
-	        });
-			$('#messagesDropdown').focusout(function(){
-				$('#dropbox_msg').css('display','none');            
-		    });
-	        $('#usersDropdown').focusout(function(){
-	            $('#dropdown_menu_right').css('display','none');                
-	        }); */
-	        
+ $(function(){
+	$(window).scroll(function(){
+		var scrollValue = $(this).scrollTop();
+		if(scrollValue > 40){
+			$('#topBtn').fadeIn();
+		} else {
+			$('#topBtn').fadeOut();
+		}
+	});
+	$("#nav_logout").click(function(){
+		alert("로그아웃버튼 클릭");
+		$.ajax({
+			url: "${path}/member/logout",
+			type: "get",
+			success: function() {
+				alert("로그아웃 성공!!");
+				location.href="${path}/";
+			},
+			error:function(){
+				alert("System Error!!");
+			}
+		});
+	});
+	$('#topBtn').click(function(){
+		$('html,body').animate({scrollTop:0},150);
+	});
+	// nav dropdown
+       $('#messagesDropdown').click(function(){
+            $('#dropbox_msg').slideToggle('fast');                
+        });
+        $('#alertsDropdown').click(function(){
+            $('#dropbox_alert').slideToggle('fast');           
+        });
+        $('#usersDropdown').click(function(){
+            $('#dropdown_menu_right').slideToggle('fast');               
+        });
+		/* $('#alertsDropdown').focusout(function(){
+            $('#dropbox_alert').css('display','none');                
+        });
+		$('#messagesDropdown').focusout(function(){
+			$('#dropbox_msg').css('display','none');            
 	    });
-     </script>
+        $('#usersDropdown').focusout(function(){
+            $('#dropdown_menu_right').css('display','none');                
+        }); */
+
+        
+});
+</script>
 </body>
 </html>

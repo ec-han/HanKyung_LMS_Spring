@@ -152,12 +152,13 @@
 		</div>
 	</div>
 
-
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-		  
+			$('.board_regi_btn').click(function(){
+				var btype = 1;
+				location.href="${path}/board/create?btype="+btype;
+			});
 		});
 	</script>
 </body>

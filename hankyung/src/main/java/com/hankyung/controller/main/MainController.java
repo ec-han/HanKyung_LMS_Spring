@@ -58,6 +58,13 @@ public class MainController {
 		return "main/qna";
 	}
 	
+	@RequestMapping(value = "/summernote", method = RequestMethod.GET)
+	public String summernote(Model model) {
+		log.info(">>> summernote 예제");
+
+		return "main/summernote";
+	}
+	
 	
 	
 }

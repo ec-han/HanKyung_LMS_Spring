@@ -26,9 +26,7 @@ sup { /* 첨자 텍스트 */
     text-rendering: auto;
     line-height: 1;
 }
-.d_flex{
-	display: flex;
-}
+
 .big_wrapper {
     width: 100%;
     height: auto;
@@ -62,13 +60,10 @@ sup { /* 첨자 텍스트 */
 }
 
 /* sidebar */
-.aside_wrapper{
-	/*  z-index: 999;
-    width: 240px;
-    height: 100%;
-    border: 1px solid blue;
-    position: fixed;
-    left: 0; */
+.aside_wrap{
+	min-height: 100%;
+    background-color: #2D314F;
+    width: 14rem;
 }
 .aside{
 	height: 100%;
@@ -94,7 +89,7 @@ sup { /* 첨자 텍스트 */
     order: 1;
 }
 .toggled {
-	min-width: 6rem!important;
+	width: 7.5rem!important;
 	overflow: visible;
 }
 .sidebar_divider{
@@ -127,6 +122,7 @@ sup { /* 첨자 텍스트 */
     margin-left: 1rem;
     margin-right: 1rem;
     text-transform: none;
+    cursor: pointer;
 }
 .sidebar_brand-icon{
     font-size: 2rem;
@@ -172,7 +168,7 @@ sup { /* 첨자 텍스트 */
 }
 .collapse_inner_toggled {
 	position: relative;
-    left: calc(8.5rem + 1.5rem / 2);
+    left: calc(6.5rem + 1.5rem / 2);
     top: -3rem;
     width: 120px;
     box-sizing: border-box;
@@ -358,7 +354,7 @@ sup { /* 첨자 텍스트 */
     border-bottom: 1px solid #e3e6f0;
 }
 #dropdown_menu_right {
-    left: -60px;
+    left: -3.5rem;
 }
 #dropdown_menu_right a {
     display: block;
@@ -473,7 +469,7 @@ sup { /* 첨자 텍스트 */
 }
 .d_flex {
     display: flex;
-    justify-content: center;
+   /*  justify-content: center; */
     align-items: center;
 }
 .topbar_divider {

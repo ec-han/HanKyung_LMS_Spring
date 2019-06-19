@@ -111,9 +111,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-clip: padding-box;
     border: 1px solid #d1d3e2;
     border-radius: .35rem;
-    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
 [type=search] {
@@ -283,8 +280,12 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-left: 70%;
     flex: 1;
 }
+/* 게시글 등록페이지 관련 css */
 .board_regi_btn {
 	font-size: 2.5rem;
     color: #404988;
     cursor: pointer;
+}
+.field_border {
+	border: none;
 }

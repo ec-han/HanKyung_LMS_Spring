@@ -24,4 +24,9 @@ public class BoardDAOImpl  implements BoardDAO{
 		return session.selectList("board.list", btype);
 	}
 
+	@Override
+	public int create(BoardDTO bDto) {
+		return session.insert("board.create", bDto);
+	}
+
 }

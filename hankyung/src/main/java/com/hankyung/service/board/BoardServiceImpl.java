@@ -23,5 +23,10 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardDTO> list(int btype) {
 		return bDao.list(btype);	
 	}
+
+	@Override
+	public int create(BoardDTO bDto) {
+		return bDao.create(bDto);
+	}
 	
 }

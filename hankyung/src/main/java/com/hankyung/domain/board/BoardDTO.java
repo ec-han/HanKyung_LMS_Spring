@@ -16,7 +16,7 @@ import lombok.ToString;
 public class BoardDTO {
 	private int bno;
 	private int tnum;
-	private int btype;
+	private String btype;
 	private String title;
 	private String content;
 	private String writer;
