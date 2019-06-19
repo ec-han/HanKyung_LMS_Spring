@@ -8,4 +8,6 @@ import com.hankyung.domain.lecture.LectureDTO;
 
 public interface LectureDAO {
 	public List<LectureDTO> cartlist(String id);
+	public List<LectureDTO> popularList();
+	public List<LectureDTO> newList();
 }

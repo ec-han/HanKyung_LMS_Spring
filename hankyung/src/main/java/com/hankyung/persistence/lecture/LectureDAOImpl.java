@@ -23,4 +23,14 @@ public class LectureDAOImpl implements LectureDAO{
 		return sqlSession.selectList("lecture.cartlist", id);
 	}
 
+	@Override
+	public List<LectureDTO> popularList() {
+		return sqlSession.selectList("lecture.popularList");
+	}
+
+	@Override
+	public List<LectureDTO> newList() {
+		return sqlSession.selectList("lecture.newList");
+	}
+
 }

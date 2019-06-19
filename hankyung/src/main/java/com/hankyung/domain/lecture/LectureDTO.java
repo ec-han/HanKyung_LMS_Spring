@@ -24,6 +24,7 @@ public class LectureDTO {
 	private String nowmem;
 	private String supmoney;
 	private String price;
+	private String limg;
 	private Date startdate;
 	private Date enddate;
 }

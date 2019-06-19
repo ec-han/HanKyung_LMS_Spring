@@ -1,5 +1,6 @@
 package com.hankyung.service.lecture;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,4 +27,21 @@ public class LectureServiceImpl implements LectureService{
 		return lDao.cartlist(id);
 	}
 
+	@Override
+	public HashMap<String, List<LectureDTO>> lectureList() {
+		List<LectureDTO> pList = lDao.popularList();
+		List<LectureDTO> nList = lDao.newList();
+		HashMap<String, List<LectureDTO>> map = new HashMap<>();
+		map.put("pList", pList);
+		map.put("nList", nList);
+		
+		for (LectureDTO lectureDTO : pList) {
+			log.info(lectureDTO.toString());
+		}
+		for (LectureDTO lectureDTO : nList) {
+			log.info(lectureDTO.toString());
+		}
+		// log.info("????" + map.get(pList.get(0)));
+		return map;
+	}
 }

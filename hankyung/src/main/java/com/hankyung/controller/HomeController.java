@@ -2,6 +2,8 @@ package com.hankyung.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -13,7 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.hankyung.service.member.MemberService;
+import com.hankyung.domain.lecture.LectureDTO;
+import com.hankyung.service.lecture.LectureService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,13 +27,17 @@ import lombok.extern.slf4j.Slf4j;
 public class HomeController {
 	
 	@Inject
-	private MemberService service;
+	private LectureService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(Model model) {
 		logger.info(">>>>> 메인페이지입니다");
+		
+		HashMap<String, List<LectureDTO>> map = service.lectureList();
+		
+		model.addAttribute("map", map);
 		
 		return "home";
 	}

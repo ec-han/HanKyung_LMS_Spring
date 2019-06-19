@@ -9,5 +9,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM hk_cart
 		 WHERE id = #{id}
 	</select>
+	
+	<select id="popularList" resultType="com.hankyung.domain.lecture.LectureDTO">
+		<![CDATA[
+			SELECT * FROM
+				(SELECT * FROM hk_lecture
+				ORDER BY rgstrmem ASC)
+			WHERE rownum <= 3
+		]]>
+	</select>
+	
+	<select id="newList" resultType="com.hankyung.domain.lecture.LectureDTO">
+		<![CDATA[
+			SELECT * FROM
+				(SELECT * FROM hk_lecture
+				ORDER BY lno DESC)
+			WHERE rownum <= 3
+		]]>
+	</select>
 
 </mapper>

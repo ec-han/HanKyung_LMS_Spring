@@ -321,7 +321,7 @@
                     </div>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/member/constract" class="home_navi_btn home_navi6" id="join">회원가입</a>
+                            <a href="${path}/member/constractor" class="home_navi_btn home_navi6" id="join">회원가입</a>
                         </span>
                     </div>
                     <div class="home_navi_div">
@@ -370,69 +370,29 @@
                     가장 인기 있는 과정 및 강좌
                 </div>
                 <div class="section_content">
-                    <div class="content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                        <div class="section_img">
-                        	<a href="${path}/lecture/view">
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a href="${path}/lecture/view">
-                            	혁신을 관리하고 생각을 디자인하기
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.02.21 ~ 2019.06.22
-                        </div>
-                    </div>
-                    <div class="content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a href="${path}/lecture/view">
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a href="${path}/lecture/view">
-                            	Python과 함께하는 응용 데이터 과학
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2018.12.27 ~ 2019.04.05
-                        </div>
-                    </div>
-                    <div class="content_box">
-                    	<a>
-                    		<i class="fas fa-shopping-basket basket_icon"></i>
-                    	</a>
-                    	<div class="section_img">
-                        	<a href="${path}/lecture/view">
-                        		<img src="">
-                       		</a>
-                       	</div>
-                        <div class="section_name">
-                        	<a href="${path}/lecture/view">
-                            	MySQL 전문가 과정: 비즈니스를 위한 분석 테크닉
-                            </a>
-                        </div>
-                        <div class="section_text">
-                            <span class="section_teacher">강사ㅣ</span>최철웅
-                        </div>
-                        <div class="section_text">
-                            <span class="section_day">기간ㅣ</span>2019.01.16 ~ 2019.04.25
-                        </div>
-                    </div>
+                	<c:forEach items="${map.pList}" var="best">
+	                    <div class="content_box">
+	                    	<a>
+	                    		<i class="fas fa-shopping-basket basket_icon"></i>
+	                    	</a>
+	                        <div class="section_img">
+	                        	<a href="${path}/lecture/view">
+	                        		<img src="${path}/resources/img/${best.limg}">
+	                       		</a>
+	                       	</div>
+	                        <div class="section_name">
+	                        	<a href="${path}/lecture/view">
+	                            	${best.lname}
+	                            </a>
+	                        </div>
+	                        <div class="section_text">
+	                            <span class="section_teacher">강사ㅣ</span>${best.tname}
+	                        </div>
+	                        <div class="section_text">
+	                            <span class="section_day">기간ㅣ</span>2019.02.21 ~ 2019.06.22
+	                        </div>
+	                    </div>
+                    </c:forEach>
                 </div>
             </div>
             <div class="new_class">
@@ -515,7 +475,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            
+        	
         });
         $(window).scroll(function(event) {
             var scrollValue = $(this).scrollTop();

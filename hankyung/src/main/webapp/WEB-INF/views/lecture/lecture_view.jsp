@@ -70,12 +70,12 @@
 			transition: .3s;
 		}
 		.white_btn:hover {
-			border: 1px solid #444;
-			color: #444;
+			border: 1px solid #FFC000;
+			color: #FFC000;
 		}
 		.color_btn:hover {
-			border: 1px solid #FFC000;
-			background: #FFC000;
+			border: 1px solid #2D314F;
+			background: #2D314F;
 		}
 
 
