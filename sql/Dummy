@@ -146,7 +146,7 @@ CREATE TABLE hk_lecture(
     lname VARCHAR2(300) NOT NULL,
     lcode VARCHAR2(10) NOT NULL,
     tname VARCHAR2(60) NOT NULL,
-    lcontent VARCHAR2(4000),
+    content VARCHAR2(4000),
     ltype VARCHAR2(20) NOT NULL,
     totalmem VARCHAR2(5) NOT NULL,
     rgstrmem VARCHAR2(5) DEFAULT 0,
@@ -201,6 +201,10 @@ VALUES(seq_hk_lecture.NEXTVAL, '2sdf34', '0004', '최철웅', '디자인', '30',
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '563423657567', '0002', '최철웅', '캐드', '30', '200000', '3000000', 'lecture08.png', '190820', '200618');
 
+
+SELECT * FROM hk_lecture;
+
+commit;
 
 
 
