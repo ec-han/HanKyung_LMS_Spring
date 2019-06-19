@@ -64,7 +64,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(MemberDTO mDto, HttpSession session, Model model) {
+	public String login(MemberDTO mDto, HttpSession session, Model  model) {
 		log.info("로그인 체크");
 		session.removeAttribute("loginck");
 		boolean result = service.login(mDto, session);
@@ -133,7 +133,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/info", method=RequestMethod.GET)
 	public String info() {
-		log.info(">>>>> 학생조회 페이지 출력");
+		log.info(">>>>> 학생정보조회 페이지 출력");
 		return "member/student_info";
 	}
 	
