@@ -135,8 +135,6 @@ VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요
 
 
 
---강의 테이블
-
 DROP SEQUENCE seq_hk_lecture;
 CREATE SEQUENCE seq_hk_lecture
 START WITH 1
@@ -148,22 +146,60 @@ CREATE TABLE hk_lecture(
     lname VARCHAR2(300) NOT NULL,
     lcode VARCHAR2(10) NOT NULL,
     tname VARCHAR2(60) NOT NULL,
+    lcontent VARCHAR2(4000),
     ltype VARCHAR2(20) NOT NULL,
     totalmem VARCHAR2(5) NOT NULL,
     rgstrmem VARCHAR2(5) DEFAULT 0,
     nowmem VARCHAR2(5) DEFAULT 0,
     supmoney VARCHAR2(20)DEFAULT 0,
     price VARCHAR2(20) DEFAULT 0,
+    limg VARCHAR(500) NOT NULL,
     startdate DATE NOT NULL,
     enddate DATE NOT NULL
 );
 번호 과정명 과정코드 강사명 분야 전체인원 등록인원 전체수강인원 등록인원 현재수강인원 인당지원비 가격 수강시작 수강끝
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'Java기반 웹하이브리드 개발과정', '0001', '최철웅', '웹개발', '30', '200000', '3000000', 'lecture01.jpg', '190618', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '캐드와 빔을 활용한 3D설계', '0002', '최철웅', '캐드', '30', '200000', '3000000', 'lecture02.jpg', '190702', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '빅데이터', '0003', '최철웅', 'DB', '30', '200000', '3000000', 'lecture03.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'jhkh', '0001', '최철웅', '웹개발', '30', '200000', '3000000', 'lecture04.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'asdf', '0003', '최철웅', 'DB', '30', '200000', '3000000', 'lecture05.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'rtyrtwer', '0001', '최철웅', '웹개발', '30', '200000', '3000000', 'lecture06.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '6787', '0004', '최철웅', '디자인', '30', '200000', '3000000', 'lecture07.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'yj54645', '0003', '최철웅', 'DB', '30', '200000', '3000000', 'lecture08.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'iuusf', '0002', '최철웅', '캐드', '30', '200000', '3000000', 'lecture09.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'dsfsdf', '0004', '최철웅', '디자인', '30', '200000', '3000000', 'lecture10.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'xdfsdf', '0002', '최철웅', '캐드', '30', '200000', '3000000', 'lecture11.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'yt546567', '0004', '최철웅', '디자인', '30', '200000', '3000000', 'lecture12.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '2sdf34', '0004', '최철웅', '디자인', '30', '200000', '3000000', 'lecture13.jpg', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '45745', '0004', '최철웅', '디자인', '30', '200000', '3000000', 'lecture01.png', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, 'hykj,bv', '0003', '최철웅', 'DB', '30', '200000', '3000000', 'lecture02.png', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '43534567', '0001', '최철웅', '웹개발', '30', '200000', '3000000', 'lecture03.png', '190820', '200618');
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, startdate, enddate)
-VALUES(seq_hk_lecture.NEXTVAL, 'Java기반 웹하이브리드 개발과정', '0001', '최철웅', '웹개발', '30', '200000', '3000000', '190618', '200618');
-INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, startdate, enddate)
-VALUES(seq_hk_lecture.NEXTVAL, '캐드와 빔을 활용한 3D설계', '0002', '최철웅', '캐드', '30', '200000', '3000000', '190702', '200618');
-INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, startdate, enddate)
-VALUES(seq_hk_lecture.NEXTVAL, '빅데이터', '0003', '최철웅', 'DB', '30', '200000', '3000000', '190820', '200618');
+VALUES(seq_hk_lecture.NEXTVAL, '34636', '0004', '최철웅', '디자인', '30', '200000', '3000000', 'lecture04.png', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '563423657567', '0002', '최철웅', '캐드', '30', '200000', '3000000', 'lecture05.png', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '2sdf34', '0001', '최철웅', '웹개발', '30', '200000', '3000000', 'lecture06.png', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '2sdf34', '0004', '최철웅', '디자인', '30', '200000', '3000000', 'lecture07.png', '190820', '200618');
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, supmoney, price, limg, startdate, enddate)
+VALUES(seq_hk_lecture.NEXTVAL, '563423657567', '0002', '최철웅', '캐드', '30', '200000', '3000000', 'lecture08.png', '190820', '200618');
 
 
 
