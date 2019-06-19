@@ -8,5 +8,7 @@ public interface MemberDAO {
 	public int loss_info(MemberDTO mDto);
 	public String loss_id(MemberDTO mDto);
 	public int loss_pw(MemberDTO mDto);
-	public int loss_update(MemberDTO mDto);
+	public int pw_update(MemberDTO mDto);
+	public MemberDTO info(String id);
+	public void update(MemberDTO mDto);
 }

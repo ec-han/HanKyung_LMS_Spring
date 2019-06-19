@@ -13,12 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="login" parameterType="com.hankyung.domain.member.MemberDTO" resultType="com.hankyung.domain.member.MemberDTO">
 		SELECT * FROM hk_member
-		WHERE id=#{id} AND pw = #{pw}
+		WHERE id = #{id} AND pw = #{pw}
 	</select>
 	
 	<select id="loss_info" parameterType="com.hankyung.domain.member.MemberDTO">
 		SELECT COUNT(*) FROM hk_member
-		WHERE id=#{id} AND email = #{email}
+		WHERE id = #{id} AND email = #{email}
 	</select>
 	
 	<select id="loss_id" parameterType="com.hankyung.domain.member.MemberDTO" resultType="String">
@@ -31,11 +31,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id = #{id} AND email = #{email}
 	</select>
 	
-	<update id="loss_update"  parameterType="com.hankyung.domain.member.MemberDTO">
+	<update id="pw_update" parameterType="com.hankyung.domain.member.MemberDTO">
 		UPDATE hk_member
 		   SET pw = #{pw}
 		 WHERE id = #{id}
 	</update>
+	
+	<select id="info" parameterType="String" resultType="com.hankyung.domain.member.MemberDTO">
+		SELECT * FROM hk_member
+		WHERE id = #{id}
+	</select>
+	
+	<update id="update" parameterType="com.hankyung.domain.member.MemberDTO">
+		UPDATE hk_member
+		   SET email = #{email}
+		  	   phone = #{phone}
+		 WHERE id = #{id}
+	</update>
+	
 	
 	
 </mapper>

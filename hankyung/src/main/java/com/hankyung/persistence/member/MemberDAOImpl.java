@@ -43,8 +43,18 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public int loss_update(MemberDTO mDto) {
-		return sqlSession.update("member.loss_update", mDto);
+	public int pw_update(MemberDTO mDto) {
+		return sqlSession.update("member.pw_update", mDto);
+	}
+
+	@Override
+	public MemberDTO info(String id) {
+		return sqlSession.selectOne("member.info", id);
+	}
+
+	@Override
+	public void update(MemberDTO mDto) {
+		sqlSession.update("member.update", mDto);
 	}
 	
 }

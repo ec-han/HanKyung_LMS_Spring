@@ -16,10 +16,10 @@
 	height: 100%;
 }
 .title{
- 	height: 60px;
+ 	height: 50px;
  	text-align: center;
  	font-size: 20px;
- 	line-height: 60px;
+ 	line-height: 50px;
 }
 .info{
 	margin: 15px 0;
@@ -38,22 +38,26 @@
 }
 .fristbox{
 	width: 44%;
+	border:1px solid #dadada;
+	background-color: #dadada;
 }
 .secondbox{
 	width: 27%;
 }
-.thirdbox{
-	width: 44%;
-}
+
 .err_msg{
 	line-height: 45px;
-	height: 45px;
+/* 	height: 45px; */
 }
 .btn_box{
 	height: 45px;
 }
-.insert_btn{
-
+.info_btn{
+	border: none;
+	outline: none;
+	text-align: center;
+}
+.pw_btn{
 	border: none;
 	outline: none;
 	text-align: center;
@@ -75,6 +79,11 @@
 .loss_info{
 	cursor: pointer;
 }
+.idbox, #input_id, #input_name{
+	border:1px solid #dadada;
+	background-color: #dadada;
+}
+. 
 </style>
 
 </head>
@@ -86,21 +95,21 @@
 				<img alt="" src="${path}/resources/img/cat.png">
 			</div>
 			<div class="text_box">
-				<form action="${path}/member/create" method="POST" id="frm_mem" name="frm_mem">
-					<div class="title">Create an Account!</div>
+				<form action="${path}/member/update" method="POST" id="frm_-mem" name="frm_mem">
+					<div class="title">Update Information!</div>
 					
 					<div class="info">
 						<span class="input_box fristbox">
-							<input type="text" id="input_name" name="name" class="input_class" maxlength="5" placeholder="이름">
+							<input type="text" id="input_name" name="name" class="input_class" maxlength="5" value="${one.name}">
 						</span>
-						<span class="input_box fristbox">
-							<input type="text" id="input_id" name="id" class="input_class" maxlength="15" placeholder="아이디">
+						<span class="input_box fristbox idbox">
+							<input type="text" id="input_id" name="id" class="input_class" maxlength="15" readonly="readonly" value="${one.id}">
 						</span>
 					</div>
 					
 					<div class="info">
 						<span class="input_box">
-							<input type="text" id="input_email" name="email" class="input_class" maxlength="25" placeholder="이메일">
+							<input type="text" id="input_email" name="email" class="input_class" maxlength="25" value="${one.email}">
 						</span>
 					</div>
 					
@@ -118,27 +127,28 @@
 						</span>
 						<input type="hidden" id="phone" name="phone">
 					</div>
-
+					<div class="err_msg"></div>
+					<div class="btn_box">
+						<button class="info_btn o_btn" type="button">정보 수정</button>
+					</div>
+				</form>
+					<div class="underbar"></div>
+				<form action="${path}/member/pw_update" method="POST" id="frm_pw" name="frm_pw">
 					<div class="info">
 						<span class="input_box thirdbox">
 							<input type="password" id="input_pw" name="pw" class="input_class" maxlength="15" placeholder="비밀번호">
 						</span>
+					</div>
+					<div class="info">	
 						<span class="input_box thirdbox">
 							<input type="password" id="input_repw" name="repw" class="input_class" maxlength="15" placeholder="비밀번호확인">
 						</span>
 					</div>
-					
 					<div class="err_msg"></div>
-					
 					<div class="btn_box">
-						<button class="insert_btn o_btn" type="button">회 원 가 입</button>
+						<button class="pw_btn o_btn" type="button">비밀번호 수정</button>
 					</div>
-					<div class="underbar"></div>
-					<div class="login_box">
-						<span class="login">로그인</span> | 
-						<span class="loss_info">아이디, 비밀번호 찾기</span>
-					</div>
-
+					<input type="hidden" id="id" name="id" value="${one.id}">
 				</form>
 			</div>
 		</div>
@@ -163,6 +173,14 @@
 			uname = $('#input_name'),
 			uphone = $('#insert_phone1').val()+$('#insert_phone2').val()+$('#insert_phone3').val(),
 			umail = $('#input_mail');
+			
+			var phone = "${one.phone}";
+			var phone1 = phone.substring(0, 3);
+			var phone2 = phone.substring(3, 7);
+			var phone3 = phone.substring(7, phone.length);
+			$("#input_phone1").val(phone1);
+			$("#input_phone2").val(phone2);
+			$("#input_phone3").val(phone3);
 
 
 		var idReg = RegExp(/^[a-zA-Z0-9-_]{5,15}$/);
@@ -181,112 +199,35 @@
 		var reg = /[^a-z0-9-_.]+/g;
 	
 		
-		//이름 유효성 체크
-		var nameflag = 0;
-		$('#input_name').keyup(function(event) {
-			var name = $.trim(uname.val());
-			if (name == '' || name.length ==0) {
-				$('.err_msg').css('color', '#ff1212')
-							 .text('* 필수입력 정보입니다.');
-				$('.input_box').eq(0).css('border', '1px solid #ff1212');
-				nameflag = 0;
-				return false;
-				
-			} else if (name.match(regEmpty)) {
-				$('.err_msg').css('color', '#ff1212')
-							 .text('* 공백없이 입력해주세요.');
-				$('.input_box').eq(0).css('border', '1px solid #ff1212');
-				nameflag = 0;
-				return false;
-				
-			} else if (!nameReg.test(name)) {
-				$('.err_msg').css('color', '#ff1212')
-							 .text('* 올바른 이름을 입력해주세요.');
-				$('.input_box').eq(0).css('border', '1px solid #ff1212');
-				nameflag = 0;
-				return false;
-				
-			} else {
-				$('.err_msg').css('color', 'mediumseagreen')
-							 .text('');
-				$('.input_box').eq(0).css('border', '1px solid mediumseagreen');
-				nameflag = 1;
-				return true;
-			}
-			nameflag = 0;
-			return false;
-		});
-		
-		//아이디 유효성 체크
-		var idflag = 0;
-		$('#input_id').keyup(function(event) {
-			var memId = $.trim(uid.val());
-			var checkResult = joinValidate.checkId(memId);
-			
-			if (memId == '' || memId.length ==0) {
-				$('.err_msg').css('color', '#ff1212')
-							 .text('* 필수입력 정보입니다.');
-				$('.input_box').eq(1).css('border', '1px solid #ff1212');
-				idflag = 0;
-				return false;
-				
-			} else if (memId.match(regEmpty)) {
-				$('.err_msg').css('color', '#ff1212')
-							 .text('* 공백없이 입력해주세요.');
-				$('.input_box').eq(1).css('border', '1px solid #ff1212');
-				idflag = 0;
-				return false;
-				
-			} else if (!idReg.test(memId)) {
-				$('.err_msg').css('color', '#ff1212')
-							 .text('* 올바른 아이디를 입력해주세요.');
-				$('.input_box').eq(1).css('border', '1px solid #ff1212');
-				idflag = 0;
-				return false;
-				
-			} else {
-				/* if(ajaxCheck(memId) == "1"){
-					flag = 1;
-					return true;
-				} */
-				$('.err_msg').css('color', 'mediumseagreen')
-							 .text('');
-				$('.input_box').eq(1).css('border', '1px solid mediumseagreen');
-				idflag = 1;
-				return true;
-			}
-			idflag = 0;
-			return false;
-		});
 		
 		//이메일
-		var mailflag = 0;
+		var mailflag = 1;
 		$('#input_email').keyup(function(event) {
 			var email = $.trim($(this).val());
 			
 			if(email == "" || email.length == 0){
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 필수입력 정보입니다.');
 				$('.input_box').eq(2).css('border', '1px solid #ff1212');	  
 				mailflag = 0;
 				return false;
 				
 			} else if(email.match(regEmpty)){
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 공백없이 입력해주세요.');
 				$('.input_box').eq(2).css('border', '1px solid #ff1212');		   
 				mailflag = 0;
 				return false;
 				
 			} else if (!emailReg.test(email)){
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 올바른 이메일을 입력해주세요.');
 				$('.input_box').eq(2).css('border', '1px solid #ff1212');
 				mailflag = 0;
 				return false;
 				
 			} else {
-				$('.err_msg').css('color', 'mediumseagreen')
+				$('.err_msg').eq(0).css('color', 'mediumseagreen')
 							 .text('');
 				$('.input_box').eq(2).css('border', '1px solid mediumseagreen');
 								   
@@ -326,36 +267,36 @@
 
 		
 		//전화번호
-		var phoneflag = 0;
+		var phoneflag = 1;
 		$('.input_phone').keyup(function(event) {
 			var phone = $.trim($('#input_phone1').val()+$('#input_phone2').val()+$('#input_phone3').val());
 			$('#phone').val(phone);
 			if (phone == '') {
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 필수입력 정보입니다.');
 				$('.secondbox').css('border', '1px solid #ff1212');
 				phoneflag = 0;
 				return false;
 			} else if (phone.indexOf("01") != 0) {
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 휴대폰 번호가 유효하지 않습니다.');
 				$('.secondbox').css('border', '1px solid #ff1212');
 				phoneflag = 0;
 				return false;
 			} else if (phone.match(regEmpty)) {
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 공백없이 입력해주세요.');
 				$('.secondbox').css('border', '1px solid #ff1212');
 				phoneflag = 0;
 				return false;
 			} else if (!phoneReg.test(phone) || phone.length < 11) {
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 올바른 번호를 입력해주세요.');
 				$('.secondbox').css('border', '1px solid #ff1212');
 				phoneflag = 0;
 				return false;
 			} else {
-				$('.err_msg').css('color', 'mediumseagreen')
+				$('.err_msg').eq(0).css('color', 'mediumseagreen')
 							 .text('');
 				$('.secondbox').css('border', '1px solid mediumseagreen');
 				phoneflag = 1;
@@ -373,25 +314,25 @@
 			var memRepw = $.trim(urepw.val());
 
 			if(memPw == '' || memPw.length ==0){
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(1).css('color', '#ff1212')
 							 .text('* 필수입력 정보입니다.');
 				$('.thirdbox').eq(0).css('border', '1px solid #ff1212');
 				pwflag = 0;
 				return false;
-			} else if (!pwReg.test(memPw)) {
-				$('.err_msg').css('color', '#ff1212')
-							 .text('* 비밀번호가 유효하지 않습니다.');
-				$('.thirdbox').eq(0).css('border', '1px solid #ff1212');
-				pwflag = 0;
-				return false;
 			} else if (memPw.match(regEmpty)) {
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(1).css('color', '#ff1212')
 							 .text('* 공백없이 입력해주세요.');
 				$('.thirdbox').eq(0).css('border', '1px solid #ff1212');
 				pwflag = 0;
 				return false;
+			} else if (!pwReg.test(memPw)) {
+				$('.err_msg').eq(1).css('color', '#ff1212')
+							 .text('* 비밀번호가 유효하지 않습니다.');
+				$('.thirdbox').eq(0).css('border', '1px solid #ff1212');1
+				pwflag = 0;
+				return false;
 			} else {
-				$('.err_msg').css('display', 'inline-block')
+				$('.err_msg').eq(1).css('display', 'inline-block')
 								   .css('color', 'mediumseagreen')
 								   .text('');
 				$('.thirdbox').eq(0).css('border', '1px solid mediumseagreen');
@@ -430,23 +371,32 @@
 			
 		});
 		
-		$('.insert_btn').click(function(event) {
-			var flag = nameflag + idflag + mailflag + phoneflag + pwflag + repwflag;
-			if(flag == 6){
+		$('.info_btn').click(function(event) {
+			var flag = mailflag + phoneflag;
+			if(flag == 2){
 				$('#frm_mem').submit();
 			}
 			else{
-				$('.err_msg').css('color', '#ff1212')
+				$('.err_msg').eq(0).css('color', '#ff1212')
 							 .text('* 모두 정확한 값을 입력하였는지 확인해주세요.');
-				if(nameflag < 1){
-					$('#input_name').focus();
-				} else if(idflag < 1){
-					$('#input_id').focus();
-				} else if(mailflag < 1){
+				if(mailflag < 1){
 					$('#input_email').focus();
 				} else if(phoneflag < 1){
 					$('#input_phone3').focus();
-				} else if(pwflag < 1){
+				}
+				return false;		    
+			} 
+		});
+		
+		$('.pw_btn').click(function(event) {
+			var flag = pwflag + repwflag;
+			if(flag == 2){
+				$('#frm_pw').submit();
+			}
+			else{
+				$('.err_msg').eq(1).css('color', '#ff1212')
+							 .text('* 모두 정확한 값을 입력하였는지 확인해주세요.');
+				if(pwflag < 1){
 					$('#input_pw').focus();
 				} else if(repwflag < 1){
 					$('#input_repw').focus();

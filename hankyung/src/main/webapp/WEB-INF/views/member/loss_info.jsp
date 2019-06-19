@@ -36,14 +36,7 @@
 	border-radius: 30px;
 	padding-left: 20px;
 }
-.input_class{
-	margin: 0 auto;
-	height: 94%;
-	width: 90%;
-	border:none;
-	outline:none;
-	font-size:20px;
-}
+
 .btn_box{
 	height: 45px;
 }
@@ -159,7 +152,7 @@
 	</div>
 	<div class="modal2">
 		<div class="modal_box2">
-			<form action="${path}/member/loss_update" method="POST" id="frm_mem" name="frm_mem">
+			<form action="${path}/member/pw_update" method="POST" id="frm_mem" name="frm_mem">
 				<div class="closs_btn"><i class="fas fa-times"></i></div>
 				<div class=" modal_title">비밀번호 변경</div>
 				<div class="info">

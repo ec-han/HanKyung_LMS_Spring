@@ -32,7 +32,6 @@ public class MemberServiceImpl implements MemberService{
 			session.setAttribute("id", mDto.getId());
 			session.setAttribute("name", mDto.getName());
 			result = true;
-			log.info("session : "+session.getAttribute("name"));
 		}
 		
 		return result;
@@ -56,13 +55,23 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int loss_update(MemberDTO mDto) {
-		return mDao.loss_update(mDto);
+	public int pw_update(MemberDTO mDto) {
+		return mDao.pw_update(mDto);
 	}
 
 	@Override
 	public void logout(HttpSession session) {
 		session.invalidate();
+	}
+
+	@Override
+	public MemberDTO info(String id) {
+		return mDao.info(id);
+	}
+
+	@Override
+	public void update(MemberDTO mDto) {
+		mDao.update(mDto);
 	}
 
 }

@@ -123,18 +123,40 @@ public class MemberController {
 		return flag;
 	}
 	
-	@RequestMapping(value = "/loss_update", method = RequestMethod.POST)
-	public String loss_update(MemberDTO mDto) {
+	@RequestMapping(value = "/pw_update", method = RequestMethod.POST)
+	public String pw_update(MemberDTO mDto) {
 		log.info("비밀번호 변경");
-		service.loss_update(mDto);
-		
-		return "redirect:/member/login";
+		service.pw_update(mDto);
+
+		return "redirect:/main/";
 	}
 	
 	@RequestMapping(value="/info", method=RequestMethod.GET)
 	public String info() {
 		log.info(">>>>> 학생정보조회 페이지 출력");
 		return "member/student_info";
+	}
+	
+	
+	@RequestMapping(value="/update", method=RequestMethod.GET)
+	public String update_view(HttpSession session, MemberDTO mDto, Model model) {
+		log.info("학생정보수정 페이지 출력");
+		log.info((String)session.getAttribute("id"));
+		String id = (String)session.getAttribute("id");
+
+		mDto = service.info(id);
+		
+		model.addAttribute("one", mDto);
+		return "member/update_info";
+	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String update_info(HttpSession session, MemberDTO mDto, Model model) {
+		log.info("학생정보수정");
+
+		service.update(mDto);
+		
+		return "member/update_info";
 	}
 	
 	

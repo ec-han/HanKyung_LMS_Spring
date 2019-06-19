@@ -37,14 +37,6 @@
 	border-radius: 30px;
 	padding-left: 20px;
 }
-.input_class{
-	margin: 0 auto;
-	height: 94%;
-	width: 90%;
-	border:none;
-	outline:none;
-	font-size:20px;
-}
 .err_msg{
 	line-height: 45px;
 	height: 45px;
