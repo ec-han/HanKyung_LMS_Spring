@@ -75,7 +75,7 @@ public class MemberController {
 		} else {
 			log.info("로그인 성공");
 			model.addAttribute("session", session);
-			return "redirect:/home";
+			return "redirect:/";
 		}
 	}
 	
