@@ -43,13 +43,20 @@ public class MainController {
 		log.info(">>> 공지사항 페이지 이동");
 		int btype = 0;
 		List<BoardDTO> list = service.list(btype);
-//		HashMap<String, Object> map = new HashMap<>();
-//		
-//		map.put("boardList", list);
+
 		model.addAttribute("boardList", list);
 		return "main/notice";
 	}
 	
+	@RequestMapping(value = "/qna", method = RequestMethod.GET)
+	public String qna(Model model) {
+		log.info(">>> 공지사항 페이지 이동");
+		int btype = 1;
+		List<BoardDTO> list = service.list(btype);
+
+		model.addAttribute("boardList", list);
+		return "main/qna";
+	}
 	
 	
 	
