@@ -49,6 +49,7 @@ public class LectureController {
 			@RequestParam(defaultValue="") String keyword,
 			@RequestParam(defaultValue="1") int curPage
 			) {
+		log.info(">>>>> 과정 및 강좌 목록 페이지 출력");
 		
 		// 레코드 갯수 계산
 		int count = service.countArticle(search_option,keyword);
@@ -76,6 +77,7 @@ public class LectureController {
 	
 	@RequestMapping(value="view", method = RequestMethod.GET)
 	public String lectureView() {
+		log.info(">>>>> 과정 상세정보 페이지 출력");
 		
 		return "lecture/lecture_view";
 	}

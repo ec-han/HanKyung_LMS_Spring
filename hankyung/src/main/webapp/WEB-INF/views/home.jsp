@@ -79,7 +79,7 @@
       #about, #projects, #contact {
       	color: white;
       }
-      #login, #join, #main, #lecture, #basket {
+      #login, #join, #main, #lecture, #basket, #logout {
       	  display: inline-block;
           font-family: 'Noto Sans KR', sans-serif;
           font-weight: normal;
@@ -89,7 +89,7 @@
           margin: 0px 15px;
           color: white;
       }
-      #login:hover, #join:hover, #main:hover, #lecture:hover, #basket:hover {
+      #login:hover, #join:hover, #main:hover, #lecture:hover, #basket:hover, #logout:hover {
           color: #FFC000!important;
           opacity: 1!important;
       }
@@ -347,10 +347,24 @@
                             <a href="${path}/lecture/cart" class="home_navi_btn right_navi" id="basket">수강바구니</a>
                         </span>
                     </div>
+                    <c:if test="${!empty sessionScope.id}">
+	                    <div class="home_navi_div">
+	                        <span class="home_navi_span">
+	                            <a href="${path}/" class="home_navi_btn right_navi" id="logout">로그아웃</a>
+	                        </span>
+	                    </div>
+                    </c:if>
                 </div>
             </div>
             <div class="header_center">
-                <div class="center_title1">시작해보세요!</div>
+            	<c:choose>
+	            	<c:when test="${!empty sessionScope.id}">
+	                	<div class="center_title1">${sessionScope.name}님, 안녕하세요!</div>
+	                </c:when>
+	                <c:otherwise>
+	                	<div class="center_title1">시작해보세요!</div>
+	                </c:otherwise>
+                </c:choose>
                 <div class="center_text1">
                     <span class="header_point">미래지향적인 역량</span>을 갖춘 인재 양성을 위한
                     <br>온라인 이러닝 학습 서비스, <span class="header_point">지금 바로 시작</span>하세요.

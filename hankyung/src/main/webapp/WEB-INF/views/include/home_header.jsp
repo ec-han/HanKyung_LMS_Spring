@@ -53,13 +53,13 @@
 	#about, #projects, #contact {
 		color: #444;
 	}
-	#login, #join, #basket {
+	#login, #join, #basket, #main, #name, #logout {
 		font-family: 'Noto Sans KR', sans-serif;
 		font-weight: normal;
 		font-size: 18px;
 		color: #444;
 	}
-	#login:hover, #join:hover, #basket:hover {
+	#login:hover, #join:hover, #basket:hover, #main:hover, #logout:hover {
 		color: #FFC000!important;
 	}
 	.home_navi_bar {
@@ -71,7 +71,9 @@
 		bottom: -30px;
 		left: -2px;
 	}
-	
+	#name_point {
+		color: #FFC000;
+	}
 	
 
 	
@@ -92,19 +94,35 @@
                     <span class="home_navi_span"><a href="${path}/" "home_navi1">HanKyung LMS</a></span>
                 </div>
                 <div class="home_navi_right">
+	                <c:choose>
+		                <c:when test="${!empty sessionScope.id}">
+		                	<div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a class="home_navi home_navi2" id="name"><span id="name_point">${sessionScope.name}</span>님</a>
+		                        </span>
+	                    	</div>
+		                	<div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/main/" class="home_navi home_navi2" id="main">나의강의실</a>
+		                        </span>
+	                    	</div>
+		                </c:when>
+		                <c:otherwise>
+		                    <div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/member/login" class="home_navi home_navi2" id="login">로그인</a>
+		                        </span>
+		                    </div>
+		                    <div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/member/constract" class="home_navi home_navi3" id="join">회원가입</a>
+		                        </span>
+		                    </div>
+	                    </c:otherwise>
+                    </c:choose>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/login" class="home_navi home_navi2" id="login">로그인</a>
-                        </span>
-                    </div>
-                    <div class="home_navi_div">
-                        <span class="home_navi_span">
-                            <a href="${path}/create" class="home_navi home_navi3" id="join">회원가입</a>
-                        </span>
-                    </div>
-                    <div class="home_navi_div">
-                        <span class="home_navi_span">
-                            <a href="${path}/login" class="home_navi home_navi2" id="login">강좌보기</a>
+                            <a href="${path}/lecture/list" class="home_navi home_navi2" id="login">강좌보기</a>
                         </span>
                     </div>
                     <div class="home_navi_div">
@@ -112,6 +130,13 @@
                             <a href="${path}/" class="home_navi home_navi4" id="basket">수강바구니</a>
                         </span>
                     </div>
+                    <c:if test="${!empty sessionScope.id}">
+                    	<div class="home_navi_div">
+	                        <span class="home_navi_span">
+	                            <a href="${path}/" class="home_navi home_navi4" id="logout">로그아웃</a>
+	                        </span>
+                    	</div>
+                    </c:if>
                 </div>
             </div>
         </div>
