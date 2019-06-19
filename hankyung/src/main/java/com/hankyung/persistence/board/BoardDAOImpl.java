@@ -29,4 +29,14 @@ public class BoardDAOImpl  implements BoardDAO{
 		return session.insert("board.create", bDto);
 	}
 
+	@Override
+	public BoardDTO read(BoardDTO bDto) {
+		return session.selectOne("board.read", bDto);
+	}
+	
+	/*
+	 * @Override public void increaseViewCnt(int bno) {
+	 * sqlSession.update("board.increaseViewCnt",bno); }
+	 */
+
 }

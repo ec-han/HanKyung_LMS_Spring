@@ -28,5 +28,10 @@ public class BoardServiceImpl implements BoardService{
 	public int create(BoardDTO bDto) {
 		return bDao.create(bDto);
 	}
+
+	@Override
+	public BoardDTO read(BoardDTO bDto) {
+		return bDao.read(bDto);
+	}
 	
 }

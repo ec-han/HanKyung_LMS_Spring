@@ -1,8 +1,10 @@
 package com.hankyung.controller.board;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,5 +50,20 @@ public class BoardController {
 			}
 		}
 		return "/main/"; //if문 안탈경우의 처리가 필요함 
+	}
+	
+	// 게시글 1건(상세게시글) 출력 // bno받고 상세게시글 출력이라고 log찍기 
+	@RequestMapping(value="read", method=RequestMethod.GET)
+	public String view(BoardDTO bDto, Model model,HttpSession session) {
+		log.info(">>>>>>> 상세 게시글 출력");
+		// 조회수 증가 처리 
+		// service.increaseViewCnt(tnum, session);
+		log.info("@@@@ " + bDto.getBtype());
+		log.info("@@@@ " + bDto.getTnum());
+		
+		bDto = service.read(bDto);
+		model.addAttribute("one",bDto);
+		
+		return "main/view";
 	}
 }

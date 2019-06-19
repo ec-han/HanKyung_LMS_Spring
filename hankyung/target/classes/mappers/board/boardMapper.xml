@@ -19,4 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
 		</if>
 	</insert>
+	
+	<select id="read" resultType="com.hankyung.domain.board.BoardDTO">
+		SELECT * FROM hk_board WHERE tnum=#{tnum} AND btype=#{btype}
+	</select>
 </mapper>

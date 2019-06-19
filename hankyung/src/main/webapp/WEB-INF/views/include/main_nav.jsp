@@ -126,6 +126,13 @@
 </a>
 <script type="text/javascript">
  $(function(){
+	$(window).resize(function(){ 
+		 if($(window).width() < 750) {
+		 	$('#searchArea').css('display','none');
+		 } else {
+			$('#searchArea').css('display','inline-block');
+		 }
+	 });
 	$(window).scroll(function(){
 		var scrollValue = $(this).scrollTop();
 		if(scrollValue > 40){

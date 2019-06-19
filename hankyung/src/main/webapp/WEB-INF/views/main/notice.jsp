@@ -73,7 +73,7 @@
 											<fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd" var="regdate"/>
 						                    <tr>
 						                      <td>${board.tnum}</td>
-						                      <td>${board.title}</td>
+						                      <td><a href="${path}/board/read?tnum=${board.tnum}&btype=${board.btype}">${board.title}</a></td>
 						                      <td>${board.writer}</td>
 						                      <td>
 						                      	<c:choose>
