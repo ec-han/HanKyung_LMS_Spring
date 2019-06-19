@@ -35,16 +35,4 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-		logger.info(">>>>> 로그인페이지 출력");
-		return "/member/login";
-	}
-	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String create() {
-		logger.info(">>>>> 회원가입페이지 출력");
-		return "/member/create";
-	}
-	
 }
