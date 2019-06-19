@@ -294,6 +294,10 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-left: 70%;
     flex: 1;
 }
+.board_regi_btn {
+	font-size: 2.5rem;
+    color: #404988;
+}
 
 </style>
 </head>
@@ -314,8 +318,9 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 						<div class="table-responsive">
 			              	<div id="dataTable_wrapper" class="dataTables_wrapper">
 			              		<div class="row order-1" id="length_filter">
-				              		<div class="col-sm-12 col-md-6 order-1 margin-right">
-				              			<div class="dataTables_length" id="dataTable_length">
+				              		<div class="col-sm-12 col-md-6 order-1 margin-right board_regi_btn">
+				              			<i class="fas fa-pen-square"></i>
+				              			<!-- <div class="dataTables_length" id="dataTable_length">
 				              					<label>
 				              							보기
 				              							<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
@@ -324,7 +329,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 				              								<option value="10">50</option>
 				              							</select>
 				              					</label>
-				              			</div>
+				              			</div> -->
 				              		</div>
 				              		<div class="col-sm-12 col-md-6 order-2 margin-left">
 				              			<div id="dataTable_filter" class="dataTables_filter">

@@ -50,7 +50,7 @@ public class MainController {
 	
 	@RequestMapping(value = "/qna", method = RequestMethod.GET)
 	public String qna(Model model) {
-		log.info(">>> 공지사항 페이지 이동");
+		log.info(">>> qna 페이지 이동");
 		int btype = 1;
 		List<BoardDTO> list = service.list(btype);
 

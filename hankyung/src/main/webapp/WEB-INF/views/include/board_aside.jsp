@@ -9,7 +9,7 @@
 		<ul class="navbar_nav" id="accordionSidebar">
 			 <!-- Sidebar - Brand -->
             <div class="sidebar_brand d_flex">
-	            <a class="sidebar_brand-icon" href="#">
+	            <a class="sidebar_brand-icon" href="${path}/">
 	              <i class="fas fa-laugh-wink"></i>
 	            </a>
             	<div class="sidebar_brand-text">HanKyung LMS <sup>ver 1.2</sup></div>
@@ -35,9 +35,9 @@
 				</a>
 				<div class="collapse_inner rounded collapse" id="collapseCourse">
 					<h6 class="collapse_header">과정 정보</h6>
-					<a class="collapse_item" href="#">공지사항</a>
+					<a class="collapse_item" href="${path}/main/notice">공지사항</a>
 					<a class="collapse_item" href="#">수업 계획표</a>
-					<a class="collapse_item" href="#">Q&A</a>
+					<a class="collapse_item" href="${path}/main/qna">QnA</a>
 				</div>
 			</li>
 			<li class="nav_item">
@@ -138,8 +138,8 @@
 	            $('#collapseAdmin').slideToggle('fast'); 
 		    });
 			
-	        $('#collapseCourse_parent').focusout(function(){
-	            $('#collapseCourse').css('display','none');            
+	        /* $('#collapseCourse_parent').focusout(function(){
+	            $('#collapseCourse').css('display','none');            
 	        });
 	 		$('#collapseTeacher_parent').focusout(function(){
 	            $('#collapseTeacher').css('display','none');            
@@ -152,7 +152,7 @@
 	        });
 			$('#collapseAdmin_parent').focusout(function(){
 	            $('#collapseAdmin').css('display','none');            
-	        });
+	        });  */
 			// 사이드 바 열고 닫힘
 			var state = false;
 			$('#sidebarToggle').click(function(){
