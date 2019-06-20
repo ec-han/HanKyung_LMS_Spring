@@ -13,4 +13,5 @@ public interface LectureDAO {
 	public int countArticle(String search_option, String keyword);
 	public List<LectureDTO> lectureList(String sort_option, String search_option, String keyword, int start, int end);
 	public LectureDTO lectureView(int lno);
+	public int price(String id);
 }

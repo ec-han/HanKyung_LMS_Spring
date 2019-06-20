@@ -15,6 +15,7 @@ import lombok.ToString;
 @ToString
 public class LectureDTO {
 	private int lno;
+	private String id;
 	private String lname;
 	private String lcode;
 	private String tname;

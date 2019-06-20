@@ -490,27 +490,23 @@
  			$('.first_agree').click(function() {		
 				$('.frist_input').prop('checked', true);
 				$('.modal').css("display", "none");
+				ck_box();
 			}); 
  			$('.second_agree').click(function() {		
 				$('.second_input').prop('checked', true);
 				$('.modal').css("display", "none");
+				ck_box();
 			}); 
  			$('.third_agree').click(function() {		
 				$('.third_input').prop('checked', true);
 				$('.modal').css("display", "none");
+				ck_box();
 			}); 
 			
 			
 			//동의 버튼을 눌렀을 때 3개다 체크가 되어있다면 전체 동의도 on, 전체동의 일때 다른체크를 해제한다면 전체동의도 off
 			$('.ckboxs').click(function(event) {
-				var ckleng = $('.ckboxs:checkbox:checked').length;
-				if (ckleng == 3) {
-					$('#allcheck').prop('checked', true);
- 					$('.all_check > label > .ck_icon').css('color', 'mediumseagreen');
-				} else {
-					$('#allcheck').prop('checked', false);
-					$('.all_check > label > .ck_icon').css('color', 'lightgray');
-				}
+				ck_box();
 			});
 			
 			$('.agree_btn').click(function(event) {
@@ -524,6 +520,16 @@
 			
 			
 		});
+		function ck_box(){
+			var ckleng = $('.ckboxs:checkbox:checked').length;
+			if (ckleng == 3) {
+				$('#allcheck').prop('checked', true);
+					$('.all_check > label > .ck_icon').css('color', 'mediumseagreen');
+			} else {
+				$('#allcheck').prop('checked', false);
+				$('.all_check > label > .ck_icon').css('color', 'lightgray');
+			}
+		}
 	</script>
 </body>
 </html>

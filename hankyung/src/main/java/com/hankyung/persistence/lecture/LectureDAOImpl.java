@@ -60,4 +60,9 @@ public class LectureDAOImpl implements LectureDAO{
 	public LectureDTO lectureView(int lno) {
 		return sqlSession.selectOne("lecture.view", lno);
 	}
+
+	@Override
+	public int price(String id) {
+		return sqlSession.selectOne("lecture.price", id);
+	}
 }

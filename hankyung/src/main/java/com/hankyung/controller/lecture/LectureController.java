@@ -35,10 +35,12 @@ public class LectureController {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String cart(HttpSession session, Model model) {
 		logger.info("강좌바구니 출력");
-		
-		List<LectureDTO> list = service.cartlist(session);
+		String id = (String)session.getAttribute("id");
+        int allprice = service.price(id);
+		List<LectureDTO> list = service.cartlist(id);
 		
 		model.addAttribute("cartList", list);
+		model.addAttribute("price", allprice);
 		return "lecture/cart";
 	}
 	

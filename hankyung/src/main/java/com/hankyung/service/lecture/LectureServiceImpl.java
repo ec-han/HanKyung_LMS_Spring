@@ -22,8 +22,7 @@ public class LectureServiceImpl implements LectureService{
 	private LectureDAO lDao;
 	
 	@Override
-	public List<LectureDTO> cartlist(HttpSession session) {
-		String id = (String)session.getAttribute("id");
+	public List<LectureDTO> cartlist(String id) {
 		return lDao.cartlist(id);
 	}
 
@@ -52,5 +51,10 @@ public class LectureServiceImpl implements LectureService{
 	public LectureDTO lectureView(int lno) {
 		return lDao.lectureView(lno);
 	}
+	
+	@Override
+    public int price(String id) {
+        return lDao.price(id);
+    }
 
 }
