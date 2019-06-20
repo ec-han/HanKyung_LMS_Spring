@@ -18,9 +18,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if  test="btype == 1">
 			VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
 		</if>
+		<selectKey keyProperty="bno" resultType="Integer" order="AFTER">
+			SELECT seq_hkboard.CURRVAL FROM dual
+		</selectKey>
 	</insert>
 	
 	<select id="read" resultType="com.hankyung.domain.board.BoardDTO">
-		SELECT * FROM hk_board WHERE tnum=#{tnum} AND btype=#{btype}
+		SELECT * FROM hk_board WHERE bno=#{bno} AND btype=#{btype}
 	</select>
+	
+	<update id="increaseViewCnt">
+		UPDATE hk_board
+			SET viewcnt = viewcnt + 1
+		WHERE bno = #{bno} AND btype=#{btype}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM hk_board
+		WHERE tnum = #{tnum} AND btype=#{btype}
+	</delete>
 </mapper>

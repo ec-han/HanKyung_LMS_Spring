@@ -223,6 +223,9 @@ sup { /* 첨자 텍스트 */
     font-family: 'Font Awesome 5 Free';
     margin-right: .1rem;
 }
+#notice_link_a, #qna_link_a {
+	cursor: pointer;
+}
 
 /* nav */
 

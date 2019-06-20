@@ -281,11 +281,18 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     flex: 1;
 }
 /* 게시글 등록페이지 관련 css */
-.board_regi_btn {
+.board_regi_btn i {
 	font-size: 2.5rem;
     color: #404988;
     cursor: pointer;
+    padding: 0.5rem;
 }
 .field_border {
 	border: none;
+}
+.step_url {
+    color: tomato;
+    font-size: 0.85rem;
+    font-weight: lighter;
+    padding-top: 0.5rem;
 }

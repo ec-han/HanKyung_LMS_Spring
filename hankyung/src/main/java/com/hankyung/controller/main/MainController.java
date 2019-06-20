@@ -38,25 +38,31 @@ public class MainController {
 		return "main/real_new_sample";
 	}
 	
-	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String notice(Model model) {
-		log.info(">>> 공지사항 페이지 이동");
-		int btype = 0;
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String notice(Model model,int btype) {
+		log.info(">>> 게시글 목록 페이지 이동");
 		List<BoardDTO> list = service.list(btype);
 
 		model.addAttribute("boardList", list);
-		return "main/notice";
+		if(btype==0) {
+			log.info(">>> 공지사항 페이지 이동");
+			return "main/notice";
+		} else if(btype==1) {
+			log.info(">>> QnA 페이지 이동");
+			return "main/qna";
+		} else {
+			return "/";
+		}
+		
 	}
 	
-	@RequestMapping(value = "/qna", method = RequestMethod.GET)
-	public String qna(Model model) {
-		log.info(">>> qna 페이지 이동");
-		int btype = 1;
-		List<BoardDTO> list = service.list(btype);
-
-		model.addAttribute("boardList", list);
-		return "main/qna";
-	}
+	/*
+	 * @RequestMapping(value = "/qna", method = RequestMethod.GET) public String
+	 * qna(Model model) { log.info(">>> qna 페이지 이동"); int btype = 1; List<BoardDTO>
+	 * list = service.list(btype);
+	 * 
+	 * model.addAttribute("boardList", list); return "main/qna"; }
+	 */
 	
 	@RequestMapping(value = "/summernote", method = RequestMethod.GET)
 	public String summernote(Model model) {

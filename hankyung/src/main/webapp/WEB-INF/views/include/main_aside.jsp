@@ -95,8 +95,8 @@
 				  <span>관리자</span>
 				</a>
 				<div class="collapse_inner rounded collapse show" id="collapseAdmin">
-				  <a class="collapse_item" href="${path}/main/notice">공지사항</a>
-				  <a class="collapse_item" href="${path}/main/qna">QnA</a>
+				  <a class="collapse_item" id="notice_link_a">공지사항</a>
+				  <a class="collapse_item" id="qna_link_a"">QnA</a>
 				  <h6 class="collapse_header">등록</h6>
 				  <a class="collapse_item" href="#">선생님 등록</a>
 				  <a class="collapse_item" href="#">과정 등록</a>
@@ -119,6 +119,7 @@
 		<!-- End of Sidebar -->
 	</div>
 	<script type="text/javascript">
+	$(function(){
 		// 사이드 바 열고 닫힘
 		var state = false;
 		$('#sidebarToggle').click(function(){
@@ -174,7 +175,16 @@
 		$('.sidebar_brand').click(function(){
 			location.href="${path}/";
 		});
-	
+		
+		$('#notice_link_a').click(function(){
+			var btype = 0;
+			location.href="${path}/main/list?btype="+btype;
+		});
+		$('#qna_link_a').click(function(){
+			var btype = 1;
+			location.href="${path}/main/list?btype="+btype;
+		});
+	});	
 	</script>
 </body>
 </html>
