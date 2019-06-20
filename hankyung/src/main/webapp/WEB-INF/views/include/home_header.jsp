@@ -143,7 +143,17 @@
     </header>
     <script type="text/javascript">
 		$(document).ready(function() {
-            
+            $("#logout").click(function(){
+            	$.ajax({
+            		url:"${path}/member/logout",
+            		success:function(){
+            			
+            		},
+            		error:function(){
+            			alert("logout error!!");
+            		}
+            	});
+            });
         });
         $(window).scroll(function(event) {
             var scrollValue = $(this).scrollTop();

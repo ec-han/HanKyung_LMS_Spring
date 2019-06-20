@@ -86,7 +86,7 @@
           font-size: 18px;
           transition: .3s;
           opacity: .5;
-          margin: 0px 15px;
+          margin: 0px 14px;
           color: white;
       }
       #login:hover, #join:hover, #main:hover, #lecture:hover, #basket:hover, #logout:hover {
@@ -476,7 +476,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-        	
+			$("#logout").click(function(){
+				$.ajax({
+					url: "${path}/member/logout",
+					/* type: "POST", */
+					sucecess:function(){
+						
+					},
+					error:function(){
+						alert("logout error!!");
+					}
+				});
+			});
         });
         $(window).scroll(function(event) {
             var scrollValue = $(this).scrollTop();
@@ -487,7 +498,7 @@
                 $('.home_navi1').css("color", "#444");
                 $('.right_navi').css("color", "#444");
                 $('.home_navi').css("opacity", "1");
-                $('.home_navi_btn').css("opacity", "1");
+                $('.right_navi').css("opacity", "1");
                 if (scrollValue > 900 && scrollValue < 2000) {
                     $('.home_navi2').css("color", "#79CDCF")
                                .css("opacity", "1");
@@ -517,7 +528,7 @@
                 $('.home_navi_bar').eq(1).css("display", "none");
                 $('.home_navi_bar').eq(2).css("display", "none");
                 $('.home_navi').css("color", "#444");
-                $('.home_navi_btn').css("color", "#444");
+                $('.right_navi').css("color", "#444");
                 }
             } else if (scrollValue < 150) {
                 $('.home_header_navi').css("position", "relative")
@@ -525,7 +536,7 @@
                                  .css('box-shadow', 'none');
                 $('.home_navi').css("color", "white")
                          		.css("opacity", "0.5");
-                $('.home_navi_btn').css("color", "white")
+                $('.right_navi').css("color", "white")
                 				.css("opacity", "0.5");
                 $('.home_navi1').css("color", "white");
                 $('.right_navi').css("color", "white");
