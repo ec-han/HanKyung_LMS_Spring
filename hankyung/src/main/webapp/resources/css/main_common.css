@@ -43,7 +43,7 @@ sup { /* 첨자 텍스트 */
     display: flex;
     flex: 1;
     width: 100%;
-    border: 1px solid tomato;
+    /* border: 1px solid tomato; */
     position: relative;
     top: 0;
 }
@@ -84,7 +84,7 @@ sup { /* 첨자 텍스트 */
     justify-content: center;
     align-items: center;
     z-index: 999;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     flex: 1;
     order: 1;
 }
@@ -589,7 +589,7 @@ sup { /* 첨자 텍스트 */
     order: 3;
     flex: 1;
     width: 100%;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     position: relative;
     bottom: 0;
 }

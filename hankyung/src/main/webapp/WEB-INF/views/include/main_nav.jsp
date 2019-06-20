@@ -168,13 +168,13 @@
         $('#usersDropdown').click(function(){
             $('#dropdown_menu_right').slideToggle('fast');               
         });
-		/* $('#alertsDropdown').focusout(function(){
+		$('#alertsDropdown').focusout(function(){
             $('#dropbox_alert').css('display','none');                
         });
 		$('#messagesDropdown').focusout(function(){
 			$('#dropbox_msg').css('display','none');            
 	    });
-        $('#usersDropdown').focusout(function(){
+        /* $('#usersDropdown').focusout(function(){
             $('#dropdown_menu_right').css('display','none');                
         }); */
 
