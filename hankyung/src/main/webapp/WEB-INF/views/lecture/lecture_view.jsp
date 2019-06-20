@@ -90,7 +90,7 @@
 		.lecture_top {
 			position: relative;
 			width: 100%;
-			height: 330px;
+			height: 400px;
 		}
 		.lecture_img {
 			overflow: hidden;
@@ -100,18 +100,19 @@
 		.lecture_img_back {
 			background: #333;
 			width: 100%;
-			height: 330px;
+			height: 400px;
 		}
 		.right_img {
 			display: inline-block;
 			position: absolute;
 			z-index: 10;
 			float: right;
-			width: 450px;
-			height: 330px;
 			background: #ddd;
 			right: 0;
 			top: 0;
+		}
+		.img_size {
+			width: 507px;
 		}
 		.lecture_content {
 			position: absolute;
@@ -232,17 +233,19 @@
 		<div class="lecture_top">
        		<div class="lecture_img">
        		    <div class="lecture_img_back"></div>
-       			<div class="right_img">span대신 img넣기</div>
+       			<div class="right_img"><img class="img_size" src="${path}/resources/img/${lDto.limg}"></div>
        		</div>
        		<div class="lecture_content">
        			<div class="index_box lecture_title">
-      					MySQL 전문가 과정 : 비즈니스를 위한 분석 테크닉
+      					${lDto.lname}
        			</div>
        			<div class="index_box lecture_day">
        				<span class="text_box">과정기간ㅣ</span>2018.12.27 ~ 2019.04.05
+       				<%-- <fmt:formatDate value="${lDto.startdate}" pattern="yyyy.mm.dd" />
+       				~ <fmt:formatDate value="${lDto.enddate}" pattern="yyyy.mm.dd" /> --%>
        			</div>
        			<div class="index_box lecture_name">
-       				<span class="text_box">강사명ㅣ</span>최철웅
+       				<span class="text_box">강사명ㅣ</span>${lDto.tname}
        			</div>
        		</div>
     	</div>

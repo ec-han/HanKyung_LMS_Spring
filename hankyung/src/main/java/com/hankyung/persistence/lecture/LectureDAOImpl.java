@@ -55,4 +55,9 @@ public class LectureDAOImpl implements LectureDAO{
 		map.put("end", end);
 		return sqlSession.selectList("lecture.lectureList", map);
 	}
+
+	@Override
+	public LectureDTO lectureView(int lno) {
+		return sqlSession.selectOne("lecture.view", lno);
+	}
 }

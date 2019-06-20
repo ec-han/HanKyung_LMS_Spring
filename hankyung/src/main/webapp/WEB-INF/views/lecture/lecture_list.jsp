@@ -68,7 +68,7 @@
 			font-weight: 600;
 			border-bottom: 1px solid #dadada;
 		}
-		.section_teacher {
+		.section_day {
 			display: inline-block;
 			padding: 10px 0px 3px;
 		}
@@ -184,20 +184,21 @@
 	                    		<i class="fas fa-shopping-basket basket_icon"></i>
 	                    	</a>
 	                    	<div class="section_img">
-	                        	<a>
+	                        	<a href="${path}/lecture/view?lno=${list.lno}">
 	                        		<img class="lecture_img" src="${path}/resources/img/${list.limg}">
 	                       		</a>
 	                       	</div>
 	                        <div class="section_name">
-	                        	<a>
+	                        	<a href="${path}/lecture/view?lno=${list.lno}">
 	                            	${list.lname}
 	                            </a>
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_teacher">강사ㅣ</span>${list.tname}
+	                        	<span class="section_day">기간ㅣ</span><fmt:formatDate value="${list.startdate}" pattern="yyyy.mm.dd" />
+	                        	~ <fmt:formatDate value="${list.enddate}" pattern="yyyy.mm.dd" />
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_day">기간ㅣ</span>${list.startdate} ~ ${list.enddate}
+	                            <span class="section_teacher">강사ㅣ</span>${list.tname}
 	                        </div>
 	                    </div>
                     </c:forEach>

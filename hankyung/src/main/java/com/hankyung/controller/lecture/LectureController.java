@@ -76,9 +76,10 @@ public class LectureController {
 	}
 	
 	@RequestMapping(value="view", method = RequestMethod.GET)
-	public String lectureView() {
+	public String lectureView(int lno, Model model) {
 		log.info(">>>>> 과정 상세정보 페이지 출력");
-		
+		LectureDTO lDto = service.lectureView(lno);
+		model.addAttribute("lDto", lDto);
 		return "lecture/lecture_view";
 	}
 	

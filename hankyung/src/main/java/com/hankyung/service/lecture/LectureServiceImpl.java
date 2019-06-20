@@ -48,4 +48,9 @@ public class LectureServiceImpl implements LectureService{
 		return lDao.lectureList(sort_option, search_option, keyword, start, end);
 	}
 
+	@Override
+	public LectureDTO lectureView(int lno) {
+		return lDao.lectureView(lno);
+	}
+
 }

@@ -262,7 +262,7 @@
 			font-weight: 600;
 			border-bottom: 1px solid #dadada;
 		}
-		.section_teacher {
+		.section_day {
 			display: inline-block;
 			padding: 10px 0px 3px;
 		}
@@ -417,20 +417,21 @@
 	                    		<i class="fas fa-shopping-basket basket_icon"></i>
 	                    	</a>
 	                        <div class="section_img">
-	                        	<a href="${path}/lecture/view">
+	                        	<a href="${path}/lecture/view?lno=${best.lno}">
 	                        		<img class="lecture_img" src="${path}/resources/img/${best.limg}">
 	                       		</a>
 	                       	</div>
 	                        <div class="section_name">
-	                        	<a href="${path}/lecture/view">
+	                        	<a href="${path}/lecture/view?lno=${best.lno}">
 	                            	${best.lname}
 	                            </a>
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_teacher">강사ㅣ</span>${best.tname}
+	                            <span class="section_day">기간ㅣ</span><fmt:formatDate value="${best.startdate}" pattern="yyyy.MM.dd"/>
+	                            ~ <fmt:formatDate value="${best.enddate}" pattern="yyyy.MM.dd"/>
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_day">기간ㅣ</span>${best.startdate} ~ ${best.enddate}
+	                       		<span class="section_teacher">강사ㅣ</span>${best.tname}
 	                        </div>
 	                    </div>
                     </c:forEach>
@@ -447,20 +448,21 @@
 	                    		<i class="fas fa-shopping-basket basket_icon"></i>
 	                    	</a>
 	                        <div class="section_img">
-	                        	<a href="${path}/lecture/view">
+	                        	<a href="${path}/lecture/view?lno=${new_DTO.lno}">
 	                        		<img class="lecture_img" src="${path}/resources/img/${new_DTO.limg}">
 	                       		</a>
 	                       	</div>
 	                        <div class="section_name">
-	                        	<a href="${path}/lecture/view">
+	                        	<a href="${path}/lecture/view?lno=${new_DTO.lno}">
 	                            	${new_DTO.lname}
 	                            </a>
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_teacher">강사ㅣ</span>${new_DTO.tname}
+	                            <span class="section_day">기간ㅣ</span><fmt:formatDate value="${new_DTO.startdate}" pattern="yyyy.MM.dd"/>
+	                            ~ <fmt:formatDate value="${new_DTO.enddate}" pattern="yyyy.MM.dd"/>
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_day">기간ㅣ</span>${new_DTO.startdate} ~ ${new_DTO.enddate}
+	                        	<span class="section_teacher">강사ㅣ</span>${new_DTO.tname}
 	                        </div>
 	                    </div>
                     </c:forEach>

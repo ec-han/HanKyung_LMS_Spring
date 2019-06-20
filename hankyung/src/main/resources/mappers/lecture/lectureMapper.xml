@@ -76,4 +76,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			A)
 		WHERE rnum BETWEEN #{start} AND #{end}
 	</select>
+	
+	<select id="view" resultType="com.hankyung.domain.lecture.LectureDTO">
+		SELECT * FROM hk_lecture
+		WHERE lno = #{lno}
+	</select>
 </mapper>
