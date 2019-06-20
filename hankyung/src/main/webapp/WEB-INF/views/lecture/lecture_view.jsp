@@ -23,9 +23,19 @@
         }
         .info_title {
         	width: 1350px;
-            font-size: 30px;
+            font-size: 35px;
             margin: 0px auto;
-            padding: 0px 25px 40px;
+            padding: 0px 50px 40px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .info_title_bar {
+        	position: absolute;
+        	width: 7px;
+        	height: 32px;
+        	background-color: #444;
+        	top: 11.5px;
+        	left: 30px;
         }
 		
 
@@ -39,7 +49,8 @@
 		.header_button {
 			width: 1350px;
 			margin: 0px auto;
-			padding: 20px 25px;
+			padding: 25px 25px 30px;
+			box-sizing: border-box;
 		}
 		.button_left {
 			display: inline-block;
@@ -90,47 +101,50 @@
 		.lecture_top {
 			position: relative;
 			width: 100%;
-			height: 400px;
-		}
-		.lecture_img {
-			overflow: hidden;
-			position: relative;
-			top: 0;
-		}
-		.lecture_img_back {
-			background: #333;
-			width: 100%;
-			height: 400px;
-		}
-		.right_img {
-			display: inline-block;
-			position: absolute;
-			z-index: 10;
-			float: right;
-			background: #ddd;
-			right: 0;
-			top: 0;
-		}
-		.img_size {
-			width: 507px;
+			height: 350px;
 		}
 		.lecture_content {
+			padding-left: 13%;
 			position: absolute;
 			top: 0px;
-			left: 10%;
-			width: 1350px;
-			height: 330px;
-			padding: 45px;
+			left: 0px;
+			width: 100%;
+			z-index: 11;
+			display: flex;
+		}
+		.lecture_img {
+			display: inline-block;
+			box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.15);
+			width: 429px;
+			height: 280px;
+			overflow: hidden;
+			margin-top: 35px;
+			border-radius: 5px;
+		}
+		.img_size {
+			height: 280px;
+		}
+		.lecture_img_back {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			background: linear-gradient(112.45475266684389deg, rgba(0, 226, 123,1) 5.047252523631851%,rgba(0, 166, 190,1) 97.58799399495284%);
+			width: 100%;
+			height: 350px;
+		}
+		.lecture_box {
+			display: inline-block;
+			padding: 67px 80px;
 		}
 		.index_box {
 			color: white;
-			font-size: 20px;
-			z-index: 11;
+			font-size: 25px;
 		}
 		.lecture_title {
-			font-size: 32px;
-			padding-top: 45px;
-			padding-bottom: 27px;
+			font-size: 40px;
+			padding-top: 20px;
+			padding-bottom: 30px;
 		}
 		.lecture_day {
 			padding-bottom: 5px;
@@ -144,12 +158,13 @@
 
 		.lecture_center {
 			width: 1350px;
+			box-sizing: border-box;
 			margin: 0px auto;
-			padding: 70px 25px;
+			padding: 100px 25px;
 		}
 		.center_title {
-			font-size: 30px;
-			padding-bottom: 30px;
+			font-size: 35px;
+			padding-bottom: 40px;
 		}
 
 
@@ -161,7 +176,7 @@
 		
 		.lecture_bottom {
 			margin-top: 20px;
-			padding: 100px 0px 110px;
+			padding: 100px 0px 112px;
 			background: #eee;
 		}
 		.bottom_title {
@@ -220,32 +235,36 @@
 <body>
 	<%@ include file="../include/home_header.jsp" %>
 	<div class="lecture_info">
-        <div class="info_title">과정 정보</div>
+        <div class="info_title">과정 정보
+        	<div class="info_title_bar"></div>
+        </div>
         <div class="header_button">
 			<div class="button_left">
 				<a href="${path}/" class="lecture_btn white_btn">뒤로가기</a>
 			</div>
-			<div class="button_right">
+			<!-- <div class="button_right">
 				<a class="lecture_btn white_btn">수정</a>
 				<a class="lecture_btn color_btn">삭제</a>
-			</div>
+			</div> -->
 		</div>
 		<div class="lecture_top">
-       		<div class="lecture_img">
-       		    <div class="lecture_img_back"></div>
-       			<div class="right_img"><img class="img_size" src="${path}/resources/img/${lDto.limg}"></div>
-       		</div>
        		<div class="lecture_content">
-       			<div class="index_box lecture_title">
-      					${lDto.lname}
-       			</div>
-       			<div class="index_box lecture_day">
-       				<span class="text_box">과정기간ㅣ</span>2018.12.27 ~ 2019.04.05
-       				<%-- <fmt:formatDate value="${lDto.startdate}" pattern="yyyy.mm.dd" />
-       				~ <fmt:formatDate value="${lDto.enddate}" pattern="yyyy.mm.dd" /> --%>
-       			</div>
-       			<div class="index_box lecture_name">
-       				<span class="text_box">강사명ㅣ</span>${lDto.tname}
+	       		<div class="lecture_img">
+	       			<img class="img_size" src="${path}/resources/img/${lDto.limg}">
+	       		</div>
+	       		<div class="lecture_img_back"></div>
+	       		<div class="lecture_box">
+	       			<div class="index_box lecture_title">
+	      					${lDto.lname}
+	       			</div>
+	       			<div class="index_box lecture_day">
+	       				<span class="text_box">과정기간ㅣ</span>2018.12.27 ~ 2019.04.05
+	       				<%-- <fmt:formatDate value="${lDto.startdate}" pattern="yyyy.mm.dd" />
+	       				~ <fmt:formatDate value="${lDto.enddate}" pattern="yyyy.mm.dd" /> --%>
+	       			</div>
+	       			<div class="index_box lecture_name">
+	       				<span class="text_box">강사명ㅣ</span>${lDto.tname}
+	       			</div>
        			</div>
        		</div>
     	</div>

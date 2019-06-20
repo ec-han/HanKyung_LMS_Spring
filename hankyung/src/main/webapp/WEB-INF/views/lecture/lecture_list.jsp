@@ -18,10 +18,20 @@
 			padding: 150px 0px;
 		}
 		.info_title {
-        	width: 1120px;
-            font-size: 30px;
+        	width: 1350px;
+            font-size: 35px;
             margin: 0px auto;
-            padding: 0px 25px 40px;
+            padding: 0px 50px 40px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .info_title_bar {
+        	position: absolute;
+        	width: 7px;
+        	height: 32px;
+        	background-color: #444;
+        	top: 11.5px;
+        	left: 30px;
         }
 		.section_title {
 			text-align: center;
@@ -175,7 +185,9 @@
 	<%@ include file="../include/home_header.jsp" %>
 	<section>
         <div class="section_box" id="section_box">
-        	<div class="info_title">과정 및 강좌 목록</div>
+	        <div class="info_title">과정 및 강좌 목록
+	        	<div class="info_title_bar"></div>
+	        </div>
             <div class="all_class">
                 <div class="all_content">
                 	<c:forEach items="${map.list}" var="list">
