@@ -81,6 +81,12 @@ public class BoardController {
 		return "/main/list?btype="+btype;  
 	}
 	
+	@RequestMapping(value="update", method=RequestMethod.GET)
+	public String update() {
+		
+		return "/main/update";
+	}
+	
 	// 게시글 1건(상세게시글) 출력 // bno받고 상세게시글 출력이라고 log찍기 
 	@RequestMapping(value="read", method=RequestMethod.GET)
 	public String view(BoardDTO bDto, Model model,HttpSession session) {

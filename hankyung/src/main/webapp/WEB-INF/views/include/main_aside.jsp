@@ -11,9 +11,8 @@
 			 <!-- Sidebar - Brand -->
             <div class="sidebar_brand d_flex">
 	            <a class="sidebar_brand-icon" href="${path}/">
-	              <i class="fas fa-laugh-wink"></i>
+	            	<img alt="로고 이미지" src="${path}/resources/img/logo_02_white.png">
 	            </a>
-            	<div class="sidebar_brand-text">HanKyung LMS <sup>ver 1.2</sup></div>
           	</div>
           	<!-- Divider -->
           	<hr class="sidebar_divider" id="sidebar_divider_0">

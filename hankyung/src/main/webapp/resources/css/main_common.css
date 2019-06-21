@@ -110,7 +110,7 @@ sup { /* 첨자 텍스트 */
     text-decoration: none;
     font-size: 1rem;
     font-weight: 800;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: .05rem;
@@ -127,8 +127,9 @@ sup { /* 첨자 텍스트 */
 .sidebar_brand-icon{
     font-size: 2rem;
 }
-.sidebar_brand-icon > i {
-    color: white;
+.sidebar_brand-icon > img {
+	width: 12rem;
+    height: 3rem;
 }
 #accordionSidebar .nav_link {
     display: block;

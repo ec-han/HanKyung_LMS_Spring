@@ -56,14 +56,6 @@ public class MainController {
 		
 	}
 	
-	/*
-	 * @RequestMapping(value = "/qna", method = RequestMethod.GET) public String
-	 * qna(Model model) { log.info(">>> qna 페이지 이동"); int btype = 1; List<BoardDTO>
-	 * list = service.list(btype);
-	 * 
-	 * model.addAttribute("boardList", list); return "main/qna"; }
-	 */
-	
 	@RequestMapping(value = "/summernote", method = RequestMethod.GET)
 	public String summernote(Model model) {
 		log.info(">>> summernote 예제");
