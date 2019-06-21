@@ -99,6 +99,8 @@ public class MemberController {
 	public String loss_id(MemberDTO mDto, HttpSession session) {
 		log.info("아이디 찾기");
 		String id = service.loss_id(mDto, session);
+		session.removeAttribute("flag");
+		session.setAttribute("id", id);
 		log.info(id);
 		String flag = "-1";
 		if(id != null) {
@@ -113,6 +115,8 @@ public class MemberController {
 	public String loss_pw(MemberDTO mDto, HttpSession session) {
 		log.info("패스워드 찾기");
 		int pw = service.loss_pw(mDto, session);
+		session.removeAttribute("flag");
+		session.setAttribute("flag", 1);
 		log.info(""+pw);
 		
 		String flag = "-1";
@@ -123,12 +127,19 @@ public class MemberController {
 		return flag;
 	}
 	
+	@RequestMapping(value = "/find_info", method = RequestMethod.GET)
+	public String find_info(MemberDTO mDto, HttpSession session) {
+		log.info("정보찾기 페이지");
+
+		return "member/find_info";
+	}
+	
 	@RequestMapping(value = "/pw_update", method = RequestMethod.POST)
-	public String pw_update(MemberDTO mDto) {
+	public String pw_update(MemberDTO mDto, HttpSession session) {
 		log.info("비밀번호 변경");
 		service.pw_update(mDto);
 
-		return "redirect:/main/";
+		return "redirect:/member/login";
 	}
 	
 	@RequestMapping(value="/info", method=RequestMethod.GET)
