@@ -69,7 +69,8 @@
 	<div class="background_box"> 
 		<div class="main_box">
 			<div class="img_box1">
-				<img alt="" src="${path}/resources/img/cat.png">
+				<img class="logo" alt="" src="${path}/resources/img/logo_02_white.png">
+				<img class="img" alt="" src="${path}/resources/img/cat.png">
 			</div>
 			<div class="text_box">
 				<form action="${path}/member/login" method="POST" name="frm_mem" id="frm_mem">

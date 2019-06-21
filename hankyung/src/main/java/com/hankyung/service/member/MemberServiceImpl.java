@@ -44,8 +44,6 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public String loss_id(MemberDTO mDto, HttpSession session) {
-		mDto.setId(mDao.loss_id(mDto));
-		session.setAttribute("id", mDto.getId());
 		return mDao.loss_id(mDto);
 	}
 
