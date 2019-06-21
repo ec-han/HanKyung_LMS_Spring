@@ -130,7 +130,7 @@
 .modal_title{
 	font-size: 20px;
 }
-.modal_err{
+.err_msg{
 	color:tomato;
 	height:30px;
 	font-size: 14px;
@@ -141,13 +141,16 @@
 <body>
 	<header></header>
 	<div class="background_box"> 
+		<img alt="" src="${path}/resources/img/background.jpg">
+		<div class="shadow"></div>
 		<div class="main_box">
 			<div class="img_box1">
 				<img class="logo" alt="" src="${path}/resources/img/logo_02_white.png">
 				<img class="img" alt="" src="${path}/resources/img/cat.png">
 			</div>
 			<div class="text_box">
-			<div class="title">아이디 찾기</div>
+			<form action="${path}/member/find_info" method="POST" id="frm_mem" name="frm_mem">
+				<div class="title">아이디 찾기</div>
 				<div class="info">
 					<span class="input_box">
 						<input type="text" id="input_name" name="name" class="input_class" maxlength="5" placeholder="이름">
@@ -161,13 +164,14 @@
 				<div class="btn_box">
 					<button class="id_btn o_btn" type="button">아이디 찾기</button>
 				</div>
-				
+				<input type="hidden" id="id" name="id" class="input_class">
+			</form>	
 				<div class="underbar"></div>
-				
+			<form action="${path}/member/find_info" method="POST" id="frm_pw" name="frm_pw">
 				<div class="title">비밀번호 찾기</div>
 				<div class="info">
 					<span class="input_box">
-						<input type="text" id="input_id" name="id" class="input_class" maxlength="15" placeholder="아이디" value="${sessionScope.id}">
+						<input type="text" id="input_id" name="id" class="input_class" maxlength="15" placeholder="아이디">
 					</span>
 				</div>
 				
@@ -186,6 +190,7 @@
 					<span class="login">로그인</span> | 
 					<span class="insert">회원가입 </span>
 				</div>
+			</form>		
 			</div>
 		</div>
 	</div>
@@ -202,12 +207,14 @@
 				$.ajax({
 					url:"${path}/member/loss_id",
 					type: "POST",
-					dataType: "text", //return, 받는타입 데이터
+					//dataType: "text", //return, 받는타입 데이터
 					data: "name="+valName+"&email="+valEmail,
 					success: function(data){
-						if(data == "1"){
-							location.href="${path}/member/find_info";
-						} else if(data == "-1") {
+						if(data.flag == "1"){
+							$('#id').val(data.id);
+							$('#frm_mem').submit();
+							
+						} else if(data.flag == "-1") {
 							$('.err_msg').text('* 해당정보의 아이디가 존재하지 않습니다.');
 						}
 					},
@@ -224,12 +231,11 @@
 				$.ajax({
 					url:"${path}/member/loss_pw",
 					type: "POST",
-					dataType: "text", //return, 받는타입 데이터
 					data: "id="+valId+"&email="+valEmail,
 					success: function(data){
-						if(data == "1"){
-							location.href="${path}/member/find_info";
-						} else if(data == "-1") {
+						if(data.flag == "1"){
+							$('#frm_pw').submit();
+						} else if(data.flag == "-1") {
 							$('.err_msg').text('* 아이디 혹은 이메일을 정확히 입력해주세요.');
 						}
 					},
@@ -238,90 +244,7 @@
 					}
 				});
 			});
-				
-			//비밀번호 유효성 검사
-			var pwReg = RegExp(/^[a-zA-Z0-9]{4,12}$/);
-			var regEmpty = /\s/g;
-			//비밀번호
-			var pwflag = 0;
-			var repwflag = 0;
-			$('#input_pw').keyup(function(event) {
-				var memPw = $.trim($('#input_pw').val());
-				var memRepw = $.trim($('#input_repw').val());
-
-				if(memPw == '' || memPw.length ==0){
-					$('.modal_err').css('color', '#ff1212')
-								 .text('* 필수입력 정보입니다.');
-					$('.pw_box').eq(0).css('border', '1px solid #ff1212');
-					pwflag = 0;
-					return false;
-				} else if (!pwReg.test(memPw)) {
-					$('.modal_err').css('color', '#ff1212')
-								 .text('* 비밀번호가 유효하지 않습니다.');
-					$('.pw_box').eq(0).css('border', '1px solid #ff1212');
-					pwflag = 0;
-					return false;
-				} else if (memPw.match(regEmpty)) {
-					$('.modal_err').css('color', '#ff1212')
-								 .text('* 공백없이 입력해주세요.');
-					$('.pw_box').eq(0).css('border', '1px solid #ff1212');
-					pwflag = 0;
-					return false;
-				} else {
-					$('.modal_err').css('display', 'inline-block')
-									   .css('color', 'mediumseagreen')
-									   .text('');
-					$('.pw_box').eq(0).css('border', '1px solid mediumseagreen');
-					pwflag = 1;
-					if(memPw != memRepw){
-						$('.pw_box').eq(1).css('border', '1px solid #ff1212');
-						repwflag = 0;
-						return false;
-					} else {
-						$('.pw_box').eq(1).css('border', '1px solid mediumseagreen');
-						repwflag = 1;
-						return true;
-					}
-				}
-				pwflag = 0;
-				return false;
-			});
 			
-
-			//비밀번호 확인
-			$('#input_repw').keyup(function(event) {
-				var memPw = $.trim($('#input_pw').val());
-				var memRepw = $.trim($('#input_repw').val());
-
-				if(memPw != memRepw){
-					$('.pw_box').eq(1).css('border', '1px solid #ff1212');
-					repwflag = 0;
-					return false;
-				} else {
-					$('.pw_box').eq(1).css('border', '1px solid mediumseagreen');
-					repwflag = 1;
-					return true;
-				}
-				repwflag = 0;
-				return false;
-				
-			});
-			
-			
-			$('.closs_btn').click(function() {
-				$('.modal1').css('display', 'none');
-				$('.modal2').css('display', 'none');
-			});
-				
-				
-			$('.loss_pw_update').click(function() {
-				if(pwflag > 0 || repwflag > 0){
-					$('#frm_mem').submit();
-				}else{
-					$('.modal_err').text('* 비밀번호를 올바르게 입력해주세요');
-				}
-				
-			});
 			$('.login').click(function() {
 				location.href="${path}/member/login";
 			});

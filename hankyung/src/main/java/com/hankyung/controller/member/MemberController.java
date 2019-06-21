@@ -2,6 +2,7 @@ package com.hankyung.controller.member;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -96,41 +97,46 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/loss_id", method = RequestMethod.POST)
-	public String loss_id(MemberDTO mDto, HttpSession session) {
+	public HashMap<String, Object> loss_id(MemberDTO mDto, HttpSession session) {
 		log.info("아이디 찾기");
 		String id = service.loss_id(mDto, session);
+		//아이디 찾기, 비밀번호 찾기에 대한 세션 플래그
 		session.removeAttribute("flag");
-		session.setAttribute("id", id);
 		log.info(id);
+		//아이디 찾기가 있을경우, 없을경우
 		String flag = "-1";
 		if(id != null) {
 			flag = "1";
 		}
-		log.info(flag);
-		return flag;
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("flag", flag);
+		return map;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/loss_pw", method = RequestMethod.POST)
-	public String loss_pw(MemberDTO mDto, HttpSession session) {
+	public HashMap<String, Object> loss_pw(MemberDTO mDto, HttpSession session) {
 		log.info("패스워드 찾기");
 		int pw = service.loss_pw(mDto, session);
 		session.removeAttribute("flag");
 		session.setAttribute("flag", 1);
 		log.info(""+pw);
-		
 		String flag = "-1";
 		if(pw > 0) {
 			flag = "1";
-		}
-		log.info(flag);
-		return flag;
+		}		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", mDto.getId());
+		map.put("flag", flag);
+		return map;
 	}
 	
-	@RequestMapping(value = "/find_info", method = RequestMethod.GET)
-	public String find_info(MemberDTO mDto, HttpSession session) {
+	@RequestMapping(value = "/find_info", method = RequestMethod.POST)
+	public String find_info(MemberDTO mDto, HttpSession session, Model model) {
 		log.info("정보찾기 페이지");
-
+		
+		model.addAttribute("id", mDto.getId());
 		return "member/find_info";
 	}
 	

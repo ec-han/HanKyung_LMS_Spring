@@ -81,6 +81,8 @@
 <body>
 	<header></header>
 	<div class="background_box"> 
+		<img alt="" src="${path}/resources/img/background.jpg">
+		<div class="shadow"></div>
 		<div class="main_box">
 			<div class="img_box1">
 				<img class="logo" alt="" src="${path}/resources/img/logo_02_white.png">

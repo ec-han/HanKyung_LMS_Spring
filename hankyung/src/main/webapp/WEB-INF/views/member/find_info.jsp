@@ -100,15 +100,14 @@
 	text-align: center;
 	margin: 80px auto 40px
 }
-.modal_err{
-
-}
 
 </style>
 </head>
 <body>
 	<header></header>
 	<div class="background_box"> 
+		<img alt="" src="${path}/resources/img/background.jpg">
+		<div class="shadow"></div>
 		<div class="main_box">
 			<div class="img_box1">
 				<img class="logo" alt="" src="${path}/resources/img/logo_02_white.png">
@@ -116,9 +115,9 @@
 			</div>
 			<div class="text_box">
 				<c:choose>
-					<c:when test="${empty sessionScope.flag}">
+					<c:when test="${empty flag}">
 						<div class="idtext">
-							회원님의 아이디는 "<span class="user_id">${sessionScope.id}</span>"입니다.
+							회원님의 아이디는 "<span class="user_id">${id}</span>"입니다.
 						</div>
 						<div class="btn_box">
 							<button class="pw_btn o_btn" type="button">비밀번호 찾기</button>
@@ -146,7 +145,7 @@
 							<div class="btn_box">
 								<button class="loss_pw_update o_btn" type="button">변 경 하 기</button>
 							</div>
-							<input type="hidden" id="id" name="id" value="${sessionScope.id}">
+							<input type="hidden" id="id" name="id">
 							<div class="underbar"></div>
 							<div class="login_box">
 								<span class="login">로그인</span> | 
@@ -165,9 +164,6 @@
 		$(document).ready(function() {
 			
 			$('.pw_btn').click(function() {
-				var valId = $.trim($('#input_id').val());
-				var valEmail = $.trim($('#input_pw_email').val());
-				
 				location.href="${path}/member/loss_info";
 			});
 			
@@ -246,7 +242,7 @@
 				if(pwflag > 0 || repwflag > 0){
 					$('#frm_mem').submit();
 				}else{
-					$('.modal_err').text('* 비밀번호를 올바르게 입력해주세요');
+					$('.err_msg').text('* 비밀번호를 올바르게 입력해주세요');
 				}
 				
 			});
