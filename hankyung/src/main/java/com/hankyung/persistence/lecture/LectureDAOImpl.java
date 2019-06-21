@@ -40,7 +40,7 @@ public class LectureDAOImpl implements LectureDAO{
 		Map<String, String> map = new HashMap<>();
 		map.put("search_option", search_option);
 		map.put("keyword", "%"+keyword+"%");
-		log.info(keyword);
+		log.info(">>search_option:"+search_option+", keyword:"+keyword);
 		
 		return sqlSession.selectOne("lecture.countArticle", map);
 	}

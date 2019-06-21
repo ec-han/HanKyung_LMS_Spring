@@ -236,7 +236,7 @@
                     <i class="fab fa-github footer_icon_btn" id="github"></i>
                 </a>
             </div>
-            <div class="home_fotter_final">Copyright © HankungLMS Design By KimParkHan 2019</div>
+            <div class="home_fotter_final">Copyright © HankyungLMS Design By KimParkHan 2019</div>
         </div>
     </footer>
 </body>

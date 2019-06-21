@@ -51,18 +51,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM
 			(SELECT rownum AS rnum, A.* FROM
 				( SELECT *
-				FROM hk_lecture
+				FROM hk_lecture WHERE
 				<choose>
 					<when test="search_option != 'all'">
 						<if test="search_option == 'title'">
-							WHERE lname LIKE #{keyword}
+							lname LIKE #{keyword}
 						</if>
 						<if test="search_option == 'writer'">
-							WHERE tname LIKE #{keyword}
+							tname LIKE #{keyword}
 						</if>
 					</when>
 					<otherwise>
-						WHERE lname LIKE #{keyword}
+						lname LIKE #{keyword}
 						OR tname LIKE #{keyword}
 					</otherwise>
 				</choose>

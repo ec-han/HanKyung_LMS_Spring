@@ -52,7 +52,6 @@ public class LectureController {
 			@RequestParam(defaultValue="1") int curPage
 			) {
 		log.info(">>>>> 과정 및 강좌 목록 페이지 출력");
-		
 		// 레코드 갯수 계산
 		int count = service.countArticle(search_option,keyword);
 		
@@ -62,6 +61,10 @@ public class LectureController {
 		int end = pager.getPageEnd();
 				
 		List<LectureDTO> list = service.lectureList(sort_option, search_option, keyword, start, end);
+		log.info(">> count : "+count);
+		for (LectureDTO lectureDTO : list) {
+			log.info(">> list : "+lectureDTO);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> map = new HashMap<>();

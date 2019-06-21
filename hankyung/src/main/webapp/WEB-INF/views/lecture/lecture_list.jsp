@@ -112,10 +112,49 @@
 
 		
 		.all_class {
+			position: relative;
 			width: 1219px;
 			margin: 0px auto;
-			padding-top: 20px;
+			padding-top: 35px;
 			padding-bottom: 20px;
+		}
+		.search_box {
+			position: absolute;
+			right: 15px;
+			top: -10px;
+			display: flex;
+			justify-content: center;
+		}
+		.search_select {
+			height: 32px;
+			width: 102px;
+			font-size: 15px;
+			padding: 0px 0px 2px 5px;
+			border-radius: 16px;
+			margin-right: 8px;
+			border: 1px solid #dadada;
+			outline: none;
+		}
+		.search_input {
+			position: relative;
+			width: 230px;
+			height: 32px;
+			border: 1px solid #dadada;
+			border-radius: 16px;
+			padding: 0px 35px 1px 10px;
+			font-size: 15px;
+		}
+		.search_icon {
+			position: absolute;
+			right: 9px;
+			top: 4px;
+			padding: 3px;
+			color: #dadada;
+			font-size: 17px;
+			transition: .3s;
+		}
+		.search_icon:hover {
+			color: #FFC000;
 		}
 		.all_content {
 			margin: 0px auto;
@@ -163,14 +202,14 @@
 			margin-top: 5.5px;
 		}
 		.board_navi ul li a:hover {
-			color: #E65D6E;
+			color: #79CDCF;
 		}
 		.board_navi ul li a:hover .navi_icon {
-			color: #E65D6E;
+			color: #79CDCF;
 		}
 		#active a {
-		background: #333;
-		border: 1px solid #333;
+		background: #79CDCF;
+		border: 1px solid #79CDCF;
 		color: white;
 		}
 		#active a:hover {
@@ -189,6 +228,19 @@
 	        	<div class="info_title_bar"></div>
 	        </div>
             <div class="all_class">
+            	<div class="search_box">
+	        		<select class="search_select">
+	        			<option value="title">강좌명</option>
+	        			<option value="writer">강사명</option>
+	        			<option value="all" selected="selected">강사+강좌</option>
+	        		</select>
+	        		<span class="search_text">
+	        			<input type="text" class="search_input">
+	        			<a class="search_icon_btn">
+	        				<i class="fas fa-search search_icon"></i>
+	        			</a>
+	        		</span>
+	        	</div>
                 <div class="all_content">
                 	<c:forEach items="${map.list}" var="list">
 	                    <div class="all_content_box">
@@ -245,5 +297,17 @@
        	</div>
     </section>
     <%@ include file = "../include/home_footer.jsp" %>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$(".search_icon_btn").click(function(){
+    			var search_option = $(".search_select").val();
+    			var keyword = $(".search_input").val();
+    			if (keyword == null || keyword.length == 0) {
+					return false;
+				}
+    			location.href="${path}/lecture/list?search_option="+search_option+"&keyword="+keyword;
+    		});
+    	});
+    </script>
 </body>
 </html>
