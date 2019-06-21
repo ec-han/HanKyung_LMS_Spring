@@ -55,8 +55,8 @@
 			right: 26px;
 			top: 26px;
 			font-size: 22px;
-			color: white;
-			opacity: .3;
+			color: #FFC000;
+			opacity: .5;
 			transition: .3s;
 		}
 		.basket_icon:hover {
@@ -77,6 +77,7 @@
 			color: #2D314F;
 			font-weight: 600;
 			border-bottom: 1px solid #dadada;
+			height: 46px;
 		}
 		.section_day {
 			display: inline-block;
@@ -115,13 +116,28 @@
 			position: relative;
 			width: 1219px;
 			margin: 0px auto;
-			padding-top: 35px;
+			padding-top: 60px;
 			padding-bottom: 20px;
+		}
+		.lecture_index {
+			position: absolute;
+			left: 15px;
+			top: 15px;
+			font-size: 20px;
+		}
+		.lecture_index > a {
+			transition: .3s;
+		}
+		.lecture_index > a:hover {
+			color: #FFC000;
+		}
+		#new_lecture {
+			margin-right: 10px;
 		}
 		.search_box {
 			position: absolute;
 			right: 15px;
-			top: -10px;
+			top: 15px;
 			display: flex;
 			justify-content: center;
 		}
@@ -228,6 +244,10 @@
 	        	<div class="info_title_bar"></div>
 	        </div>
             <div class="all_class">
+            	<div class="lecture_index">
+            		<a href="${path}/lecture/list?sort_option=new&search_option=${map.search_option}&keyword=${map.keyword}" id="new_lecture">최신순</a>
+            		<a href="${path}/lecture/list?sort_option=good&search_option=${map.search_option}&keyword=${map.keyword}" id="good_lecture">인기순</a>
+            	</div>
             	<div class="search_box">
 	        		<select class="search_select">
 	        			<option value="title">강좌명</option>
@@ -262,7 +282,7 @@
 	                        	~ <fmt:formatDate value="${list.enddate}" pattern="yyyy.mm.dd" />
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_teacher">강사ㅣ</span>${list.tname}
+	                            <span class="section_teacher">강사ㅣ</span>${list.tname} / lno : ${list.lno} / rgstrmem : ${list.rgstrmem}
 	                        </div>
 	                    </div>
                     </c:forEach>
@@ -299,12 +319,15 @@
     <%@ include file = "../include/home_footer.jsp" %>
     <script type="text/javascript">
     	$(document).ready(function(){
+    		var sort_option = "${map.sort_option}";
+    		if (sort_option == "new") {
+				$("#new_lecture").css("color", "#FFC000");
+			} else if (sort_option == "good") {
+				$("#good_lecture").css("color", "#FFC000");
+			}
     		$(".search_icon_btn").click(function(){
     			var search_option = $(".search_select").val();
     			var keyword = $(".search_input").val();
-    			if (keyword == null || keyword.length == 0) {
-					return false;
-				}
     			location.href="${path}/lecture/list?search_option="+search_option+"&keyword="+keyword;
     		});
     	});

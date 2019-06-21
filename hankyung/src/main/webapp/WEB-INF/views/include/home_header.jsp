@@ -13,7 +13,6 @@
 		background: white;
 		width: 100%;
 		min-width: 1350px;
-		padding: 23px 0px;
 		font-family: 'Nunito', sans-serif;
 		font-size: 20px;
 		font-weight: 600;
@@ -36,6 +35,7 @@
 	.home_navi_div {
 		display: inline-block;
 		position: relative;
+		padding: 23px 0px;
 	}
 	.home_navi_span {
 		display: inline-block;
@@ -47,9 +47,12 @@
 		transition: .3s;
 	}
 	.home_navi1 {
-		width: 150px;
-		color: #444;
-	}
+          width: 200px;
+    }
+    .home_navi1 > img {
+    	padding: 13px 0px 12px;
+    	width: 200px;
+    }
 	#about, #projects, #contact {
 		color: #444;
 	}
@@ -91,7 +94,7 @@
         <div class="home_header_box1">
             <div class="home_header_navi">
                 <div class="home_navi_left">
-                    <span class="home_navi_span"><a href="${path}/" "home_navi1">HanKyung LMS</a></span>
+                    <span class="home_navi_span"><a href="${path}/" class="home_navi1"><img src="${path}/resources/img/logo_02.png"></a></span>
                 </div>
                 <div class="home_navi_right">
 	                <c:choose>

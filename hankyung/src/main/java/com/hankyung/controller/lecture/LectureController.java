@@ -53,15 +53,14 @@ public class LectureController {
 			) {
 		log.info(">>>>> 과정 및 강좌 목록 페이지 출력");
 		// 레코드 갯수 계산
-		int count = service.countArticle(search_option,keyword);
-		
+		int count = service.countArticle(search_option, keyword);
 		//페이지 관련 설정
 		Pager pager = new Pager(count, curPage);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 				
 		List<LectureDTO> list = service.lectureList(sort_option, search_option, keyword, start, end);
-		log.info(">> count : "+count);
+		log.info(">> search_option : "+search_option+", keyword : "+keyword+", sort_option : "+sort_option+", count : "+count);
 		for (LectureDTO lectureDTO : list) {
 			log.info(">> list : "+lectureDTO);
 		}

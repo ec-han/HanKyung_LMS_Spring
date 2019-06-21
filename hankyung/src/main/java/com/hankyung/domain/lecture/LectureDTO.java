@@ -21,9 +21,9 @@ public class LectureDTO {
 	private String tname;
 	private String content;
 	private String ltype;
-	private String totalmem;
-	private String rgstrmem;
-	private String nowmem;
+	private int totalmem;
+	private int rgstrmem;
+	private int nowmem;
 	private String supmoney;
 	private String price;
 	private String limg;

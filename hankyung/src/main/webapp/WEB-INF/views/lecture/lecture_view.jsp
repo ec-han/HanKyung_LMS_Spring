@@ -143,8 +143,8 @@
 		}
 		.lecture_title {
 			font-size: 40px;
-			padding-top: 20px;
-			padding-bottom: 30px;
+			width: 900px;
+			height: 138px;
 		}
 		.lecture_day {
 			padding-bottom: 5px;
@@ -240,7 +240,7 @@
         </div>
         <div class="header_button">
 			<div class="button_left">
-				<a href="${path}/" class="lecture_btn white_btn">뒤로가기</a>
+				<a href="${path}/lecture/list" class="lecture_btn white_btn">뒤로가기</a>
 			</div>
 			<!-- <div class="button_right">
 				<a class="lecture_btn white_btn">수정</a>

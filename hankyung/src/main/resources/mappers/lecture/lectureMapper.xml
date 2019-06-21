@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 			SELECT * FROM
 				(SELECT * FROM hk_lecture
-				ORDER BY rgstrmem ASC)
+				ORDER BY rgstrmem DESC)
 			WHERE rownum <= 3
 		]]>
 	</select>

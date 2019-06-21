@@ -41,7 +41,6 @@
       .home_header_navi {
           width: 100%;
           min-width: 1350px;
-          padding: 30px 0px 30px;
           font-family: 'Nunito', sans-serif;
           font-size: 20px;
           font-weight: 600;
@@ -56,6 +55,7 @@
       }
       .home_navi_right {
           display: inline-block;
+          padding: 30px 0px;
           float: right;
           margin-right: 10%;
       }
@@ -74,7 +74,11 @@
           opacity: .5;
       }
       .home_navi1 {
-          width: 150px;
+          width: 200px;
+      }
+      .home_navi1 > img {
+      	padding: 20px 0px;
+      	width: 200px;
       }
       #about, #projects, #contact {
       	color: white;
@@ -239,8 +243,8 @@
 			right: 26px;
 			top: 26px;
 			font-size: 22px;
-			color: white;
-			opacity: .3;
+			color: #FFC000;
+			opacity: .5;
 			transition: .3s;
 		}
 		.basket_icon:hover {
@@ -261,6 +265,7 @@
 			color: #2D314F;
 			font-weight: 600;
 			border-bottom: 1px solid #dadada;
+			height: 46px;
 		}
 		.section_day {
 			display: inline-block;
@@ -295,7 +300,7 @@
             </div>
             <div class="home_header_navi">
                 <div class="home_navi_left">
-                    <span class="home_navi_span"><a class="home_navi1">HanKyung LMS</a></span>
+                    <span class="home_navi_span"><a href="${path}/" class="home_navi1"><img src="${path}/resources/img/logo_02_white.png"></a></span>
                 </div>
                 <div class="home_navi_right">
                     <div class="home_navi_div">
@@ -497,7 +502,7 @@
                 $('.home_header_navi').css("position", "fixed")
                                   .css("background", "white")
                                   .css('box-shadow', '2px 2px 20px rgba(0, 0, 0, 0.15)');
-                $('.home_navi1').css("color", "#444");
+                $('.home_navi1').html("<img src='${path}/resources/img/logo_02.png'>");
                 $('.right_navi').css("color", "#444");
                 $('.home_navi').css("opacity", "1");
                 $('.right_navi').css("opacity", "1");
@@ -540,7 +545,7 @@
                          		.css("opacity", "0.5");
                 $('.right_navi').css("color", "white")
                 				.css("opacity", "0.5");
-                $('.home_navi1').css("color", "white");
+                $('.home_navi1').html("<img src='${path}/resources/img/logo_02_white.png'>");
                 $('.right_navi').css("color", "white");
                 $('.home_navi_bar').eq(0).css("display", "none");
                 $('.home_navi_bar').eq(1).css("display", "none");
