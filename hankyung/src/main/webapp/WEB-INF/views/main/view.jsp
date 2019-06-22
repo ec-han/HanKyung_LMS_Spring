@@ -238,7 +238,7 @@
 										<c:if test="${sessionScope.name == one.writer}">
 										<div class="btn_right board_regi_btn">
 											<i class="fas fa-eraser" id="btn_del"></i>
-											<a href="${path}/board/update?tnum=${one.tnum}">
+											<a href="${path}/board/update?bno=${one.bno}&btype=${one.btype}">
 												<i class="fas fa-edit" id="btn_modi_view"></i>
 											</a>
 										</div>
@@ -296,6 +296,9 @@
 		$('#bd_btn_yes').click(function(){// 삭제 확인 모달창에서 "예"버튼 눌렀을 때 
 			location.href = "${path}/board/delete?tnum=${one.tnum}&btype=${one.btype}";
 		});
+		/* $('#btn_modi_view').click(function(){
+			location.href - "${path}/board/update?bno=${one.bno}&btype=${one.btype}";
+		}); */
 	});
 	
 	</script>

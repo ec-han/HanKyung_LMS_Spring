@@ -44,6 +44,11 @@ public class BoardDAOImpl  implements BoardDAO{
 	public int delete(BoardDTO bDto) {
 		return session.delete("board.delete",bDto);
 	}
+
+	@Override
+	public int update(BoardDTO bDto) {
+		return session.update("board.update",bDto);
+	}
 	
 
 

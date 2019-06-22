@@ -96,9 +96,9 @@
 				<div class="collapse_inner rounded collapse show" id="collapseAdmin">
 				  <a class="collapse_item" id="notice_link_a">공지사항</a>
 				  <a class="collapse_item" id="qna_link_a"">QnA</a>
-				  <h6 class="collapse_header">등록</h6>
-				  <a class="collapse_item" href="#">선생님 등록</a>
-				  <a class="collapse_item" href="#">과정 등록</a>
+				  <h6 class="collapse_header">관리</h6>
+				  <a class="collapse_item" href="#">선생님 관리</a>
+				  <a class="collapse_item" href="#">과정 관리</a>
 				  <h6 class="collapse_header">조회</h6>
 				  <a class="collapse_item" href="#">선생님 조회</a>
 				  <a class="collapse_item" href="#">학생 조회</a>
@@ -130,12 +130,12 @@
 				$('#accordionSidebar').addClass('toggled');
 				$('.nav_content_footer').css('padding-left','0');
 				$('.sidebar_brand-text').text("");
-				$('.sidebar_brand-icon').css('margin-left','1.8rem');
-				$('.sidebar_brand-icon').css('margin-right','1.8rem');
+				$('.sidebar_brand-icon').css('margin-left','1rem');
+				$('.sidebar_brand-icon').css('margin-right','1rem');
 				$('.collapse_inner').addClass('collapse_inner_toggled');
 				$('#accordionSidebar .nav_item').css('height','50px');
 			    $('#sidebarToggle').html('<i class="fas fa-angle-right"></i>');
-			    
+			    $('.sidebar_brand-icon').html('<img alt="파비콘 이미지" src="${path}/resources/img/pavicon02_white.png">');
 				state=true;
 			} else {
 //				alert("else문"+state);
@@ -149,6 +149,7 @@
 				$('.collapse_inner').removeClass('collapse_inner_toggled');
 				$('#accordionSidebar .nav_item').css('height','auto');
 				$('#sidebarToggle').html('<i class="fas fa-angle-left"></i>');
+				$('.sidebar_brand-icon').html('<img alt="로고 이미지" src="${path}/resources/img/logo_02_white.png">');
 				state=false;
 			}
 		});

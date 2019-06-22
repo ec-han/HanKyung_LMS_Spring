@@ -44,7 +44,8 @@
 					<div>
 						<div class="page_body">
 							<div class="bd_hd">
-								<form class="update_form" id="update_frm" method="POST" action="#">
+								<!--onsubmit="postForm()"  -->
+								<form role="form" class="update_form" id="update_frm" method="POST" action="#">
 									<div class="box-body">
 										<div class="row order-2 table_wrapper">
 				              				<div class="col-sm-12 table_wrapper" id="update_table_wrap">
@@ -54,7 +55,7 @@
 														<th>
 															<div class="upd-tb-center">제목</div>
 															<fieldset class="field_border">
-																<input class="form-control" name="title" id="upd_title" value="${one.title}">
+																<input class="form-control" name="title" id="upd_title" value="${update.title}">
 																<span class="step_url"></span>
 															</fieldset>
 														</th>
@@ -65,7 +66,7 @@
 														<td>
 															<div class="data-bd-cont">
 																<fieldset class="field_border">
-																	<textarea class="form-control" id="summernote" name="content" value="${one.content}"></textarea>
+																	<textarea class="form-control" id="summernote" name="content">${update.content}</textarea>
 																	<span class="step_url"></span>
 																</fieldset>
 															</div>
@@ -77,7 +78,7 @@
 														<td>
 															<div class="tb-center">작성자</div>
 															<fieldset class="field_border">
-																<input class="form-control" name="writer" id="upd_writer" value="${one.writer}" readonly="readonly">
+																<input class="form-control" name="writer" id="upd_writer" value="${update.writer}" readonly="readonly">
 															</fieldset>
 														</td>
 													</tr>
@@ -91,6 +92,7 @@
 											</div>
 										</div>
 									</div>
+									<input name="bno" value="${update.bno}" type="hidden">
 								</form>
 							</div>
 						</div>
@@ -107,7 +109,6 @@
 		$(function(){
 	   		$('#summernote').summernote({
 	   			lang: 'ko-KR',
-	   	        placeholder: '글을 입력해주세요.',
 	   	        tabsize: 2,
 	   	        height: 100,
 	   	        minHeight: null,             // set minimum height of editor
@@ -119,7 +120,8 @@
 				
 				var title = $("#upd_title").val();
 				var content = $("#summernote").val();
-					
+//				alert(content);
+
 				// 게시글 내용 작성자 null안되게 유효성 체크
 				if(title==""||title.length==0){
 					$('.step_url').text('글을 등록하려면 입력해주세요').css('display','block');

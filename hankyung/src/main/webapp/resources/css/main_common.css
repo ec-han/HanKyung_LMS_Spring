@@ -128,7 +128,6 @@ sup { /* 첨자 텍스트 */
     font-size: 2rem;
 }
 .sidebar_brand-icon > img {
-	width: 12rem;
     height: 3rem;
 }
 #accordionSidebar .nav_link {
