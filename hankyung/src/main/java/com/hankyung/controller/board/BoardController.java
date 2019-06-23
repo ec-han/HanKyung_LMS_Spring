@@ -23,7 +23,6 @@ public class BoardController {
 	@RequestMapping(value ="create", method = RequestMethod.GET)
 	public String createView() {
 		log.info(">>> 게시글 등록 페이지 출력");
-		
 		return "/main/regi";
 	}
 	

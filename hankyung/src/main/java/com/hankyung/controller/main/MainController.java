@@ -24,18 +24,11 @@ public class MainController {
 	@Inject
 	private BoardService service;
 	
-	@RequestMapping(value = "/old", method = RequestMethod.GET)
-	public String home() {
-		log.info(">>>이전 샘플 페이지");
-		
-		return "main/old_sample";
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String test() {
 		log.info(">>>test페이지");
 		
-		return "main/real_new_sample";
+		return "main/sample";
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

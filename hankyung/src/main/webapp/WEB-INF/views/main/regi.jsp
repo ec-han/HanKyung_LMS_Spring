@@ -89,6 +89,11 @@
 											<div class="btn_right board_regi_btn" id="qna_regi">
 												<i class="fas fa-pen-square"></i>
 											</div>
+											<div class="btn_left board_regi_btn">
+												<a href="${path}/main/">
+													<i class="far fa-list-alt" id="btn_list"></i>
+												</a>
+											</div>
 										</div>
 									</div>
 								</form>

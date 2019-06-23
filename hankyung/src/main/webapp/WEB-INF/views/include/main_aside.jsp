@@ -25,11 +25,46 @@
 	        <!-- Divider -->
 	        <hr class="sidebar_divider">
 	        <!-- Heading -->
+			<div class="sidebar_heading">
+				시스템 
+			</div>
+			<li class="nav_item active">
+				<a class="nav_link" id="collapseAdmin_parent">
+				  <i class="fas fa-fw fa-folder"></i>
+				  <span>관리자</span>
+				</a>
+				<div class="collapse_inner rounded collapse show" id="collapseAdmin">
+				  <h6 class="collapse_header">서비스데스크</h6>
+				  <a class="collapse_item" id="notice_link_a">공지사항</a>
+				  <a class="collapse_item" id="qna_link_a"">묻고 답하기</a>
+				  <h6 class="collapse_header">관리</h6>
+				  <a class="collapse_item" href="#">선생님 관리</a>
+				  <a class="collapse_item" href="#">과정 관리</a>
+				  <h6 class="collapse_header">조회</h6>
+				  <a class="collapse_item" href="#">선생님 조회</a>
+				  <a class="collapse_item" href="#">학생 조회</a>
+				  <a class="collapse_item" href="#">과정 조회</a>
+				  <a class="collapse_item" href="#">전체 정보 조회</a>
+				</div>  
+			</li>
+			<li class="nav_item active">
+				<a class="nav_link" id="collapseUsers_parent">
+				  <i class="fas fa-fw fa-folder"></i>
+				  <span>서비스데스크</span>
+				</a>
+				<div class="collapse_inner rounded collapse show" id="collapseUsers">
+				  <a class="collapse_item" id="#">공지사항</a>
+				  <a class="collapse_item" id="#"">묻고 답하기</a>	
+				  <a class="collapse_item" href="${path}/member/update">회원정보 수정</a>
+				  <a class="collapse_item" href="${path}/member/loss_info">아이디 및 비밀번호 찾기</a>
+				</div>  
+			</li>
+	        <!-- Heading -->
 	        <div class="sidebar_heading">
 				선생님
 	        </div>
 			<li class="nav_item">
-				<a class="nav_link collapsed" id="collapseCourse_parent" href="#">
+				<a class="nav_link collapsed" id="collapseCourse_parent">
 				  <i class="fas fa-fw fa-cog"></i>
 				  <span>과정 관리</span>
 				</a>
@@ -37,11 +72,11 @@
 					<h6 class="collapse_header">과정 정보</h6>
 					<a class="collapse_item" href="#">공지사항</a>
 					<a class="collapse_item" href="#">수업 계획표</a>
-					<a class="collapse_item" href="#">QnA</a>
+					<a class="collapse_item" href="#">묻고 답하기</a>
 				</div>
 			</li>
 			<li class="nav_item">
-				<a class="nav_link collapsed" id="collapseTeacher_parent" href="#">
+				<a class="nav_link collapsed" id="collapseTeacher_parent">
 				  <i class="fas fa-fw fa-wrench"></i>
 				  <span>학생 관리</span>
 				</a>
@@ -60,51 +95,30 @@
 				학생
 	        </div>
 			<li class="nav_item">
-				<a class="nav_link collapsed" id="collapseStudents_parent" href="#">
-				  <i class="fas fa-fw fa-cog"></i>
-				  <span>수강 과정</span>
+				<a class="nav_link collapsed" id="collapseLectureReady_parent">
+				  <i class="fas fa-power-off"></i>
+				  <span>수업준비</span>
 				</a>
-				<div class="collapse_inner rounded collapse" id="collapseStudents">
-					<h6 class="collapse_header">학습방</h6>
-					<a class="collapse_item" href="#">출결 조회</a>
-					<a class="collapse_item" href="#">성적 조회</a>
+				<div class="collapse_inner rounded collapse" id="collapseLectureReady">
+					<a class="collapse_item" href="#">선생님 소개</a>
+					<a class="collapse_item" href="#">수업 계획표</a>
 				</div>
-			</li>
-			<!-- Divider -->
-			<hr class="sidebar_divider">
-			<!-- Heading -->
-			<div class="sidebar_heading">
-				시스템 
-			</div>
-			<li class="nav_item active">
-				<a class="nav_link" id="collapseUsers_parent" href="#">
-				  <i class="fas fa-fw fa-folder"></i>
-				  <span>환경설정</span>
+				<a class="nav_link collapsed" href="#">
+				  <i class="fa fa-bullhorn"></i>
+				  <span>공지사항</span>
 				</a>
-				<div class="collapse_inner rounded collapse show" id="collapseUsers">
-				  <h6 class="collapse_header">회원정보 관리</h6>
-				  <a class="collapse_item" href="#">회원정보 수정</a>
-				  <a class="collapse_item" href="${path}/member/loss_info">아이디 및 비밀번호 찾기</a>
-				  <a class="collapse_item" href="#">회원탈퇴</a>
-				</div>  
-			</li>
-			<li class="nav_item active">
-				<a class="nav_link" id="collapseAdmin_parent" href="#">
-				  <i class="fas fa-fw fa-folder"></i>
-				  <span>관리자</span>
+				<a class="nav_link collapsed" href="#">
+				  <i class="fas fa-headphones"></i>
+				  <span>학습방</span>
 				</a>
-				<div class="collapse_inner rounded collapse show" id="collapseAdmin">
-				  <a class="collapse_item" id="notice_link_a">공지사항</a>
-				  <a class="collapse_item" id="qna_link_a"">QnA</a>
-				  <h6 class="collapse_header">관리</h6>
-				  <a class="collapse_item" href="#">선생님 관리</a>
-				  <a class="collapse_item" href="#">과정 관리</a>
-				  <h6 class="collapse_header">조회</h6>
-				  <a class="collapse_item" href="#">선생님 조회</a>
-				  <a class="collapse_item" href="#">학생 조회</a>
-				  <a class="collapse_item" href="#">과정 조회</a>
-				  <a class="collapse_item" href="#">전체 정보 조회</a>
-				</div>  
+				<a class="nav_link collapsed" href="#">
+				  <i class="fa fa-coffee"></i>
+				  <span>자유게시판</span>
+				</a>
+				<a class="nav_link collapsed" href="#">
+				  <i class="fas fa-chart-bar"></i>
+				  <span>학습현황</span>
+				</a>
 			</li>
 			<!-- Divider -->
 			<hr class="sidebar_divider">
@@ -161,8 +175,8 @@
 	        $('#collapseTeacher_parent').click(function(){
 	            $('#collapseTeacher').slideToggle('fast');   
 	        });
-			 $('#collapseStudents_parent').click(function(){
-	            $('#collapseStudents').slideToggle('fast'); 
+			 $('#collapseLectureReady_parent').click(function(){
+	            $('#collapseLectureReady').slideToggle('fast'); 
 	        });
 			$('#collapseUsers_parent').click(function(){
 	            $('#collapseUsers').slideToggle('fast'); 

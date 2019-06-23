@@ -21,7 +21,6 @@
 		<div class="nav_content_footer">
 			<%@ include file="../include/main_nav.jsp" %>
 			<div class="content_area">
-				<h1 class="">공지사항</h1>
 				<!-- DataTales Example -->
 		        <div class="card shadow">
 		            <div class="card-header">

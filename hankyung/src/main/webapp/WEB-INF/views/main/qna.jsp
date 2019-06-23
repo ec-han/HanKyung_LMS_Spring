@@ -20,11 +20,10 @@
 		<div class="nav_content_footer">
 			<%@ include file="../include/main_nav.jsp" %>
 			<div class="content_area">
-				<h1 class="">QnA</h1>
 				<!-- DataTales Example -->
 		        <div class="card shadow">
 		            <div class="card-header">
-		              <h6 class="text-primary">QnA</h6>
+		              <h6 class="text-primary">묻고 답하기</h6>
 		            </div>
 		            <div class="card-body">
 						<div class="table-responsive">

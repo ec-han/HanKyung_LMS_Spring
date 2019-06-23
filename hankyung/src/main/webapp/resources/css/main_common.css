@@ -137,6 +137,7 @@ sup { /* 첨자 텍스트 */
     padding: 1rem;
     width: 14rem;
     text-decoration: none;
+    cursor: pointer;
 }
 #accordionSidebar .nav_link > span{
     color: rgba(255,255,255,.8);
@@ -246,10 +247,18 @@ sup { /* 첨자 텍스트 */
     align-items: center;
     padding: .5rem 1rem;
 }
+.sub_lecture_name {
+	position: relative;
+    top: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: -1;
+    font-weight: lighter;
+    color: #858796;
+}
 #search_frm{
 	margin-right: auto;
 }
-#searchArea{
+/* #searchArea{
     width: 290px;
     height: 40px;
     display: inline-block;
@@ -283,7 +292,7 @@ sup { /* 첨자 텍스트 */
 }
 #search_btn{
     color: #d1d3e2;
-}
+} */
 #topNav .navbar_nav{
 	display: flex;
     -webkit-box-orient: horizontal;
@@ -314,7 +323,9 @@ sup { /* 첨자 텍스트 */
     top: 10px;
 }
 #usersDropdown span {
-    color: #858796;
+    color: #67697d;
+    font-weight: bold;
+    letter-spacing: 1;
 }
 #usersDropdown > .fa-user {
     padding-left: 10px;

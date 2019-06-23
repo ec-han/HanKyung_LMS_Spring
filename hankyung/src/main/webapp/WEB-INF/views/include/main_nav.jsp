@@ -79,19 +79,23 @@
 				</a>
 				<!-- Dropdown - User Information -->
 				<div class="dropdown_menu" id="dropdown_menu_right">
+					<c:if test="${!empty sessionScope.name}">
 				    <a class="dropdown_item" href="#">
 				    	<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 				             내 프로필
 				    </a>
-				  	<a class="dropdown_item" href="#">
+				  	<a class="dropdown_item" href="${path}/member/update">
 				    	<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-				            설정 
+				            개인 정보 수정 
 				  	</a>
 				  	<a class="dropdown_item" href="#">
 				    	<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
 				            활동기록
 				  	</a>
+				  	</c:if>
+				  	<c:if test="${!empty sessionScope.name}">
 				  	<div class="dropdown_divider"></div>
+				  	</c:if>
 				  	<c:choose>
 						<c:when test="${empty sessionScope.name}">
 						  	<a class="dropdown_item" id="nav_login" href="${path}/member/login">
@@ -110,9 +114,12 @@
 			</li>
 	        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
 			<form class="search_form" id="search_frm" name="search_frm" method="GET" action="">
-		   		<div id="searchArea">
+		   		<!-- <div id="searchArea">
 			        <input type="search" id="searchBar" name="searchBar" placeholder="검색">
 			        <button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
+				</div> -->
+				<div class="sub_lecture_name">
+					<span>실전 자바 강좌 (ver.2018) - 초보부터 개발자 취업까지!!</span>
 				</div>
 			</form>
         </ul>
@@ -142,12 +149,12 @@
 		}
 	});
 	$("#nav_logout").click(function(){
-		alert("로그아웃버튼 클릭");
+//		alert("로그아웃버튼 클릭");
 		$.ajax({
 			url: "${path}/member/logout",
 			type: "get",
 			success: function() {
-				alert("로그아웃 성공!!");
+//				alert("로그아웃 성공!!");
 				location.href="${path}/";
 			},
 			error:function(){
