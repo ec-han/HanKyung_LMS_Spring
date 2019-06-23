@@ -18,7 +18,7 @@
           	<hr class="sidebar_divider" id="sidebar_divider_0">
           	<!-- Nav Item - Dashboard -->
             <li class="nav_item">
-            	<a class="nav_link" href="#">
+            	<a class="nav_link" href="${path}/main/">
               	<i class="fas fa-fw fa-tachometer-alt"></i>
              	 <span>HOME</span></a>
             </li>
@@ -30,7 +30,7 @@
 			</div>
 			<li class="nav_item active">
 				<a class="nav_link" id="collapseAdmin_parent">
-				  <i class="fas fa-fw fa-folder"></i>
+				  <i class="fas fa-lock"></i>
 				  <span>관리자</span>
 				</a>
 				<div class="collapse_inner rounded collapse show" id="collapseAdmin">
@@ -49,7 +49,7 @@
 			</li>
 			<li class="nav_item active">
 				<a class="nav_link" id="collapseUsers_parent">
-				  <i class="fas fa-fw fa-folder"></i>
+				  <i class="fas fa-assistive-listening-systems"></i>
 				  <span>서비스데스크</span>
 				</a>
 				<div class="collapse_inner rounded collapse show" id="collapseUsers">
@@ -103,6 +103,8 @@
 					<a class="collapse_item" href="#">선생님 소개</a>
 					<a class="collapse_item" href="#">수업 계획표</a>
 				</div>
+			</li>
+			<li class="nav_item">
 				<a class="nav_link collapsed" href="#">
 				  <i class="fa fa-bullhorn"></i>
 				  <span>공지사항</span>
@@ -119,15 +121,15 @@
 				  <i class="fas fa-chart-bar"></i>
 				  <span>학습현황</span>
 				</a>
+				<!-- Divider -->
+				<hr class="sidebar_divider">
+				<!-- Sidebar Toggler (Sidebar) -->
+				<div class="text_center toggleBtn_div">
+					<button id="sidebarToggle">
+						<i class="fas fa-angle-left"></i>
+					</button>
+				</div>
 			</li>
-			<!-- Divider -->
-			<hr class="sidebar_divider">
-			<!-- Sidebar Toggler (Sidebar) -->
-			<div class="text_center">
-				<button id="sidebarToggle">
-					<i class="fas fa-angle-left"></i>
-				</button>
-			</div>
 		</ul>
 		<!-- End of Sidebar -->
 	</div>
@@ -142,8 +144,6 @@
 				$('.aside_wrap').animate({left:'-120px'},300);
 				$('.aside_wrap').addClass('toggled');
 				$('#accordionSidebar').addClass('toggled');
-				$('.nav_content_footer').css('padding-left','0');
-				$('.sidebar_brand-text').text("");
 				$('.sidebar_brand-icon').css('margin-left','1rem');
 				$('.sidebar_brand-icon').css('margin-right','1rem');
 				$('.collapse_inner').addClass('collapse_inner_toggled');
@@ -156,10 +156,8 @@
 				$('.aside_wrap').animate({left:'0px'},300);
 				$('#accordionSidebar').removeClass('toggled');
 				$('.aside_wrap').removeClass('toggled');
-				$('.nav_content_footer').css('padding-left','0');
 				$('.sidebar_brand-icon').css('margin-left','0px');
 				$('.sidebar_brand-icon').css('margin-right','0px');
-				$('.sidebar_brand-text').html("HanKyung LMS <sup>ver 1.2</sup>");
 				$('.collapse_inner').removeClass('collapse_inner_toggled');
 				$('#accordionSidebar .nav_item').css('height','auto');
 				$('#sidebarToggle').html('<i class="fas fa-angle-left"></i>');

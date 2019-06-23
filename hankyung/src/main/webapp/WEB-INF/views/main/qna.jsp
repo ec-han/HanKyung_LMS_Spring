@@ -29,6 +29,7 @@
 						<div class="table-responsive">
 			              	<div id="dataTable_wrapper" class="dataTables_wrapper">
 			              		<div class="row order-1" id="length_filter">
+			              			<c:if test="${!empty sessionScope.id}">
 				              		<div class="col-sm-12 col-md-6 order-1 margin-right board_regi_btn">
 				              			<i class="fas fa-pen-square"></i>
 				              			<!-- <div class="dataTables_length" id="dataTable_length">
@@ -42,6 +43,7 @@
 				              					</label>
 				              			</div> -->
 				              		</div>
+				              		</c:if>
 				              		<div class="col-sm-12 col-md-6 order-2 margin-left">
 				              			<div id="dataTable_filter" class="dataTables_filter">
 				              				<label>
