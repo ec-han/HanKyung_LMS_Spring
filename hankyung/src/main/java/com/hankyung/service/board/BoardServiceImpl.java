@@ -1,5 +1,6 @@
 package com.hankyung.service.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,8 +21,9 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO bDao;
 	
 	@Override
-	public List<BoardDTO> list(int btype) {
-		return bDao.list(btype);	
+	public List<BoardDTO> list(int btype, String sort_option, String search_option, String keyword, int start,
+			int end) {
+		return  bDao.list(btype, sort_option, search_option, keyword, start, end);
 	}
 
 	@Override
@@ -65,5 +67,12 @@ public class BoardServiceImpl implements BoardService{
 	public int update(BoardDTO bDto) {
 		return bDao.update(bDto);
 	}
+
+	@Override
+	public int countArticle(String search_option, String keyword) {
+		return bDao.countArticle(search_option, keyword);
+	}
+
+	
 	
 }

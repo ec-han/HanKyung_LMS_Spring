@@ -32,23 +32,18 @@
 			              			<c:if test="${!empty sessionScope.id}">
 				              		<div class="col-sm-12 col-md-6 order-1 margin-right board_regi_btn">
 				              			<i class="fas fa-pen-square"></i>
-				              			<!-- <div class="dataTables_length" id="dataTable_length">
-				              					<label>
-				              							보기
-				              							<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-				              								<option value="10">10</option>
-				              								<option value="10">25</option>
-				              								<option value="10">50</option>
-				              							</select>
-				              					</label>
-				              			</div> -->
 				              		</div>
 				              		</c:if>
 				              		<div class="col-sm-12 col-md-6 order-2 margin-left">
 				              			<div id="dataTable_filter" class="dataTables_filter">
 				              				<label>
-				              					검색:
-				              					<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+				              					<select id="selsearch" name="selsearch">
+													<option value="all" selected="selected">제목+내용</option>
+													<option value="title">제목</option>
+													<option value="content">내용</option>
+												</select>
+				              					<input type="search" class="form-control form-control-sm" id="search_board" name="search_board">
+				              					<button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
 				              				</label>
 				              			</div>
 				              		</div>
@@ -67,25 +62,25 @@
 						                    </tr>
 						                  </thead>
 						                  <tbody>
-						                  <c:forEach items="${boardList}" var="board">
+						                  <c:forEach items="${map.list}" var="bDto">
 						                 	<jsp:useBean id="now" class="java.util.Date"/>
 											<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today"/>
-											<fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd" var="regdate"/>
+											<fmt:formatDate value="${bDto.regdate}" pattern="yyyy-MM-dd" var="regdate"/>
 						                    <tr>
-						                      <td>${board.tnum}</td>
-						                      <td><a href="${path}/board/read?bno=${board.bno}&btype=${board.btype}">${board.title}</a></td>
-						                      <td>${board.writer}</td>
+						                      <td>${bDto.tnum}</td>
+						                      <td><a href="${path}/board/read?bno=${bDto.bno}&btype=${bDto.btype}">${bDto.title}</a></td>
+						                      <td>${bDto.writer}</td>
 						                      <td>
 						                      	<c:choose>
 													<c:when test="${today == regdate}">
-														<fmt:formatDate pattern="hh:mm:ss" value="${board.regdate}" />
+														<fmt:formatDate pattern="hh:mm:ss" value="${bDto.regdate}" />
 													</c:when>
 													<c:otherwise>
-														<fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" />		
+														<fmt:formatDate pattern="yyyy-MM-dd" value="${bDto.regdate}" />		
 													</c:otherwise>
 												</c:choose>		
 											  </td>
-						                      <td>${board.viewcnt}</td>
+						                      <td>${bDto.viewcnt}</td>
 						                      <td></td>
 						                    </tr>
 						                   </c:forEach>
@@ -101,42 +96,34 @@
 				              			<div class="col-sm-12 col-md-7 order-2" id="pagenation_wrapper">
 				              				<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
 				              					<ul class="pagination">
+				              						<c:if test="${map.pager.curBlock > 1}">
 				              						<li class="paginate_button page-item previous" id="dataTable_previous">
-				              							<a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">
+				              							<a href="${path}/main/list?btype=0&curPage=${map.pager.blockBegin-10}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" data-dt-idx="0" tabindex="0" class="page-link">
 				              								이전 페이지
 				              							</a>
 				              						</li>
-				              						<li class="paginate_button page-item">
-				              							<a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">
-				              								1
-				              							</a>
-				              						</li>
-				              						<li class="paginate_button page-item">
-				              							<a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">
-				              								2
-				              							</a>
-				              						</li>
-				              						<li class="paginate_button page-item">
-				              							<a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">
-				              								3
-				              							</a>
-				              						</li>
-				              						<li class="paginate_button page-item">
-				              							<a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">
-				              								4
-				              							</a>
-				              						</li>
-				              						<li class="paginate_button page-item">
-				              							<a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">
+				              						</c:if>
+				              						<!-- begin end로 몇번부터 몇번까지 반복하게 설정. startPage(1)부터 begin해서 endPage(10)에서 end. var="idx"는 for문의 i(index) 같은거
+													c:out은 출력임. 삼항연산자 사용. pageMaker.criDto.page : 선택한 페이지 == idx랑 같으면 class="active"효과를 주는 거 -->
+													<c:forEach begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}" var="idx">
+														<li class="paginate_button page-item" <c:out value="${map.pager.curPage == idx ? 'class=active':''}"/>>
+					              							<a href="${path}/main/list?&btype=0&curPage=${idx}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}"" data-dt-idx="1" tabindex="0" class="page-link">
+					              								${idx}
+					              							</a>
+					              						</li>
+													</c:forEach>
+				              						<!-- <li class="paginate_button page-item">
+				              							<a href="#" data-dt-idx="5" tabindex="0" class="page-link">
 				              								5
 				              							</a>
-				              						</li>
-				              						
+				              						</li> -->
+				              						<c:if test="${map.pager.curBlock < map.pager.totBlock}">
 				              						<li class="paginate_button page-item next" id="dataTable_next">
-				              							<a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">
+				              							<a href="${path}/main/list?btype=0&curPage=${map.pager.blockEnd+1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" data-dt-idx="6" tabindex="0" class="page-link">
 				              								다음 페이지
 				              							</a>
 				              						</li>
+				              						</c:if>
 				              					</ul>
 				              				</div>
 				              			</div>
@@ -160,6 +147,21 @@
 				var btype = 1;
 				location.href="${path}/board/create?btype="+btype;
 			});
+		});
+		
+		$(document).on("click","#searchbtnArea", function(){
+			var search_option = $('#selsearch').val();
+			var keyword = $.trim($('#search_board').val());
+			var btype = 1;
+			
+			if(keyword == null || keyword.length == 0){
+				$('#search_board').focus();
+				$('#search_board').css('border','1px solid rgb(183,46,154)');
+				return false;
+				
+			}
+			alert(search_option+","+keyword);
+			location.href="${path}/main/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>
 </body>
