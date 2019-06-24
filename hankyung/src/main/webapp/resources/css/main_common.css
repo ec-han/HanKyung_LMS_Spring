@@ -263,41 +263,7 @@ sup { /* 첨자 텍스트 */
 #search_frm{
 	margin-right: auto;
 }
-/* #searchArea{
-    width: 290px;
-    height: 40px;
-    display: inline-block;
-    font-size: 20px;
-    color: black;
-    position: absolute;
-}
-#searchBar {
-    width: 250px;
-    height: 40px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #6e707e;
-    background-color: #f8f9fc;
-    border: 1px solid #555;
-    position: relative;
-    top: 15px;
-    outline: none;
-} 
-#searchbtnArea{
-    width: 40px;
-    height: 40px;
-    background-color: #404988;
-    display: inline-block;
-    border: 1px solid #555;
-    position: absolute;
-    top: 15px;
-    left: 250px;
-    cursor: pointer;
-    outline: none;
-}
-#search_btn{
-    color: #d1d3e2;
-} */
+
 #topNav .navbar_nav{
 	display: flex;
     -webkit-box-orient: horizontal;

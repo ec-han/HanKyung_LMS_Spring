@@ -1,4 +1,4 @@
-package com.hankyung.service.lecture;
+package com.hankyung.service;
 
 public class Pager {
 	public static final int PAGE_SCALE=9;  // 페이지당 게시물수

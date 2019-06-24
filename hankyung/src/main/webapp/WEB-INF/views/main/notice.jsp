@@ -33,23 +33,18 @@
 			              			<c:if test="${!empty sessionScope.id}">
 				              		<div class="col-sm-12 col-md-6 order-1 margin-right board_regi_btn">
 				              			<i class="fas fa-pen-square"></i>
-				              			<!-- <div class="dataTables_length" id="dataTable_length">
-				              					<label>
-				              							보기
-				              							<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-				              								<option value="10">10</option>
-				              								<option value="10">25</option>
-				              								<option value="10">50</option>
-				              							</select>
-				              					</label>
-				              			</div> -->
 				              		</div>
 				              		</c:if>
 				              		<div class="col-sm-12 col-md-6 order-2 margin-left">
 				              			<div id="dataTable_filter" class="dataTables_filter">
 				              				<label>
-				              					검색:
-				              					<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+				              					<select id="selsearch" name="selsearch">
+													<option value="all" selected="selected">제목+내용</option>
+													<option value="title">제목</option>
+													<option value="content">내용</option>
+												</select>
+				              					<input type="search" class="form-control form-control-sm" id="search_board" name="search_board">
+				              					<button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
 				              				</label>
 				              			</div>
 				              		</div>
@@ -163,6 +158,21 @@
 				var btype = 0;
 				location.href="${path}/board/create?btype="+btype;
 			});
+
+		});
+		
+		$(document).on("click","#searchbtnArea", function(){
+			var search_option = $('#selsearch').val();
+			var keyword = $.trim($('#search_board').val());
+			
+			if(keyword == null || keyword.length == 0){
+				$('#search_board').focus();
+				$('#search_board').css('border','1px solid rgb(183,46,154)');
+				return false;
+				
+			}
+			alert(search_option+","+keyword);
+			location.href="${path}/main/list?search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>
 </body>

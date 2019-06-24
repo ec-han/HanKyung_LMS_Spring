@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hankyung.domain.lecture.LectureDTO;
+import com.hankyung.service.Pager;
 import com.hankyung.service.lecture.LectureService;
-import com.hankyung.service.lecture.Pager;
 
 import lombok.extern.slf4j.Slf4j;
 

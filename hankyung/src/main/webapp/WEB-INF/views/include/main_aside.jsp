@@ -59,6 +59,8 @@
 				  <a class="collapse_item" href="${path}/member/loss_info">아이디 및 비밀번호 찾기</a>
 				</div>  
 			</li>
+			<!-- Divider -->
+	        <hr class="sidebar_divider">
 	        <!-- Heading -->
 	        <div class="sidebar_heading">
 				선생님
