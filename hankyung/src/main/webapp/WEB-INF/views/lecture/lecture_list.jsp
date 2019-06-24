@@ -264,7 +264,8 @@
                 <div class="all_content">
                 	<c:forEach items="${map.list}" var="list">
 	                    <div class="all_content_box">
-	                    	<a>
+	                    	<input type="text" value="${list.lno}" class="input_lno">
+	                    	<a class="basket_btn">
 	                    		<i class="fas fa-shopping-basket basket_icon"></i>
 	                    	</a>
 	                    	<div class="section_img">
@@ -319,6 +320,9 @@
     <%@ include file = "../include/home_footer.jsp" %>
     <script type="text/javascript">
     	$(document).ready(function(){
+    		
+    		cartCheck();
+    		
     		var sort_option = "${map.sort_option}";
     		if (sort_option == "new") {
 				$("#new_lecture").css("color", "#FFC000");
@@ -330,7 +334,45 @@
     			var keyword = $(".search_input").val();
     			location.href="${path}/lecture/list?search_option="+search_option+"&keyword="+keyword;
     		});
+    		
+    		$(".basket_btn").click(function(){
+    			var lno = $(this).parent().children('input').val();
+    			cartUpdate(lno);
+    		});
     	});
+    	
+    	function cartUpdate(lno){
+    		var id = "${SessionScope.id}";
+    		$.ajax({
+    			type: "POST",
+    			url: "${path}/lecture/cartUpdate?lno="+lno+"&id="+id,
+    			success: function(){
+    				
+    			}, error: function(){
+    				alert("cartUpdate Error!!!");
+    			}
+    		});
+    	}
+    	
+    	function cartCheck() {
+    		var id = "${SessionScope.id}";
+    		var lno = $(this).parent().children('input').val();
+			console.log("result : "+lno);
+    		$.ajax({
+    			type: "POST",
+    			url: "${path}/lecture/cartCheck?lno="+lno+"&id="+id,
+    			success: function(data){
+    				// alert(data);
+    				if (data > 0) {
+						$(".basket_icon").css("opacity","1");
+					} else {
+						$(".basket_icon").css("opacity",".5");
+					}
+    			}, error: function(){
+    				alert("cartCheck Error!!!");
+    			}
+    		});
+    	}
     </script>
 </body>
 </html>

@@ -57,4 +57,21 @@ public class LectureServiceImpl implements LectureService{
         return lDao.price(id);
     }
 
+	@Override
+	public void cartUpdate(int lno, String id) {
+		int result = lDao.cartCheck(lno, id);
+		if (result > 0) {
+			lDao.cartDelete(lno, id);
+		} else {
+			lDao.cartInsert(lno, id);
+		}
+		
+	}
+	
+	@Override
+	public int cartCheck(int lno, String id) {
+		return lDao.cartCheck(lno, id);
+	}
+
+
 }

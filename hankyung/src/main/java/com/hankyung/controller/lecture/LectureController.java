@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hankyung.domain.lecture.LectureDTO;
@@ -61,9 +62,6 @@ public class LectureController {
 				
 		List<LectureDTO> list = service.lectureList(sort_option, search_option, keyword, start, end);
 		log.info(">> search_option : "+search_option+", keyword : "+keyword+", sort_option : "+sort_option+", count : "+count);
-		for (LectureDTO lectureDTO : list) {
-			log.info(">> list : "+lectureDTO);
-		}
 		
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> map = new HashMap<>();
@@ -87,5 +85,19 @@ public class LectureController {
 		return "lecture/lecture_view";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="cartUpdate", method = RequestMethod.POST)
+	public void cartUpdate(int lno, String id) {
+		log.info(">>>>> 카트체크 후 등록, 삭제");
+		service.cartUpdate(lno, id);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="cartCheck", method = RequestMethod.POST)
+	public int cartCheck(int lno, String id) {
+		log.info(">>>>> 카트 눌렀는지 체크");
+		int cartCheck = service.cartCheck(lno, id);
+		return cartCheck;
+	}
 	
 }

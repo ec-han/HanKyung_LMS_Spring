@@ -87,4 +87,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
              FROM hk_cart
             WHERE id = #{id}
      </select>
+     
+     <select id="cartCheck" parameterType="hashmap" resultType="int">
+     	SELECT COUNT(*)
+     	FROM lecture_cart
+     	WHERE lno = #{lno} AND id = #{id}
+     </select>
+     
+     <delete id="cartDelete" parameterType="hashmap">
+     	DELETE FROM lecture_cart
+     	WHERE lno = #{lno} AND id = #{id}
+     </delete>
+     
+     <insert id="cartInsert" parameterType="hashmap">
+     	INSERT INTO lecture_cart(lno, id)
+     	VALUES(#{lno}, #{id})
+     </insert>
 </mapper>
