@@ -365,7 +365,7 @@
                     </div>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/lecture/cart" class="home_navi_btn right_navi" id="basket">수강바구니</a>
+                            <a href="${path}/lecture/cart" class="home_navi_btn right_navi" id="basket">장바구니</a>
                         </span>
                     </div>
                     <c:if test="${!empty sessionScope.id}">
@@ -380,7 +380,15 @@
             <div class="header_center">
             	<c:choose>
 	            	<c:when test="${!empty sessionScope.id}">
-	                	<div class="center_title1">${sessionScope.name}님, 안녕하세요!</div>
+		            	<c:if test="${sessionScope.type == '0'}">
+		            		<div class="center_title1">${sessionScope.name}님, 반갑습니다!</div>
+		            	</c:if>
+		            	<c:if test="${sessionScope.type == '1'}">
+		            		<div class="center_title1">${sessionScope.name}님, 어서오세요!</div>
+		            	</c:if>
+		            	<c:if test="${sessionScope.type == '2'}">
+		            		<div class="center_title1">${sessionScope.name}님, 반갑습니다!</div>
+		            	</c:if>
 	                </c:when>
 	                <c:otherwise>
 	                	<div class="center_title1">시작해보세요!</div>

@@ -242,10 +242,10 @@
 			<div class="button_left">
 				<a href="${path}/lecture/list" class="lecture_btn white_btn">뒤로가기</a>
 			</div>
-			<!-- <div class="button_right">
-				<a class="lecture_btn white_btn">수정</a>
-				<a class="lecture_btn color_btn">삭제</a>
-			</div> -->
+			<div class="button_right">
+				<a class="lecture_btn white_btn">위시리스트</a>
+				<a class="lecture_btn color_btn">장바구니</a>
+			</div>
 		</div>
 		<div class="lecture_top">
        		<div class="lecture_content">

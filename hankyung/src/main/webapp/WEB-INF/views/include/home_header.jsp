@@ -56,7 +56,7 @@
 	#about, #projects, #contact {
 		color: #444;
 	}
-	#login, #join, #basket, #main, #name, #logout {
+	#login, #join, #basket, #main, #name, #notname, #notname, #logout {
 		font-family: 'Noto Sans KR', sans-serif;
 		font-weight: normal;
 		font-size: 18px;
@@ -64,6 +64,9 @@
 	}
 	#login:hover, #join:hover, #basket:hover, #main:hover, #name:hover, #logout:hover {
 		color: #FFC000!important;
+	}
+	#notname {
+		cursor: default;
 	}
 	#name {
 		margin: 0px 15px;
@@ -113,40 +116,85 @@
 	.mypage_box {
 		position: absolute;
 		display: none;
-		width: 140px;
-		top: 83px;
-		left: -8px;
+		width: 130px;
+		top: 73px;
+		left: -3px;
 		background: white;
 		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
-		padding: 2px 7px;
 		box-sizing: border-box;
-		border-radius: 5px;
 		font-size: 14px;
 		font-weight: 400;
+		overflow: hidden;
+	}
+	.mypage_box_bar {
+		position: absolute;
+		top: 0px;
+		height: 4px;
+		width: 235px;
+		left: -1px;
+		background: #79CDCF;
 	}
 	.mypage_btn {
 		display: block;
-		margin: 12px 5px 12px 13px;
+		padding: 15px 5px 8px 16px;
+		transition: .2s;
+	}
+	.mypage_btn:last-child {
+		padding: 8px 5px 13px 16px;
 	}
 	.mypage_btn:hover {
-		color: #d1d3e2;
-		transition: .3s;
+		color: #79CDCF;
 	}
-	.update_icon, .wish_icon {
-		color: #d1d3e2;
+	.icon_hover {
+		color: #79CDCF;
 		padding-right: 5px;
 	}
 	.main_box {
 		position: absolute;
-		display: inline-block;
+		display: none;
+		width: 300px;
+		top: 73px;
+		left: -100px;
 		background: white;
 		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
-		padding: 2px 7px;
 		box-sizing: border-box;
-		border-radius: 5px;
 		font-size: 14px;
 		font-weight: 400;
+		overflow: hidden;
+		padding: 10px;
 	}
+	.main_box_bar {
+		position: absolute;
+		top: 0px;
+		left: -1px;
+		height: 4px;
+		width: 350px;
+		background: #79CDCF;
+	}
+	.main_box_title {
+		font-weight: 600;
+		padding: 3px 5px 8px;
+		font-size: 15px;
+		color: #79CDCF;
+		margin: 0px 5px;
+		border-bottom: 1px solid #ededed;
+	}
+	.main_lecture {
+		display: block;
+		width: 270px;
+		margin: 5px 5px;
+	}
+	.main_lecture:first-child {
+		margin: 8px 5px 5px;
+	}
+	.main_lecture:last-child {
+		margin: 5px 5px 0px;
+	}
+	.main_lecture:hover {
+		color: #79CDCF;
+		transition: .2s;
+	}
+	
 	
 	
 	
@@ -174,34 +222,63 @@
 		                <c:when test="${!empty sessionScope.id}">
 		                	<div class="home_navi_div mypage">
 		                        <span class="home_navi_span">
-		                            <a class="home_navi home_navi2" id="name">
+		                            <a class="home_navi home_navi2 name" <c:out value="${sessionScope.type =='2'?'id=name':'id=notname'}"/>>
 		                            	<span id="name_point">${sessionScope.name}</span>님
-		                            	<i class="fas fa-chevron-down"></i>
+		                            	<c:if test="${sessionScope.type == '2'}">
+		                            		<i class="fas fa-chevron-down"></i>
+		                            	</c:if>
 		                            </a>
 		                            
 		                        </span>
 		                        <!-- <div class="mypage_arrow arrow_top"></div>
 		                        <div class="mypage_arrow"></div> -->
-		                        <div class="mypage_box">
-		                        	<a class="wishlist mypage_btn"><i class="fas fa-heart wish_icon"></i>위시리스트</a>
-		                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 update_icon"></i>회원수정</a>
-		                        </div>
+		                        <c:if test="${sessionScope.type == '2'}">
+		                        	<div class="mypage_box">
+		                        		<div class="mypage_box_bar"></div>
+			                        	<a class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
+			                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
+			                        </div>
+		                        </c:if>
 	                    	</div>
-		                	<div class="home_navi_div">
-		                        <span class="home_navi_span">
-		                            <a href="${path}/main/" class="home_navi home_navi2" id="main">나의강의실</a>
-		                        </span>
-		                        
-		                        <div class="main_box">
-		                        	<a>강의실로 바로 이동</a>
-		                        	<div>나의 강의목록</div>
-		                        	<div>
-		                        		<a>인터랙티브 웹 개발 제대로 시작하기</a>
-		                        		<a>인터랙티브 웹 개발 제대로 시작하기</a>
-		                        		<a>인터랙티브 웹 개발 제대로 시작하기</a>
-		                        	</div>
-		                        </div>
-	                    	</div>
+	                    	<c:if test="${sessionScope.type == '0'}">
+	                    		<div class="home_navi_div">
+			                        <span class="home_navi_span">
+			                            <a href="${path}/main/" class="home_navi home_navi2" id="main">LMS관리</a>
+			                        </span>
+		                    	</div>
+	                    	</c:if>
+	                    	<c:if test="${sessionScope.type == '1'}">
+			                	<div class="home_navi_div">
+			                        <span class="home_navi_span">
+			                            <a class="home_navi home_navi2" id="main">나의강의실</a>
+			                        </span>
+			                        <div class="main_box">
+			                        	<div class="main_box_bar"></div>
+			                        	<div class="main_box_title">나의 강의목록</div>
+			                        	<div>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기1</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작sdfsdf하기2</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기3</a>
+			                        	</div>
+			                        </div>
+		                    	</div>
+	                    	</c:if>
+	                    	<c:if test="${sessionScope.type == '2'}">
+			                	<div class="home_navi_div">
+			                        <span class="home_navi_span">
+			                            <a class="home_navi home_navi2 main_btn" id="main">나의강의실</a>
+			                        </span>
+			                        <div class="main_box">
+			                        	<div class="main_box_bar"></div>
+			                        	<div class="main_box_title">나의 강의목록</div>
+			                        	<div>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기1</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작sdfsdf하기2</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기3</a>
+			                        	</div>
+			                        </div>
+		                    	</div>
+	                    	</c:if>
 		                </c:when>
 		                <c:otherwise>
 		                    <div class="home_navi_div">
@@ -223,7 +300,7 @@
                     </div>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/" class="home_navi home_navi4" id="basket">장바구니</a>
+                            <a href="${path}/lecture/cart" class="home_navi home_navi4" id="basket">장바구니</a>
                         </span>
                     </div>
                     <c:if test="${!empty sessionScope.id}">
@@ -251,17 +328,34 @@
             	});
             });
             
-            var flag = 0;
+            var flag1 = 0;
+            var flag2 = 0;
             
-            $("#name").click(function(){
-            	if (flag == 0) {
+            $(".name").click(function(){
+            	if (flag1 == 0) {
             		$(".mypage_box").css("display", "inline-block");
-            		flag = 1;
+            		flag1 = 1;
 				} else {
 					$(".mypage_box").css("display", "none");
-            		flag = 0;
+            		flag1 = 0;
 				}
+            	$(".main_box").css("display", "none");
+            	flag2 = 0;
             });
+            
+            $(".main_btn").click(function(){
+            	if (flag2 == 0) {
+            		$(".main_box").css("display", "inline-block");
+            		flag2 = 1;
+				} else {
+					$(".main_box").css("display", "none");
+            		flag2 = 0;
+				}
+            	$(".mypage_box").css("display", "none");
+            	flag1 = 0;
+            });
+            
+            
         });
         $(window).scroll(function(event) {
             var scrollValue = $(this).scrollTop();
