@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,12 +33,14 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
 		logger.info(">>>>> 메인페이지입니다");
 		
 		HashMap<String, List<LectureDTO>> map = service.homeList();
 		
 		model.addAttribute("map", map);
+		session.setAttribute("id", "user01");
+		session.setAttribute("name", "관리자");
 		
 		return "home";
 	}
