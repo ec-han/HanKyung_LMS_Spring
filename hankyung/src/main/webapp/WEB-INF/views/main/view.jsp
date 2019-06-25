@@ -244,7 +244,7 @@
 										</div>
 										</c:if>
 										<div class="btn_left board_regi_btn">
-											<a href="${path}/main/list?btype=${one.btype}">
+											<a href="${path}/board/list?btype=${one.btype}">
 												<i class="far fa-list-alt" id="btn_list"></i>
 											</a>
 											<c:if test="${!empty sessionScope.id}">

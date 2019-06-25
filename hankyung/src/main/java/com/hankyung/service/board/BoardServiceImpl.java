@@ -69,8 +69,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int countArticle(String search_option, String keyword) {
-		return bDao.countArticle(search_option, keyword);
+	public int countArticle(int btype, String search_option, String keyword) {
+		return bDao.countArticle(btype, search_option, keyword);
 	}
 
 	

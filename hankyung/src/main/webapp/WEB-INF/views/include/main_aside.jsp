@@ -192,11 +192,11 @@
 		
 		$('#notice_link_a').click(function(){
 			var btype = 0;
-			location.href="${path}/main/list?btype="+btype;
+			location.href="${path}/board/list?btype="+btype;
 		});
 		$('#qna_link_a').click(function(){
 			var btype = 1;
-			location.href="${path}/main/list?btype="+btype;
+			location.href="${path}/board/list?btype="+btype;
 		});
 	});	
 	</script>

@@ -14,5 +14,5 @@ public interface BoardDAO {
 	public BoardDTO read(BoardDTO bDto);
 	public void increaseViewCnt(BoardDTO bDto);
 	public int delete(BoardDTO bDto);
-	public int countArticle(String search_option, String keyword);
+	public int countArticle(int btype, String search_option, String keyword);
 }

@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	SELECT * FROM
 			(SELECT rownum AS rnum, A.* FROM
 				( SELECT * FROM hk_board 
-					WHERE btype=0 AND
+					WHERE btype=#{btype} AND
 				<choose>
 					<when test="search_option != 'all'">
 						<if test="search_option == 'title'">
@@ -21,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					</when>
 					<otherwise>
 						<if test="search_option == 'all'">
-							title LIKE #{keyword}
-							OR writer LIKE #{keyword}
+							(title LIKE #{keyword}
+							OR writer LIKE #{keyword})
 						</if>
 					</otherwise>
 				</choose>
@@ -70,7 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 레코드 갯수 계산  -->
 	<select id="countArticle" resultType="int">
 		SELECT COUNT(*)
-		FROM hk_board WHERE
+		FROM hk_board WHERE btype=#{btype} AND
 		<choose>
 			<when test="search_option != 'all'">
 				<if test="search_option == 'title'">
@@ -81,8 +81,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</if>
 			</when>
 			<otherwise>
-				title LIKE #{keyword}
-				OR writer LIKE #{keyword}
+				(title LIKE #{keyword}
+				OR writer LIKE #{keyword})
 			</otherwise>
 		</choose>
 	</select>

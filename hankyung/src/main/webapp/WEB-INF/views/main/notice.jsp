@@ -97,9 +97,9 @@
 				              			<div class="col-sm-12 col-md-7 order-2" id="pagenation_wrapper">
 				              				<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
 				              					<ul class="pagination">
-				              						<c:if test="${map.pager.curBlock > 1}">
+				              						<c:if test="${map.pager.curPage > 1}">
 				              						<li class="paginate_button page-item previous" id="dataTable_previous">
-				              							<a href="${path}/main/list?btype=0&curPage=${map.pager.blockBegin-10}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" data-dt-idx="0" tabindex="0" class="page-link">
+				              							<a href="${path}/board/list?btype=0&curPage=${map.pager.curPage-1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
 				              								이전 페이지
 				              							</a>
 				              						</li>
@@ -107,20 +107,15 @@
 				              						<!-- begin end로 몇번부터 몇번까지 반복하게 설정. startPage(1)부터 begin해서 endPage(10)에서 end. var="idx"는 for문의 i(index) 같은거
 													c:out은 출력임. 삼항연산자 사용. pageMaker.criDto.page : 선택한 페이지 == idx랑 같으면 class="active"효과를 주는 거 -->
 													<c:forEach begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}" var="idx">
-														<li class="paginate_button page-item" <c:out value="${map.pager.curPage == idx ? 'class=active':''}"/>>
-					              							<a href="${path}/main/list?&btype=0&curPage=${idx}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}"" data-dt-idx="1" tabindex="0" class="page-link">
+														<li class="paginate_button page-item" <c:out value="${map.pager.curPage == idx ? 'class=active-idx':''}"/>>
+					              							<a href="${path}/board/list?btype=0&curPage=${idx}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
 					              								${idx}
 					              							</a>
 					              						</li>
 													</c:forEach>
-				              						<!-- <li class="paginate_button page-item">
-				              							<a href="#" data-dt-idx="5" tabindex="0" class="page-link">
-				              								5
-				              							</a>
-				              						</li> -->
-				              						<c:if test="${map.pager.curBlock < map.pager.totBlock}">
+				              						<c:if test="${map.pager.curPage < map.pager.blockEnd}">
 				              						<li class="paginate_button page-item next" id="dataTable_next">
-				              							<a href="${path}/main/list?btype=0&curPage=${map.pager.blockEnd+1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" data-dt-idx="6" tabindex="0" class="page-link">
+				              							<a href="${path}/board/list?btype=0&curPage=${map.pager.curPage+1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
 				              								다음 페이지
 				              							</a>
 				              						</li>
@@ -165,7 +160,7 @@
 				
 			}
 			alert(search_option+","+keyword);
-			location.href="${path}/main/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
+			location.href="${path}/board/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>
 </body>

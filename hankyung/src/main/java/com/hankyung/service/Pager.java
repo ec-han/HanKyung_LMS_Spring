@@ -25,7 +25,16 @@ public class Pager {
 	public void setPageScale(int pageScale) {
 		this.pageScale = pageScale;
 	}
-
+	// Pager(레코드 갯수, 출력할 페이지번호)
+		public Pager(int count, int curPage) {
+			curBlock = 1; // 현재블록 번호
+			this.curPage = curPage; // 현재 페이지 번호
+			setTotPage(count); // 전체 페이지 갯수 계산
+			setPageRange(); // #{start}, #{end} 값 계산
+			setTotBlock(); // 전체 블록 갯수 계산
+			setBlockRange(); // 블록의 시작, 끝 번호 계산
+		}
+		
 	// Pager(레코드 갯수, 출력할 페이지번호)
 	public Pager(int count, int curPage, int pageScale) {
 		curBlock = 1; // 현재블록 번호

@@ -59,8 +59,9 @@ public class BoardDAOImpl  implements BoardDAO{
 	}
 
 	@Override
-	public int countArticle(String search_option, String keyword) {
-		Map<String, String> map = new HashMap<>();
+	public int countArticle(int btype, String search_option, String keyword) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("btype", btype);
 		map.put("search_option", search_option);
 		map.put("keyword", "%"+keyword+"%");
 		log.info(">>> keyword : "+keyword);
