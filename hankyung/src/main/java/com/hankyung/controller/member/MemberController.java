@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -174,6 +175,36 @@ public class MemberController {
 		service.update(mDto);
 		
 		return "member/update_info";
+	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String delete(HttpSession session, MemberDTO mDto, Model model) {
+		log.info("학생정보삭제 페이지");
+		
+		return "member/delete";
+	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public String deleteplay(HttpSession session) {
+		log.info("학생정보삭제");
+		
+		String id = (String)session.getAttribute("id");
+		service.delete(id);
+		session.removeAttribute("id");
+		session.removeAttribute("name");
+		
+		return "member/delete";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/pw_check", method=RequestMethod.POST)
+	public int pw_check(HttpSession session, MemberDTO mDto, Model model) {
+		log.info("비밀번호 확인");
+		String id = (String)session.getAttribute("id");
+		mDto.setId(id);
+		int result = service.pw_check(mDto);
+		log.info(result+"");
+		return result;
 	}
 	
 	

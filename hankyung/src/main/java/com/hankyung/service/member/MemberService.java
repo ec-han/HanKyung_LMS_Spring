@@ -14,6 +14,7 @@ public interface MemberService {
 	public void logout(HttpSession session);
 	public MemberDTO info(String id);
 	public void update(MemberDTO mDto);
-	
+	public void delete(String id);
+	public int pw_check(MemberDTO mDto);
 	
 }

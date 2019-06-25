@@ -72,4 +72,14 @@ public class MemberServiceImpl implements MemberService{
 		mDao.update(mDto);
 	}
 
+	@Override
+	public void delete(String id) {
+		mDao.delete(id);
+	}
+
+	@Override
+	public int pw_check(MemberDTO mDto) {
+		return mDao.pw_check(mDto);
+	}
+
 }

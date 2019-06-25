@@ -11,4 +11,6 @@ public interface MemberDAO {
 	public int pw_update(MemberDTO mDto);
 	public MemberDTO info(String id);
 	public void update(MemberDTO mDto);
+	public void delete(String id);
+	public int pw_check(MemberDTO mDto);
 }

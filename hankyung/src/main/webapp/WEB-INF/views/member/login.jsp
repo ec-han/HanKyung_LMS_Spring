@@ -61,6 +61,38 @@
 .loss_info{
 	cursor: pointer;
 }
+.login_btn{
+	position: relative;
+	color:white;
+}
+.login_btn:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -2;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 500%;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.login_btn:hover:before {
+    z-index: 1;
+    animation: animate 10s linear infinite;
+}
+@keyframes animate {
+    0% { background-position: 0%; }
+    100% { background-position: 500%; }
+}
+.login_text{
+	color:white;
+	position: relative;
+	font-size:20px;
+	font-weight:600;
+	z-index: 4;
+}
 
 
 </style>
@@ -94,7 +126,9 @@
 						${sessionScope.loginck}
 					</div>
 					<div class="btn_box">
-						<button class="login_btn o_btn" type="button">로 그 인</button>
+						<button class="login_btn o_btn" type="button">
+							<div class="login_text">로 그 인</div>
+						</button>
 					</div>
 					<div class="underbar"></div>
 					<div class="login_box">
