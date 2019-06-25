@@ -1,5 +1,6 @@
--- HanKyung 프로젝트 (김박한 팀)
--- 김도연: 회원 테이블
+-- 선미 6/25
+
+-- 회원테이블
 DROP TABLE hk_member;
 CREATE TABLE hk_member(
     id VARCHAR2(100) PRIMARY KEY, 
@@ -7,139 +8,27 @@ CREATE TABLE hk_member(
     email VARCHAR2(300) NOT NULL,
     phone VARCHAR2(30) UNIQUE NOT NULL,
     pw VARCHAR2(30) NOT NULL,
-    regdate DATE DEFAULT SYSDATE 
+    type VARCHAR2(10) DEFAULT '2' NOT NULL,
+    regdate DATE DEFAULT SYSDATE
 );
 
+-- type
+-- 0: 관리자
+-- 1: 선생님
+-- 2: 학생
+INSERT INTO hk_member(name, id, email, phone, pw, type)
+VALUES('관리자', 'admin', 'admin@gmail.com', '01011112222', '1234', '0');
+INSERT INTO hk_member(name, id, email, phone, pw, type)
+VALUES('최철웅', 'teacher01', 'teacher01@gmail.com', '01022223333', '1234', '1');
 INSERT INTO hk_member(name, id, email, phone, pw)
-VALUES('한은체', 'user01', 'user01@gmail.com', 01011112222, 1234);
+VALUES('박선미', 'user01', 'user01@gmail.com', '01033334444', '1234');
 
--- 한은체: 게시판 테이블
---HK 게시판
---모든 게시글 시퀀스
-DROP SEQUENCE seq_hkboard;
-CREATE SEQUENCE seq_hkboard
-START WITH 1
-INCREMENT BY 1;
-
---공지 게시글 시퀀스
-DROP SEQUENCE seq_hkboard_notice;
-CREATE SEQUENCE seq_hkboard_notice
-START WITH 1
-INCREMENT BY 1;
---QnA 게시글 시퀀스
-DROP SEQUENCE seq_hkboard_qna;
-CREATE SEQUENCE seq_hkboard_qna
-START WITH 1
-INCREMENT BY 1;
---평가 게시글 시퀀스
-DROP SEQUENCE seq_hkboard_evltn;
-CREATE SEQUENCE seq_hkboard_evltn
-START WITH 1
-INCREMENT BY 1;
-
---게시글 타입
-0 공지
-1 QnA
-2 평가
-
-DROP TABLE hk_board;
-CREATE TABLE hk_board(
-    bno NUMBER PRIMARY KEY,
-    tnum NUMBER NOT NULL,
-    btype VARCHAR2(20) DEFAULT 0,
-    title VARCHAR2(200) NOT NULL,
-    content VARCHAR2(4000) NOT NULL,
-    writer VARCHAR(30) NOT NULL,
-    regdate DATE DEFAULT SYSDATE   
-);
-
---공지사항 작성
-INSERT INTO hk_board(bno, tnum, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, '공지사항1','공지', 'USER01');
---QnA 게시글 작성
-INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, '1','QnA1','질문', 'USER01');
---평가 게시글 작성
-INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요', 'USER01');
+commit;
 
 
 
---------------------------------------------------------------------------------------
 
-DROP TABLE hk_member;
-CREATE TABLE hk_member(
-    mno VARCHAR2(20) NOT NULL, 
-    id VARCHAR2(100) PRIMARY KEY, 
-    name VARCHAR2(80) NOT NULL, 
-    email VARCHAR2(300) NOT NULL,
-    phone VARCHAR2(30) UNIQUE NOT NULL,
-    pw VARCHAR2(30) NOT NULL,
-    regdate DATE DEFAULT SYSDATE 
-);
-
-
---HK 게시판
---모든 게시글 시퀀스
-DROP SEQUENCE seq_hkboard;
-CREATE SEQUENCE seq_hkboard
-START WITH 1
-INCREMENT BY 1;
-
---공지 게시글 시퀀스
-DROP SEQUENCE seq_hkboard_notice;
-CREATE SEQUENCE seq_hkboard_notice
-START WITH 1
-INCREMENT BY 1;
---QnA 게시글 시퀀스
-DROP SEQUENCE seq_hkboard_qna;
-CREATE SEQUENCE seq_hkboard_qna
-START WITH 1
-INCREMENT BY 1;
---평가 게시글 시퀀스
-DROP SEQUENCE seq_hkboard_evltn;
-CREATE SEQUENCE seq_hkboard_evltn
-START WITH 1
-INCREMENT BY 1;
-
---게시글 타입
-0 공지
-1 QnA
-2 평가
-
-DROP TABLE hk_board;
-CREATE TABLE hk_board(
-    bno NUMBER PRIMARY KEY,
-    tnum NUMBER NOT NULL,
-    btype VARCHAR2(20) DEFAULT 0,
-    title VARCHAR2(200) NOT NULL,
-    content VARCHAR2(4000) NOT NULL,
-    writer VARCHAR(30) NOT NULL,
-    viewcnt NUMBER DEFAULT 0,
-    regdate DATE DEFAULT SYSDATE   
-);
-
---공지사항 작성
-INSERT INTO hk_board(bno, tnum, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, '공지사항1','공지', 'USER01');
-INSERT INTO hk_board(bno, tnum, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, '공지사항2','공지', 'USER01');
-INSERT INTO hk_board(bno, tnum, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, '공지사항3','공지', 'USER01');
---QnA 게시글 작성
-INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, '1','QnA1','질문', 'USER01');
---평가 게시글 작성
-INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요', 'USER01');
-
-
-
-DROP SEQUENCE seq_hk_lecture;
-CREATE SEQUENCE seq_hk_lecture
-START WITH 1
-INCREMENT BY 1;
-
+-- 강의테이블
 DROP TABLE hk_lecture;
 CREATE TABLE hk_lecture(
     lno NUMBER PRIMARY KEY,
@@ -157,7 +46,6 @@ CREATE TABLE hk_lecture(
     startdate DATE NOT NULL,
     enddate DATE NOT NULL
 );
-
 번호 과정명 과정코드 강사명 분야 전체인원 등록인원 전체수강인원 등록인원 현재수강인원 인당지원비 가격 수강시작 수강끝
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, 'Vue.js 시작하기 - Age of Vue.js', '0001', '최철웅', '웹개발', '30', '20', '200000', '3000000', 'lecture01.jpg', '190618', '200618');
@@ -202,60 +90,8 @@ VALUES(seq_hk_lecture.NEXTVAL, '리액트로 구현하는 블록체인 이더리
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '누구든지 하는 리액트: 초심자를 위한 react 핵심 강좌', '0002', '최철웅', '캐드', '30', '28', '200000', '3000000', 'lecture08.png', '190820', '200618');
 
-
 SELECT * FROM hk_lecture;
+SELECT COUNT(*) FROM hk_lecture;
 
 commit;
 
-
-
-DROP TABLE hk_lecture_cart;
-CREATE TABLE hk_lecture(
-    lno NUMBER PRIMARY KEY,
-    lname VARCHAR2(300) NOT NULL,
-    lcode VARCHAR2(10) NOT NULL,
-    tname VARCHAR2(60) NOT NULL,
-    ltype VARCHAR2(20) NOT NULL,
-    totalmem VARCHAR2(5) NOT NULL,
-    rgstrmem VARCHAR2(5) DEFAULT 0,
-    nowmem VARCHAR2(5) DEFAULT 0,
-    supmoney VARCHAR2(20)DEFAULT 0,
-    price VARCHAR2(20) DEFAULT 0,
-    startdate DATE NOT NULL,
-    enddate DATE NOT NULL
-);
-
-DROP TABLE hk_member;
-CREATE TABLE hk_member(
-    mno VARCHAR2(20) NOT NULL, 
-    id VARCHAR2(100) PRIMARY KEY, 
-    name VARCHAR2(80) NOT NULL, 
-    email VARCHAR2(300) NOT NULL,
-    phone VARCHAR2(30) UNIQUE NOT NULL,
-    pw VARCHAR2(30) NOT NULL,
-    regdate DATE DEFAULT SYSDATE 
-);
-
---강좌바구니
-DROP TABLE hk_cart;
-CREATE TABLE hk_cart(
-    id VARCHAR2(100) NOT NULL, 
-    lname VARCHAR2(300) NOT NULL,
-    price VARCHAR2(20) DEFAULT 0, 
-    startdate DATE NOT NULL,
-    enddate DATE NOT NULL
-);
-
-INSERT INTO hk_cart(id, lname, price, startdate, enddate)
-VALUES('admin', 'Java기반 웹하이브리드 개발과정', '3000000', '190618', '200618');
-INSERT INTO hk_cart(id, lname, price, startdate, enddate)
-VALUES('admin', '캐드를 활용한 3D설계', '3000000', '190702', '200618');
-INSERT INTO hk_cart(id, lname, price, startdate, enddate)
-VALUES('admin', '빅데이터', '3000000', '190820', '200618');
-
-SELECT * FROM hk_cart
-WHERE id = 'admin';
-commit;
-
-SELECT * FROM hk_board 
-WHERE btype = 0;
