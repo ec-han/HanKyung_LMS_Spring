@@ -39,8 +39,8 @@ public class HomeController {
 		HashMap<String, List<LectureDTO>> map = service.homeList();
 		
 		model.addAttribute("map", map);
-		session.setAttribute("id", "user01");
-		session.setAttribute("name", "관리자");
+		// session.setAttribute("id", "user01");
+		// session.setAttribute("name", "관리자");
 		
 		return "home";
 	}

@@ -123,15 +123,29 @@
 		border-radius: 5px;
 		font-size: 14px;
 		font-weight: 400;
-		transition: .3s;
 	}
 	.mypage_btn {
 		display: block;
 		margin: 12px 5px 12px 13px;
 	}
+	.mypage_btn:hover {
+		color: #d1d3e2;
+		transition: .3s;
+	}
 	.update_icon, .wish_icon {
 		color: #d1d3e2;
 		padding-right: 5px;
+	}
+	.main_box {
+		position: absolute;
+		display: inline-block;
+		background: white;
+		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+		padding: 2px 7px;
+		box-sizing: border-box;
+		border-radius: 5px;
+		font-size: 14px;
+		font-weight: 400;
 	}
 	
 	
@@ -177,6 +191,16 @@
 		                        <span class="home_navi_span">
 		                            <a href="${path}/main/" class="home_navi home_navi2" id="main">나의강의실</a>
 		                        </span>
+		                        
+		                        <div class="main_box">
+		                        	<a>강의실로 바로 이동</a>
+		                        	<div>나의 강의목록</div>
+		                        	<div>
+		                        		<a>인터랙티브 웹 개발 제대로 시작하기</a>
+		                        		<a>인터랙티브 웹 개발 제대로 시작하기</a>
+		                        		<a>인터랙티브 웹 개발 제대로 시작하기</a>
+		                        	</div>
+		                        </div>
 	                    	</div>
 		                </c:when>
 		                <c:otherwise>

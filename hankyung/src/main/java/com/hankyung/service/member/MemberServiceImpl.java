@@ -29,8 +29,10 @@ public class MemberServiceImpl implements MemberService{
 		if(mDto != null) {
 			session.removeAttribute("id");
 			session.removeAttribute("name");
+			session.removeAttribute("type");
 			session.setAttribute("id", mDto.getId());
 			session.setAttribute("name", mDto.getName());
+			session.setAttribute("type", mDto.getType());
 			result = true;
 		}
 		

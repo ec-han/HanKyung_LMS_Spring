@@ -19,5 +19,6 @@ public class MemberDTO {
 	private String email;
 	private String phone;
 	private String pw;
+	private String type;
 	private Date regdate;
 }

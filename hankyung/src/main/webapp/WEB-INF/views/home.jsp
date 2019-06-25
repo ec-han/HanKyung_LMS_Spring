@@ -323,11 +323,27 @@
                     </div>
                     <c:choose>
                     	<c:when test="${!empty sessionScope.id}">
-		                    <div class="home_navi_div">
+                    	<c:if test="${sessionScope.type == '0'}">
+                    		<div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">LMS관리</a>
+		                        </span>
+		                    </div>
+                    	</c:if>
+                    	<c:if test="${sessionScope.type == '1'}">
+                    		<div class="home_navi_div">
 		                        <span class="home_navi_span">
 		                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">나의강의실</a>
 		                        </span>
 		                    </div>
+                    	</c:if>
+                    	<c:if test="${sessionScope.type == '2'}">
+                    		<div class="home_navi_div">
+		                        <span class="home_navi_span">
+		                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">나의강의실</a>
+		                        </span>
+		                    </div>
+                    	</c:if>
 	                    </c:when>
 	                    <c:otherwise>
 		                    <div class="home_navi_div">
