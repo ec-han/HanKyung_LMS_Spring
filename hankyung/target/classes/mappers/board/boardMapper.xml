@@ -15,6 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						<if test="search_option == 'title'">
 							title LIKE #{keyword}
 						</if>
+						<if test="search_option == 'content'">
+							title LIKE #{content}
+						</if>
 						<if test="search_option == 'writer'">
 							writer LIKE #{keyword}
 						</if>

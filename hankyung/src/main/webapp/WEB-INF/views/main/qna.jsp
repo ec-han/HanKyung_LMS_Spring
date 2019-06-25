@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>묻고답하기</title>
 <style type="text/css">
 
 </style>
@@ -41,6 +41,7 @@
 													<option value="all" selected="selected">제목+내용</option>
 													<option value="title">제목</option>
 													<option value="content">내용</option>
+													<option value="writer">작성자</option>
 												</select>
 				              					<input type="search" class="form-control form-control-sm" id="search_board" name="search_board">
 				              					<button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
@@ -91,7 +92,12 @@
 				              	<div class="row order-3">
 				              		<div class="col-sm-12 col-md-5 flex_r">
 				              			<div class="dataTables_info order-1" id="dataTable_info" role="status" aria-live="polite">
-				              				57건 중 21건부터 30건까지 
+				              				<c:if test="${!empty map.keyword}">
+												<div id="search_result">
+													<span class="search_span">"${map.keyword}"</span>로 검색한 결과는 총
+													<span class="search_span">${map.count}</span>건 입니다.  
+												</div>
+											</c:if>
 				              			</div>
 				              			<div class="col-sm-12 col-md-7 order-2" id="pagenation_wrapper">
 				              				<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
@@ -151,7 +157,7 @@
 			
 			if(keyword == null || keyword.length == 0){
 				$('#search_board').focus();
-				$('#search_board').css('border','1px solid rgb(183,46,154)');
+				$('#search_board').css('border','2px solid #79CDCF');
 				return false;
 				
 			}

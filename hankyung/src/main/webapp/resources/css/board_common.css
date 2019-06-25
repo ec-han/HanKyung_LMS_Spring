@@ -237,12 +237,13 @@ div.dataTables_wrapper div.dataTables_info {
     white-space: nowrap;
 }
 div.dataTables_wrapper div.dataTables_paginate {
-    margin: 0;
+    margin: 0rem 1rem;
     white-space: nowrap;
     float: right;
     text-align: right;
     position: absolute;
     right: 1rem;
+    bottom: 0.3rem;
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin: 2px 0;
@@ -253,6 +254,11 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .active-idx {
 	font-weight: bold;
 	color: tomato!important;
+}
+.search_span {
+	font-weight: bold;
+    color: #79CDCF;
+    font-size: 1rem;
 }
 .pagination {
     display: -webkit-box;

@@ -42,7 +42,7 @@ public class BoardController {
 		
 		// 레코드 갯수 계산
 		int count = service.countArticle(btype, search_option, keyword);
-		
+
 		// 페이지 관련 설정
 		Pager pager = new Pager(count, curPage);
 	//	pager.setTotPage(36);
@@ -50,7 +50,7 @@ public class BoardController {
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 		// 페이지에 출력할 게시글 목록 
-		List<BoardDTO> list = service.list(btype,sort_option, search_option, keyword, start, end);
+		List<BoardDTO> list = service.list(btype, sort_option, search_option, keyword, start, end);
 //				Model: 데이터 보내는 것 View: 페이지 이동
 		ModelAndView mav = new ModelAndView(); // 화면 갈 때 보내는 거 
 		HashMap<String, Object> map = new HashMap<>();

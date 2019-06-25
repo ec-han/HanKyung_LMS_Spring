@@ -17,17 +17,16 @@
           	<!-- Divider -->
           	<hr class="sidebar_divider" id="sidebar_divider_0">
           	<!-- Nav Item - Dashboard -->
-            <li class="nav_item">
+          	<li class="nav_item">
             	<a class="nav_link" href="${path}/main/">
               	<i class="fas fa-fw fa-tachometer-alt"></i>
              	 <span>HOME</span></a>
             </li>
-	        <!-- Divider -->
+             <!-- Divider -->
 	        <hr class="sidebar_divider">
-	        <!-- Heading -->
-			<div class="sidebar_heading">
-				시스템 
-			</div>
+	        
+	        <!-- 관리자 -->
+	        <c:if test="${sessionScope.type == '0'}">
 			<li class="nav_item active">
 				<a class="nav_link" id="collapseAdmin_parent">
 				  <i class="fas fa-lock"></i>
@@ -40,31 +39,55 @@
 				  <h6 class="collapse_header">관리</h6>
 				  <a class="collapse_item" href="#">선생님 관리</a>
 				  <a class="collapse_item" href="#">과정 관리</a>
-				  <h6 class="collapse_header">조회</h6>
-				  <a class="collapse_item" href="#">선생님 조회</a>
-				  <a class="collapse_item" href="#">학생 조회</a>
-				  <a class="collapse_item" href="#">과정 조회</a>
-				  <a class="collapse_item" href="#">전체 정보 조회</a>
-				</div>  
-			</li>
-			<li class="nav_item active">
-				<a class="nav_link" id="collapseUsers_parent">
-				  <i class="fas fa-assistive-listening-systems"></i>
-				  <span>서비스데스크</span>
-				</a>
-				<div class="collapse_inner rounded collapse show" id="collapseUsers">
-				  <a class="collapse_item" id="#">공지사항</a>
-				  <a class="collapse_item" id="#"">묻고 답하기</a>	
-				  <a class="collapse_item" href="${path}/member/update">회원정보 수정</a>
-				  <a class="collapse_item" href="${path}/member/loss_info">아이디 및 비밀번호 찾기</a>
-				</div>  
+				  <a class="collapse_item" href="#">학생 관리</a>
+				</div>
 			</li>
 			<!-- Divider -->
 	        <hr class="sidebar_divider">
-	        <!-- Heading -->
-	        <div class="sidebar_heading">
-				선생님
-	        </div>
+			 <!-- Sidebar Toggler (Sidebar) -->
+			<div class="text_center toggleBtn_div">
+				<button id="sidebarToggle">
+					<i class="fas fa-angle-left"></i>
+				</button>
+			</div>  
+			</c:if>
+			<!-- 학생 -->
+            <c:if test="${sessionScope.type == '2'}">
+			<li class="nav_item">
+				<a class="nav_link collapsed" id="collapseLectureReady_parent">
+				  <i class="fas fa-power-off"></i>
+				  <span>수업준비</span>
+				</a>
+				<div class="collapse_inner rounded collapse" id="collapseLectureReady">
+					<a class="collapse_item" href="#">선생님 소개</a>
+					<a class="collapse_item" href="#">수업 계획표</a>
+				</div>
+			</li>
+			<li class="nav_item">
+				<a class="nav_link collapsed" href="#">
+				  <i class="fas fa-headphones"></i>
+				  <span>학습방</span>
+				</a>
+				<a class="nav_link collapsed" href="${path}/lecture/board">
+				  <i class="fa fa-coffee"></i>
+				  <span>게시판</span>
+				</a>
+				<a class="nav_link collapsed" href="#">
+				  <i class="fas fa-chart-bar"></i>
+				  <span>학습현황</span>
+				</a>
+				<!-- Divider -->
+		        <hr class="sidebar_divider">
+		        <!-- Sidebar Toggler (Sidebar) -->
+				<div class="text_center toggleBtn_div">
+					<button id="sidebarToggle">
+						<i class="fas fa-angle-left"></i>
+					</button>
+				</div>
+			</li>
+			</c:if>
+			<!-- 선생님 -->
+	        <c:if test="${sessionScope.type == '1'}">
 			<li class="nav_item">
 				<a class="nav_link collapsed" id="collapseCourse_parent">
 				  <i class="fas fa-fw fa-cog"></i>
@@ -72,9 +95,8 @@
 				</a>
 				<div class="collapse_inner rounded collapse" id="collapseCourse">
 					<h6 class="collapse_header">과정 정보</h6>
-					<a class="collapse_item" href="#">공지사항</a>
+					<a class="collapse_item" href="${path}/lecture/board">게시판</a>
 					<a class="collapse_item" href="#">수업 계획표</a>
-					<a class="collapse_item" href="#">묻고 답하기</a>
 				</div>
 			</li>
 			<li class="nav_item">
@@ -92,46 +114,13 @@
 			</li>
 			<!-- Divider -->
 	        <hr class="sidebar_divider">
-	        <!-- Heading -->
-	        <div class="sidebar_heading">
-				학생
-	        </div>
-			<li class="nav_item">
-				<a class="nav_link collapsed" id="collapseLectureReady_parent">
-				  <i class="fas fa-power-off"></i>
-				  <span>수업준비</span>
-				</a>
-				<div class="collapse_inner rounded collapse" id="collapseLectureReady">
-					<a class="collapse_item" href="#">선생님 소개</a>
-					<a class="collapse_item" href="#">수업 계획표</a>
-				</div>
-			</li>
-			<li class="nav_item">
-				<a class="nav_link collapsed" href="#">
-				  <i class="fa fa-bullhorn"></i>
-				  <span>공지사항</span>
-				</a>
-				<a class="nav_link collapsed" href="#">
-				  <i class="fas fa-headphones"></i>
-				  <span>학습방</span>
-				</a>
-				<a class="nav_link collapsed" href="#">
-				  <i class="fa fa-coffee"></i>
-				  <span>자유게시판</span>
-				</a>
-				<a class="nav_link collapsed" href="#">
-				  <i class="fas fa-chart-bar"></i>
-				  <span>학습현황</span>
-				</a>
-				<!-- Divider -->
-				<hr class="sidebar_divider">
-				<!-- Sidebar Toggler (Sidebar) -->
-				<div class="text_center toggleBtn_div">
-					<button id="sidebarToggle">
-						<i class="fas fa-angle-left"></i>
-					</button>
-				</div>
-			</li>
+	        <!-- Sidebar Toggler (Sidebar) -->
+			<div class="text_center toggleBtn_div">
+				<button id="sidebarToggle">
+					<i class="fas fa-angle-left"></i>
+				</button>
+			</div>
+			</c:if>
 		</ul>
 		<!-- End of Sidebar -->
 	</div>

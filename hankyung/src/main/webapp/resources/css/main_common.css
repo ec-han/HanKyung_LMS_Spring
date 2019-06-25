@@ -94,7 +94,7 @@ sup { /* 첨자 텍스트 */
 }
 .sidebar_divider{
     border-top: 1px solid rgba(255,255,255,.15);
-    margin: 0 1rem 1rem;
+    margin: 0 1rem 0rem;
 }
 #sidebar_divider_0{
     margin-bottom: 0;
@@ -228,6 +228,7 @@ sup { /* 첨자 텍스트 */
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 #notice_link_a, #qna_link_a {
 	cursor: pointer;
@@ -285,6 +286,9 @@ sup { /* 첨자 텍스트 */
 	order: 3;
     top: -2px;
 }
+/* #service_item {
+	order: 1;
+} */
 #topNav i {
     font-size: 18px;
 }
