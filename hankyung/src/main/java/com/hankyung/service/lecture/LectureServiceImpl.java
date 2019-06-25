@@ -65,7 +65,6 @@ public class LectureServiceImpl implements LectureService{
 		} else {
 			lDao.goodInsert(lno, id);
 		}
-		
 	}
 	
 	@Override

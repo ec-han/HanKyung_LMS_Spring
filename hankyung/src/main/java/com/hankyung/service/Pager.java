@@ -1,7 +1,7 @@
 package com.hankyung.service;
 
 public class Pager {
-	public static final int PAGE_SCALE=9;  // 페이지당 게시물수
+	// public static final int PAGE_SCALE=9;  // 페이지당 게시물수
 	public static final int BLOCK_SCALE=10; // 화면당 페이지수
 	
 	private int curPage;	// 현재 페이지
@@ -16,10 +16,20 @@ public class Pager {
 	private int pageEnd;	// #{end} 변수에 전달될 값
 	private int blockBegin;	// 블록의 시작페이지 번호
 	private int blockEnd;	// 블록의 끝페이지 번호
+	private int pageScale = 10;  // 페이지당 게시물수
 	
+	public int getPageScale() {
+		return pageScale;
+	}
+
+	public void setPageScale(int pageScale) {
+		this.pageScale = pageScale;
+	}
+
 	// Pager(레코드 갯수, 출력할 페이지번호)
-	public Pager(int count, int curPage) {
+	public Pager(int count, int curPage, int pageScale) {
 		curBlock = 1; // 현재블록 번호
+		setPageScale(pageScale);
 		this.curPage = curPage; // 현재 페이지 번호
 		setTotPage(count); // 전체 페이지 갯수 계산
 		setPageRange(); // #{start}, #{end} 값 계산
@@ -56,8 +66,8 @@ public class Pager {
 	public void setPageRange() {
 		// 시작번호=(현재페이지-1)x페이지당 게시물수 + 1
 		// 끝번호=시작번호 + 페이지당 게시물수 - 1
-		pageBegin = (curPage-1) * PAGE_SCALE + 1;
-		pageEnd = pageBegin + PAGE_SCALE - 1;
+		pageBegin = (curPage-1) * pageScale + 1;
+		pageEnd = pageBegin + pageScale - 1;
 	}
 
 	public int getCurPage() {
@@ -91,7 +101,7 @@ public class Pager {
 	// 전체 페이지 갯수 계산
 	public void setTotPage(int count) {
 		// Math.ceil() 올림
-		totPage = (int)Math.ceil(count*1.0 / PAGE_SCALE);
+		totPage = (int)Math.ceil(count*1.0 / pageScale);
 	}
 
 	public int getTotBlock() {

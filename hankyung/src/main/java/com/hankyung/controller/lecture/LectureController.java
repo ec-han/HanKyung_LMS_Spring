@@ -56,7 +56,9 @@ public class LectureController {
 		// 레코드 갯수 계산
 		int count = service.countArticle(search_option, keyword);
 		//페이지 관련 설정
-		Pager pager = new Pager(count, curPage);
+		int pageScale = 9;
+		Pager pager = new Pager(count, curPage, pageScale); 
+		log.info(">>> pageScale : "+pager.getPageScale());
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 				

@@ -50,7 +50,7 @@
 			padding: 12px 12px 70px;
 			box-sizing: border-box;
 		}
-		.basket_icon {
+		.cart_icon {
 			position: absolute;
 			right: 26px;
 			top: 26px;
@@ -59,7 +59,7 @@
 			opacity: .5;
 			transition: .3s;
 		}
-		.basket_icon:hover {
+		.cart_icon:hover {
 			opacity: 1;
 		}
 		.section_img {
@@ -264,10 +264,10 @@
                 <div class="all_content">
                 	<c:forEach items="${map.list}" var="list">
 	                    <div class="all_content_box">
-	                    	<input type="text" value="${list.lno}" class="input_lno">
-	                    	<a class="basket_btn">
-	                    		<i class="fas fa-shopping-basket basket_icon"></i>
-	                    	</a>
+	                    	<!-- <a class="cart_btn">
+	                    		<i class="fas fa-shopping-cart cart_icon"></i>
+	                    	</a> -->
+	                    	
 	                    	<div class="section_img">
 	                        	<a href="${path}/lecture/view?lno=${list.lno}">
 	                        		<img class="lecture_img" src="${path}/resources/img/${list.limg}">
@@ -321,8 +321,6 @@
     <script type="text/javascript">
     	$(document).ready(function(){
     		
-    		goodCheck();
-    		
     		var sort_option = "${map.sort_option}";
     		if (sort_option == "new") {
 				$("#new_lecture").css("color", "#FFC000");
@@ -335,44 +333,22 @@
     			location.href="${path}/lecture/list?search_option="+search_option+"&keyword="+keyword;
     		});
     		
-    		$(".basket_btn").click(function(){
-    			var lno = $(this).parent().children('input').val();
-    			goodUpdate(lno);
-    		});
     	});
     	
     	function goodUpdate(lno){
-    		var id = "${SessionScope.id}";
+    		var id = "${sessionScope.id}";
     		$.ajax({
     			type: "POST",
     			url: "${path}/lecture/goodUpdate?lno="+lno+"&id="+id,
     			success: function(){
-    				
+    				goodCheck();
     			}, error: function(){
     				alert("goodUpdate Error!!!");
     			}
     		});
     	}
     	
-    	function goodCheck() {
-    		var id = "${SessionScope.id}";
-    		var lno = $(this).parent().children('input').val();
-			console.log("result : "+lno);
-    		$.ajax({
-    			type: "POST",
-    			url: "${path}/lecture/goodCheck?lno="+lno+"&id="+id,
-    			success: function(data){
-    				// alert(data);
-    				if (data > 0) {
-						$(".basket_icon").css("opacity","1");
-					} else {
-						$(".basket_icon").css("opacity",".5");
-					}
-    			}, error: function(){
-    				alert("goodCheck Error!!!");
-    			}
-    		});
-    	}
+    	
     </script>
 </body>
 </html>

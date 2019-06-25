@@ -62,8 +62,12 @@
 		font-size: 18px;
 		color: #444;
 	}
-	#login:hover, #join:hover, #basket:hover, #main:hover, #logout:hover {
+	#login:hover, #join:hover, #basket:hover, #main:hover, #name:hover, #logout:hover {
 		color: #FFC000!important;
+	}
+	#name {
+		margin: 0px 15px;
+		width: 100px;
 	}
 	.home_navi_bar {
 		display: none;
@@ -78,7 +82,62 @@
 		color: #FFC000;
 	}
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	.mypage {
+		position: relative;
+	}
+	.mypage_arrow {
+		position: absolute;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		top: 71px;
+		transform: rotate(45deg);
+		left: 60px;
+		background: white;
+		box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+	}
+	.arrow_top {
+		box-shadow: none;
+		z-index: 101;
+	}
+	.mypage_box {
+		position: absolute;
+		display: none;
+		width: 140px;
+		top: 83px;
+		left: -8px;
+		background: white;
+		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+		padding: 2px 7px;
+		box-sizing: border-box;
+		border-radius: 5px;
+		font-size: 14px;
+		font-weight: 400;
+		transition: .3s;
+	}
+	.mypage_btn {
+		display: block;
+		margin: 12px 5px 12px 13px;
+	}
+	.update_icon, .wish_icon {
+		color: #d1d3e2;
+		padding-right: 5px;
+	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -99,10 +158,20 @@
                 <div class="home_navi_right">
 	                <c:choose>
 		                <c:when test="${!empty sessionScope.id}">
-		                	<div class="home_navi_div">
+		                	<div class="home_navi_div mypage">
 		                        <span class="home_navi_span">
-		                            <a class="home_navi home_navi2" id="name"><span id="name_point">${sessionScope.name}</span>님</a>
+		                            <a class="home_navi home_navi2" id="name">
+		                            	<span id="name_point">${sessionScope.name}</span>님
+		                            	<i class="fas fa-chevron-down"></i>
+		                            </a>
+		                            
 		                        </span>
+		                        <!-- <div class="mypage_arrow arrow_top"></div>
+		                        <div class="mypage_arrow"></div> -->
+		                        <div class="mypage_box">
+		                        	<a class="wishlist mypage_btn"><i class="fas fa-heart wish_icon"></i>위시리스트</a>
+		                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 update_icon"></i>회원수정</a>
+		                        </div>
 	                    	</div>
 		                	<div class="home_navi_div">
 		                        <span class="home_navi_span">
@@ -130,7 +199,7 @@
                     </div>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
-                            <a href="${path}/" class="home_navi home_navi4" id="basket">수강바구니</a>
+                            <a href="${path}/" class="home_navi home_navi4" id="basket">장바구니</a>
                         </span>
                     </div>
                     <c:if test="${!empty sessionScope.id}">
@@ -156,6 +225,18 @@
             			alert("logout error!!");
             		}
             	});
+            });
+            
+            var flag = 0;
+            
+            $("#name").click(function(){
+            	if (flag == 0) {
+            		$(".mypage_box").css("display", "inline-block");
+            		flag = 1;
+				} else {
+					$(".mypage_box").css("display", "none");
+            		flag = 0;
+				}
             });
         });
         $(window).scroll(function(event) {
