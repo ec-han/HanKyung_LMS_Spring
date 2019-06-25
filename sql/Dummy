@@ -95,3 +95,98 @@ SELECT COUNT(*) FROM hk_lecture;
 
 commit;
 
+
+
+--HK 게시판
+--모든 게시글 시퀀스
+DROP SEQUENCE seq_hkboard;
+CREATE SEQUENCE seq_hkboard
+START WITH 1
+INCREMENT BY 1;
+
+--공지 게시글 시퀀스
+DROP SEQUENCE seq_hkboard_notice;
+CREATE SEQUENCE seq_hkboard_notice
+START WITH 1
+INCREMENT BY 1;
+--QnA 게시글 시퀀스
+DROP SEQUENCE seq_hkboard_qna;
+CREATE SEQUENCE seq_hkboard_qna
+START WITH 1
+INCREMENT BY 1;
+--평가 게시글 시퀀스
+DROP SEQUENCE seq_hkboard_evltn;
+CREATE SEQUENCE seq_hkboard_evltn
+START WITH 1
+INCREMENT BY 1;
+
+--게시글 타입
+-- 0 공지
+-- 1 QnA
+-- 2 평가
+
+DROP TABLE hk_board;
+CREATE TABLE hk_board(
+    bno NUMBER PRIMARY KEY,
+    tnum NUMBER NOT NULL,
+    btype VARCHAR2(20) DEFAULT 0,
+    title VARCHAR2(200) NOT NULL,
+    content VARCHAR2(4000) NOT NULL,
+    writer VARCHAR(30) NOT NULL,
+    viewcnt NUMBER DEFAULT 0,
+    regdate DATE DEFAULT SYSDATE   
+);
+
+--공지사항 작성
+INSERT INTO hk_board(bno, tnum, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, '공지사항1','공지', 'USER01');
+INSERT INTO hk_board(bno, tnum, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, '공지사항2','공지', 'USER01');
+--QnA 게시글 작성
+INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, '1','QnA1','질문', 'USER01');
+--평가 게시글 작성
+INSERT INTO hk_board(bno, tnum, btype, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요', 'USER01');
+
+
+
+--장바구니
+
+DROP TABLE hk_lecture_cart;
+CREATE TABLE hk_lecture(
+    lno NUMBER PRIMARY KEY,
+    lname VARCHAR2(300) NOT NULL,
+    lcode VARCHAR2(10) NOT NULL,
+    tname VARCHAR2(60) NOT NULL,
+    ltype VARCHAR2(20) NOT NULL,
+    totalmem VARCHAR2(5) NOT NULL,
+    rgstrmem VARCHAR2(5) DEFAULT 0,
+    nowmem VARCHAR2(5) DEFAULT 0,
+    supmoney VARCHAR2(20)DEFAULT 0,
+    price VARCHAR2(20) DEFAULT 0,
+    startdate DATE NOT NULL,
+    enddate DATE NOT NULL
+);
+
+INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
+VALUES('admin', 'Java기반 웹하이브리드 개발과정', 'lecture01.jpg', 3000000, '190618', '200618');
+INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
+VALUES('admin', '캐드를 활용한 3D설계', 'lecture02.jpg', 3000000, '190702', '200618');
+INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
+VALUES('admin', '빅데이터', 'lecture03.jpg', 3000000, '190820', '200618');
+
+INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
+VALUES('user01', 'Java기반 웹하이브리드 개발과정', 'lecture01.jpg', 3000000, '190618', '200618');
+INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
+VALUES('user01', '캐드를 활용한 3D설계', 'lecture02.jpg', 3000000, '190702', '200618');
+INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
+VALUES('user01', '빅데이터', 'lecture03.jpg', 3000000, '190820', '200618');
+
+SELECT * FROM hk_cart
+WHERE id = 'admin';
+commit;
+
+SELECT SUM(price) FROM hk_cart
+WHERE id = 'admin';
+
