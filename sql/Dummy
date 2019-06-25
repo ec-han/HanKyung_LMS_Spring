@@ -183,3 +183,23 @@ commit;
 SELECT SUM(price) FROM hk_cart
 WHERE id = 'admin';
 
+
+
+--강좌게시판
+-- 0 공지사항
+-- 1 QnA
+-- 2 게시글
+DROP TABLE hk_lecture_board;
+CREATE TABLE hk_lecture_board(
+    bno NUMBER PRIMARY KEY,
+    btype VARCHAR2(20) DEFAULT 2,
+    title VARCHAR2(200) NOT NULL,
+    content VARCHAR2(4000) NOT NULL,
+    writer VARCHAR(30) NOT NULL,
+    viewcnt NUMBER DEFAULT 0,
+    regdate DATE DEFAULT SYSDATE   
+);
+
+INSERT INTO hk_lecture_board(bno, title, content, writer)
+VALUES(seq_hkboard.NEXTVAL, '안녕하세요','강의생성후 첫 개시글', 'USER01');
+commit;
