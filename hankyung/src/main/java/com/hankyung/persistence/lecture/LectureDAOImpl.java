@@ -67,26 +67,26 @@ public class LectureDAOImpl implements LectureDAO{
 	}
 
 	@Override
-	public int cartCheck(int lno, String id) {
+	public int goodCheck(int lno, String id) {
 		HashMap<String , Object> map = new HashMap<>();
 		map.put("lno", lno);
 		map.put("id", id);
-		return sqlSession.selectOne("lecture.cartCheck", map);
+		return sqlSession.selectOne("lecture.goodCheck", map);
 	}
 
 	@Override
-	public void cartDelete(int lno, String id) {
+	public void goodDelete(int lno, String id) {
 		HashMap<String , Object> map = new HashMap<>();
 		map.put("lno", lno);
 		map.put("id", id);
-		sqlSession.delete("lecture.cartDelete", map);
+		sqlSession.delete("lecture.goodDelete", map);
 	}
 
 	@Override
-	public void cartInsert(int lno, String id) {
+	public void goodInsert(int lno, String id) {
 		HashMap<String , Object> map = new HashMap<>();
 		map.put("lno", lno);
 		map.put("id", id);
-		sqlSession.insert("lecture.cartInsert", map);
+		sqlSession.insert("lecture.goodInsert", map);
 	}
 }

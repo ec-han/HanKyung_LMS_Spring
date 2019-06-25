@@ -58,19 +58,19 @@ public class LectureServiceImpl implements LectureService{
     }
 
 	@Override
-	public void cartUpdate(int lno, String id) {
-		int result = lDao.cartCheck(lno, id);
+	public void goodUpdate(int lno, String id) {
+		int result = lDao.goodCheck(lno, id);
 		if (result > 0) {
-			lDao.cartDelete(lno, id);
+			lDao.goodDelete(lno, id);
 		} else {
-			lDao.cartInsert(lno, id);
+			lDao.goodInsert(lno, id);
 		}
 		
 	}
 	
 	@Override
-	public int cartCheck(int lno, String id) {
-		return lDao.cartCheck(lno, id);
+	public int goodCheck(int lno, String id) {
+		return lDao.goodCheck(lno, id);
 	}
 
 

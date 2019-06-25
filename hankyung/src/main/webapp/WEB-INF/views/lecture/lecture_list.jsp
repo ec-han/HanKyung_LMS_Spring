@@ -321,7 +321,7 @@
     <script type="text/javascript">
     	$(document).ready(function(){
     		
-    		cartCheck();
+    		goodCheck();
     		
     		var sort_option = "${map.sort_option}";
     		if (sort_option == "new") {
@@ -337,30 +337,30 @@
     		
     		$(".basket_btn").click(function(){
     			var lno = $(this).parent().children('input').val();
-    			cartUpdate(lno);
+    			goodUpdate(lno);
     		});
     	});
     	
-    	function cartUpdate(lno){
+    	function goodUpdate(lno){
     		var id = "${SessionScope.id}";
     		$.ajax({
     			type: "POST",
-    			url: "${path}/lecture/cartUpdate?lno="+lno+"&id="+id,
+    			url: "${path}/lecture/goodUpdate?lno="+lno+"&id="+id,
     			success: function(){
     				
     			}, error: function(){
-    				alert("cartUpdate Error!!!");
+    				alert("goodUpdate Error!!!");
     			}
     		});
     	}
     	
-    	function cartCheck() {
+    	function goodCheck() {
     		var id = "${SessionScope.id}";
     		var lno = $(this).parent().children('input').val();
 			console.log("result : "+lno);
     		$.ajax({
     			type: "POST",
-    			url: "${path}/lecture/cartCheck?lno="+lno+"&id="+id,
+    			url: "${path}/lecture/goodCheck?lno="+lno+"&id="+id,
     			success: function(data){
     				// alert(data);
     				if (data > 0) {
@@ -369,7 +369,7 @@
 						$(".basket_icon").css("opacity",".5");
 					}
     			}, error: function(){
-    				alert("cartCheck Error!!!");
+    				alert("goodCheck Error!!!");
     			}
     		});
     	}

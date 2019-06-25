@@ -14,6 +14,6 @@ public interface LectureService {
 	public List<LectureDTO> lectureList(String sort_option, String search_option, String keyword, int start, int end);
 	public LectureDTO lectureView(int lno);
 	public int price(String id);
-	public void cartUpdate(int lno, String id);
-	public int cartCheck(int lno, String id);
+	public void goodUpdate(int lno, String id);
+	public int goodCheck(int lno, String id);
 }

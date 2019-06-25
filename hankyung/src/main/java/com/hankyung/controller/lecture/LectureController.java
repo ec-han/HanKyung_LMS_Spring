@@ -86,18 +86,18 @@ public class LectureController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="cartUpdate", method = RequestMethod.POST)
-	public void cartUpdate(int lno, String id) {
+	@RequestMapping(value="goodUpdate", method = RequestMethod.POST)
+	public void goodUpdate(int lno, String id) {
 		log.info(">>>>> 카트체크 후 등록, 삭제");
-		service.cartUpdate(lno, id);
+		service.goodUpdate(lno, id);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="cartCheck", method = RequestMethod.POST)
-	public int cartCheck(int lno, String id) {
+	@RequestMapping(value="goodCheck", method = RequestMethod.POST)
+	public int goodCheck(int lno, String id) {
 		log.info(">>>>> 카트 눌렀는지 체크");
-		int cartCheck = service.cartCheck(lno, id);
-		return cartCheck;
+		int goodCheck = service.goodCheck(lno, id);
+		return goodCheck;
 	}
 	
 }
