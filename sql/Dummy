@@ -152,19 +152,12 @@ VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요
 
 
 --장바구니
-
-DROP TABLE hk_lecture_cart;
-CREATE TABLE hk_lecture(
-    lno NUMBER PRIMARY KEY,
+DROP TABLE hk_cart;
+CREATE TABLE hk_cart(
+    id VARCHAR2(100) NOT NULL, 
     lname VARCHAR2(300) NOT NULL,
-    lcode VARCHAR2(10) NOT NULL,
-    tname VARCHAR2(60) NOT NULL,
-    ltype VARCHAR2(20) NOT NULL,
-    totalmem VARCHAR2(5) NOT NULL,
-    rgstrmem VARCHAR2(5) DEFAULT 0,
-    nowmem VARCHAR2(5) DEFAULT 0,
-    supmoney VARCHAR2(20)DEFAULT 0,
-    price VARCHAR2(20) DEFAULT 0,
+    limg VARCHAR(500) NOT NULL,
+    price NUMBER(20) DEFAULT 0, 
     startdate DATE NOT NULL,
     enddate DATE NOT NULL
 );
