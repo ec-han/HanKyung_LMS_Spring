@@ -17,5 +17,6 @@ public interface LectureService {
 	public int wishCheck(int lno, String id);
 	public void wishUpdate(int lno, String id);
 	public int wishTotal(int lno, String id);
+	public List<LectureDTO> wishView(String id);
 	
 }

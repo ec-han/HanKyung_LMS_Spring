@@ -18,4 +18,5 @@ public interface LectureDAO {
 	public void wishDelete(int lno, String id);
 	public void wishInsert(int lno, String id);
 	public int wishTotal(int lno, String id);
+	public List<LectureDTO> wishView(String id);
 }

@@ -77,4 +77,9 @@ public class LectureServiceImpl implements LectureService{
 		lDao.wishTotal(lno, id);
 		return 0;
 	}
+
+	@Override
+	public List<LectureDTO> wishView(String id) {
+		return lDao.wishView(id);
+	}
 }

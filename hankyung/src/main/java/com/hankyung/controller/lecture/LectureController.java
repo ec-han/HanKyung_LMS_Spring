@@ -111,4 +111,13 @@ public class LectureController {
 		return 0;
 	}
 	
+	@RequestMapping(value="wishlist", method=RequestMethod.GET)
+	public String wishlist(HttpSession session, Model model) {
+		log.info(">>>>> 위시리스트 페이지 출력");
+		String id = (String)session.getAttribute("id");
+		List<LectureDTO> list = service.wishView(id);
+		model.addAttribute("lDto", list);
+		return "/lecture/wishlist";
+	}
+	
 }

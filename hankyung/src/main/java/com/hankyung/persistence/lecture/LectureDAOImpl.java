@@ -97,4 +97,9 @@ public class LectureDAOImpl implements LectureDAO{
 		map.put("id", id);
 		return sqlSession.selectOne("lecture.wishTotal", map);
 	}
+
+	@Override
+	public List<LectureDTO> wishView(String id) {
+		return sqlSession.selectList("lecture.wishView", id);
+	}
 }
