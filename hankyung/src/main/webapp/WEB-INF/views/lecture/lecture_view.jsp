@@ -67,28 +67,20 @@
 			text-align: center;
 			font-size: 15px;
 			border-radius: 20px;
-		}
-		.white_btn {
 			border: 1px solid #ddd;
 			color: #999;
 			transition: .3s;
 		}
-		.color_btn {
+		#back_btn {
+			color: #999;
+		}
+		.wish_btn {
+			margin-right: 5px;
+		}
+		.lecture_btn:hover, #back_btn:hover {
 			border: 1px solid #79CDCF;
-			background: #79CDCF;
-			color: white;
-			margin-left: 8px;
-			transition: .3s;
+			color: #79CDCF;
 		}
-		.white_btn:hover {
-			border: 1px solid #FFC000;
-			color: #FFC000;
-		}
-		.color_btn:hover {
-			border: 1px solid #2D314F;
-			background: #2D314F;
-		}
-
 
 
 
@@ -129,7 +121,7 @@
 			top: 0;
 			left: 0;
 			z-index: -1;
-			background: linear-gradient(112.45475266684389deg, rgba(0, 226, 123,1) 5.047252523631851%,rgba(0, 166, 190,1) 97.58799399495284%);
+			background: linear-gradient(112.72013189013455deg, rgba(10, 83, 122,1) 4.927083333333334%,rgba(129, 209, 201,1) 97.84374999999999%);
 			width: 100%;
 			height: 350px;
 		}
@@ -240,11 +232,11 @@
         </div>
         <div class="header_button">
 			<div class="button_left">
-				<a href="${path}/lecture/list" class="lecture_btn white_btn">뒤로가기</a>
+				<a href="${path}/lecture/list" class="lecture_btn" id="back_btn">뒤로가기</a>
 			</div>
 			<div class="button_right">
-				<a class="lecture_btn white_btn">위시리스트</a>
-				<a class="lecture_btn color_btn">장바구니</a>
+				<a class="lecture_btn wish_btn">위시리스트</a>
+				<a class="lecture_btn cart_btn">장바구니</a>
 			</div>
 		</div>
 		<div class="lecture_top">
@@ -324,5 +316,62 @@
    		</div>
     </div>
     <%@ include file = "../include/home_footer.jsp" %>
+    <script type="text/javascript">
+    	var lno = "${lDto.lno}";
+		var id = "${sessionScope.id}";
+    	$(document).ready(function(){
+    		wishCheck();
+    		
+	    	$(".wish_btn").click(function(){
+	    		wishUpdate();
+	    	});
+    	});
+    	
+    	function wishCheck(){
+    		//alert("id:"+id+", lno:"+lno);
+    		$.ajax({
+    			type: "POST",
+    			url: "${path}/lecture/wishCheck?lno="+lno+"&id="+id,
+    			success: function(data){
+    				if (data > 0) {
+						$('.wish_btn').css("background", "#79CDCF")
+										.css("border", "1px solid #79CDCF")
+										.css("color", "white");
+					} else {
+						$('.wish_btn').css("background", "white")
+										.css("border", "1px solid #ddd")
+										.css("color", "#999");
+					}
+    			}, error: function(){
+    				alert("wishCheck error!!");
+    			}
+    		});
+    	}
+    	
+    	function wishUpdate(){
+    		$.ajax({
+    			type: "POST",
+    			url: "${path}/lecture/wishUpdate?lno="+lno+"&id="+id,
+    			success: function(){
+    				wishCheck();
+    			}, error: function(){
+    				alert("wishUpdate error!!");
+    			}
+    		});
+    	}
+    	
+    	/* function goodUpdate(lno){
+    		var id = "${sessionScope.id}";
+    		$.ajax({
+    			type: "POST",
+    			url: "${path}/lecture/goodUpdate?lno="+lno+"&id="+id,
+    			success: function(){
+    				goodCheck();
+    			}, error: function(){
+    				alert("goodUpdate Error!!!");
+    			}
+    		});
+    	} */
+    </script>
 </body>
 </html>

@@ -67,26 +67,34 @@ public class LectureDAOImpl implements LectureDAO{
 	}
 
 	@Override
-	public int goodCheck(int lno, String id) {
+	public int wishCheck(int lno, String id) {
 		HashMap<String , Object> map = new HashMap<>();
 		map.put("lno", lno);
 		map.put("id", id);
-		return sqlSession.selectOne("lecture.goodCheck", map);
+		return sqlSession.selectOne("lecture.wishCheck", map);
 	}
 
 	@Override
-	public void goodDelete(int lno, String id) {
+	public void wishDelete(int lno, String id) {
 		HashMap<String , Object> map = new HashMap<>();
 		map.put("lno", lno);
 		map.put("id", id);
-		sqlSession.delete("lecture.goodDelete", map);
+		sqlSession.delete("lecture.wishDelete", map);
 	}
 
 	@Override
-	public void goodInsert(int lno, String id) {
+	public void wishInsert(int lno, String id) {
 		HashMap<String , Object> map = new HashMap<>();
 		map.put("lno", lno);
 		map.put("id", id);
-		sqlSession.insert("lecture.goodInsert", map);
+		sqlSession.insert("lecture.wishInsert", map);
+	}
+
+	@Override
+	public int wishTotal(int lno, String id) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("lno", lno);
+		map.put("id", id);
+		return sqlSession.selectOne("lecture.wishTotal", map);
 	}
 }

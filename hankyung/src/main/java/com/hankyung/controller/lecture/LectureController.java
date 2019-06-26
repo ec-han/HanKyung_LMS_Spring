@@ -87,19 +87,28 @@ public class LectureController {
 		return "lecture/lecture_view";
 	}
 	
+	
 	@ResponseBody
-	@RequestMapping(value="goodUpdate", method = RequestMethod.POST)
-	public void goodUpdate(int lno, String id) {
-		log.info(">>>>> 카트체크 후 등록, 삭제");
-		service.goodUpdate(lno, id);
+	@RequestMapping(value="wishCheck", method = RequestMethod.POST)
+	public int wishCheck(int lno, String id) {
+		log.info(">>>>> 위시리스트 눌렀는지 체크");
+		int wishCheck = service.wishCheck(lno, id);
+		return wishCheck;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="goodCheck", method = RequestMethod.POST)
-	public int goodCheck(int lno, String id) {
-		log.info(">>>>> 카트 눌렀는지 체크");
-		int goodCheck = service.goodCheck(lno, id);
-		return goodCheck;
+	@RequestMapping(value="wishUpdate", method = RequestMethod.POST)
+	public void wishUpdate(int lno, String id) {
+		log.info(">>>>> 위시리스트 체크 후 추가, 삭제");
+		service.wishUpdate(lno, id);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="wishTotal", method=RequestMethod.POST)
+	public int wishTotal(int lno, String id) {
+		log.info(">>>>> 위시리스트 총 개수");
+		service.wishTotal(lno, id);
+		return 0;
 	}
 	
 }

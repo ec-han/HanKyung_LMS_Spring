@@ -56,21 +56,25 @@ public class LectureServiceImpl implements LectureService{
     public int price(String id) {
         return lDao.price(id);
     }
-
+	
 	@Override
-	public void goodUpdate(int lno, String id) {
-		int result = lDao.goodCheck(lno, id);
-		if (result > 0) {
-			lDao.goodDelete(lno, id);
-		} else {
-			lDao.goodInsert(lno, id);
-		}
+	public int wishCheck(int lno, String id) {
+		return lDao.wishCheck(lno, id);
 	}
 	
 	@Override
-	public int goodCheck(int lno, String id) {
-		return lDao.goodCheck(lno, id);
+	public void wishUpdate(int lno, String id) {
+		int result = lDao.wishCheck(lno, id);
+		if (result > 0) {
+			lDao.wishDelete(lno, id);
+		} else {
+			lDao.wishInsert(lno, id);
+		}
 	}
 
-
+	@Override
+	public int wishTotal(int lno, String id) {
+		lDao.wishTotal(lno, id);
+		return 0;
+	}
 }

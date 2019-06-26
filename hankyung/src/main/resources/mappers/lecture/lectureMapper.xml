@@ -88,19 +88,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             WHERE id = #{id}
      </select>
      
-     <select id="goodCheck" parameterType="hashmap" resultType="int">
+     <select id="wishCheck" parameterType="hashmap" resultType="int">
      	SELECT COUNT(*)
-     	FROM lecture_good
+     	FROM hk_wish
      	WHERE lno = #{lno} AND id = #{id}
      </select>
      
-     <delete id="goodDelete" parameterType="hashmap">
-     	DELETE FROM lecture_good
+     <delete id="wishDelete" parameterType="hashmap">
+     	DELETE FROM hk_wish
      	WHERE lno = #{lno} AND id = #{id}
      </delete>
      
-     <insert id="goodInsert" parameterType="hashmap">
-     	INSERT INTO lecture_good(lno, id)
+     <insert id="wishInsert" parameterType="hashmap">
+     	INSERT INTO hk_wish(lno, id)
      	VALUES(#{lno}, #{id})
      </insert>
+     
+     <select id="wishTotal" parameterType="hashmap">
+     	SELECT COUNT(*)
+     	FROM hk_wish
+     	WHERE id = #{id}
+     </select>
 </mapper>

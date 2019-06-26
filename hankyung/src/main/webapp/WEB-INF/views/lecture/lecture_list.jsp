@@ -335,18 +335,7 @@
     		
     	});
     	
-    	function goodUpdate(lno){
-    		var id = "${sessionScope.id}";
-    		$.ajax({
-    			type: "POST",
-    			url: "${path}/lecture/goodUpdate?lno="+lno+"&id="+id,
-    			success: function(){
-    				goodCheck();
-    			}, error: function(){
-    				alert("goodUpdate Error!!!");
-    			}
-    		});
-    	}
+    	
     	
     	
     </script>
