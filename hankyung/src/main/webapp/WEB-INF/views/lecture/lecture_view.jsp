@@ -101,6 +101,7 @@
 			top: 0px;
 			left: 0px;
 			width: 100%;
+			box-sizing: border-box;
 			z-index: 11;
 			display: flex;
 		}

@@ -16,34 +16,44 @@
 body{
 	background-color: #fafafa;
 }
-.cart_box{
-	/* border: 1px solid black; */
-	width: 1200px;
-	margin: 100px auto 500px;
-	display: flex;
+.section_box {
+	width: 100%;
+	min-width: 1350px;
+	padding: 150px 0px;
 }
-.lecture_container{
-	width:850px;
-	/* border:1px solid red; */
+.info_title {
+	width: 1350px;
+    font-size: 35px;
+    margin: 0px auto;
+    padding: 0px 50px 40px;
+    position: relative;
+    box-sizing: border-box;
 }
-
-.lecture_title{
-	margin:10px 0;
-	font-size: 25px;
+.info_title_bar {
+	position: absolute;
+	width: 7px;
+	height: 32px;
+	background-color: #444;
+	top: 11.5px;
+	left: 30px;
 }
 .lecture_box{
-	margin:20px;
-	width: 95%;
-	height: 120px;
-/* 	border: 1px solid blue; */
-	background-color:white;
-	padding: 10px;
+	margin:20px auto;
+	width: 60%;
+	padding: 30px;
+	border-radius: 5px;
+	background: white;
 	display: flex;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
 }
 .lecture_img_box{
-	width: 20%;
-	height: 100px;
-	border: 1px solid red;
+	width: 250px;
+	height: 162.5px;
+	overflow: hidden;
+}
+.lecture_img{
+	width: 100%;
+	height: 100%;
 }
 .lecture_text{
 	padding: 0 10px;
@@ -137,39 +147,18 @@ body{
 	color:blue;
 	cursor: pointer;
 }
-.lecture_img{
-	width: 100%;
-	height: 100%;
-}
 
 
 
 
-
-		.info_title {
-        	width: 1350px;
-            font-size: 35px;
-            margin: 0px auto;
-            padding: 0px 50px 40px;
-            position: relative;
-            box-sizing: border-box;
-        }
-        .info_title_bar {
-        	position: absolute;
-        	width: 7px;
-        	height: 32px;
-        	background-color: #444;
-        	top: 11.5px;
-        	left: 30px;
-        }
 </style>
 </head>
 <body>
 	<%@ include file="../include/home_header.jsp" %>
 	<!-- 가장 큰 박스 -->
-	<div class="cart_box">
+	<div class="section_box">
 		<div class="lecture_container">
-			<div class="info_title">과정 및 강좌 목록
+			<div class="info_title">위시리스트
 	        	<div class="info_title_bar"></div>
 	        </div>
 			<c:forEach items="${lDto}" var="list">
