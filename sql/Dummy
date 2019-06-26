@@ -203,3 +203,17 @@ CREATE TABLE hk_lecture_board(
 INSERT INTO hk_lecture_board(bno, title, content, writer)
 VALUES(seq_hkboard.NEXTVAL, '안녕하세요','강의생성후 첫 개시글', 'USER01');
 commit;
+
+
+
+
+DROP TABLE hk_wish;
+CREATE TABLE hk_wish(
+    lno NUMBER PRIMARY KEY,
+    id VARCHAR2(200) NOT NULL
+);
+
+
+SELECT a.*
+FROM hk_lecture a, hk_wish b
+WHERE a.lno = b.lno AND b.id='user01';
