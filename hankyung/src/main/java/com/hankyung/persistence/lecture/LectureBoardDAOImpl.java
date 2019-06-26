@@ -20,11 +20,10 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 	@Inject
 	private SqlSession session;
 	@Override
-	public List<LectureBoardDTO> list(String sort_option, String search_option, String keyword, String viewoption, int btype, int start,
+	public List<LectureBoardDTO> list(String viewoption, String search_option, String keyword, int btype, int start,
 			int end) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("btype", btype);
-		map.put("sort_option", sort_option);
 		map.put("search_option", search_option);
 		map.put("viewoption", viewoption);
 		map.put("keyword", "%"+keyword+"%");
@@ -66,8 +65,13 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 
 	@Override
 	public int countArticle(int btype, String search_option, String keyword) {
-		// TODO Auto-generated method stub
-		return 0;
+		Map<String, Object> map = new HashMap<>();
+		map.put("btype", btype);
+		map.put("search_option", search_option);
+		map.put("keyword", "%"+keyword+"%");
+		log.info(">>> keyword : "+keyword);
+		
+		return session.selectOne("lectureboard.countArticle", map);
 	}
 
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="lectureboard">
+	<!-- <select id="list" resultType="com.hankyung.domain.board.LectureBoardDTO">
+		SELECT * FROM
+			(SELECT rownum AS rnum, A.* FROM
+				( SELECT * FROM hk_lecture_board 
+					WHERE btype=#{btype} AND
+				<choose>
+					<when test="search_option != 'all'">
+						<if test="search_option == 'title'">
+							title LIKE #{keyword}
+						</if>
+						<if test="search_option == 'content'">
+							content LIKE #{content}
+						</if>
+						<if test="search_option == 'writer'">
+							writer LIKE #{keyword}
+						</if>
+					</when>
+					<otherwise>
+						<if test="search_option == 'all'">
+							(title LIKE #{keyword}
+							OR writer LIKE #{keyword})
+						</if>
+					</otherwise>
+				</choose>
+				ORDER BY bno DESC
+				)
+			A)
+		WHERE rnum BETWEEN #{start} AND #{end}
+	</select> -->
+	
+	<!-- 레코드 갯수 계산  -->
+	<!-- <select id="countArticle" resultType="int">
+		SELECT COUNT(*)
+		FROM hk_lecture_board WHERE btype=#{btype} AND
+		<choose>
+			<when test="search_option != 'all'">
+				<if test="search_option == 'title'">
+					title LIKE #{keyword}
+				</if>
+				<if test="search_option == 'writer'">
+					writer LIKE #{keyword}
+				</if>
+			</when>
+			<otherwise>
+				(title LIKE #{keyword}
+				OR writer LIKE #{keyword})
+			</otherwise>
+		</choose>
+	</select> -->
+	
+</mapper>

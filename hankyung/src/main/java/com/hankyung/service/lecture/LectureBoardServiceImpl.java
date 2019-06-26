@@ -19,9 +19,9 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	private LectureBoardDAO lbDao;
 	
 	@Override
-	public List<LectureBoardDTO> list(String sort_option, String search_option, String keyword, String viewoption, int btype, int start,
+	public List<LectureBoardDTO> list(String viewoption, String search_option, String keyword, int btype, int start,
 			int end) {
-		return  lbDao.list(sort_option, search_option, keyword, viewoption, btype, start, end);
+		return  lbDao.list(viewoption, search_option, keyword, btype, start, end);
 	}
 
 	@Override
@@ -56,8 +56,7 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 
 	@Override
 	public int countArticle(int btype, String search_option, String keyword) {
-		// TODO Auto-generated method stub
-		return 0;
+		return lbDao.countArticle(btype, search_option, keyword);
 	}
 
 }

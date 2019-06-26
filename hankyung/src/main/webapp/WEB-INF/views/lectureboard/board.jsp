@@ -99,8 +99,8 @@
 											<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today"/>
 											<fmt:formatDate value="${bDto.regdate}" pattern="yyyy-MM-dd" var="regdate"/>
 						                    <tr>
-						                      <td>${bDto.tnum}</td>
-						                      <td><a href="${path}/board/read?bno=${bDto.bno}&btype=${bDto.btype}">${bDto.title}</a></td>
+						                      <td>${bDto.bno}</td>
+						                      <td><a href="#">${bDto.title}</a></td>
 						                      <td>${bDto.writer}</td>
 						                      <td>
 						                      	<c:choose>
@@ -134,7 +134,7 @@
 				              					<ul class="pagination">
 				              						<c:if test="${map.pager.curPage > 1}">
 				              						<li class="paginate_button page-item previous" id="dataTable_previous">
-				              							<a href="${path}/board/list?btype=1&curPage=${map.pager.curPage-1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
+				              							<a href="${path}/lectureboard/list?btype=1&curPage=${map.pager.curPage-1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
 				              								이전 페이지
 				              							</a>
 				              						</li>
@@ -143,14 +143,14 @@
 													c:out은 출력임. 삼항연산자 사용. pageMaker.criDto.page : 선택한 페이지 == idx랑 같으면 class="active"효과를 주는 거 -->
 													<c:forEach begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}" var="idx">
 														<li class="paginate_button page-item" <c:out value="${map.pager.curPage == idx ? 'class=active-idx':''}"/>>
-					              							<a href="${path}/board/list?btype=1&curPage=${idx}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
+					              							<a href="${path}/lectureboard/list?btype=1&curPage=${idx}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
 					              								${idx}
 					              							</a>
 					              						</li>
 													</c:forEach>
 				              							<c:if test="${map.pager.curPage < map.pager.blockEnd}">
 				              						<li class="paginate_button page-item next" id="dataTable_next">
-				              							<a href="${path}/board/list?btype=1&curPage=${map.pager.curPage+1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
+				              							<a href="${path}/lectureboard/list?btype=1&curPage=${map.pager.curPage+1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}" class="page-link">
 				              								다음 페이지
 				              							</a>
 				              						</li>
@@ -173,26 +173,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		/* $(function(){
-			$('.board_regi_btn').click(function(){
-				location.href="${path}/lecture/";
-			});
-		});
-		
-		$(document).on("click","#searchbtnArea", function(){
-			var search_option = $('#selsearch').val();
-			var keyword = $.trim($('#search_board').val());
-			var btype = 1;
-			
-			if(keyword == null || keyword.length == 0){
-				$('#search_board').focus();
-				$('#search_board').css('border','2px solid #79CDCF');
-				return false;
-				
-			}
-			alert(search_option+","+keyword);
-			location.href="${path}/board/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
-		}); */
+	
 	</script>
 </body>
 </html>

@@ -68,7 +68,7 @@
 				  <i class="fas fa-headphones"></i>
 				  <span>학습방</span>
 				</a>
-				<a class="nav_link collapsed" href="${path}/lecture/board">
+				<a class="nav_link collapsed" href="#">
 				  <i class="fa fa-coffee"></i>
 				  <span>게시판</span>
 				</a>
@@ -95,7 +95,7 @@
 				</a>
 				<div class="collapse_inner rounded collapse" id="collapseCourse">
 					<h6 class="collapse_header">과정 정보</h6>
-					<a class="collapse_item" href="${path}/lecture/board">게시판</a>
+					<a class="collapse_item" href="#">게시판</a>
 					<a class="collapse_item" href="#">수업 계획표</a>
 				</div>
 			</li>
