@@ -34,6 +34,19 @@ public class MainController {
 		return "main/summernote";
 	}
 	
+	@RequestMapping(value = "/learning", method = RequestMethod.GET)
+	public String learning() {
+		log.info("학습방 페이지");
+
+		return "main/learning";
+	}
+	
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String insert_teacher() {
+		log.info("선생님 등록 페이지");
+
+		return "main/insert_tch";
+	}
 	
 	
 }

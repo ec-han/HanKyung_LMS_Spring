@@ -181,15 +181,15 @@ body{
 				</div>
 				<div class="pay_info_box">
 					<div>이름</div>
-					<input type="text" id="name" name="name" class="info_box">
+					<input type="text" id="input_name" name="name" class="info_box">
 				</div>
 				<div class="pay_info_box">
 					<div>전화번호(숫자만)</div>
-					<input type="text" id="name" name="name" class="info_box">
+					<input type="text" id="input_phone" name="name" class="info_box">
 				</div>
 				<div class="pay_info_box">
 					<div>이메일</div>
-					<input type="text" id="name" name="name" class="info_box">
+					<input type="text" id="input_mail" name="name" class="info_box">
 					<span class="pay_check">
 						<input type="checkbox" id="onecheck">
 						<label for="onecheck">[필수] 구매조건 및 결제대항 서비스 약관 동의</label>
