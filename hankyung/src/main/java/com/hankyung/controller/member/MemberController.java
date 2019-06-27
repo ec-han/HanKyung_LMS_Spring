@@ -207,6 +207,14 @@ public class MemberController {
 		return result;
 	}
 	
+	@RequestMapping(value="/tch_insert", method=RequestMethod.POST)
+	public String tch_insert(HttpSession session, MemberDTO mDto, Model model) {
+		log.info("선생님 추가");
+		service.create(mDto);
+		log.info("선생님 추가 완료");
+
+		return "redirect:/main/";
+	}
 	
 	
 }

@@ -15,6 +15,5 @@ public interface MemberService {
 	public MemberDTO info(String id);
 	public void update(MemberDTO mDto);
 	public void delete(String id);
-	public int pw_check(MemberDTO mDto);
-	
+	public int pw_check(MemberDTO mDto);	
 }

@@ -53,7 +53,6 @@
 	height: 45px;
 }
 .insert_btn{
-
 	border: none;
 	outline: none;
 	text-align: center;
@@ -130,6 +129,7 @@
 							<input type="password" id="input_repw" name="repw" class="input_class" maxlength="15" placeholder="비밀번호확인">
 						</span>
 					</div>
+					<input type="hidden" id="type" name="type">
 					
 					<div class="err_msg"></div>
 					
@@ -141,7 +141,7 @@
 						<span class="login">로그인</span> | 
 						<span class="loss_info">아이디, 비밀번호 찾기</span>
 					</div>
-
+					
 				</form>
 			</div>
 		</div>
@@ -435,6 +435,7 @@
 		
 		$('.insert_btn').click(function(event) {
 			var flag = nameflag + idflag + mailflag + phoneflag + pwflag + repwflag;
+			$('#type').val(2);
 			if(flag == 6){
 				$('#frm_mem').submit();
 			}

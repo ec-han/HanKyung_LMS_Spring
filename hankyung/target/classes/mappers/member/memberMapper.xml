@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 
 	<insert id="create" parameterType="com.hankyung.domain.member.MemberDTO">
-		INSERT INTO hk_member(name, id, email, phone, pw)
-		VALUES(#{name}, #{id}, #{email}, #{phone}, #{pw})
+		INSERT INTO hk_member(name, id, email, phone, pw, type)
+		VALUES(#{name}, #{id}, #{email}, #{phone}, #{pw}, #{type})
 	</insert>
 	
 	<select id="login" parameterType="com.hankyung.domain.member.MemberDTO" resultType="com.hankyung.domain.member.MemberDTO">
@@ -59,6 +59,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
 	
+	<insert id="tch_insert" parameterType="com.hankyung.domain.member.MemberDTO">
+		INSERT INTO hk_member(name, id, email, phone, pw, type)
+		VALUES(#{name}, #{id}, #{email}, #{phone}, #{pw}, #{type})
+	</insert>
 	
 	
 </mapper>

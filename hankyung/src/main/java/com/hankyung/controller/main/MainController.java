@@ -48,5 +48,12 @@ public class MainController {
 		return "main/insert_tch";
 	}
 	
+	@RequestMapping(value = "/insert_lecture", method = RequestMethod.GET)
+	public String insert_lecture() {
+		log.info("강의 등록 페이지");
+
+		return "main/insert_lecture";
+	}
+	
 	
 }
