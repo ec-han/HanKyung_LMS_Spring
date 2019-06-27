@@ -21,7 +21,7 @@
 		z-index: 100;
 		border-bottom: 1px solid #ddd;
 		top: 0px;
-		transition: .3s;
+		transition: .2s;
 	}
 	.home_navi_left {
 		display: inline-block;
@@ -43,8 +43,8 @@
 	}
 	.home_navi {
 		display: inline-block;
-		width: 105px;
-		transition: .3s;
+		margin: 0px 15px;
+		transition: .2s;
 	}
 	.home_navi1 {
           width: 200px;
@@ -116,15 +116,17 @@
 	.mypage_box {
 		position: absolute;
 		display: none;
-		width: 130px;
+		width: 140px;
 		top: 73px;
-		left: -3px;
+		left: -8px;
 		background: white;
 		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 		box-sizing: border-box;
 		font-size: 14px;
 		font-weight: 400;
 		overflow: hidden;
+		padding-top: 5px;
+		border-radius: 0px 0px 5px 5px;
 	}
 	.mypage_box_bar {
 		position: absolute;
@@ -136,11 +138,13 @@
 	}
 	.mypage_btn {
 		display: block;
-		padding: 15px 5px 8px 16px;
+		margin: 4px 0px 4px 19px;
+		padding: 3px;
 		transition: .2s;
 	}
 	.mypage_btn:last-child {
-		padding: 8px 5px 13px 16px;
+		margin: 4px 0px 8px 19px;
+		padding: 3px;
 	}
 	.mypage_btn:hover {
 		color: #79CDCF;
@@ -162,6 +166,7 @@
 		font-weight: 400;
 		overflow: hidden;
 		padding: 10px;
+		border-radius: 0px 0px 5px 5px;
 	}
 	.main_box_bar {
 		position: absolute;
@@ -173,7 +178,7 @@
 	}
 	.main_box_title {
 		font-weight: 600;
-		padding: 3px 5px 8px;
+		padding: 5px 2px 9px;
 		font-size: 15px;
 		color: #79CDCF;
 		margin: 0px 5px;
@@ -236,6 +241,7 @@
 		                        	<div class="mypage_box">
 		                        		<div class="mypage_box_bar"></div>
 			                        	<a href="${path}/lecture/wishlist" class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
+			                        	<a href="${path}/lecture/cart" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
 			                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
 			                        </div>
 		                        </c:if>
@@ -296,11 +302,6 @@
                     <div class="home_navi_div">
                         <span class="home_navi_span">
                             <a href="${path}/lecture/list" class="home_navi home_navi2" id="login">강좌보기</a>
-                        </span>
-                    </div>
-                    <div class="home_navi_div">
-                        <span class="home_navi_span">
-                            <a href="${path}/lecture/cart" class="home_navi home_navi4" id="basket">장바구니</a>
                         </span>
                     </div>
                     <c:if test="${!empty sessionScope.id}">

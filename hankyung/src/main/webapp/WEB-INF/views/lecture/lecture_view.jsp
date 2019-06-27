@@ -19,7 +19,7 @@
             min-width: 1350px;
             padding: 150px 0px 0px;
             box-sizing: border-box;
-            transition: .3s;
+            transition: .2s;
         }
         .info_title {
         	width: 1350px;
@@ -69,17 +69,27 @@
 			border-radius: 20px;
 			border: 1px solid #ddd;
 			color: #999;
-			transition: .3s;
+			transition: .2s;
 		}
 		#back_btn {
 			color: #999;
 		}
 		.wish_btn {
+			display: inline-block;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			font-size: 15px;
+			border-radius: 20px;
+			border: 1px solid #ddd;
+			color: #999;
+			transition: .2s;
 			margin-right: 5px;
 		}
 		.lecture_btn:hover, #back_btn:hover {
-			border: 1px solid #79CDCF;
-			color: #79CDCF;
+			border: 1px solid #FFC000;
+			color: #FFC000;
 		}
 
 
@@ -109,13 +119,15 @@
 			display: inline-block;
 			box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.15);
 			width: 429px;
+			min-width: 300px;
 			height: 280px;
 			overflow: hidden;
 			margin-top: 35px;
 			border-radius: 5px;
 		}
 		.img_size {
-			height: 280px;
+			width: 100%;
+			height: 100%;
 		}
 		.lecture_img_back {
 			position: absolute;
@@ -236,7 +248,7 @@
 				<a href="${path}/lecture/list" class="lecture_btn" id="back_btn">뒤로가기</a>
 			</div>
 			<div class="button_right">
-				<a class="lecture_btn wish_btn">위시리스트</a>
+				<a class="wish_btn">위시리스트</a>
 				<a class="lecture_btn cart_btn">장바구니</a>
 			</div>
 		</div>
@@ -251,9 +263,8 @@
 	      					${lDto.lname}
 	       			</div>
 	       			<div class="index_box lecture_day">
-	       				<span class="text_box">과정기간ㅣ</span>2018.12.27 ~ 2019.04.05
-	       				<%-- <fmt:formatDate value="${lDto.startdate}" pattern="yyyy.mm.dd" />
-	       				~ <fmt:formatDate value="${lDto.enddate}" pattern="yyyy.mm.dd" /> --%>
+	       				<span class="text_box">과정기간ㅣ</span><fmt:formatDate value="${lDto.startdate}" pattern="yyyy.MM.dd" />
+	                        	~ <fmt:formatDate value="${lDto.enddate}" pattern="yyyy.MM.dd" />
 	       			</div>
 	       			<div class="index_box lecture_name">
 	       				<span class="text_box">강사명ㅣ</span>${lDto.tname}

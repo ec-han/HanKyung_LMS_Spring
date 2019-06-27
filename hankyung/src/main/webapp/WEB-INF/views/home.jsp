@@ -55,7 +55,7 @@
       }
       .home_navi_right {
           display: inline-block;
-          padding: 30px 0px;
+          padding: 23px 0px;
           float: right;
           margin-right: 10%;
       }
@@ -67,17 +67,25 @@
           display: inline-block;
           text-align: center;
       }
+      .right_navi {
+      	margin: 0px 12px;
+      	width: 76px;
+      }
+      .myclass {
+      	margin: 0px 12px;
+      	width: 89px;
+      }
       .home_navi {
           display: inline-block;
           width: 105px;
-          transition: .3s;
+          transition: .2s;
           opacity: .5;
       }
       .home_navi1 {
           width: 200px;
       }
       .home_navi1 > img {
-      	padding: 20px 0px;
+      	padding: 13px 0px 12px;
       	width: 200px;
       }
       #about, #projects, #contact {
@@ -88,9 +96,8 @@
           font-family: 'Noto Sans KR', sans-serif;
           font-weight: normal;
           font-size: 18px;
-          transition: .3s;
+          transition: .2s;
           opacity: .5;
-          margin: 0px 14px;
           color: white;
       }
       #login:hover, #join:hover, #main:hover, #lecture:hover, #basket:hover, #logout:hover {
@@ -106,7 +113,7 @@
           height: 5px;
           position: absolute;
           background: #79CDCF;
-          bottom: -30px;
+          bottom: -23px;
           left: -2px;
       }
       
@@ -141,7 +148,7 @@
           font-weight: 600;
           border-radius: 50px;
           box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
-          transition: 0.3s;
+          transition: 0.2s;
       }
       .center_bottom:before {
           content: '';
@@ -154,7 +161,7 @@
           background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
           background-size: 500%;
           border-radius: 50px;
-          transition: 0.3s;
+          transition: 0.2s;
       }
       .center_bottom:hover:before {
           z-index: 1;
@@ -238,18 +245,6 @@
 			width: 380px;
 			padding: 12px 12px 70px;
 		}
-		.basket_icon {
-			position: absolute;
-			right: 26px;
-			top: 26px;
-			font-size: 22px;
-			color: #FFC000;
-			opacity: .5;
-			transition: .3s;
-		}
-		.basket_icon:hover {
-			opacity: 1;
-		}
 		.section_img {
 			width: 380px;
 			height: 247px;
@@ -285,11 +280,156 @@
 			line-height: 35px;
 			color: white;
 			border-radius: 20px;
-			transition: .3s;
+			transition: .2s;
 		}
 		.class_more:hover {
 			background: #2D314F;
 		}
+		
+		
+		
+		
+	.name_btn {
+		margin: 0px 2px;
+	}
+    #notname {
+      	cursor: default;
+      	display: inline-block;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: normal;
+        font-size: 18px;
+        transition: .2s;
+        opacity: 1;
+        color: white;
+      }
+	#name_point {
+		color: #FFC000;
+	}
+	#name {
+      	display: inline-block;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: normal;
+        font-size: 18px;
+        transition: .2s;
+        opacity: 1;
+        color: white;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+	.mypage {
+		position: relative;
+	}
+	.mypage_arrow {
+		position: absolute;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		top: 71px;
+		transform: rotate(45deg);
+		left: 60px;
+		background: white;
+		box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+	}
+	.arrow_top {
+		box-shadow: none;
+		z-index: 101;
+	}
+	.mypage_box {
+		position: absolute;
+		display: none;
+		width: 140px;
+		top: 51px;
+		left: -24px;
+		background: white;
+		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+		box-sizing: border-box;
+		font-size: 14px;
+		font-weight: 400;
+		overflow: hidden;
+		padding-top: 5px;
+		border-radius: 0px 0px 5px 5px;
+	}
+	.mypage_box_bar {
+		position: absolute;
+		top: 0px;
+		height: 4px;
+		width: 235px;
+		left: -1px;
+		background: #79CDCF;
+	}
+	.mypage_btn {
+		display: block;
+		margin: 4px 0px 4px 19px;
+		padding: 3px;
+		transition: .2s;
+	}
+	.mypage_btn:last-child {
+		margin: 4px 0px 8px 19px;
+		padding: 3px;
+	}
+	.mypage_btn:hover {
+		color: #79CDCF;
+	}
+	.icon_hover {
+		color: #79CDCF;
+		padding-right: 5px;
+	}
+	.mypage_btn {
+		color: #444;
+	}
+	.main_box {
+		position: absolute;
+		display: none;
+		width: 300px;
+		top: 51px;
+		left: -98px;
+		background: white;
+		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+		box-sizing: border-box;
+		font-size: 14px;
+		font-weight: 400;
+		overflow: hidden;
+		padding: 10px;
+		border-radius: 0px 0px 5px 5px;
+	}
+	.main_box_bar {
+		position: absolute;
+		top: 0px;
+		left: -1px;
+		height: 4px;
+		width: 350px;
+		background: #79CDCF;
+	}
+	.main_box_title {
+		font-weight: 600;
+		padding: 5px 2px 9px;
+		font-size: 15px;
+		color: #79CDCF;
+		margin: 0px 5px;
+		border-bottom: 1px solid #ededed;
+	}
+	.main_lecture {
+		display: block;
+		width: 270px;
+		margin: 5px 5px;
+		color: #444;
+	}
+	.main_lecture:first-child {
+		margin: 8px 5px 5px;
+	}
+	.main_lecture:last-child {
+		margin: 5px 5px 0px;
+	}
+	.main_lecture:hover {
+		color: #79CDCF;
+		transition: .2s;
+	}
 </style>
 </head>
 <body>
@@ -303,6 +443,29 @@
                     <span class="home_navi_span"><a href="${path}/" class="home_navi1"><img src="${path}/resources/img/logo_02_white.png"></a></span>
                 </div>
                 <div class="home_navi_right">
+	                <c:if test="${!empty sessionScope.id}">
+	                	<div class="home_navi_div mypage">
+	                        <span class="home_navi_span">
+	                            <a class="home_navi_btn name_btn name" <c:out value="${sessionScope.type =='2'?'id=name':'id=notname'}"/>>
+	                            	<span id="name_point">${sessionScope.name}</span>님
+	                            	<c:if test="${sessionScope.type == '2'}">
+	                            		<i class="fas fa-chevron-down"></i>
+	                            	</c:if>
+	                            </a>
+	                            
+	                        </span>
+	                        <!-- <div class="mypage_arrow arrow_top"></div>
+	                        <div class="mypage_arrow"></div> -->
+	                        <c:if test="${sessionScope.type == '2'}">
+	                        	<div class="mypage_box">
+	                        		<div class="mypage_box_bar"></div>
+		                        	<a href="${path}/lecture/wishlist" class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
+		                        	<a href="${path}/lecture/cart" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
+		                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
+		                        </div>
+	                        </c:if>
+	                   	</div>
+                   	</c:if>
                     <div class="home_navi_div">
                         <span class="home_navi_span">
                             <a href="#header_box2" class="home_navi home_navi2" id="about">About</a>
@@ -322,30 +485,48 @@
                         <span class="home_navi_bar"></span>
                     </div>
                     <c:choose>
-                    	<c:when test="${!empty sessionScope.id}">
-                    	<c:if test="${sessionScope.type == '0'}">
-                    		<div class="home_navi_div">
-		                        <span class="home_navi_span">
-		                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">LMS관리</a>
-		                        </span>
-		                    </div>
-                    	</c:if>
-                    	<c:if test="${sessionScope.type == '1'}">
-                    		<div class="home_navi_div">
-		                        <span class="home_navi_span">
-		                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">나의강의실</a>
-		                        </span>
-		                    </div>
-                    	</c:if>
-                    	<c:if test="${sessionScope.type == '2'}">
-                    		<div class="home_navi_div">
-		                        <span class="home_navi_span">
-		                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">나의강의실</a>
-		                        </span>
-		                    </div>
-                    	</c:if>
-	                    </c:when>
-	                    <c:otherwise>
+		                <c:when test="${!empty sessionScope.id}">
+	                    	<c:if test="${sessionScope.type == '0'}">
+	                    		<div class="home_navi_div">
+			                        <span class="home_navi_span">
+			                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">LMS관리</a>
+			                        </span>
+		                    	</div>
+	                    	</c:if>
+	                    	<c:if test="${sessionScope.type == '1'}">
+			                	<div class="home_navi_div">
+			                        <span class="home_navi_span">
+			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실</a>
+			                        </span>
+			                        <div class="main_box">
+			                        	<div class="main_box_bar"></div>
+			                        	<div class="main_box_title">나의 강의목록</div>
+			                        	<div>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기1</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작sdfsdf하기2</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기3</a>
+			                        	</div>
+			                        </div>
+		                    	</div>
+	                    	</c:if>
+	                    	<c:if test="${sessionScope.type == '2'}">
+			                	<div class="home_navi_div">
+			                        <span class="home_navi_span">
+			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실</a>
+			                        </span>
+			                        <div class="main_box">
+			                        	<div class="main_box_bar"></div>
+			                        	<div class="main_box_title">나의 강의목록</div>
+			                        	<div>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기1</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작sdfsdf하기2</a>
+			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기3</a>
+			                        	</div>
+			                        </div>
+		                    	</div>
+	                    	</c:if>
+		                </c:when>
+		                <c:otherwise>
 		                    <div class="home_navi_div">
 		                        <span class="home_navi_span">
 		                            <a href="${path}/member/login" class="home_navi_btn right_navi" id="login">로그인</a>
@@ -353,7 +534,7 @@
 		                    </div>
 		                    <div class="home_navi_div">
 		                        <span class="home_navi_span">
-		                            <a href="${path}/member/constract" class="home_navi_btn right_navi" id="join">회원가입</a>
+		                            <a href="${path}/member/constract" class="home_navi_btn home_navi3 right_navi" id="join">회원가입</a>
 		                        </span>
 		                    </div>
 	                    </c:otherwise>
@@ -361,11 +542,6 @@
                     <div class="home_navi_div">
                         <span class="home_navi_span">
                             <a href="${path}/lecture/list" class="home_navi_btn right_navi" id="lecture">강좌보기</a>
-                        </span>
-                    </div>
-                    <div class="home_navi_div">
-                        <span class="home_navi_span">
-                            <a href="${path}/lecture/cart" class="home_navi_btn right_navi" id="basket">장바구니</a>
                         </span>
                     </div>
                     <c:if test="${!empty sessionScope.id}">
@@ -442,9 +618,6 @@
                 <div class="section_content">
                 	<c:forEach items="${map.pList}" var="best">
 	                    <div class="content_box">
-	                    	<a>
-	                    		<i class="fas fa-shopping-basket basket_icon"></i>
-	                    	</a>
 	                        <div class="section_img">
 	                        	<a href="${path}/lecture/view?lno=${best.lno}">
 	                        		<img class="lecture_img" src="${path}/resources/img/${best.limg}">
@@ -473,9 +646,6 @@
                 <div class="section_content">
                 	<c:forEach items="${map.nList}" var="new_DTO">
 	                    <div class="content_box">
-	                    	<a>
-	                    		<i class="fas fa-shopping-basket basket_icon"></i>
-	                    	</a>
 	                        <div class="section_img">
 	                        	<a href="${path}/lecture/view?lno=${new_DTO.lno}">
 	                        		<img class="lecture_img" src="${path}/resources/img/${new_DTO.limg}">
@@ -519,6 +689,36 @@
 					}
 				});
 			});
+			
+			
+			var flag1 = 0;
+            var flag2 = 0;
+            
+            $(".name").click(function(){
+            	if (flag1 == 0) {
+            		$(".mypage_box").css("display", "inline-block");
+            		flag1 = 1;
+				} else {
+					$(".mypage_box").css("display", "none");
+            		flag1 = 0;
+				}
+            	$(".main_box").css("display", "none");
+            	flag2 = 0;
+            });
+            
+            $(".main_btn").click(function(){
+            	if (flag2 == 0) {
+            		$(".main_box").css("display", "inline-block");
+            		flag2 = 1;
+				} else {
+					$(".main_box").css("display", "none");
+            		flag2 = 0;
+				}
+            	$(".mypage_box").css("display", "none");
+            	flag1 = 0;
+            });
+			
+			
         });
         $(window).scroll(function(event) {
             var scrollValue = $(this).scrollTop();
@@ -527,9 +727,9 @@
                                   .css("background", "white")
                                   .css('box-shadow', '2px 2px 20px rgba(0, 0, 0, 0.15)');
                 $('.home_navi1').html("<img src='${path}/resources/img/logo_02.png'>");
-                $('.right_navi').css("color", "#444");
+                $('.home_navi_btn').css("color", "#444");
                 $('.home_navi').css("opacity", "1");
-                $('.right_navi').css("opacity", "1");
+                $('.home_navi_btn').css("opacity", "1");
                 if (scrollValue > 900 && scrollValue < 2000) {
                     $('.home_navi2').css("color", "#79CDCF")
                                .css("opacity", "1");
@@ -559,7 +759,7 @@
                 $('.home_navi_bar').eq(1).css("display", "none");
                 $('.home_navi_bar').eq(2).css("display", "none");
                 $('.home_navi').css("color", "#444");
-                $('.right_navi').css("color", "#444");
+                $('.home_navi_btn').css("color", "#444");
                 }
             } else if (scrollValue < 150) {
                 $('.home_header_navi').css("position", "relative")
@@ -567,10 +767,11 @@
                                  .css('box-shadow', 'none');
                 $('.home_navi').css("color", "white")
                          		.css("opacity", "0.5");
-                $('.right_navi').css("color", "white")
+                $('.home_navi_btn').css("color", "white")
                 				.css("opacity", "0.5");
                 $('.home_navi1').html("<img src='${path}/resources/img/logo_02_white.png'>");
-                $('.right_navi').css("color", "white");
+                $('.home_navi_btn').css("color", "white");
+                $('.name_btn').css("opacity", "1");
                 $('.home_navi_bar').eq(0).css("display", "none");
                 $('.home_navi_bar').eq(1).css("display", "none");
                 $('.home_navi_bar').eq(2).css("display", "none");

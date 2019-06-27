@@ -75,7 +75,7 @@
 		background: #79CDCF;
 		font-family: 'Nunito', sans-serif;
 		font-weight: 600;
-		transition: .3s;
+		transition: .2s;
 		overflow: hidden;
 		position: relative;
 		box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
@@ -91,7 +91,7 @@
 		background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
 		background-size: 500%;
 		border-radius: 5px;
-		transition: 0.3s;
+		transition: 0.2s;
 	}
 	.home_footer_btn:hover:before {
 		z-index: 1;
@@ -167,7 +167,7 @@
 		font-size: 20px;
 		color: #aaa;
 		margin-left: 15px;
-		transition: .3s;
+		transition: .2s;
 	}
 	.footer_icon_btn {
 		line-height: 50px;

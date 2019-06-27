@@ -9,10 +9,6 @@
 <meta charset="UTF-8">
 <title>샘플페이지</title>
 <style type="text/css">
-#test { /* 복사할 필요 없음  */
-	display: flex;
-	flex-direction: column;
-}
 body{
 	background-color: #fafafa;
 }
@@ -25,7 +21,7 @@ body{
 	width: 1350px;
     font-size: 35px;
     margin: 0px auto;
-    padding: 0px 50px 40px;
+    padding: 0px 50px 30px;
     position: relative;
     box-sizing: border-box;
 }
@@ -38,17 +34,19 @@ body{
 	left: 30px;
 }
 .lecture_box{
-	margin:20px auto;
+	margin:25px auto;
 	width: 60%;
-	padding: 30px;
+	padding: 20px;
 	border-radius: 5px;
 	background: white;
 	display: flex;
 	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+	box-sizing: border-box;
+	position: relative;
 }
 .lecture_img_box{
-	width: 250px;
-	height: 162.5px;
+	width: 200px;
+	height: 128.9px;
 	overflow: hidden;
 }
 .lecture_img{
@@ -56,101 +54,53 @@ body{
 	height: 100%;
 }
 .lecture_text{
-	padding: 0 10px;
-	width: 50%;
-	height: 100px;
-	/* border: 1px solid green; */
+	margin: 3px 0px 3px 30px;
+	width: 455px;
+	height: 100%;
+	box-sizing: border-box;
+}
+.lecture_title {
+	font-size: 20px;
+	font-weight: bold;
+}
+.lecture_bottom {
+	position: absolute;
+	width: 455px;
+	bottom: 25px;
+	padding-top: 11px;
+	border-top: 1px solid #dadada;
 }
 .lecture_paytext{
-	padding: 0 10px;
-	width: 30%;
-	height: 100px;
-	/* border: 1px solid green; */
-	display:flex;
-	flex-direction : row-reverse;
+	margin-left: 17px;
+	width: 130px;
 }
-.lecture_flexbox{
-	flex-direction:column;
-}
-.other_btn{
-	margin-top:5px;
-	padding: 5px;
-	font-size: 10px;
-	width: 100px;
-	border: 1px solid gray;
-	text-align: center;
-}
-
-
-.pay_container{
-	width:350px;
-	height:500px;
-	/* border:1px solid blue; */
-	flex-direction:column;
-}
-.pay_box_title{
-	margin: 0 auto;
-	padding: 10px 0;
+.paytext_top {
 	text-align: right;
-	height: 40px;
-	width: 320px;
+	margin-top: 3px;
 }
-.pay_box{
-	margin: 0 auto;
-	border:1px solid black;
-	background-color: white;
-	width: 320px;
-}
-.price_title_box{
-	padding: 10px;
-	display: flex;
-	line-height: 30px;
-}
-.price_title{
-	font-size: 30px;
-	font-weight: 600;
-	flex:1;
-}
-.price{
+.paytext_price{
 	text-align: right;
 	font-size: 20px;
 	flex:1;
 }
-.pay_info_box{
-	padding: 10px;
-}
-.info_box{
-	width: 100%;
-	height: 40px;
-	background-color: #F8F9FC;
-	border: 1px solid gray;
-    outline: none;
-    font-size: 25px;
-}	
-.pay_check{
-	margin-top:10px;
-	font-size: 12px;
-	display: inline-block;
-}
-.o_btn{
-	height: 50px;
-	width: 100%;
-	background: mediumseagreen;
-	font-size: 25px;
-	line-height:50px;
-	color: white;
+.wish_btn {
+	display: block;
+	width: 110px;
 	text-align: center;
-	border-top: 1px solid black;
-	cursor: pointer;
+	padding: 5px 7px;
+	font-size: 13px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	color: #999;
+	margin-top: 38px;
+	margin-left: 20px;
+	transition: .2s;
+	border-radius: 15px;
 }
-.pay_view{
-	color:blue;
-	cursor: pointer;
+.wish_btn:hover {
+	color: #FFC000;
+	border: 1px solid #FFC000;
 }
-
-
-
-
 </style>
 </head>
 <body>
@@ -164,18 +114,28 @@ body{
 			<c:forEach items="${lDto}" var="list">
 				<div class="lecture_box">
 					<div class="lecture_img_box">
-						<img class="lecture_img" src="${path}/resources/img/${list.limg}">
+						<a href="${path}/lecture/view?lno=${list.lno}">
+							<img class="lecture_img" src="${path}/resources/img/${list.limg}">
+						</a>
 					</div>
 					<div class="lecture_text">
-						<div>${list.lname}</div>
-						<div>${list.startdate} ~ ${list.enddate}</div>									
+						<div class="lecture_title"><a href="${path}/lecture/view?lno=${list.lno}">${list.lname}</a></div>
+						<div class="lecture_bottom">
+							<div>
+							과정기간ㅣ<fmt:formatDate value="${list.startdate}" pattern="yyyy.MM.dd" />
+		                    ~ <fmt:formatDate value="${list.enddate}" pattern="yyyy.MM.dd" />
+		                    </div>
+		                    <div>강사명ㅣ${list.tname}</div>
+	                    </div>								
 					</div>
-					<div class="lecture_paytext"> 
-						<div class="lecture_flexbox">
-							<div class="price">￦${list.price}</div>
-							<div class="other_btn">위시리스트로 이동</div>
-							<div class="other_btn">장바구니에서 삭제</div>
-						</div>								
+					<div class="lecture_paytext">
+						<div class="paytext_top">
+							강좌 금액
+						</div>
+						<div class="paytext_price">
+							<fmt:formatNumber value="${list.price}" pattern="#,###원" />
+						</div>
+						<a href="${path}/lecture/cart?lno=${list.lno}"><span class="wish_btn">장바구니에 추가</span></a>
 					</div>
 				</div>
 			</c:forEach>

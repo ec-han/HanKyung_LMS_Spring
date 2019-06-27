@@ -57,7 +57,7 @@
 			font-size: 22px;
 			color: #FFC000;
 			opacity: .5;
-			transition: .3s;
+			transition: .2s;
 		}
 		.cart_icon:hover {
 			opacity: 1;
@@ -97,7 +97,7 @@
 			line-height: 35px;
 			color: white;
 			border-radius: 20px;
-			transition: .3s;
+			transition: .2s;
 		}
 		.class_more:hover {
 			background: #2D314F;
@@ -126,7 +126,7 @@
 			font-size: 20px;
 		}
 		.lecture_index > a {
-			transition: .3s;
+			transition: .2s;
 		}
 		.lecture_index > a:hover {
 			color: #FFC000;
@@ -167,7 +167,7 @@
 			padding: 3px;
 			color: #dadada;
 			font-size: 17px;
-			transition: .3s;
+			transition: .2s;
 		}
 		.search_icon:hover {
 			color: #FFC000;
@@ -209,7 +209,7 @@
 			height: 27px;
 			line-height: 25px;
 			text-align: center;
-			transition: .3s;
+			transition: .2s;
 		}
 		.board_navi ul li:last-child a {
 			border-right: 1px solid #ddd;
@@ -279,11 +279,11 @@
 	                            </a>
 	                        </div>
 	                        <div class="section_text">
-	                        	<span class="section_day">기간ㅣ</span><fmt:formatDate value="${list.startdate}" pattern="yyyy.mm.dd" />
-	                        	~ <fmt:formatDate value="${list.enddate}" pattern="yyyy.mm.dd" />
+	                        	<span class="section_day">기간ㅣ</span><fmt:formatDate value="${list.startdate}" pattern="yyyy.MM.dd" />
+	                        	~ <fmt:formatDate value="${list.enddate}" pattern="yyyy.MM.dd" />
 	                        </div>
 	                        <div class="section_text">
-	                            <span class="section_teacher">강사ㅣ</span>${list.tname} / lno : ${list.lno} / rgstrmem : ${list.rgstrmem}
+	                            <span class="section_teacher">강사ㅣ</span>${list.tname}
 	                        </div>
 	                    </div>
                     </c:forEach>
