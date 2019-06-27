@@ -1,9 +1,11 @@
 package com.hankyung.service.lecture;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,6 @@ public class LectureServiceImpl implements LectureService{
 	
 	@Inject
 	private LectureDAO lDao;
-	
-	@Override
-	public List<LectureDTO> cartlist(String id) {
-		return lDao.cartlist(id);
-	}
 
 	@Override
 	public HashMap<String, List<LectureDTO>> homeList() {
@@ -51,12 +48,7 @@ public class LectureServiceImpl implements LectureService{
 	public LectureDTO lectureView(int lno) {
 		return lDao.lectureView(lno);
 	}
-	
-	@Override
-    public int price(String id) {
-        return lDao.price(id);
-    }
-	
+
 	@Override
 	public int wishCheck(int lno, String id) {
 		return lDao.wishCheck(lno, id);
@@ -82,4 +74,12 @@ public class LectureServiceImpl implements LectureService{
 	public List<LectureDTO> wishView(String id) {
 		return lDao.wishView(id);
 	}
+
+	/*
+	 * @Override public ArrayList<LectureDTO> cartAdd(int lno, String id,
+	 * HttpSession session) { LectureDTO lDto = lDao.lectureView(lno);
+	 * log.info(">>> lDto = "+lDto); ArrayList<LectureDTO> list = new ArrayList<>();
+	 * list.add(lDto); session.setAttribute("lecture", list); ArrayList<LectureDTO>
+	 * cart = (ArrayList)session.getAttribute("lecture"); return cart; }
+	 */
 }

@@ -19,11 +19,6 @@ public class LectureDAOImpl implements LectureDAO{
 	
 	@Inject
 	private SqlSession sqlSession;
-	
-	@Override
-	public List<LectureDTO> cartlist(String id) {
-		return sqlSession.selectList("lecture.cartlist", id);
-	}
 
 	@Override
 	public List<LectureDTO> popularList() {
@@ -59,11 +54,6 @@ public class LectureDAOImpl implements LectureDAO{
 	@Override
 	public LectureDTO lectureView(int lno) {
 		return sqlSession.selectOne("lecture.view", lno);
-	}
-
-	@Override
-	public int price(String id) {
-		return sqlSession.selectOne("lecture.price", id);
 	}
 
 	@Override

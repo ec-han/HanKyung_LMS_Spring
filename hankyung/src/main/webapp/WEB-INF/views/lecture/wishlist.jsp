@@ -135,17 +135,29 @@ body{
 						<div class="paytext_price">
 							<fmt:formatNumber value="${list.price}" pattern="#,###원" />
 						</div>
-						<a href="${path}/lecture/cart?lno=${list.lno}"><span class="wish_btn">장바구니에 추가</span></a>
+						<a><span class="wish_btn">장바구니에 추가</span></a>
 					</div>
 				</div>
+				<input type="text" value="${list.lno}">
 			</c:forEach>
 		</div>
 	</div>
 	<%@ include file="../include/home_footer.jsp" %>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			
+			/* $(".wish_btn").click(function(){
+				var lno = "";
+				alert(lno);
+				$.ajax({
+					type: "POST",
+					url: "${path}/lecture/cartAdd?lno="+lno,
+					success: function(){
+						alert("cartAdd성공!");
+					}, error: function(){
+						alert("cartAdd error!!");
+					}
+				});
+			}); */
 		});
 	</script>
 </body>

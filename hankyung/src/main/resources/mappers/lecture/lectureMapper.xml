@@ -5,11 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="lecture">
-	<select id="cartlist" parameterType="String" resultType="com.hankyung.domain.lecture.LectureDTO">
-		SELECT * FROM hk_cart
-		 WHERE id = #{id}
-	</select>
-	
 	<select id="popularList" resultType="com.hankyung.domain.lecture.LectureDTO">
 		<![CDATA[
 			SELECT * FROM
@@ -81,12 +76,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM hk_lecture
 		WHERE lno = #{lno}
 	</select>
-	
-	<select id="price" resultType="int" >
-           SELECT SUM(price)
-             FROM hk_cart
-            WHERE id = #{id}
-     </select>
      
      <select id="wishCheck" parameterType="hashmap" resultType="int">
      	SELECT COUNT(*)
@@ -115,4 +104,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM hk_lecture a, hk_wish b
 		WHERE a.lno = b.lno AND b.id=#{id}
      </select>
+     
+     
 </mapper>

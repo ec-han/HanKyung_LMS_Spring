@@ -1,5 +1,6 @@
 package com.hankyung.controller.lecture;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,18 +33,6 @@ public class LectureController {
 	
 	@Inject
 	private LectureService service;
-	
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String cart(HttpSession session, Model model) {
-		logger.info("강좌바구니 출력");
-		String id = (String)session.getAttribute("id");
-        int allprice = service.price(id);
-		List<LectureDTO> list = service.cartlist(id);
-		
-		model.addAttribute("cartList", list);
-		model.addAttribute("price", allprice);
-		return "lecture/cart";
-	}
 	
 	@RequestMapping(value="list", method = RequestMethod.GET)
 	public ModelAndView list(Model model,
@@ -117,7 +106,24 @@ public class LectureController {
 		String id = (String)session.getAttribute("id");
 		List<LectureDTO> list = service.wishView(id);
 		model.addAttribute("lDto", list);
-		return "/lecture/wishlist";
+		for (LectureDTO lectureDTO : list) {
+			log.info("list : "+lectureDTO.toString());
+		}
+		return "lecture/wishlist";
 	}
 	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "/cartAdd", method = RequestMethod.POST) public void
+	 * cartAdd(int lno, HttpSession session, Model model) {
+	 * log.info(">>>>> 장바구니에 강좌 추가"); String id =
+	 * (String)session.getAttribute("id"); log.info(">>>>> lno = "+ lno);
+	 * service.cartAdd(lno, id, session); }
+	 */
+	
+	/*
+	 * @RequestMapping(value = "/cart", method = RequestMethod.GET) public String
+	 * cartView() { log.info(">>>>> 장바구니 페이지 출력"); return "lecture/cart"; }
+	 */
 }

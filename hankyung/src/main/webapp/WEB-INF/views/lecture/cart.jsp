@@ -110,21 +110,21 @@ body{
 			<div class="info_title">장바구니
 	        	<div class="info_title_bar"></div>
 	        </div>
-			<c:forEach items="${lDto}" var="list">
+			<c:forEach items="${sessionScope.lecture}" var="lecture">
 				<div class="lecture_box">
 					<div class="lecture_img_box">
-						<a href="${path}/lecture/view?lno=${list.lno}">
-							<img class="lecture_img" src="${path}/resources/img/${list.limg}">
+						<a href="${path}/lecture/view?lno=${lecture.lDto.lno}">
+							<img class="lecture_img" src="${path}/resources/img/${lecture.lDto.limg}">
 						</a>
 					</div>
 					<div class="lecture_text">
-						<div class="lecture_title"><a href="${path}/lecture/view?lno=${list.lno}">${list.lname}</a></div>
+						<div class="lecture_title"><a href="${path}/lecture/view?lno=${lecture.lDto.lno}">${lecture.lDto.lname}</a></div>
 						<div class="lecture_bottom">
 							<div>
-							과정기간ㅣ<fmt:formatDate value="${list.startdate}" pattern="yyyy.MM.dd" />
-		                    ~ <fmt:formatDate value="${list.enddate}" pattern="yyyy.MM.dd" />
+							과정기간ㅣ<fmt:formatDate value="${lecture.lDto.startdate}" pattern="yyyy.MM.dd" />
+		                    ~ <fmt:formatDate value="${lecture.lDto.enddate}" pattern="yyyy.MM.dd" />
 		                    </div>
-		                    <div>강사명ㅣ${list.tname}</div>
+		                    <div>강사명ㅣ${lecture.lDto.tname}</div>
 	                    </div>								
 					</div>
 					<div class="lecture_paytext">
@@ -132,9 +132,9 @@ body{
 							강좌 금액
 						</div>
 						<div class="paytext_price">
-							<fmt:formatNumber value="${list.price}" pattern="#,###원" />
+							<fmt:formatNumber value="${lecture.lDto.price}" pattern="#,###원" />
 						</div>
-						<a href="${path}/lecture/cart?lno=${list.lno}"><span class="wish_btn">장바구니에 추가</span></a>
+						<a href="${path}/lecture/cartAdd?lno=${lecture.lDto.lno}"><span class="wish_btn">장바구니에 추가</span></a>
 					</div>
 				</div>
 			</c:forEach>
