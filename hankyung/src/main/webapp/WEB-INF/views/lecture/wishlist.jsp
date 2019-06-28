@@ -35,7 +35,7 @@ body{
 }
 .lecture_box{
 	margin:25px auto;
-	width: 60%;
+	width: 50%;
 	padding: 20px;
 	border-radius: 5px;
 	background: white;
@@ -43,6 +43,7 @@ body{
 	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
 	box-sizing: border-box;
 	position: relative;
+	min-width: 870px;
 }
 .lecture_img_box{
 	width: 200px;
@@ -71,7 +72,9 @@ body{
 	border-top: 1px solid #dadada;
 }
 .lecture_paytext{
-	margin-left: 17px;
+	position: absolute;
+	right: 28px;
+	top: 21px;
 	width: 130px;
 }
 .paytext_top {
@@ -138,27 +141,12 @@ body{
 						<a><span class="wish_btn">장바구니에 추가</span></a>
 					</div>
 				</div>
-				<input type="text" value="${list.lno}">
 			</c:forEach>
 		</div>
 	</div>
 	<%@ include file="../include/home_footer.jsp" %>
 	<script type="text/javascript">
-		$(function(){
-			/* $(".wish_btn").click(function(){
-				var lno = "";
-				alert(lno);
-				$.ajax({
-					type: "POST",
-					url: "${path}/lecture/cartAdd?lno="+lno,
-					success: function(){
-						alert("cartAdd성공!");
-					}, error: function(){
-						alert("cartAdd error!!");
-					}
-				});
-			}); */
-		});
+		
 	</script>
 </body>
 </html>

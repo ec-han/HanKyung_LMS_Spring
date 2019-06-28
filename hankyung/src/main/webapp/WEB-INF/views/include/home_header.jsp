@@ -241,7 +241,7 @@
 		                        	<div class="mypage_box">
 		                        		<div class="mypage_box_bar"></div>
 			                        	<a href="${path}/lecture/wishlist" class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
-			                        	<a href="${path}/lecture/cart" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
+			                        	<a href="${path}/lecture/cartView" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
 			                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
 			                        </div>
 		                        </c:if>

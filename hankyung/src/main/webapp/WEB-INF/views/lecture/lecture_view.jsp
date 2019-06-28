@@ -337,6 +337,9 @@
 	    	$(".wish_btn").click(function(){
 	    		wishUpdate();
 	    	});
+	    	$(".cart_btn").click(function(){
+	    		cartAdd();
+	    	});
     	});
     	
     	function wishCheck(){
@@ -368,6 +371,18 @@
     				wishCheck();
     			}, error: function(){
     				alert("wishUpdate error!!");
+    			}
+    		});
+    	}
+    	
+    	function cartAdd(){
+    		$.ajax({
+    			type: "GET",
+    			url: "${path}/lecture/cartAdd?lno="+lno,
+    			success: function(){
+    				
+    			}, error: function(){
+    				alert("cartAdd error!!");
     			}
     		});
     	}

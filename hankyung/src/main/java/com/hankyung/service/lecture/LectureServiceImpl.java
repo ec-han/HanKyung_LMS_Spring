@@ -75,11 +75,28 @@ public class LectureServiceImpl implements LectureService{
 		return lDao.wishView(id);
 	}
 
-	/*
-	 * @Override public ArrayList<LectureDTO> cartAdd(int lno, String id,
-	 * HttpSession session) { LectureDTO lDto = lDao.lectureView(lno);
-	 * log.info(">>> lDto = "+lDto); ArrayList<LectureDTO> list = new ArrayList<>();
-	 * list.add(lDto); session.setAttribute("lecture", list); ArrayList<LectureDTO>
-	 * cart = (ArrayList)session.getAttribute("lecture"); return cart; }
-	 */
+	@Override
+	public void cartAdd(int lno, String id, HttpSession session) {
+		LectureDTO lDto = lDao.lectureView(lno);
+		log.info("LectureDTO : "+lDto.toString());
+		ArrayList<LectureDTO> list = new ArrayList<LectureDTO>();
+		if (session.getAttribute("list")==null) {
+			list.add(lDto);
+			session.setAttribute("list", list);
+			log.info("최초 장바구니 생성!");
+		} else {
+			list = (ArrayList)session.getAttribute("list");
+			list.add(lDto);
+			log.info("장바구니 추가!");
+		}
+		//for (LectureDTO lectureDTO : list) {
+		//	log.info(">>>>"+lectureDTO.toString());
+		//}
+	}
+
+	@Override
+	public List<LectureDTO> cartView(String id) {
+		lDao.cartView(id);
+		return null;
+	}
 }

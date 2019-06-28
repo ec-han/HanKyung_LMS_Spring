@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.service.Pager;
 import com.hankyung.service.lecture.LectureService;
+import com.mysql.cj.Session;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -106,12 +108,27 @@ public class LectureController {
 		String id = (String)session.getAttribute("id");
 		List<LectureDTO> list = service.wishView(id);
 		model.addAttribute("lDto", list);
-		for (LectureDTO lectureDTO : list) {
-			log.info("list : "+lectureDTO.toString());
-		}
+		//for (LectureDTO lectureDTO : list) {
+		//	log.info("list : "+lectureDTO.toString());
+		//}
 		return "lecture/wishlist";
 	}
 	
+	@ResponseBody
+	@GetMapping(value = "/cartAdd")
+	public void cartAdd(int lno, HttpSession session) {
+		log.info(">>>>> 장바구니에 강좌 추가");
+		String id = (String)session.getAttribute("id");
+		service.cartAdd(lno, id, session);
+	}
+	
+	@GetMapping(value = "/cartView")
+	public String cartView(HttpSession session) {
+		log.info(">>>>> 장바구니 페이지 출력");
+		String id = (String)session.getAttribute("id");
+		service.cartView(id);
+		return "lecture/cart";
+	}
 	/*
 	 * @ResponseBody
 	 * 
