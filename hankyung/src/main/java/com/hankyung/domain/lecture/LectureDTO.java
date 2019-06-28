@@ -24,8 +24,8 @@ public class LectureDTO {
 	private int totalmem;
 	private int rgstrmem;
 	private int nowmem;
-	private String supmoney;
-	private String price;
+	private int supmoney;
+	private int price;
 	private String limg;
 	private Date startdate;
 	private Date enddate;

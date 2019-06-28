@@ -33,9 +33,13 @@ body{
 	top: 11.5px;
 	left: 30px;
 }
+.container_all {
+	display: flex;
+	justify-content: center;
+}
 .lecture_box{
 	margin:25px auto;
-	width: 60%;
+	width: 50%;
 	padding: 20px;
 	border-radius: 5px;
 	background: white;
@@ -43,6 +47,18 @@ body{
 	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
 	box-sizing: border-box;
 	position: relative;
+	min-width: 870px;
+}
+.empty_box {
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	color: tomato;
+}
+.empty_icon {
+	font-size: 22px;
+	padding-bottom: 5px;
+	color: tomato;
 }
 .lecture_img_box{
 	width: 200px;
@@ -71,7 +87,9 @@ body{
 	border-top: 1px solid #dadada;
 }
 .lecture_paytext{
-	margin-left: 17px;
+	position: absolute;
+	right: 28px;
+	top: 21px;
 	width: 130px;
 }
 .paytext_top {
@@ -83,7 +101,7 @@ body{
 	font-size: 20px;
 	flex:1;
 }
-.wish_btn {
+.delete_btn {
 	display: block;
 	width: 110px;
 	text-align: center;
@@ -97,19 +115,92 @@ body{
 	transition: .2s;
 	border-radius: 15px;
 }
-.wish_btn:hover {
+.delete_btn:hover {
 	color: #FFC000;
 	border: 1px solid #FFC000;
+}
+
+
+
+
+
+
+.pay_container {
+	margin: 25px 0px 25px 40px;
+	border: 1px solid red;
+	width: 400px;
+}
+.pay_box{
+	border:1px solid #444;
+	background-color: white;
+	padding: 20px;
+	width: 100%;
+}
+.price_title_box{
+	padding-bottom: 8px;
+	border-bottom: 1px solid #dadada;
+}
+.price_title{
+	font-size: 28px;
+	font-weight: 600;
+}
+.price_num{
+	text-align: right;
+	font-size: 28px;
+}
+.pay_info_box{
+	padding: 10px;
+}
+.info_box{
+	width: 100%;
+	height: 40px;
+	background-color: #F8F9FC;
+	border: 1px solid gray;
+    outline: none;
+    font-size: 25px;
+}	
+.pay_check{
+	margin-top:10px;
+	font-size: 12px;
+	display: inline-block;
+}
+.o_btn{
+	height: 50px;
+	width: 100%;
+	background: mediumseagreen;
+	font-size: 25px;
+	line-height:50px;
+	color: white;
+	text-align: center;
+	border-top: 1px solid black;
+	cursor: pointer;
+}
+.pay_view{
+	color:blue;
+	cursor: pointer;
 }
 </style>
 </head>
 <body>
 	<%@ include file="../include/home_header.jsp" %>
 	<div class="section_box">
-		<div class="lecture_container">
-			<div class="info_title">장바구니
-	        	<div class="info_title_bar"></div>
-	        </div>
+		<div class="info_title">장바구니
+        	<div class="info_title_bar"></div>
+        </div>
+        <div class="container_all">
+	        <div class="lecture_container">
+     		<c:choose>
+     		<c:when test="${empty sessionScope.list}">
+     			<div class="lecture_box">
+     				<div class="empty_box">
+     				<div>
+     					<i class="fas fa-exclamation-circle empty_icon"></i>
+     				</div>
+     					추가된 강좌가 없습니다.
+     				</div>
+				</div>
+     		</c:when>
+     		<c:otherwise>
 			<c:forEach items="${sessionScope.list}" var="list">
 				<div class="lecture_box">
 					<div class="lecture_img_box">
@@ -134,16 +225,60 @@ body{
 						<div class="paytext_price">
 							<fmt:formatNumber value="${list.price}" pattern="#,###원" />
 						</div>
-						<a href="${path}/lecture/cartAdd?lno=${list.lno}"><span class="wish_btn">장바구니에 추가</span></a>
+						<a><span class="delete_btn" data-src="${list.lno}">강좌 삭제하기</span></a>
 					</div>
 				</div>
 			</c:forEach>
-		</div>
+			</c:otherwise>
+			</c:choose>
+			</div>
+			<c:if test="${!empty sessionScope.list}">
+			<div class="pay_container">
+		   		<div class="pay_box">
+			        <div class="price_title_box">
+			            <span class="price_title">총계</span>
+			            <span class="price_num">￦${totalPrice}</span>
+			        </div>
+			        <div class="pay_info_box">
+			            <div>이름</div>
+			            <input type="text" id="name" name="name" class="info_box">
+			        </div>
+			        <div class="pay_info_box">
+			            <div>전화번호(숫자만)</div>
+			            <input type="text" id="name" name="name" class="info_box">
+			        </div>
+			        <div class="pay_info_box">
+						<div>이메일</div>
+						<input type="text" id="name" name="name" class="info_box">
+						<span class="pay_check">
+						    <input type="checkbox" id="onecheck">
+						    <label for="onecheck">[필수] 구매조건 및 결제대항 서비스 약관 동의</label>
+						    <span class="pay_view">(보기)</span>
+						</span>
+			        </div>
+			        <div class="o_btn">결 제 하 기</div>
+		        </div>
+	       	</div>
+	       	</c:if>
+       	</div>
 	</div>
 	<%@ include file="../include/home_footer.jsp" %>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		
+		$(document).ready(function(){
+			$(".delete_btn").click(function(){
+				var lno = $(this).attr("data-src"); // attr : 태그의 속성(attribute)
+				$.ajax({
+					type: "GET",
+					url: "${path}/lecture/cartDelete?lno="+lno,
+					sucess: function(){
+						
+					}, error: function(){
+						alert("cartDelete error!!");
+					}
+				});
+			});
+		});
 	</script>
 </body>
 </html>
