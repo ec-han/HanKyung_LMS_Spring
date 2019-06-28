@@ -196,23 +196,55 @@ WHERE id = 'admin';
 -- 0 공지사항
 -- 1 QnA
 -- 2 게시글
+
+-- 한은체 6/28 수정된 sql문 시작
+--모든 게시글 시퀀스
+DROP SEQUENCE seq_hklboard;
+CREATE SEQUENCE seq_hklboard
+START WITH 1
+INCREMENT BY 1;
+
+--공지 게시글 시퀀스
+DROP SEQUENCE seq_hklboard_notice;
+CREATE SEQUENCE seq_hklboard_notice
+START WITH 1
+INCREMENT BY 1;
+--QnA 게시글 시퀀스
+DROP SEQUENCE seq_hklboard_qna;
+CREATE SEQUENCE seq_hklboard_qna
+START WITH 1
+INCREMENT BY 1;
+--일반게시글 시퀀스
+DROP SEQUENCE seq_hklboard_normal;
+CREATE SEQUENCE seq_hklboard_normal
+START WITH 1
+INCREMENT BY 1;
+
+-- 컬럼 추가됨 lbnum replycnt
 DROP TABLE hk_lecture_board;
 CREATE TABLE hk_lecture_board(
     bno NUMBER PRIMARY KEY,
+    lbnum NUMBER NOT NULL,
     btype VARCHAR2(20) DEFAULT 2,
     title VARCHAR2(200) NOT NULL,
     content VARCHAR2(4000) NOT NULL,
     writer VARCHAR(30) NOT NULL,
     viewcnt NUMBER DEFAULT 0,
+    replycnt NUMBER DEFAULT 0,
     regdate DATE DEFAULT SYSDATE   
 );
+-- replycnt NUMBER DEFAULT 0, 댓글 수 추가함(은체)
+INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_normal.NEXTVAL, '안녕하세요1','강의생성후 첫 게시글', 'USER01');
 
-INSERT INTO hk_lecture_board(bno, title, content, writer)
-VALUES(seq_hkboard.NEXTVAL, '안녕하세요','강의생성후 첫 개시글', 'USER01');
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '첫 공지1','강의생성후 1첫 공지', 'USER01');
+
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01');
+
 commit;
-
-
-
+-- 6/28 강좌 게시판 관련 sql 수정 
 
 DROP TABLE hk_wish;
 CREATE TABLE hk_wish(
