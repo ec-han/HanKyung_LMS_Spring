@@ -47,8 +47,8 @@ CREATE TABLE hk_lecture(
     totalmem NUMBER NOT NULL,
     rgstrmem NUMBER DEFAULT 0,
     nowmem NUMBER DEFAULT 0,
-    supmoney VARCHAR2(20)DEFAULT 0,
-    price VARCHAR2(20) DEFAULT 0,
+    supmoney NUMBER DEFAULT 0,
+    price NUMBER DEFAULT 0,
     limg VARCHAR(500) NOT NULL,
     startdate VARCHAR2(10) NOT NULL,
     enddate VARCHAR2(10) NOT NULL
@@ -86,7 +86,7 @@ INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supm
 VALUES(seq_hk_lecture.NEXTVAL, 'Flutter 중급 - Http통신, 상태관리', '0003', '최철웅', 'DB', '30', '7', '200000', '3000000', 'lecture02.png', '2019.08.20', '2020.06.18');
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '파이썬 입문과 크롤링 기초 부트캠프', '0001', '최철웅', '웹개발', '30', '10', '200000', '3000000', 'lecture03.png', '2019.08.20', '2020.06.18');
-INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, startdate, enddate)
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '예제로 배우는 스프링 입문', '0004', '최철웅', '디자인', '30', '12', '200000', '3000000', 'lecture04.png', '2019.08.20', '2020.06.18');
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, 'React로 NodeBird SNS 만들기', '0002', '최철웅', '캐드', '30', '18', '200000', '3000000', 'lecture05.png', '2019.08.20', '2020.06.18');
@@ -228,3 +228,6 @@ ON DELETE CASCADE;
 SELECT a.*
 FROM hk_lecture a, hk_wish b
 WHERE a.lno = b.lno AND b.id='user01';
+
+
+commit;
