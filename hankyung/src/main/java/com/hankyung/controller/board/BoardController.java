@@ -178,6 +178,7 @@ public class BoardController {
 		int bno = bDto.getBno();
 		String btype = bDto.getBtype();
 		log.info("@@@@@@ "+bno+","+btype);
+		
 		service.increaseViewCnt(bDto, session);
 		log.info(">>>>>>> 조회수 증가 처리");
 		bDto = service.read(bDto);

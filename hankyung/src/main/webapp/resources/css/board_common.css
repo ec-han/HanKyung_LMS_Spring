@@ -160,7 +160,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     border: 1px solid #d1d3e2;
     border-radius: .35rem;
     outline-offset: -2px;
-    -webkit-appearance: none;
 }
 @media (min-width: 576px)
 .col-sm-12 {
@@ -243,18 +242,15 @@ div.dataTables_wrapper div.dataTables_paginate {
     text-align: right;
     position: absolute;
     right: 1rem;
-    bottom: 0.3rem;
+    bottom: 0.3rem; 
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin: 2px 0;
     white-space: nowrap;
     justify-content: flex-end;
-    position: relatvie;
+    position: relative;
 }
-.active-idx {
-	font-weight: bold;
-	color: tomato!important;
-}
+
 .search_span {
 	font-weight: bold;
     color: #79CDCF;

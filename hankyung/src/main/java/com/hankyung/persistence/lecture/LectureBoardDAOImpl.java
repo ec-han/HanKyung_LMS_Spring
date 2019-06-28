@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
-import com.hankyung.domain.board.BoardDTO;
 import com.hankyung.domain.lecture.LectureBoardDTO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +19,9 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 	@Inject
 	private SqlSession session;
 	@Override
-	public List<LectureBoardDTO> list(String viewoption, String search_option, String keyword, int btype, int start,
+	public List<LectureBoardDTO> list(String viewoption, String search_option, String keyword, int start,
 			int end) {
 		Map<String, Object> map = new HashMap<>();
-		map.put("btype", btype);
 		map.put("search_option", search_option);
 		map.put("viewoption", viewoption);
 		map.put("keyword", "%"+keyword+"%");
@@ -35,8 +33,7 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 
 	@Override
 	public int create(LectureBoardDTO lbDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.insert("lectureboard.create",lbDto);
 	}
 
 	@Override
@@ -46,15 +43,8 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 	}
 
 	@Override
-	public BoardDTO read(LectureBoardDTO lbDto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void increaseViewCnt(LectureBoardDTO lbDto, HttpSession session) {
-		// TODO Auto-generated method stub
-		
+	public void increaseViewCnt(LectureBoardDTO lbDto) {
+		session.update("lectureboard.increaseViewCnt", lbDto);
 	}
 
 	@Override
@@ -64,14 +54,19 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 	}
 
 	@Override
-	public int countArticle(int btype, String search_option, String keyword) {
+	public int countArticle(String viewoption, String search_option, String keyword) {
 		Map<String, Object> map = new HashMap<>();
-		map.put("btype", btype);
+		map.put("viewoption", viewoption);
 		map.put("search_option", search_option);
 		map.put("keyword", "%"+keyword+"%");
 		log.info(">>> keyword : "+keyword);
 		
 		return session.selectOne("lectureboard.countArticle", map);
+	}
+
+	@Override
+	public LectureBoardDTO read(LectureBoardDTO lbDto) {
+		return session.selectOne("lectureboard.read", lbDto);
 	}
 
 }

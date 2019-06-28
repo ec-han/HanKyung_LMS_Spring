@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString
 public class LectureBoardDTO {
 	private int bno;
+	private int lbnum;
 	private String btype;
 	private String title;
 	private String content;

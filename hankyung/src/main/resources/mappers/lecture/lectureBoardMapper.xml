@@ -5,44 +5,71 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="lectureboard">
-	<!-- <select id="list" resultType="com.hankyung.domain.board.LectureBoardDTO">
+	<select id="list" resultType="com.hankyung.domain.lecture.LectureBoardDTO">
 		SELECT * FROM
-			(SELECT rownum AS rnum, A.* FROM
-				( SELECT * FROM hk_lecture_board 
-					WHERE btype=#{btype} AND
+			(SELECT rownum AS rnum, A.* FROM 
+				( SELECT * FROM hk_lecture_board WHERE
+				<choose>
+					<when test="viewoption != 'all'">
+						<if test="viewoption == 'notice'">
+							btype='0' AND
+						</if>
+						<if test="viewoption == 'qna'">
+							btype='1' AND
+						</if>
+						<if test="viewoption == 'normal'">
+							btype='2' AND
+						</if>
+					</when>
+				</choose>
 				<choose>
 					<when test="search_option != 'all'">
 						<if test="search_option == 'title'">
 							title LIKE #{keyword}
 						</if>
 						<if test="search_option == 'content'">
-							content LIKE #{content}
+							content LIKE #{keyword}
 						</if>
 						<if test="search_option == 'writer'">
 							writer LIKE #{keyword}
 						</if>
 					</when>
 					<otherwise>
-						<if test="search_option == 'all'">
-							(title LIKE #{keyword}
-							OR writer LIKE #{keyword})
-						</if>
+						(title LIKE #{keyword}
+						OR writer LIKE #{keyword}
+						OR content LIKE #{keyword})
 					</otherwise>
 				</choose>
-				ORDER BY bno DESC
+					ORDER BY bno DESC
 				)
 			A)
 		WHERE rnum BETWEEN #{start} AND #{end}
-	</select> -->
+	</select>
 	
 	<!-- 레코드 갯수 계산  -->
-	<!-- <select id="countArticle" resultType="int">
+	<select id="countArticle" resultType="int">
 		SELECT COUNT(*)
-		FROM hk_lecture_board WHERE btype=#{btype} AND
+		FROM hk_lecture_board WHERE
+		<choose>
+			<when test="viewoption != 'all'">
+				<if test="viewoption == 'notice'">
+					btype='0' AND
+				</if>
+				<if test="viewoption == 'qna'">
+					btype='1' AND
+				</if>
+				<if test="viewoption == 'normal'">
+					btype='2' AND
+				</if>
+			</when>
+		</choose>
 		<choose>
 			<when test="search_option != 'all'">
 				<if test="search_option == 'title'">
 					title LIKE #{keyword}
+				</if>
+				<if test="search_option == 'content'">
+					content LIKE #{keyword}
 				</if>
 				<if test="search_option == 'writer'">
 					writer LIKE #{keyword}
@@ -50,9 +77,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</when>
 			<otherwise>
 				(title LIKE #{keyword}
-				OR writer LIKE #{keyword})
+				OR writer LIKE #{keyword}
+				OR content LIKE #{keyword})
 			</otherwise>
 		</choose>
-	</select> -->
+	</select>
+	
+	<insert id="create">
+		<if test="btype == 0">
+			INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
+			VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
+		</if>
+		<if  test="btype == 1">
+			INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
+			VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
+		</if>
+		<if  test="btype == 2">
+			INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer)
+			VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL, #{title}, #{content}, #{writer})
+		</if>
+		<selectKey keyProperty="bno" resultType="Integer" order="AFTER">
+			SELECT seq_hklboard.CURRVAL FROM dual
+		</selectKey>
+	</insert>
+	
+	<select id="read" resultType="com.hankyung.domain.lecture.LectureBoardDTO">
+		SELECT * FROM hk_lecture_board WHERE bno=#{bno}
+	</select>
+	
+	<update id="increaseViewCnt">
+		UPDATE hk_lecture_board
+			SET viewcnt = viewcnt + 1
+		WHERE bno = #{bno}
+	</update>
 	
 </mapper>
