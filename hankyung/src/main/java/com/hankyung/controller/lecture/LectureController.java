@@ -116,17 +116,16 @@ public class LectureController {
 	
 	@ResponseBody
 	@GetMapping(value = "/cartAdd")
-	public void cartAdd(int lno, HttpSession session) {
+	public int cartAdd(int lno, HttpSession session) {
 		log.info(">>>>> 장바구니에 강좌 추가");
 		String id = (String)session.getAttribute("id");
-		service.cartAdd(lno, id, session);
+		int flag = service.cartAdd(lno, id, session);
+		return flag;
 	}
 	
 	@GetMapping(value = "/cartView")
 	public String cartView(HttpSession session) {
 		log.info(">>>>> 장바구니 페이지 출력");
-		String id = (String)session.getAttribute("id");
-		service.cartView(id);
 		return "lecture/cart";
 	}
 	/*

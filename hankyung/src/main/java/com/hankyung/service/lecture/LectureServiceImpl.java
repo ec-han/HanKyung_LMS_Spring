@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.persistence.lecture.LectureDAO;
+import com.mysql.cj.Session;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -76,27 +77,26 @@ public class LectureServiceImpl implements LectureService{
 	}
 
 	@Override
-	public void cartAdd(int lno, String id, HttpSession session) {
+	public int cartAdd(int lno, String id, HttpSession session) {
 		LectureDTO lDto = lDao.lectureView(lno);
+		int flag = 1;
 		log.info("LectureDTO : "+lDto.toString());
 		ArrayList<LectureDTO> list = new ArrayList<LectureDTO>();
-		if (session.getAttribute("list")==null) {
+		
+		if (session.getAttribute("list")!=null) {
+			list = (ArrayList)session.getAttribute("list");
+			for (LectureDTO lectureDTO : list) {
+				if (lno == lectureDTO.getLno()) {
+					flag = 0;
+					break;
+				}
+			}
+		}
+		if (flag == 1) {
 			list.add(lDto);
 			session.setAttribute("list", list);
-			log.info("최초 장바구니 생성!");
-		} else {
-			list = (ArrayList)session.getAttribute("list");
-			list.add(lDto);
 			log.info("장바구니 추가!");
 		}
-		//for (LectureDTO lectureDTO : list) {
-		//	log.info(">>>>"+lectureDTO.toString());
-		//}
-	}
-
-	@Override
-	public List<LectureDTO> cartView(String id) {
-		lDao.cartView(id);
-		return null;
+		return flag;
 	}
 }

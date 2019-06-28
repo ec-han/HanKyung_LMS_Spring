@@ -17,6 +17,5 @@ public interface LectureService {
 	public void wishUpdate(int lno, String id);
 	public int wishTotal(int lno, String id);
 	public List<LectureDTO> wishView(String id);
-	public void cartAdd(int lno, String id, HttpSession session);
-	public List<LectureDTO> cartView(String id);
+	public int cartAdd(int lno, String id, HttpSession session);
 }

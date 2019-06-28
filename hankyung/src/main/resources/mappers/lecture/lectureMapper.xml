@@ -104,6 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM hk_lecture a, hk_wish b
 		WHERE a.lno = b.lno AND b.id=#{id}
      </select>
+
      
      
 </mapper>
