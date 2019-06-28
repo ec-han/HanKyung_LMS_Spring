@@ -47,8 +47,8 @@ CREATE TABLE hk_lecture(
     totalmem NUMBER NOT NULL,
     rgstrmem NUMBER DEFAULT 0,
     nowmem NUMBER DEFAULT 0,
-    supmoney NUMBER DEFAULT 0,
-    price NUMBER DEFAULT 0,
+    supmoney VARCHAR2(20)DEFAULT 0,
+    price VARCHAR2(20) DEFAULT 0,
     limg VARCHAR(500) NOT NULL,
     startdate VARCHAR2(10) NOT NULL,
     enddate VARCHAR2(10) NOT NULL
