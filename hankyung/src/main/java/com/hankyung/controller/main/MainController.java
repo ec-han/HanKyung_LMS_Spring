@@ -55,5 +55,14 @@ public class MainController {
 		return "main/insert_lecture";
 	}
 	
+	@RequestMapping(value = "/management", method = RequestMethod.GET)
+	public String management() {
+		log.info("학생관리시스템(학생일때)");
+
+		return "main/management";
+	}
+	
+	
+	
 	
 }

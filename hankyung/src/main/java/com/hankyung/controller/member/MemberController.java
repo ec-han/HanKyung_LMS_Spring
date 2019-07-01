@@ -207,7 +207,7 @@ public class MemberController {
 		return result;
 	}
 	
-	@RequestMapping(value="/tch_insert", method=RequestMethod.POST)
+	@RequestMapping(value="/insert_tch", method=RequestMethod.POST)
 	public String tch_insert(HttpSession session, MemberDTO mDto, Model model) {
 		log.info("선생님 추가");
 		service.create(mDto);

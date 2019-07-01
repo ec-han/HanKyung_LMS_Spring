@@ -96,7 +96,7 @@
 					<div class="info_box">
 						<div class="img_box"></div>
 						<div class="text_box">
-							<form action="${path}/member/tch_insert" method="POST" id="frm_mem" name="frm_mem">
+							<form action="${path}/member/insert_tch" method="POST" id="frm_mem" name="frm_mem">
 								<div class="info">
 									<span class="input_box fristbox">
 										<input type="text" id="input_name" name="name" class="input_class" maxlength="5" placeholder="이름">
