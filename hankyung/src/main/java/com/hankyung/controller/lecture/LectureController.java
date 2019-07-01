@@ -130,7 +130,7 @@ public class LectureController {
 	}
 	
 	@ResponseBody
-	@GetMapping(value = "/cartAdd")
+	@GetMapping(value="/cartAdd")
 	public int cartAdd(int lno, HttpSession session) {
 		log.info(">>>>> 장바구니에 강좌 추가");
 		String id = (String)session.getAttribute("id");
@@ -138,16 +138,22 @@ public class LectureController {
 		return flag;
 	}
 	
-	@GetMapping(value = "/cartView")
+	@GetMapping(value="/cartView")
 	public String cartView(HttpSession session) {
 		log.info(">>>>> 장바구니 페이지 출력");
 		return "lecture/cart";
 	}
 	
-	@GetMapping(value = "/cartDelete")
-	public String cartDelete(int lno, int count, HttpSession session) {
+	@GetMapping(value="/cartList")
+	public String cartList(HttpSession session) {
+		log.info(">>>>> 장바구니리스트 목록 출력");
+		return "lecture/cart_list";
+	}
+	
+	@PostMapping(value="/cartDelete")
+	public String cartDelete(int index, HttpSession session) {
 		log.info(">>>>> 장바구니 삭제");
-		service.cartDelete(lno, count, session);
+		service.cartDelete(index, session);
 		return "lecture/cart";
 	}
 }

@@ -83,11 +83,11 @@ public class LectureServiceImpl implements LectureService{
 
 	@Override
 	public int cartAdd(int lno, String id, HttpSession session) {
-		LectureDTO lDto = lDao.lectureView(lno);
 		int flag = 1;
+		int totalPrice = 0;
+		LectureDTO lDto = lDao.lectureView(lno);
 		log.info("LectureDTO : "+lDto.toString());
 		ArrayList<LectureDTO> list = new ArrayList<LectureDTO>();
-		
 		if (session.getAttribute("list")!=null) {
 			list = (ArrayList)session.getAttribute("list");
 			for (LectureDTO lectureDTO : list) {
@@ -100,18 +100,25 @@ public class LectureServiceImpl implements LectureService{
 		if (flag == 1) {
 			list.add(lDto);
 			session.setAttribute("list", list);
+			for (LectureDTO lectureDTO : list) {
+				totalPrice += lectureDTO.getPrice();
+			}
+			session.setAttribute("totalPrice", totalPrice);
 			log.info("장바구니 추가!");
 		}
 		return flag;
 	}
 
 	@Override
-	public void cartDelete(int lno, int count, HttpSession session) {
-		LectureDTO lDto = lDao.lectureView(lno);
-		log.info("lDto delete : " + lDto);
+	public void cartDelete(int index, HttpSession session) {
+		int totalPrice = 0;
 		ArrayList<LectureDTO> list = new ArrayList<LectureDTO>();
 		list = (ArrayList)session.getAttribute("list");
-		list.remove(count);
+		// log.info(">>>>> service index : "+index);
+		list.remove(index);
+		for (LectureDTO lectureDTO : list) {
+			totalPrice += lectureDTO.getPrice();
+		}
+		session.setAttribute("totalPrice", totalPrice);
 	}
-
 }

@@ -142,23 +142,26 @@ body{
 }
 .price_title{
 	font-size: 28px;
-	font-weight: 600;
 }
 .price_num{
-	text-align: right;
+	float: right;
 	font-size: 28px;
 }
 .pay_info_box{
-	padding: 10px;
+	padding: 8px;
 }
-.info_box{
+.pay_info_title {
+	font-size: 15px;
+	padding-bottom: 5px;
+}
+.input_box{
 	width: 100%;
 	height: 40px;
-	background-color: #F8F9FC;
-	border: 1px solid gray;
+	border: 1px solid #dadada;
     outline: none;
-    font-size: 25px;
-}	
+    font-size: 19px;
+    padding: 0px 8px;
+}
 .pay_check{
 	margin-top:10px;
 	font-size: 12px;
@@ -197,18 +200,25 @@ body{
 		});
 		
 		$(document).on("click", ".delete_btn", function(){
-			var lno = $(this).attr("data-src"); // attr : 태그의 속성(attribute)
-			var count = $(this).attr("data-count");
-			location.href="${path}/lecture/cartDelete?lno="+lno+"&count="+count;
-			alert("장바구니에서 삭제되었습니다.");
+			var index = $(this).attr("data-index"); // attr : 태그의 속성(attribute)
+			$.ajax({
+				type: "POST",
+				url: "${path}/lecture/cartDelete?&index="+index,
+				success: function(){
+					alert("장바구니에서 삭제되었습니다.");
+					cartList();
+				}, error: function(){
+					alert("cartDelete error!!");
+				}
+			});
 		});
 		
 		function cartList(){
 			$.ajax({
 				type: "GET",
-				url: "${path}/lecture/cartList?lno="+lno+"&count="+count,
-				success: function(){
-					
+				url: "${path}/lecture/cartList",
+				success: function(result){
+					$("#cartList").html(result);
 				}, error: function(){
 					alert("cartList error!!");
 				}

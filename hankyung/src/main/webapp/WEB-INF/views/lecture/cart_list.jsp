@@ -24,7 +24,6 @@
     		</c:when>
     		<c:otherwise>
 			<c:forEach items="${sessionScope.list}" var="list" varStatus="status">
-			<input type="text" value="${status.count}">
 			<div class="lecture_box">
 				<div class="lecture_img_box">
 					<a href="${path}/lecture/view?lno=${list.lno}">
@@ -48,7 +47,7 @@
 					<div class="paytext_price">
 						<fmt:formatNumber value="${list.price}" pattern="#,###원" />
 					</div>
-					<a><span class="delete_btn" data-src="${list.lno}" data-count="${status.count}">장바구니 삭제</span></a>
+					<a><span class="delete_btn" data-src="${list.lno}" data-index="${status.index}">장바구니 삭제</span></a>
 				</div>
 			</div>
 		</c:forEach>
@@ -60,19 +59,19 @@
 	   		<div class="pay_box">
 		        <div class="price_title_box">
 		            <span class="price_title">총계</span>
-		            <span class="price_num">￦${totalPrice}</span>
+		            <span class="price_num"><fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#,###원"/></span>
 		        </div>
 		        <div class="pay_info_box">
-		            <div>이름</div>
-		            <input type="text" id="name" name="name" class="info_box">
+		            <div class="pay_info_title">이름</div>
+		            <input type="text" id="input_name" name="name" class="input_box">
 		        </div>
 		        <div class="pay_info_box">
-		            <div>전화번호(숫자만)</div>
-		            <input type="text" id="name" name="name" class="info_box">
+		            <div class="pay_info_title">전화번호(숫자만)</div>
+		            <input type="text" id="input_phone" name="name" class="input_box">
 		        </div>
 		        <div class="pay_info_box">
-					<div>이메일</div>
-					<input type="text" id="name" name="name" class="info_box">
+					<div class="pay_info_title">이메일</div>
+					<input type="text" id="input_email" name="name" class="input_box">
 					<span class="pay_check">
 					    <input type="checkbox" id="onecheck">
 					    <label for="onecheck">[필수] 구매조건 및 결제대항 서비스 약관 동의</label>
