@@ -22,10 +22,24 @@
 	   	        height: 100,
 	   	        minHeight: null,             // set minimum height of editor
 	   	        maxHeight: null,             // set maximum height of editor
-	   	        focus: true                  // set focus to editable area after initializing summernote
+	   	        focus: true,                  // set focus to editable area after initializing summernote
+	   	     	codeviewFilter: false,
+	   		  	codeviewIframeFilter: true,
+	   		  	codeviewFilterRegex: 'custom-regex',
+	   		  	codeviewIframeWhitelistSrc: ['my-own-domainname'],
+	   		 	toolbar: [
+		   		    // [groupName, [list of button]]
+		   		    ['style', ['bold', 'italic', 'underline', 'clear']],
+		   		    ['font', ['strikethrough', 'superscript', 'subscript']],
+		   		    ['fontsize', ['fontsize']],
+		   		    ['color', ['color']],
+		   		    ['para', ['ul', 'ol', 'paragraph']],
+		   		    ['height', ['height']]
+		   		  ]
 	   	      });
-	   	 
 	   	});
+	   	
+	   	
       
       
     </script>

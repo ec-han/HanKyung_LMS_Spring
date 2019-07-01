@@ -109,7 +109,7 @@
 	
 	<script src="${path}/resources/js/summernote-ko-KR.js"></script>
 	<script type="text/javascript">
-		$(function(){
+		$(document).ready(function() {
 	   		$('#summernote').summernote({
 	   			lang: 'ko-KR',
 	   	        placeholder: '글을 입력해주세요.',
@@ -117,7 +117,20 @@
 	   	        height: 100,
 	   	        minHeight: null,             // set minimum height of editor
 	   	        maxHeight: null,             // set maximum height of editor
-	   	        focus: true                  // set focus to editable area after initializing summernote
+	   	        focus: true,                  // set focus to editable area after initializing summernote
+	   	    	codeviewFilter: false,
+	   		  	codeviewIframeFilter: true,
+	   		  	codeviewFilterRegex: 'custom-regex',
+	   		  	codeviewIframeWhitelistSrc: ['my-own-domainname'],
+	   		 	toolbar: [
+		   		    // [groupName, [list of button]]
+		   		    ['style', ['bold', 'italic', 'underline', 'clear']],
+		   		    ['font', ['strikethrough', 'superscript', 'subscript']],
+		   		    ['fontsize', ['fontsize']],
+		   		    ['color', ['color']],
+		   		    ['para', ['ul', 'ol', 'paragraph']],
+		   		    ['height', ['height']]
+		   		  ]
 	   	    }); 
 	   		
 			$("#qna_regi").click(function(){

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hankyung.domain.board.BoardDTO;
 import com.hankyung.domain.lecture.LectureBoardDTO;
 import com.hankyung.service.Pager;
 import com.hankyung.service.lecture.LectureBoardService;
@@ -108,5 +109,19 @@ public class LectureBoardController {
 		model.addAttribute("one",lbDto);
 		
 		return "lectureboard/view";
+	}
+	
+	@RequestMapping(value ="delete", method = RequestMethod.GET)
+	public String delete(LectureBoardDTO lbDto, String btype) {
+		log.info(">>> DB를 통한 게시글 삭제 액션");
+		lbDto.setBtype(btype);
+		int result = service.delete(lbDto);
+		if(result>0) {
+			log.info(">>>> 게시글 삭제 성공");
+			return "redirect:/lectureboard/list?viewoption="+btype;   
+		} else {
+			log.info(">>>>게시글 등록 실패");
+			return "/lectureboard/list?viewoption="+btype;  
+		}
 	}
 }

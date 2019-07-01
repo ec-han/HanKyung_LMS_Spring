@@ -49,8 +49,7 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 
 	@Override
 	public int delete(LectureBoardDTO lbDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.delete("lectureboard.delete",lbDto);
 	}
 
 	@Override

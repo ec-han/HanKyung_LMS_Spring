@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <title>게시글 상세페이지</title>
+<script type="text/javascript" src="${path}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <style type="text/css">
 #regi_table_wrap > table > thead > tr, #regi_table_wrap > table > tfoot > tr {
 	background: #f4f7ff; /* #eaecf4 */
@@ -242,9 +245,9 @@
 												<i class="fas fa-edit" id="btn_modi_view"></i>
 											</a>
 										</div>
-										</c:if>
+										</c:if>  
 										<div class="btn_left board_regi_btn">
-											<a href="${path}/lectureboard/list?viewoption=all&search_option=all">
+											<a href="${path}/lectureboard/list?viewoption=notice">
 												<i class="far fa-list-alt" id="btn_list"></i>
 											</a>
 											<c:if test="${!empty sessionScope.id}">
@@ -255,6 +258,14 @@
 											
 										</div>
 									</div>
+									
+									<!-- 댓글 목록 시작  -->
+									<div class="reply-wrapper">
+										<div id="commentList"></div>
+									</div>
+									<!-- 댓글 목록 끝  -->		
+									
+									
 									<!-- 모달 창  -->
 									<div id="bd_modal_all">
 										<div id="bd_modal">
@@ -280,9 +291,10 @@
 			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
-	
+	<script src="${path}/resources/js/summernote-ko-KR.js"></script>
 	<script type="text/javascript">
-	$(function(){
+	$(document).ready(function(){
+		comment_list();
 		/* 글 삭제 모달 창 */
 		$('#btn_del').click(function(){
 			$('#bd_modal_all').css('display','block');
@@ -296,8 +308,73 @@
 		$('#bd_btn_yes').click(function(){// 삭제 확인 모달창에서 "예"버튼 눌렀을 때 
 			location.href = "${path}/lectureboard/delete?lbnum=${one.lbnum}&btype=${one.btype}";
 		});
+		
 	
 	});
+	
+	// 댓글 등록 버튼을 눌렀을 때 동작 
+	$(document).on("click","#btn-create-btn", function(){
+		// 스마트에디터에서 입력한 text를 <textarea id="replyInsert">에 보내주는 것임 
+		//oEditors.getById["replyInsert"].exec("UPDATE_CONTENTS_FIELD",[]);
+		//var content = $("#replyInsert").val();
+		var content = $("#summernote").val();
+		if(content == "<p><br></p>") {
+			// 유효성체크(null 체크)
+			$("#summernote").focus();//안가고있음
+			return false;
+		} else {
+			// 게시글번호 담아서 보냄 
+			var bno = '${one.bno}';
+			$('#re_bno').val(bno);
+			//alert(content);
+			
+			$.ajax({
+				url: "${path}/reply/create?bno="+bno,
+				type: "POST",
+				data: $("#frm_reply").serialize(),
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				success: function(){
+					//alert("성공");
+					comment_list(); // 댓글목록 최신화 
+					$("#summernote").val(""); // 댓글입력창 초기화 (등록이 되면 댓글입력칸은 비어있어야함)
+				},
+				error: function(){
+					alert("System Error!!!!");
+				}
+			});
+		}
+	});
+	
+	// 댓글 띄우는 기능
+	function comment_list(){
+		alert("comment_list()실행");
+		$.ajax({
+			type: "get",
+			url: "${path}/reply/list?bno=${one.bno}",
+			success: function(result){
+				$("#commentList").html(result);
+			}
+		});
+	}
+	// ajax는 연어처럼 출발했던 곳으로 돌아오는게 있음. 더 갈데가없으면 success(toggle 176)있는 쪽으로 돌아옴 
+	
+	// 댓글 삭제 버튼 눌렀을 때 동작
+	$(document).on("click",".reply-del",function(){
+		var rno = $(this).attr("data_num");
+		var bno = '${one.bno}';
+		
+		$.ajax({
+			url: "${path}/reply/delete?rno="+rno+"&bno="+bno,
+			success: function(result){
+				comment_list();
+			},
+			error: function(){
+				alert("SYSTEM ERROR!!!");
+			}
+		});
+	});
+	
+	
 	
 	</script>
 	

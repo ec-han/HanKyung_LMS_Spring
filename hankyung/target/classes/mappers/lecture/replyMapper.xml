@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reply">
+	<select id="list" resultType="com.hankyung.domain.lecture.ReplyDTO">
+		SELECT rno, bno, content, writer, r.regdate 
+		FROM hk_lecture_board_reply r, hk_member m 
+		WHERE r.writer = m.name
+		AND bno = #{bno}
+		ORDER BY rno
+	</select>
+	<insert id="create">
+		INSERT INTO hk_lecture_board_reply(rno, content, writer, bno)
+		VALUES(seq_reply.NEXTVAL, #{content}, #{writer}, #{bno})
+	</insert>
+	<delete id="delete">
+		DELETE FROM hk_lecture_board_reply
+		WHERE rno=#{rno}
+	</delete>
+	
+	<!-- 해당게시글 replycnt +1 OR -1 -->
+	<update id="update">
+		UPDATE hk_lecture_board SET
+		 <if test="flag == 'plus'">
+	   		  replycnt = replycnt + 1
+	   	 </if>
+	   	 <if test="flag == 'minus'">
+	   	 	  replycnt = replycnt - 1
+	   	 </if>
+		WHERE bno = #{bno}
+	</update>
+</mapper>
