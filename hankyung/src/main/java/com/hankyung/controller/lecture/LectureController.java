@@ -145,8 +145,9 @@ public class LectureController {
 	}
 	
 	@GetMapping(value = "/cartDelete")
-	public void cartDelete(int lno, HttpSession session) {
+	public String cartDelete(int lno, int count, HttpSession session) {
 		log.info(">>>>> 장바구니 삭제");
-		service.cartDelete(lno, session);
+		service.cartDelete(lno, count, session);
+		return "lecture/cart";
 	}
 }

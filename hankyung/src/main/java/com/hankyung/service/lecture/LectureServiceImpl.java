@@ -106,11 +106,12 @@ public class LectureServiceImpl implements LectureService{
 	}
 
 	@Override
-	public void cartDelete(int lno, HttpSession session) {
+	public void cartDelete(int lno, int count, HttpSession session) {
 		LectureDTO lDto = lDao.lectureView(lno);
+		log.info("lDto delete : " + lDto);
 		ArrayList<LectureDTO> list = new ArrayList<LectureDTO>();
 		list = (ArrayList)session.getAttribute("list");
-		list.remove(lDto);
+		list.remove(count);
 	}
 
 }

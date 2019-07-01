@@ -19,5 +19,5 @@ public interface LectureService {
 	public List<LectureDTO> wishList(String id);
 	public void wishDelete(int lno, String id);
 	public int cartAdd(int lno, String id, HttpSession session);
-	public void cartDelete(int lno, HttpSession session);
+	public void cartDelete(int lno, int count, HttpSession session);
 }
