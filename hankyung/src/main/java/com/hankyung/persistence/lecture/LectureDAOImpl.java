@@ -89,7 +89,7 @@ public class LectureDAOImpl implements LectureDAO{
 	}
 
 	@Override
-	public List<LectureDTO> wishView(String id) {
-		return sqlSession.selectList("lecture.wishView", id);
+	public List<LectureDTO> wishList(String id) {
+		return sqlSession.selectList("lecture.wishList", id);
 	}
 }

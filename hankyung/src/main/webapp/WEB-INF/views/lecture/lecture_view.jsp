@@ -245,7 +245,7 @@
         </div>
         <div class="header_button">
 			<div class="button_left">
-				<a href="${path}/lecture/list" class="lecture_btn" id="back_btn">뒤로가기</a>
+				<a href="${path}/lecture/list" class="lecture_btn" id="back_btn">과정목록</a>
 			</div>
 			<div class="button_right">
 				<a class="wish_btn">위시리스트</a>

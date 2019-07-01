@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,16 +103,30 @@ public class LectureController {
 		return 0;
 	}
 	
-	@RequestMapping(value="wishlist", method=RequestMethod.GET)
-	public String wishlist(HttpSession session, Model model) {
+	@RequestMapping(value="wishView", method=RequestMethod.GET)
+	public String wishView() {
 		log.info(">>>>> 위시리스트 페이지 출력");
+		return "lecture/wish";
+	}
+	
+	@RequestMapping(value="wishList", method=RequestMethod.GET)
+	public String wishList(HttpSession session, Model model) {
+		log.info(">>>>> 위시리스트 목록 출력");
 		String id = (String)session.getAttribute("id");
-		List<LectureDTO> list = service.wishView(id);
+		List<LectureDTO> list = service.wishList(id);
 		model.addAttribute("lDto", list);
 		//for (LectureDTO lectureDTO : list) {
 		//	log.info("list : "+lectureDTO.toString());
 		//}
-		return "lecture/wishlist";
+		return "lecture/wish_list";
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/wishDelete")
+	public void wishDelete(int lno, HttpSession session) {
+		log.info(">>>>> 위시리스트 삭제");
+		String id = (String)session.getAttribute("id");
+		service.wishDelete(lno, id);
 	}
 	
 	@ResponseBody
@@ -128,18 +143,10 @@ public class LectureController {
 		log.info(">>>>> 장바구니 페이지 출력");
 		return "lecture/cart";
 	}
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "/cartAdd", method = RequestMethod.POST) public void
-	 * cartAdd(int lno, HttpSession session, Model model) {
-	 * log.info(">>>>> 장바구니에 강좌 추가"); String id =
-	 * (String)session.getAttribute("id"); log.info(">>>>> lno = "+ lno);
-	 * service.cartAdd(lno, id, session); }
-	 */
 	
-	/*
-	 * @RequestMapping(value = "/cart", method = RequestMethod.GET) public String
-	 * cartView() { log.info(">>>>> 장바구니 페이지 출력"); return "lecture/cart"; }
-	 */
+	@GetMapping(value = "/cartDelete")
+	public void cartDelete(int lno, HttpSession session) {
+		log.info(">>>>> 장바구니 삭제");
+		service.cartDelete(lno, session);
+	}
 }

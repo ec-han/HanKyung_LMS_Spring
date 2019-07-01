@@ -72,8 +72,13 @@ public class LectureServiceImpl implements LectureService{
 	}
 
 	@Override
-	public List<LectureDTO> wishView(String id) {
-		return lDao.wishView(id);
+	public List<LectureDTO> wishList(String id) {
+		return lDao.wishList(id);
+	}
+
+	@Override
+	public void wishDelete(int lno, String id) {
+		lDao.wishDelete(lno, id);
 	}
 
 	@Override
@@ -99,4 +104,13 @@ public class LectureServiceImpl implements LectureService{
 		}
 		return flag;
 	}
+
+	@Override
+	public void cartDelete(int lno, HttpSession session) {
+		LectureDTO lDto = lDao.lectureView(lno);
+		ArrayList<LectureDTO> list = new ArrayList<LectureDTO>();
+		list = (ArrayList)session.getAttribute("list");
+		list.remove(lDto);
+	}
+
 }

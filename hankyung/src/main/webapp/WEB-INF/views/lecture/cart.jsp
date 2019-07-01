@@ -272,7 +272,7 @@ body{
 					type: "GET",
 					url: "${path}/lecture/cartDelete?lno="+lno,
 					sucess: function(){
-						
+						location.reload();
 					}, error: function(){
 						alert("cartDelete error!!");
 					}
