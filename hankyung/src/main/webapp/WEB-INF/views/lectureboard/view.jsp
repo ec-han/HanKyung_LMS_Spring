@@ -182,7 +182,9 @@
     cursor: pointer;
     box-shadow: 0 3px 10px 0 rgba(0,0,0,0.01), 0 3px 15px 0 rgba(0,0,0,0.05);
 }
-
+#btn_rpl {
+    transform: rotate(180deg);
+}
 </style>
 </head>
 <body>
@@ -249,12 +251,15 @@
 											<a href="${path}/lectureboard/list?viewoption=${one.btype}">
 												<i class="far fa-list-alt" id="btn_list"></i>
 											</a>
+											
+											<!-- 답글 버튼 -->
+											<c:if test="${one.btype=='1'}">
 											<c:if test="${!empty sessionScope.id}">
-											<a>
+											<a href="${path}/lectureboard/answer?bno=${one.bno}">
 												<i class="fas fa-reply" id="btn_rpl"></i>
 											</a>
 											</c:if>
-											
+											</c:if>
 										</div>
 									</div>
 									

@@ -2,8 +2,6 @@ package com.hankyung.persistence.lecture;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.hankyung.domain.lecture.LectureBoardDTO;
 
 public interface LectureBoardDAO {
@@ -14,4 +12,6 @@ public interface LectureBoardDAO {
 	public void increaseViewCnt(LectureBoardDTO lbDto);
 	public int delete(LectureBoardDTO lbDto);
 	public int countArticle(String viewoption, String search_option, String keyword);
+	public void updateStep(int re_step, int ref);
+	public void answer(LectureBoardDTO lbDto);
 }

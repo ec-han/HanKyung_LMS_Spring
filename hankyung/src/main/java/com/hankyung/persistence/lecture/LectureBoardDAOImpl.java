@@ -66,4 +66,21 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 		return session.selectOne("lectureboard.read", lbDto);
 	}
 
+	@Override
+	public void updateStep(int re_step, int ref) {
+		Map<String, Integer> map = new HashMap<>();
+		log.info("re_step: "+re_step);
+		map.put("re_step", re_step);
+		map.put("ref", ref);
+		session.update("lectureboard.updateStep",map);
+		
+	}
+
+	@Override
+	public void answer(LectureBoardDTO lbDto) {
+		session.insert("lectureboard.answer",lbDto);
+	}
+
+	
+
 }

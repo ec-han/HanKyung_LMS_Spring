@@ -65,7 +65,9 @@
 					<div>
 						<div class="page_body">
 							<div class="bd_hd">
-								<form class="register_form" id="register_frm" method="POST" action="${path}/lectureboard/<c:out value="${empty one.bno ? 'create':'update'}"/>">
+								<form class="register_form" id="register_frm" method="POST" action="${path}/lectureboard/answer">
+									<input type="hidden" value="${one.bno}" name="bno">
+									<input type="hidden" value="${one.writer}" name="writer">
 									<div class="box-body">
 										<div class="row order-2 table_wrapper">
 				              				<div class="col-sm-12 table_wrapper" id="regi_table_wrap">
@@ -73,35 +75,11 @@
 								                  <thead>
 								                  	<tr>
 														<th>
-															<c:if test="${empty one.bno}">
-															<div class="regi-tb-center" id="viewoptionheader">게시판</div>
-															<c:choose>
-																<c:when test="${sessionScope.type == '1'}">
-																<div id="dataTable_filter" class="dataTables_filter">
-										              				<label>
-										              					<select id="viewoption" class="sel-viewoption" name="viewoption">
-																			<option value="2" selected="selected">일반게시글</option>
-																			<option value="0">공지</option>
-																			<option value="1">묻고답하기</option>
-																		</select>
-										              				</label>
-										              			</div>
-										              			</c:when>
-										              			<c:otherwise>
-										              			<div id="dataTable_filter" class="dataTables_filter">
-										              				<label>
-										              					<select id="viewoption" class="sel-viewoption" name="viewoption">
-																			<option value="2" selected="selected">일반게시글</option>
-																			<option value="1">묻고답하기</option>
-																		</select>
-										              				</label>
-										              			</div>
-										              			</c:otherwise>
-									              			</c:choose>
-									              			</c:if>
+															<div class="regi-tb-center" id="viewoptionheader">답글</div>
+															
 															<div class="regi-tb-center">제목</div>
 															<fieldset class="field_border">
-																<input name="title" class="form-control" id="regi_title" value="${one.title}">
+																<input name="title" class="form-control" id="regi_title" value="RE: ${one.title}">
 																<span class="step_url"></span>
 															</fieldset>
 														</th>
@@ -124,7 +102,7 @@
 														<td>
 															<div class="tb-center">작성자</div>
 															<fieldset class="field_border">
-																<input class="form-control" name="writer" id="regi_writer" value="${sessionScope.name}" readonly="readonly">
+																<input class="form-control" id="regi_writer" value="${sessionScope.name}" readonly="readonly">
 															</fieldset>
 														</td>
 													</tr>
@@ -144,9 +122,7 @@
 										</div>
 									</div>
 									<input type="hidden" name="code" id="code">
-									<c:if test="${!empty one.bno}">
-									<input type="hidden" name="bno" value="${one.bno}">
-									</c:if>
+									
 								</form>
 							</div>
 						</div>

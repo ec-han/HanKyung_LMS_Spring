@@ -71,4 +71,16 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 		return lbDao.read(lbDto);
 	}
 
+	@Override
+	public void answer(LectureBoardDTO lbDto) {
+		// 비즈니스로직: 답글 등록
+		// 1. 답글을 달 게시글의 re_step보다 큰 답글들을  re_step + 1
+		lbDao.updateStep(lbDto.getRe_step(),lbDto.getRef());
+		// 2. 답글 테이블에 등록
+		lbDto.setRe_step(lbDto.getRe_step()+1);
+		lbDto.setRe_level(lbDto.getRe_level()+1);
+		lbDao.answer(lbDto);
+		
+	}
+
 }

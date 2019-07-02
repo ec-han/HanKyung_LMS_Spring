@@ -14,4 +14,5 @@ public interface LectureBoardService {
 	public void increaseViewCnt(LectureBoardDTO lbDto, HttpSession session);
 	public int delete(LectureBoardDTO lbDto);
 	public int countArticle(String viewoption, String search_option, String keyword);
+	public void answer(LectureBoardDTO lbDto); // 답글 등록
 }

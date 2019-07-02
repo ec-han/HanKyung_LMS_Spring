@@ -170,4 +170,37 @@ public class LectureBoardController {
 			return "/lectureboard/list?viewoption="+lbDto.getBtype();
 		}
 	}
+	
+	// 답글 등록 페이지 출력
+	@RequestMapping(value="answer", method=RequestMethod.GET)
+	public String answer(Model model, LectureBoardDTO lbDto, int bno) {
+		log.info(">>>>>>>> 답글 등록 페이지 출력");
+		// 답글 달려고 하는 게시글 내용 
+		lbDto = service.read(lbDto);	
+		lbDto.setContent("<br><br>"+lbDto.getContent()
+		+"<br><br>================<br><br><br>");
+		model.addAttribute("one", lbDto);
+		return "lectureboard/answer";
+	}
+	// 답글 등록 Play
+	@RequestMapping(value="answer", method=RequestMethod.POST)
+	public String answerPlay(LectureBoardDTO lbDto, HttpSession session) {
+		log.info(">>>>>>>> 답글 등록 Play");
+		//String writer = (String)session.getAttribute("name");
+		//lbDto.setWriter(writer);
+		
+		// 기존 게시글의 ref, re_step, re_level 가져오기 
+		LectureBoardDTO one = service.read(lbDto);
+		log.info("기존 게시글 정보 ==================================");
+		log.info(one.toString());
+		log.info("===============================================");
+		lbDto.setRef(one.getRef());
+		lbDto.setRe_step(one.getRe_step());
+		lbDto.setRe_level(one.getRe_level());
+		 
+		// DB 등록
+		service.answer(lbDto);
+		
+		return "redirect:/lectureboard/list?viewoption="+lbDto.getBtype();
+	}
 }

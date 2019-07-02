@@ -22,4 +22,7 @@ public class LectureBoardDTO {
 	private int viewcnt;
 	private int replycnt;
 	private Date regdate;
+	private int ref;	// 게시글 그룹
+	private int re_step;	// 그룹 내 정렬(출력) 순서
+	private int re_level;	// 답글 Level ex) RE: / RE:RE:
 }
