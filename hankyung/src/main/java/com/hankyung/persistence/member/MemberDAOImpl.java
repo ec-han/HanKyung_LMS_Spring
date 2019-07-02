@@ -1,5 +1,7 @@
 package com.hankyung.persistence.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -66,6 +68,11 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public int pw_check(MemberDTO mDto) {
 		return sqlSession.selectOne("member.pw_check", mDto);
+	}
+
+	@Override
+	public List<MemberDTO> list(String type) {
+		return sqlSession.selectList("member.stu_list", type);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.hankyung.service.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import com.hankyung.domain.member.MemberDTO;
@@ -16,4 +18,5 @@ public interface MemberService {
 	public void update(MemberDTO mDto);
 	public void delete(String id);
 	public int pw_check(MemberDTO mDto);	
+	public List<MemberDTO> list(String type);
 }

@@ -1,5 +1,7 @@
 package com.hankyung.service.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -82,6 +84,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int pw_check(MemberDTO mDto) {
 		return mDao.pw_check(mDto);
+	}
+
+	@Override
+	public List<MemberDTO> list(String type) {
+		return mDao.list(type);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.hankyung.controller.main;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hankyung.domain.member.MemberDTO;
 import com.hankyung.service.board.BoardService;
+import com.hankyung.service.member.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +23,8 @@ public class MainController {
 	
 	@Inject
 	private BoardService service;
+	@Inject
+	private MemberService mservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String test() {
@@ -56,10 +62,20 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/management", method = RequestMethod.GET)
-	public String management() {
-		log.info("학생관리시스템(학생일때)");
+	public String management(Model model) {
+		log.info("학생관리시스템(학생관리)");
 
 		return "main/management";
+	}
+	
+	@RequestMapping(value = "/management_list", method = RequestMethod.GET)
+	public String management_list(Model model) {
+		log.info("학생관리시스템 리스트");
+		String type = "2";
+		List<MemberDTO> list = mservice.list(type);
+		
+		model.addAttribute("list", list);
+		return "main/management_list";
 	}
 	
 	

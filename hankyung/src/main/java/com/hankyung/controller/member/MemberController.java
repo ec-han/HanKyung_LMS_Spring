@@ -187,13 +187,19 @@ public class MemberController {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String deleteplay(HttpSession session) {
 		log.info("학생정보삭제");
-		
 		String id = (String)session.getAttribute("id");
 		service.delete(id);
 		session.removeAttribute("id");
 		session.removeAttribute("name");
-		
+
 		return "member/delete";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/drop", method=RequestMethod.POST)
+	public String drop(String valId) {
+		service.delete(valId);
+		return "";
 	}
 	
 	@ResponseBody

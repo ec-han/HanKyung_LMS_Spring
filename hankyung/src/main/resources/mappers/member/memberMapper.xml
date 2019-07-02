@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 
 	<insert id="create" parameterType="com.hankyung.domain.member.MemberDTO">
-		INSERT INTO hk_member(name, id, email, phone, pw, type)
-		VALUES(#{name}, #{id}, #{email}, #{phone}, #{pw}, #{type})
+		INSERT INTO hk_member(mno, name, id, email, phone, pw, type)
+		VALUES(seq_hk_member.NEXTVAL, #{name}, #{id}, #{email}, #{phone}, #{pw}, #{type})
 	</insert>
 	
 	<select id="login" parameterType="com.hankyung.domain.member.MemberDTO" resultType="com.hankyung.domain.member.MemberDTO">
@@ -60,9 +60,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="tch_insert" parameterType="com.hankyung.domain.member.MemberDTO">
-		INSERT INTO hk_member(name, id, email, phone, pw, type)
-		VALUES(#{name}, #{id}, #{email}, #{phone}, #{pw}, #{type})
+		INSERT INTO hk_member(mno, name, id, email, phone, pw, type)
+		VALUES(seq_hk_member.NEXTVAL, #{name}, #{id}, #{email}, #{phone}, #{pw}, #{type})
 	</insert>
 	
+	<select id="stu_list" parameterType="com.hankyung.domain.member.MemberDTO" resultType="com.hankyung.domain.member.MemberDTO">
+		SELECT * FROM hk_member
+		WHERE type = #{type}
+		ORDER BY mno
+	</select>
 	
 </mapper>
