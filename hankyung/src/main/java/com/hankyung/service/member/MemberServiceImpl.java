@@ -91,4 +91,9 @@ public class MemberServiceImpl implements MemberService{
 		return mDao.list(type);
 	}
 
+	@Override
+	public void admin_update(MemberDTO mDto) {
+		mDao.admin_update(mDto);
+	}
+
 }

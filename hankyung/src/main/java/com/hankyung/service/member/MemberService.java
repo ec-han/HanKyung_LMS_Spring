@@ -19,4 +19,6 @@ public interface MemberService {
 	public void delete(String id);
 	public int pw_check(MemberDTO mDto);	
 	public List<MemberDTO> list(String type);
+	public void admin_update(MemberDTO mDto);
+	
 }
