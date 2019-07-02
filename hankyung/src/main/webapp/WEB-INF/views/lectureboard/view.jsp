@@ -240,13 +240,13 @@
 										<c:if test="${sessionScope.name == one.writer}">
 										<div class="btn_right board_regi_btn">
 											<i class="fas fa-eraser" id="btn_del"></i>
-											<a href="${path}/lectureboard/update?bno=${one.bno}&btype=${one.btype}">
+											<a href="${path}/lectureboard/update?bno=${one.bno}">
 												<i class="fas fa-edit" id="btn_modi_view"></i>
 											</a>
 										</div>
 										</c:if>  
 										<div class="btn_left board_regi_btn">
-											<a href="${path}/lectureboard/list?viewoption=notice">
+											<a href="${path}/lectureboard/list?viewoption=${one.btype}">
 												<i class="far fa-list-alt" id="btn_list"></i>
 											</a>
 											<c:if test="${!empty sessionScope.id}">
@@ -372,6 +372,7 @@
 	// 댓글 취소 버튼 눌렀을 때 동작
 	$(document).on("click","#note-create-cancel-btn",function(){
 		comment_list();
+		
 	});
 	
 	

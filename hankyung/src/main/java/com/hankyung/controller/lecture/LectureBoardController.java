@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hankyung.domain.board.BoardDTO;
 import com.hankyung.domain.lecture.LectureBoardDTO;
 import com.hankyung.service.Pager;
 import com.hankyung.service.lecture.LectureBoardService;
@@ -43,6 +42,16 @@ public class LectureBoardController {
 		Pager pager = new Pager(count, curPage);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
+		
+		// view.jsp에서 목록버튼 누를 때 처리
+		if(viewoption.equals("0")) { // 공지사항 
+			viewoption = "notice";
+		}else if(viewoption.equals("1")){ // 묻고답하기
+			viewoption = "qna";
+		}else if(viewoption.equals("2")) { // 일반게시글
+			viewoption = "normal";
+		}
+		
 		// 페이지에 출력할 게시글 목록 
 		List<LectureBoardDTO> list = service.list(viewoption, search_option, keyword, start, end);
 		ModelAndView mav = new ModelAndView(); // 화면 갈 때 보내는 거 
@@ -55,10 +64,11 @@ public class LectureBoardController {
 		map.put("keyword", keyword);
 		mav.addObject("map", map);
 		
-		mav.setViewName("lectureboard/board");	
+		mav.setViewName("lectureboard/board");
 		
 		return mav;
 	}
+	
 	
 	@RequestMapping(value ="create", method = RequestMethod.GET)
 	public String createView() {
@@ -118,10 +128,46 @@ public class LectureBoardController {
 		int result = service.delete(lbDto);
 		if(result>0) {
 			log.info(">>>> 게시글 삭제 성공");
-			return "redirect:/lectureboard/list?viewoption="+btype;   
+			if(btype.equals("0")) {
+				log.info(">>>> 공지사항 게시글 삭제 성공");
+				return "redirect:/lectureboard/list?viewoption=notice";  
+			}else if(btype.equals("1")){ // 묻고답하기
+				log.info(">>>> 묻고답하기 게시글 등록 성공");
+				return "redirect:/lectureboard/list?viewoption=qna";     
+			}else if(btype.equals("2")) { // 일반게시글
+				log.info(">>>> 일반게시글 게시글 등록 성공");
+				return "redirect:/lectureboard/list?viewoption=normal";        
+			}
 		} else {
 			log.info(">>>>게시글 등록 실패");
-			return "/lectureboard/list?viewoption="+btype;  
+			return "/lectureboard/list?viewoption=notice";  
+		}
+		return "/main/";
+	}
+	
+	@RequestMapping(value="update", method=RequestMethod.GET)
+	public String updateView(LectureBoardDTO lbDto, Model model, int bno) {
+		log.info(">>>> 게시글 수정 페이지 출력");
+		lbDto.setBno(bno);
+		lbDto = service.read(lbDto);
+		log.info("one: "+lbDto.toString());
+		model.addAttribute("one",lbDto);
+		return "/lectureboard/regi";
+	}
+	@RequestMapping(value="update", method=RequestMethod.POST)
+	public String updatePlay(LectureBoardDTO lbDto) {
+		
+		log.info(">>>> DB를 통한 게시글 수정 액션");
+		log.info(lbDto.toString());
+		
+		int result = service.update(lbDto);
+		
+		if(result>0) {
+		    log.info(">>>>게시글 수정 성공");
+			return "redirect:/lectureboard/read?bno="+lbDto.getBno()+"&btype="+lbDto.getBtype()+"&code=1";   
+		} else {
+			log.info(">>>>게시글 수정 실패");
+			return "/lectureboard/list?viewoption="+lbDto.getBtype();
 		}
 	}
 }

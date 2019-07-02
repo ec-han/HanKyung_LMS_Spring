@@ -65,7 +65,7 @@
 					<div>
 						<div class="page_body">
 							<div class="bd_hd">
-								<form class="register_form" id="register_frm" method="POST" action="#">
+								<form class="register_form" id="register_frm" method="POST" action="${path}/lectureboard/<c:out value="${empty one.bno ? 'create':'update'}"/>">
 									<div class="box-body">
 										<div class="row order-2 table_wrapper">
 				              				<div class="col-sm-12 table_wrapper" id="regi_table_wrap">
@@ -73,6 +73,7 @@
 								                  <thead>
 								                  	<tr>
 														<th>
+															<c:if test="${empty one.bno}">
 															<div class="regi-tb-center" id="viewoptionheader">게시판</div>
 															<c:choose>
 																<c:when test="${sessionScope.type == '1'}">
@@ -97,9 +98,10 @@
 										              			</div>
 										              			</c:otherwise>
 									              			</c:choose>
+									              			</c:if>
 															<div class="regi-tb-center">제목</div>
 															<fieldset class="field_border">
-																<input name="title" class="form-control" id="regi_title">
+																<input name="title" class="form-control" id="regi_title" value="${one.title}">
 																<span class="step_url"></span>
 															</fieldset>
 														</th>
@@ -110,7 +112,7 @@
 														<td>
 															<div class="data-bd-cont">
 																<fieldset class="field_border">
-																	<textarea class="form-control" id="summernote" name="content"></textarea>
+																	<textarea class="form-control" id="summernote" name="content">${one.content}</textarea>
 																	<span class="step_url"></span>
 																</fieldset>
 															</div>
@@ -142,6 +144,7 @@
 										</div>
 									</div>
 									<input type="hidden" name="code" id="code">
+									<input type="hidden" name="bno" value="${one.bno}">
 								</form>
 							</div>
 						</div>

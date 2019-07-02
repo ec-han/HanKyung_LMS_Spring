@@ -211,7 +211,7 @@
    	        height: 100,
    	        minHeight: null,             // set minimum height of editor
    	        maxHeight: null,             // set maximum height of editor
-   	        focus: true,                  // set focus to editable area after initializing summernote
+   	        focus: false,                  // set focus to editable area after initializing summernote
    	     	codeviewFilter: false,
    		  	codeviewIframeFilter: true,
    		  	codeviewFilterRegex: 'custom-regex',

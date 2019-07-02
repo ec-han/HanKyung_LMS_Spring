@@ -63,7 +63,7 @@
 		            <div class="card-header" id="board_header">
 		            	<div id="order_board">
 		            		<input type="hidden" value="new" name="code" id="code">
-		            		<c:if test="${sessionScope.type != '2'}">
+		            		<c:if test="${sessionScope.type != '2'&&!empty sessionScope.id}">
 							<span>
 								<a href="${path}/lectureboard/list?viewoption=all&search_option=${map.search_option}" id="viewAll">전체보기</a>
 							</span>

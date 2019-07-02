@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
@@ -38,8 +37,7 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 
 	@Override
 	public int update(LectureBoardDTO lbDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.update("lectureboard.update",lbDto);
 	}
 
 	@Override

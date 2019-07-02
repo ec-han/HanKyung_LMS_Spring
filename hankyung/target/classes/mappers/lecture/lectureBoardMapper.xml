@@ -114,4 +114,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete">
 		DELETE FROM hk_lecture_board WHERE lbnum=#{lbnum} AND btype=#{btype}
 	</delete>
+	
+	<update id="update">
+		UPDATE hk_lecture_board
+			SET title=#{title},
+				content=#{content}
+		WHERE bno=#{bno}
+	</update>
 </mapper>

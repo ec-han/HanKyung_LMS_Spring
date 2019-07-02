@@ -30,8 +30,7 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 
 	@Override
 	public int update(LectureBoardDTO lbDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return lbDao.update(lbDto);
 	}
 
 	@Override
