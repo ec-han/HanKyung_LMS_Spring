@@ -44,8 +44,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="update" parameterType="com.hankyung.domain.member.MemberDTO">
 		UPDATE hk_member
-		   SET email = #{email}
+		   SET email = #{email},
 		  	   phone = #{phone}
+		 WHERE id = #{id}
+	</update>
+	
+	<update id="admin_update" parameterType="com.hankyung.domain.member.MemberDTO">
+		UPDATE hk_member
+		   SET name = #{name},
+		   	   email = #{email},
+		  	   phone = #{phone},
+		  	   pw = #{pw}
 		 WHERE id = #{id}
 	</update>
 	

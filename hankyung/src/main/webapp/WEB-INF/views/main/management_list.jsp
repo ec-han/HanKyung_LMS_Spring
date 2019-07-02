@@ -177,11 +177,12 @@
 						<input id="input_phone" name="phone" class="info_box" value="${mDto.phone}" readonly="readonly">
 					</div>
 					<div class="id info_line flex_line2">
-						<input id="input_id" name="id" class="info_box" value="${mDto.id}" readonly="readonly">
+						<input id="input_id" name="id" class="imput_id info_box" value="${mDto.id}" readonly="readonly">
 					</div>
 					<div class="pw info_line flex_line2">
 						<input id="input_pw" name="pw" type="password" class="info_box" value="${mDto.pw}" readonly="readonly">
 					</div>
+					<input type="hidden" value="1">
 					<button class="update_btn btn_box">수정</button>
 					<button class="delete_btn btn_box">삭제</button>
 					<button class="dropn_btn drop_btn_box">NO</button>
@@ -189,5 +190,51 @@
 				</div>
 		</c:forEach>	
 	</div>		
+	<script type="text/javascript">
+		$(function(){
+			
+			$('.update_btn').click(function(event) {
+				var flag = $(this).parent().children("input").val();
+				alert(flag);
+				if(flag > 0){
+					$(this).parent().children("div").children("input").removeAttr("readonly");
+					$(this).parent().children("div").children("input").eq(4).attr("readonly", "readonly");
+					$(this).parent().children("div").children("input").css("background-color", "#CEFBC9");
+					$(this).text("확인");
+					$(this).next().css("display", "none");
+					$(this).parent().children("input").val(0);
+					
+				}else{
+					var valName = $(this).parent().children("div").eq(1).children("input").val();
+					var valMail = $(this).parent().children("div").eq(2).children("input").val();
+					var valPhone = $(this).parent().children("div").eq(3).children("input").val();
+					var valId = $(this).parent().children("div").eq(4).children("input").val();
+					var valPw = $(this).parent().children("div").eq(5).children("input").val();
+					
+					$(this).parent().children("div").children("input").attr("readonly", "readonly");
+					$(this).parent().children("div").children("input").css("background-color", "#eaeaea");
+					$(this).text("수정");
+					$(this).next().css("display", "block");
+					$(this).parent().children("input").val(1);
+					
+					$.ajax({
+						url:"${path}/member/admin_update?id="+valId+"&pw="+valPw+"&name="+valName+"&email="+valMail+"&phone="+valPhone,
+						type: "POST",
+						success: function(){
+
+						},
+						error:function(){
+							alert("aaaa Error!!");
+						}
+					});
+					
+					
+
+				}
+			});
+			
+		});
+		
+	</script>
 </body>
 </html>

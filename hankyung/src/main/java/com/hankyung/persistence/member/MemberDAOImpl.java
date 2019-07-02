@@ -75,4 +75,9 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectList("member.stu_list", type);
 	}
 
+	@Override
+	public void admin_update(MemberDTO mDto) {
+		sqlSession.update("member.admin_update", mDto);
+	}
+
 }

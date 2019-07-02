@@ -177,6 +177,16 @@ public class MemberController {
 		return "member/update_info";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/admin_update", method=RequestMethod.POST)
+	public String admin_update(MemberDTO mDto) {
+		log.info("관리자 학생정보수정");
+		log.info(""+mDto.toString());
+		service.admin_update(mDto);
+		
+		return "";
+	}
+	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public String delete(HttpSession session, MemberDTO mDto, Model model) {
 		log.info("학생정보삭제 페이지");

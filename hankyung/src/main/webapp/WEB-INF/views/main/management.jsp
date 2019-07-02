@@ -185,15 +185,10 @@
 
 	<script type="text/javascript">
 		$(function(){
-			var flag = 1;
-			var valNum = "";
-			var valName = "";
-			var valId = "";
 			management_list();
 			
 		});
-		
-		
+	
 		$(document).on("click", ".update_btn", function(){
 			if(flag > 0){
 				$(this).parent().children("div").children("input").removeAttr("readonly");
@@ -203,18 +198,38 @@
 				$(this).next().css("display", "none");
 				flag = 0;
 			}else{
+				var valName = $(this).parent().children("div").eq(1).children("input").val();
+				var valMail = $(this).parent().children("div").eq(2).children("input").val();
+				var valPhone = $(this).parent().children("div").eq(3).children("input").val();
+				var valId = $(this).parent().children("div").eq(4).children("input").val();
+				var valPw = $(this).parent().children("div").eq(5).children("input").val();
+				
 				$(this).parent().children("div").children("input").attr("readonly", "readonly");
 				$(this).parent().children("div").children("input").css("background-color", "#eaeaea");
 				$(this).text("수정");
 				$(this).next().css("display", "block");
 				flag = 1;
+				
+				$.ajax({
+					url:"${path}/member/admin_update?id="+valId+"&pw="+valPw+"&name="+valName+"&email="+valMail+"&phone="+valPhone,
+					type: "POST",
+					success: function(){
+
+					},
+					error:function(){
+						alert("aaaa Error!!");
+					}
+				});
+				
+				
+
 			}
 		});
 		
 		$(document).on("click", ".delete_btn", function(){
-			valNum = $(this).parent().children("div").eq(0).children("input").val();
-			valName = $(this).parent().children("div").eq(1).children("input").val();
-			valId = $(this).parent().children("div").eq(4).children("input").val();
+			var valNum = $(this).parent().children("div").eq(0).children("input").val();
+			var valName = $(this).parent().children("div").eq(1).children("input").val();
+			var valId = $(this).parent().children("div").eq(4).children("input").val();
 			$(".delete_mem").text(name);
 			$(this).parent().children(".drop_btn_box").css("display", "block");
 			$(this).parent().children(".btn_box").css("display", "none");			
@@ -223,6 +238,19 @@
 		$(document).on("click", ".dropn_btn", function(){
 			$(this).parent().children(".drop_btn_box").css("display", "none");
 			$(this).parent().children(".btn_box").css("display", "block");
+		});
+		
+		$(document).on("click", ".dropy_btn", function(){
+			$.ajax({
+				url:"${path}/member/drop?valId="+valId,
+				type: "POST",
+				success: function(){
+					management_list();
+				},
+				error:function(){
+					alert("aaaaaaSystem Error!!");
+				}
+			});
 		});
 		
 		$(document).on("click", ".dropy_btn", function(){
