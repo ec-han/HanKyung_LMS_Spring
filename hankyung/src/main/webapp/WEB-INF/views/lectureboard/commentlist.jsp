@@ -8,6 +8,100 @@
 <title>댓글목록</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<style type="text/css">
+.list-group {
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #858796;
+}
+.list-group li {
+    border: 1px solid #e3e6f0;
+    background: white;
+}
+#note-title {
+    background: #f4f7ff;
+}
+.reply-form {
+    color: #555;
+    font-weight: bold;
+    background: #f8f9fc;
+    border: 2px dashed #79cdcf;
+}
+.content-body {
+	padding: 1rem;
+}
+.reply-group-item {
+    padding: 1.5rem;
+}
+#btn-create-btn {
+    outline: none;
+    border: 1px solid black;
+    color: white;
+    background: #404988;
+    cursor: pointer;
+    font-weight: bold;
+}
+#note-create-cancel-btn, #note-create-delete-btn {
+    outline: none;
+    border: 1px solid black;
+    color: white;
+    background: #404988;
+    cursor: pointer;
+    padding: 0rem 0.45rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+.timeago {
+    letter-spacing: -1;
+    color: #999;
+}
+.nickname {
+    font-weight: bold;
+    letter-spacing: 1;
+}
+.avatar {
+    padding: 1rem;
+}
+.panel-title {
+    padding: 0 1rem;
+}
+.avatar-info {
+    display: inline-block;
+    padding: 0.5rem;
+}
+.avatar .avatar-photo {
+	font-size: 2.5rem;
+    color: #79cdcf;
+}
+.reply-s-form {
+	border: none;
+}
+#comment_area_div {
+    display: flex;
+    flex-direction: row;
+	align-items: center;
+}
+.reply-submit-buttons {
+    float: right;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+}
+#reply-submit-info {
+    flex: 8;
+    padding-left: 2rem;
+}
+.list-group-item > h5 {
+    margin-left: 1rem;
+}
+#login_link {
+    color: #c71615;
+    font-weight: 600;
+    letter-spacing: 1;
+    cursor: pointer;
+}
+</style>
 </head>
 <body>
 	<ul class="list-group">
@@ -28,9 +122,9 @@
 		
 <!-- forEach는 items의 갯수(사이즈)가 0이면 반복 아예 안함. -->
 		<c:forEach items="${replyList}" var="replyview">
-			<li class="list-group-item note-item clearfix">
-				<div class="content-body panel-body pull-left">
-					<div class="avatar avatar-medium clearfix">
+			<li class="reply-group-item">
+				<div class="content-body">
+					<div class="avatar order-1">
 						<a href="#" class="avatar-photo">
 							<i class="fas fa-user"></i>
 						</a>
@@ -43,21 +137,21 @@
 								
 							</div>
 						</div>
+						<div class="reply-submit-buttons">
+							<c:if test="${sessionScope.name == replyview.writer}">
+							<p>
+								<a id="note-create-delete-btn" name="rno" class="bd-btn btn-default btn-wide reply-del" data_num="${replyview.rno}">삭제</a>
+							</p>
+							</c:if>
+						</div>
 					</div>
-					<fieldset class="fform">
-						<article>
-							<p>${replyview.content}</p>
-						</article>
-					</fieldset>
-				</div>
-				<div class="content-function-cog note-submit-buttons clearfix">
-					<c:if test="${sessionScope.id == replyview.writer}">
-						<p>
-							<a id="note-create-delete-btn" name="rno" class="bd-btn btn-default btn-wide reply-del" style="" data_num="${replyview.rno}">삭제</a>
-						</p>
-															<!-- data_ㅇㅇㅇ: 태그에다가 저장소(변수)를 하나 만듦. ㅇㅇㅇ안에 변수이름-->
-					</c:if>
-					<input type="hidden" name="create" id="btn-modify-btn" class="bd-btn btn-default btn-wide" value="수정">
+					<div class="order-2">
+						<fieldset class="reply-form">
+							<article>
+								<p>${replyview.content}</p>
+							</article>
+						</fieldset>
+					</div>
 				</div>
 			</li>
 		</c:forEach>
@@ -74,38 +168,27 @@
 				<form action="${path}/reply/create" method="POST" name="frm_reply" id="frm_reply">
 					<li class="list-group-item note-item clearfix">
 						<div class="content-body panel-body pull-left">
-							<div class="avatar avatar-medium clearfix" id="comment_area_div">
-								<a href="#" class="avatar-photo">
-									<i class="fas fa-user"></i>
-								</a>
-								<div class="avatar-info">
+							<div class="avatar-medium" id="comment_area_div">
+								<div class="avatar-info" id="reply-submit-info">
+									<a href="#" class="avatar-photo">
+										<i class="fas fa-user"></i>
+									</a>
 									<a class="nickname" href="#">${sessionScope.name}</a>
 								</div>
+								<div class="reply-submit-buttons">
+									<p>
+										<a id="note-create-cancel-btn">취소</a>
+									</p>
+									<input type="button" name="create" id="btn-create-btn" value="등록">
+									
+									<input type="hidden" name="writer" value="${sessionScope.name}">
+									<input type="hidden" id="re_bno" name="bno">
+								</div>
 							</div>
-							<fieldset class="fform">
+							<fieldset class="reply-s-form">
 								<input type="hidden" name="" value="HTML">
 								<textarea class="form-control" id="summernote" name="content"></textarea>
-								<!-- <textarea rows="1" cols="1" placeholder="댓글쓰기" class="form-control" id="replyInsert" name="content" style='width:100%; min-width:260px;'></textarea>
-								<script type="text/javascript">
-									var oEditors = [];
-									nhn.husky.EZCreator.createInIFrame({
-									 oAppRef: oEditors,
-									 elPlaceHolder: "replyInsert",
-									 sSkinURI: "${path}/resources/smarteditor/SmartEditor2Skin.html",
-									 fCreator: "createSEditor2",
-									 htParams: { fOnBeforeUnload : function(){}}
-									});
-								</script> -->
 							</fieldset>
-						</div>
-						<div class="content-function-cog note-submit-buttons clearfix">
-							<p>
-								<a href="#" id="note-create-cancel-btn" class="bd-btn btn-default btn-wide" name="re_textarea" style="">취소</a>
-							</p>
-							<input type="button" name="create" id="btn-create-btn" class="bd-btn btn-default btn-wide" value="등록">
-							
-							<input type="hidden" name="writer" value="${sessionScope.name}">
-							<input type="hidden" id="re_bno" name="bno">
 						</div>
 					</li>
 				</form>
@@ -118,9 +201,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.link').click(function(){
-			$('#modal_all').css('display','flex');
-			$('#login_id').focus();
+			location.href="${path}/member/login";
 		});
+		
 		$('#summernote').summernote({
    			lang: 'ko-KR',
    	        placeholder: '댓글을 입력해주세요.',

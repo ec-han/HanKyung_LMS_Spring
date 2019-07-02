@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <title>게시글 상세페이지</title>
-<script type="text/javascript" src="${path}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <style type="text/css">
@@ -314,9 +313,6 @@
 	
 	// 댓글 등록 버튼을 눌렀을 때 동작 
 	$(document).on("click","#btn-create-btn", function(){
-		// 스마트에디터에서 입력한 text를 <textarea id="replyInsert">에 보내주는 것임 
-		//oEditors.getById["replyInsert"].exec("UPDATE_CONTENTS_FIELD",[]);
-		//var content = $("#replyInsert").val();
 		var content = $("#summernote").val();
 		if(content == "<p><br></p>") {
 			// 유효성체크(null 체크)
@@ -347,7 +343,7 @@
 	
 	// 댓글 띄우는 기능
 	function comment_list(){
-		alert("comment_list()실행");
+		//alert("comment_list()실행");
 		$.ajax({
 			type: "get",
 			url: "${path}/reply/list?bno=${one.bno}",
@@ -356,7 +352,6 @@
 			}
 		});
 	}
-	// ajax는 연어처럼 출발했던 곳으로 돌아오는게 있음. 더 갈데가없으면 success(toggle 176)있는 쪽으로 돌아옴 
 	
 	// 댓글 삭제 버튼 눌렀을 때 동작
 	$(document).on("click",".reply-del",function(){
@@ -374,6 +369,10 @@
 		});
 	});
 	
+	// 댓글 취소 버튼 눌렀을 때 동작
+	$(document).on("click","#note-create-cancel-btn",function(){
+		comment_list();
+	});
 	
 	
 	</script>
