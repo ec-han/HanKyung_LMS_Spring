@@ -110,24 +110,13 @@ public class LectureController {
 	}
 	
 	@RequestMapping(value="wishList", method=RequestMethod.GET)
-	public String wishList(HttpSession session, Model model) {
+	public String wishList(HttpSession session, Model model, int lno) {
 		log.info(">>>>> 위시리스트 목록 출력");
 		String id = (String)session.getAttribute("id");
 		List<LectureDTO> list = service.wishList(id);
 		model.addAttribute("lDto", list);
-		//for (LectureDTO lectureDTO : list) {
-		//	log.info("list : "+lectureDTO.toString());
-		//}
-		return "lecture/wish_list";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="cartCheck", method=RequestMethod.GET)
-	public String cartCheck(HttpSession session, int lno) {
-		log.info(">>>>> 장바구니 DB 체크");
-		String id = (String)session.getAttribute("id");
-		log.info("** lno : ");
 		int result = service.cartCheck(lno, id);
+		model.addAttribute("result", result);
 		return "lecture/wish_list";
 	}
 	

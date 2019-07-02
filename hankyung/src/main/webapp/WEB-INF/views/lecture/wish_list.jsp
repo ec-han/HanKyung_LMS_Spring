@@ -46,7 +46,9 @@
 						<fmt:formatNumber value="${list.price}" pattern="#,###원" />
 					</div>
 					<a><span class="wish_btn" data-src="${list.lno}">위시리스트 삭제</span></a>
-					<a><span class="cart_btn" data-src="${list.lno}">장바구니에 추가</span></a>
+					<c:if test="${result==0}">
+						<a><span class="cart_btn" data-src="${list.lno}">장바구니에 추가</span></a>
+					</c:if>
 				</div>
 			</div>
 		</c:forEach>

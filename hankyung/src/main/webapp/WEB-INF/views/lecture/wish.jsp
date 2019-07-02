@@ -182,30 +182,19 @@ body{
 	
 	
 	function wishList(){
+		var lno = $(".wish_btn").attr("data-src");
 		$.ajax({
 			type: "GET",
-			url: "${path}/lecture/wishList",
+			url: "${path}/lecture/wishList?lno="+lno,
 			success: function(result){
 				$("#wishlist").html(result);
-				cartCheck();
 			}, error: function(){
 				alert("wishList error!!");
 			}
 		});
 	}
 	
-	function cartCheck(){
-		var lno = $(this).attr("data-src");
-		$.ajax({
-			type: "GET",
-			url: "${path}/lecture/cartCheck?lno="+lno,
-			success: function(result){
-				
-			}, error: function(){
-				alert("cartCheck error!!");
-			}
-		});
-	}
+	
 		
 	</script>
 </body>
