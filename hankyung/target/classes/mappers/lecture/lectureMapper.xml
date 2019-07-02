@@ -106,6 +106,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY a.lno DESC
      </select>
 
-     
+     <select id="cartCheck" parameterType="hashmap" resultType="int">
+     	SELECT COUNT(*)
+     	FROM hk_cart
+     	WHERE lno = #{lno} AND id = #{id}
+     </select>
      
 </mapper>

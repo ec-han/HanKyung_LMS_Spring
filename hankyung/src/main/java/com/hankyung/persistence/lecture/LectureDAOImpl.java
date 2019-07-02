@@ -7,13 +7,14 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.hankyung.domain.lecture.LectureDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+@Repository
 @Slf4j
 public class LectureDAOImpl implements LectureDAO{
 	
@@ -91,5 +92,13 @@ public class LectureDAOImpl implements LectureDAO{
 	@Override
 	public List<LectureDTO> wishList(String id) {
 		return sqlSession.selectList("lecture.wishList", id);
+	}
+
+	@Override
+	public int cartCheck(int lno, String id) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("lno", lno);
+		map.put("id", id);
+		return sqlSession.selectOne("lecture.cartCheck", map);
 	}
 }

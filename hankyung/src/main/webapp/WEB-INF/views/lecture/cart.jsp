@@ -127,7 +127,6 @@ body{
 
 .pay_container {
 	margin: 25px 0px 25px 40px;
-	border: 1px solid red;
 	width: 400px;
 }
 .pay_box{
@@ -163,24 +162,68 @@ body{
     padding: 0px 8px;
 }
 .pay_check{
-	margin-top:10px;
-	font-size: 12px;
-	display: inline-block;
+	font-size: 14px;
+	display: flex;
+	padding: 9px 0px 12px;
+	margin-top: 5px;
+	align-items: center;
+	position: relative;
 }
-.o_btn{
+.pay_btn{
 	height: 50px;
 	width: 100%;
 	background: mediumseagreen;
-	font-size: 25px;
-	line-height:50px;
+	font-size: 22px;
 	color: white;
 	text-align: center;
-	border-top: 1px solid black;
 	cursor: pointer;
+	overflow: hidden;
+	padding: 7px;
+	position: relative;
+	transition: .2s;
+}
+.pay_btn:before {
+	content: '';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: -5;
+	background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+	background-size: 500%;
+	transition: 0.2s;
+}
+.pay_btn:hover:before {
+	z-index: 1;
+	animation: animate 10s linear infinite;
+}
+.pay_btn_text {
+	position: relative;
+	z-index: 5;
 }
 .pay_view{
 	color:blue;
 	cursor: pointer;
+}
+#check_icon {
+	position: absolute;
+	font-size: 19px;
+	color: #dadada;
+	top: 9.5px;
+	left: 0;
+}
+.check_text {
+	padding-left: 24px;
+}
+#onecheck {
+	display: none;
+}
+.err_msg {
+	color: tomato;
+	text-align: center;
+	padding: 0px 0px 16px;
+	display: none;
 }
 </style>
 </head>
@@ -197,6 +240,24 @@ body{
 	<script type="text/javascript">
 		$(document).ready(function(){
 			cartList();
+		});
+		
+		$(document).on("click", ".check_label", function(){
+			var flag = $("#onecheck").is(":checked");
+			if (flag == true) {
+				$("#check_icon").css("color","#dadada");
+			} else {
+				$("#check_icon").css("color","mediumseagreen");
+			}
+		});
+		
+		$(document).on("click", ".pay_btn", function(){
+			var flag = $("#onecheck").is(":checked");
+			if (flag == true) {
+				location.href="${path}/cart/create";
+			} else {
+				$(".err_msg").css("display", "block");
+			}
 		});
 		
 		$(document).on("click", ".delete_btn", function(){

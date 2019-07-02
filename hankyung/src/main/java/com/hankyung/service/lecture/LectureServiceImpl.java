@@ -121,4 +121,9 @@ public class LectureServiceImpl implements LectureService{
 		}
 		session.setAttribute("totalPrice", totalPrice);
 	}
+
+	@Override
+	public int cartCheck(int lno, String id) {
+		return lDao.cartCheck(lno, id);
+	}
 }

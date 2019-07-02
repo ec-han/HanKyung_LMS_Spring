@@ -17,4 +17,5 @@ public interface LectureDAO {
 	public void wishInsert(int lno, String id);
 	public int wishTotal(int lno, String id);
 	public List<LectureDTO> wishList(String id);
+	public int cartCheck(int lno, String id);
 }

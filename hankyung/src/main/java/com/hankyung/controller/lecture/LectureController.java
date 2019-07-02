@@ -122,6 +122,16 @@ public class LectureController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="cartCheck", method=RequestMethod.GET)
+	public String cartCheck(HttpSession session, int lno) {
+		log.info(">>>>> 장바구니 DB 체크");
+		String id = (String)session.getAttribute("id");
+		log.info("** lno : ");
+		int result = service.cartCheck(lno, id);
+		return "lecture/wish_list";
+	}
+	
+	@ResponseBody
 	@PostMapping(value="/wishDelete")
 	public void wishDelete(int lno, HttpSession session) {
 		log.info(">>>>> 위시리스트 삭제");

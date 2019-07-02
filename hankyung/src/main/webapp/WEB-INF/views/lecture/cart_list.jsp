@@ -61,24 +61,30 @@
 		            <span class="price_title">총계</span>
 		            <span class="price_num"><fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#,###원"/></span>
 		        </div>
-		        <div class="pay_info_box">
+		        <!-- <div class="pay_info_box">
 		            <div class="pay_info_title">이름</div>
 		            <input type="text" id="input_name" name="name" class="input_box">
 		        </div>
 		        <div class="pay_info_box">
 		            <div class="pay_info_title">전화번호(숫자만)</div>
 		            <input type="text" id="input_phone" name="name" class="input_box">
-		        </div>
+		        </div> -->
 		        <div class="pay_info_box">
-					<div class="pay_info_title">이메일</div>
-					<input type="text" id="input_email" name="name" class="input_box">
+					<!-- <div class="pay_info_title">이메일</div>
+					<input type="text" id="input_email" name="name" class="input_box"> -->
 					<span class="pay_check">
 					    <input type="checkbox" id="onecheck">
-					    <label for="onecheck">[필수] 구매조건 및 결제대항 서비스 약관 동의</label>
+					    <label for="onecheck">
+					    	<div class="check_label">
+					    		<i class="fas fa-check-circle" id="check_icon"></i>
+					    		<span class="check_text">[필수] 구매조건 및 결제대항 서비스 약관 동의</span>
+					    	</div>
+					    </label>
 					    <span class="pay_view">(보기)</span>
 					</span>
 		        </div>
-		        <div class="o_btn">결 제 하 기</div>
+		        <div class="err_msg">* 필수약관에 동의해주세요.</div>
+		        <div class="pay_btn"><span class="pay_btn_text">결 제 하 기</span></div>
 	        </div>
        	</div>
        	</c:if>

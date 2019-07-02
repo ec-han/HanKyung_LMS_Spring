@@ -69,12 +69,11 @@
 		box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
 	}
 	.home_footer_btn {
-		width: 100px;
-		padding: 16px;
+		width: 110px;
+		height: 54px;
+		line-height: 53px;
 		border-radius: 5px;
 		background: #79CDCF;
-		font-family: 'Nunito', sans-serif;
-		font-weight: 600;
 		transition: .2s;
 		overflow: hidden;
 		position: relative;
@@ -195,11 +194,11 @@
             <div class="home_footer_head">
                 <span><i class="far fa-paper-plane" id="plane"></i></span>
                 <div class="home_footer_title">
-                    Subscribe to receive updates!
+                    	업데이트를 구독 신청하세요!
                 </div>
                 <div class="input_div">
                     <input type="text" name="" class="home_footer_input" placeholder="이메일을 입력해주세요.">
-                    <a class="home_footer_btn"><span>SUBSCRIBE</span></a>
+                    <a class="home_footer_btn"><span>신청하기</span></a>
                 </div>
             </div>
             <div class="home_footer_center">

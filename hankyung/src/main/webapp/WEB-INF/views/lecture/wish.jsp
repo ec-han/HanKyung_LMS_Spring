@@ -187,8 +187,22 @@ body{
 			url: "${path}/lecture/wishList",
 			success: function(result){
 				$("#wishlist").html(result);
+				cartCheck();
 			}, error: function(){
 				alert("wishList error!!");
+			}
+		});
+	}
+	
+	function cartCheck(){
+		var lno = $(this).attr("data-src");
+		$.ajax({
+			type: "GET",
+			url: "${path}/lecture/cartCheck?lno="+lno,
+			success: function(result){
+				
+			}, error: function(){
+				alert("cartCheck error!!");
 			}
 		});
 	}
