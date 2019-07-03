@@ -115,7 +115,7 @@
 												<i class="fas fa-pen-square"></i>
 											</div>
 											<div class="btn_left board_regi_btn">
-												<a href="${path}/main/">
+												<a href="${path}/lectureboard/list?viewoption=${one.btype}">
 													<i class="far fa-list-alt" id="btn_list"></i>
 												</a>
 											</div>

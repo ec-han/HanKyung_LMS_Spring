@@ -17,14 +17,15 @@
           	<!-- Divider -->
           	<hr class="sidebar_divider" id="sidebar_divider_0">
           	<!-- Nav Item - Dashboard -->
+          	<c:if test="${sessionScope.type == '2'}">
           	<li class="nav_item">
-            	<a class="nav_link" href="${path}/main/">
+            	<a class="nav_link" href="${path}/lectureboard/home?btype=0">
               	<i class="fas fa-fw fa-tachometer-alt"></i>
              	 <span>HOME</span></a>
             </li>
              <!-- Divider -->
 	        <hr class="sidebar_divider">
-	        
+	        </c:if>
 	        <!-- 관리자 -->
 	        <c:if test="${sessionScope.type == '0'}">
 			<li class="nav_item active">
@@ -59,12 +60,12 @@
 				  <span>수업준비</span>
 				</a>
 				<div class="collapse_inner rounded collapse" id="collapseLectureReady">
-					<a class="collapse_item" href="#">선생님 소개</a>
+					<a class="collapse_item" href="#">선생님 소개<a>
 					<a class="collapse_item" href="#">수업 계획표</a>
 				</div>
 			</li>
 			<li class="nav_item">
-				<a class="nav_link collapsed" href="#">
+				<a class="nav_link collapsed" href="${path}/lectureboard/classroom">
 				  <i class="fas fa-headphones"></i>
 				  <span>학습방</span>
 				</a>
@@ -94,7 +95,6 @@
 				  <span>과정 관리</span>
 				</a>
 				<div class="collapse_inner rounded collapse" id="collapseCourse">
-					<h6 class="collapse_header">과정 정보</h6>
 					<a class="collapse_item" href="${path}/lectureboard/list?viewoption=notice&search_option=all">게시판</a>
 					<a class="collapse_item" href="#">수업 계획표</a>
 				</div>
@@ -105,10 +105,7 @@
 				  <span>학생 관리</span>
 				</a>
 				<div class="collapse_inner rounded collapse" id="collapseTeacher">
-					<h6 class="collapse_header">학생 조회</h6>
-					<a class="collapse_item" href="#">과정조회</a>
-					<a class="collapse_item" href="#">학생조회</a>
-					<a class="collapse_item" href="#">성적관리</a>
+					<a class="collapse_item" href="#">학생정보</a>
 					<a class="collapse_item" href="#">상담일지</a>
 				</div>
 			</li>

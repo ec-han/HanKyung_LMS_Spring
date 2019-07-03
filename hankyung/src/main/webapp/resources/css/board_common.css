@@ -346,3 +346,25 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     font-weight: lighter;
     padding-top: 0.5rem;
 }
+@keyframes twinkle {
+	0% {opacity: 0;}
+	100%{opacity: 1;}
+}
+.replyCnt_Color {
+	background-color: #dddfeb;
+    font-size: 10.5px;
+    color: #4e73df;
+    font-weight: bold;
+    border-radius: 1rem;
+    padding: 0.8px 6px;	
+}
+.new_time {
+	background-color: #4e73df;
+	font-size: 11px;
+	color: white;
+	border-radius: 1rem;
+	padding: 2px 5px;
+	animation-name: twinkle;
+	animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+}

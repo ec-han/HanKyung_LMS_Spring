@@ -195,7 +195,7 @@
 						<div class="page_body">
 							<div class="bd_hd">
 								<div class="box-body">
-									<div class="row order-2 table_wrapper">
+									<div class="order-2 table_wrapper">
 			              				<div class="col-sm-12 table_wrapper" id="regi_table_wrap">
 											<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							                  <thead>

@@ -26,10 +26,21 @@ import lombok.extern.slf4j.Slf4j;
 public class LectureBoardController {
 	@Inject
 	private LectureBoardService service;
+	
+	@GetMapping(value="home")
+	public String home(Model model, String btype) {
+		
+		// bno랑 btype필요
+		List<LectureBoardDTO> list = service.noticeTitleList(btype);
+		model.addAttribute("notice", list);
+		return "lectureboard/lecturehome";
+	}
+	
 //  @RequestMapping(value="list", method=RequestMethod.GET) 와 같음	
 	@GetMapping(value="list")
-	public ModelAndView list(@RequestParam(defaultValue="all") String viewoption,
+	public ModelAndView list(@RequestParam(defaultValue="notice") String viewoption,
 			@RequestParam(defaultValue="all") String search_option,
+			@RequestParam(defaultValue="new") String sort_option,
 			@RequestParam(defaultValue="") String keyword,
 			@RequestParam(defaultValue="1") int curPage) {
 		
@@ -53,7 +64,7 @@ public class LectureBoardController {
 		}
 		
 		// 페이지에 출력할 게시글 목록 
-		List<LectureBoardDTO> list = service.list(viewoption, search_option, keyword, start, end);
+		List<LectureBoardDTO> list = service.list(viewoption, search_option, sort_option, keyword, start, end);
 		ModelAndView mav = new ModelAndView(); // 화면 갈 때 보내는 거 
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("list", list);	
@@ -61,6 +72,7 @@ public class LectureBoardController {
 		map.put("pager", pager); 
 		map.put("viewoption", viewoption); 
 		map.put("search_option", search_option);
+		map.put("sort_option", sort_option);
 		map.put("keyword", keyword);
 		mav.addObject("map", map);
 		
@@ -177,8 +189,8 @@ public class LectureBoardController {
 		log.info(">>>>>>>> 답글 등록 페이지 출력");
 		// 답글 달려고 하는 게시글 내용 
 		lbDto = service.read(lbDto);	
-		lbDto.setContent("<br><br>"+lbDto.getContent()
-		+"<br><br>================<br><br><br>");
+		lbDto.setContent(lbDto.getContent()
+		+"--------------------");
 		model.addAttribute("one", lbDto);
 		return "lectureboard/answer";
 	}
@@ -194,6 +206,7 @@ public class LectureBoardController {
 		log.info("기존 게시글 정보 ==================================");
 		log.info(one.toString());
 		log.info("===============================================");
+		lbDto.setBtype(one.getBtype());
 		lbDto.setRef(one.getRef());
 		lbDto.setRe_step(one.getRe_step());
 		lbDto.setRe_level(one.getRe_level());
@@ -202,5 +215,10 @@ public class LectureBoardController {
 		service.answer(lbDto);
 		
 		return "redirect:/lectureboard/list?viewoption="+lbDto.getBtype();
+	}
+	
+	@GetMapping(value="classroom")
+	public String classView() {
+		return "lectureboard/classroom";
 	}
 }
