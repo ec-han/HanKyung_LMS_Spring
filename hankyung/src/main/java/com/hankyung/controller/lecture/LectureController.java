@@ -76,11 +76,13 @@ public class LectureController {
 	@RequestMapping(value="view", method = RequestMethod.GET)
 	public String lectureView(int lno, Model model, HttpSession session) {
 		log.info(">>>>> 과정 상세정보 페이지 출력");
-		String id = (String)session.getAttribute("id");
 		LectureDTO lDto = service.lectureView(lno);
-		int result = service.cartCheck(lno, id);
+		if (session.getAttribute("id") != null) {
+			String id = (String)session.getAttribute("id");
+			int result = service.cartCheck(lno, id);
+			model.addAttribute("result", result);
+		}
 		model.addAttribute("lDto", lDto);
-		model.addAttribute("result", result);
 		return "lecture/lecture_view";
 	}
 	

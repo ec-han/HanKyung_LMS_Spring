@@ -139,17 +139,27 @@
 	.mypage_btn {
 		display: block;
 		margin: 4px 0px 4px 19px;
-		padding: 3px;
+		padding: 3px 0px 3px 22px;
+		position: relative;
+		color: #444;
 		transition: .2s;
 	}
 	.mypage_btn:last-child {
 		margin: 4px 0px 8px 19px;
-		padding: 3px;
 	}
 	.mypage_btn:hover {
 		color: #79CDCF;
 	}
+	#wish_icon {
+		left: 2px;
+	}
+	#cart_icon {
+		left: 0.5px;
+	}
 	.icon_hover {
+		position: absolute;
+		top: 5.5px;
+		left: 1px;
 		color: #79CDCF;
 		padding-right: 5px;
 	}
@@ -157,7 +167,7 @@
 		position: absolute;
 		display: none;
 		top: 73px;
-		left: -215px;
+		left: -196.1px;
 		background: white;
 		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 		box-sizing: border-box;
@@ -180,22 +190,19 @@
 		padding: 5px 2px 9px;
 		font-size: 15px;
 		color: #79CDCF;
-		margin: 0px 5px;
+		margin: 0px 5px 9px;
 		border-bottom: 1px solid #ededed;
 	}
 	.main_lecture {
 		display: block;
-		width: 450px;
+		width: 480px;
 		margin: 5px 5px;
 	}
 	.none_lecture {
 		display: block;
 		width: 480px;
-		margin: 8px 5px 5px;
+		margin: 6px 5px;
 		color: #dadada;
-	}
-	.main_lecture:first-child {
-		margin: 8px 5px 5px;
 	}
 	.main_lecture:last-child {
 		margin: 5px 5px 0px;
@@ -232,57 +239,48 @@
 		                <c:when test="${!empty sessionScope.id}">
 		                	<div class="home_navi_div mypage">
 		                        <span class="home_navi_span">
-		                            <a class="home_navi home_navi2 name" <c:out value="${sessionScope.type =='2'?'id=name':'id=notname'}"/>>
+		                            <a class="home_navi home_navi2 name" id="name">
 		                            	<span id="name_point">${sessionScope.name}</span>님
-		                            	<c:if test="${sessionScope.type == '2'}">
-		                            		<i class="fas fa-chevron-down"></i>
-		                            	</c:if>
+	                            		<i class="fas fa-chevron-down"></i>
 		                            </a>
 		                            
 		                        </span>
 		                        <!-- <div class="mypage_arrow arrow_top"></div>
 		                        <div class="mypage_arrow"></div> -->
-		                        <c:if test="${sessionScope.type == '2'}">
-		                        	<div class="mypage_box">
-		                        		<div class="mypage_box_bar"></div>
-			                        	<a href="${path}/lecture/wishView" class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
-			                        	<a href="${path}/lecture/cartView" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
-			                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
-			                        </div>
-		                        </c:if>
+		                       	<div class="mypage_box">
+	                        		<div class="mypage_box_bar"></div>
+	                        		<c:if test="${sessionScope.type == 2}">
+		                        	<a href="${path}/lecture/wishView" class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
+		                        	<a href="${path}/lecture/cartView" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
+		                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
+		                        	</c:if>
+		                        	<a href="${path}/noticeView" class="member_update mypage_btn"><i class="fas fa-exclamation-circle icon_hover" id="notice_icon"></i>공지사항</a>
+		                        	<a href="${path}/qnaView" class="member_update mypage_btn"><i class="fas fa-question-circle icon_hover" id="qna_icon"></i>묻고답하기</a>
+		                        </div>
 	                    	</div>
-	                    	<c:if test="${sessionScope.type == '0'}">
+	                    	<c:if test="${sessionScope.type == 0}">
 	                    		<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a href="${path}/main/" class="home_navi home_navi2" id="main">LMS관리</a>
+			                            <a href="${path}/main/" class="home_navi home_navi2 home_navi" id="main">LMS관리</a>
 			                        </span>
 		                    	</div>
 	                    	</c:if>
-	                    	<c:if test="${sessionScope.type == '1'}">
+	                    	<c:if test="${sessionScope.type == 1}">
 			                	<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a class="home_navi home_navi2" id="main">나의강의실</a>
+			                            <a href="${path}/main/" class="home_navi home_navi2 home_navi" id="main">나의강의실</a>
+			                        </span>
+		                    	</div>
+	                    	</c:if>
+	                    	<c:if test="${sessionScope.type == 2}">
+			                	<div class="home_navi_div">
+			                        <span class="home_navi_span">
+			                            <a class="home_navi_btn myclass main_btn home_navi" id="main">나의강의실</a>
 			                        </span>
 			                        <div class="main_box">
 			                        	<div class="main_box_bar"></div>
 			                        	<div class="main_box_title">나의 강의목록</div>
-			                        	<div>
-			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기1</a>
-			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작sdfsdf하기2</a>
-			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기3</a>
-			                        	</div>
-			                        </div>
-		                    	</div>
-	                    	</c:if>
-	                    	<c:if test="${sessionScope.type == '2'}">
-			                	<div class="home_navi_div">
-			                        <span class="home_navi_span">
-			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실</a>
-			                        </span>
-			                        <div class="main_box">
-			                        	<div class="main_box_bar"></div>
-			                        	<div class="main_box_title">나의 강의목록</div>
-			                        	<c:if test="${empty myList}">
+			                        	<c:if test="${empty sessionScope.myList}">
 			                        		<div class="none_lecture">수강중인 강좌가 없습니다.</div>
 			                        	</c:if>
 			                        	<c:forEach items="${sessionScope.myList}" var="myList">

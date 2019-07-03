@@ -250,10 +250,12 @@
 				<a href="${path}/lecture/list" class="lecture_btn" id="back_btn">과정목록</a>
 			</div>
 			<div class="button_right">
+			<c:if test="${sessionScope.type == 2}">
 				<a class="wish_btn">위시리스트</a>
 				<c:if test="${result == 0}">
 				<a class="lecture_btn cart_btn">장바구니</a>
 				</c:if>
+			</c:if>
 			</div>
 		</div>
 		<div class="lecture_top">
