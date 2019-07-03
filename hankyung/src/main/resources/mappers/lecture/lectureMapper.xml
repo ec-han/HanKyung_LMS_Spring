@@ -23,6 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<select id="myList" parameterType="String" resultType="com.hankyung.domain.lecture.LectureDTO">
+		SELECT a.*
+		FROM hk_lecture a, hk_cart b
+		WHERE b.id=#{id} AND a.lno = b.lno
+		ORDER BY a.lno DESC
+	</select>
+	
 	<select id="countArticle" resultType="int">
 		SELECT COUNT(*)
 		FROM hk_lecture WHERE
@@ -99,10 +106,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      	WHERE id = #{id}
      </select>
      
-     <select id="wishList" parameterType="String" resultType="com.hankyung.domain.lecture.LectureDTO">
-     	SELECT a.*
-		FROM hk_lecture a, hk_wish b
-		WHERE a.lno = b.lno AND b.id=#{id}
+     <select id="wishList" parameterType="String" resultType="hashmap">
+     	SELECT a.*, c.lno as isempty
+		FROM hk_lecture a, hk_wish b, hk_cart c
+		WHERE a.lno = b.lno and b.lno=c.lno(+) AND b.id=#{id}
 		ORDER BY a.lno DESC
      </select>
 

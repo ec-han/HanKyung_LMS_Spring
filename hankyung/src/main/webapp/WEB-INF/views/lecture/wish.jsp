@@ -95,7 +95,7 @@ body{
 	font-size: 20px;
 	flex:1;
 }
-.wish_btn {
+.cart_btn {
 	display: block;
 	width: 110px;
 	text-align: center;
@@ -109,7 +109,7 @@ body{
 	transition: .2s;
 	border-radius: 15px;
 }
-.cart_btn {
+.wish_btn {
 	display: block;
 	width: 110px;
 	text-align: center;
@@ -123,13 +123,31 @@ body{
 	transition: .2s;
 	border-radius: 15px;
 }
-.wish_btn:hover {
-	color: #FFC000;
-	border: 1px solid #FFC000;
+.noempty_btn {
+	display: block;
+	width: 110px;
+	text-align: center;
+	padding: 5px 7px;
+	font-size: 13px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	color: #999;
+	margin-top: 46px;
+	margin-left: 20px;
+	transition: .2s;
+	border-radius: 15px;
 }
 .cart_btn:hover {
 	color: #79CDCF;
 	border: 1px solid #79CDCF;
+}
+.wish_btn:hover {
+	color: #FFC000;
+	border: 1px solid #FFC000;
+}
+.noempty_btn:hover {
+	color: #FFC000;
+	border: 1px solid #FFC000;
 }
 </style>
 </head>
@@ -185,7 +203,7 @@ body{
 		var lno = $(".wish_btn").attr("data-src");
 		$.ajax({
 			type: "GET",
-			url: "${path}/lecture/wishList?lno="+lno,
+			url: "${path}/lecture/wishList",
 			success: function(result){
 				$("#wishlist").html(result);
 			}, error: function(){

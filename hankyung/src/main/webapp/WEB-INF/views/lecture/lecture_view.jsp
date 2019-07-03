@@ -85,7 +85,9 @@
 			border: 1px solid #ddd;
 			color: #999;
 			transition: .2s;
-			margin-right: 5px;
+		}
+		.cart_btn {
+			margin-left: 5px;
 		}
 		.lecture_btn:hover, #back_btn:hover {
 			border: 1px solid #FFC000;
@@ -249,7 +251,9 @@
 			</div>
 			<div class="button_right">
 				<a class="wish_btn">위시리스트</a>
+				<c:if test="${result == 0}">
 				<a class="lecture_btn cart_btn">장바구니</a>
+				</c:if>
 			</div>
 		</div>
 		<div class="lecture_top">

@@ -172,7 +172,7 @@ body{
 .pay_btn{
 	height: 50px;
 	width: 100%;
-	background: mediumseagreen;
+	background: #79CDCF;
 	font-size: 22px;
 	color: white;
 	text-align: center;
@@ -225,6 +225,15 @@ body{
 	padding: 0px 0px 16px;
 	display: none;
 }
+.lecture_flex {
+	display: flex;
+	align-items: center;
+}
+.lecture_check {
+	width: 20px;
+	height: 20px;
+	margin-right: 20px;
+}
 </style>
 </head>
 <body>
@@ -253,7 +262,9 @@ body{
 		
 		$(document).on("click", ".pay_btn", function(){
 			var flag = $("#onecheck").is(":checked");
+			$(".err_msg").css("display", "none");
 			if (flag == true) {
+				alert("결제가 완료되었습니다.");
 				location.href="${path}/cart/create";
 			} else {
 				$(".err_msg").css("display", "block");

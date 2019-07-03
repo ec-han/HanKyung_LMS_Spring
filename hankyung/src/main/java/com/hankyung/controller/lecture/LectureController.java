@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.service.Pager;
 import com.hankyung.service.lecture.LectureService;
@@ -32,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("lecture/*")
 public class LectureController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LectureController.class);
 	
 	@Inject
 	private LectureService service;
@@ -72,10 +72,13 @@ public class LectureController {
 	}
 	
 	@RequestMapping(value="view", method = RequestMethod.GET)
-	public String lectureView(int lno, Model model) {
+	public String lectureView(int lno, Model model, HttpSession session) {
 		log.info(">>>>> 과정 상세정보 페이지 출력");
+		String id = (String)session.getAttribute("id");
 		LectureDTO lDto = service.lectureView(lno);
+		int result = service.cartCheck(lno, id);
 		model.addAttribute("lDto", lDto);
+		model.addAttribute("result", result);
 		return "lecture/lecture_view";
 	}
 	
@@ -110,13 +113,11 @@ public class LectureController {
 	}
 	
 	@RequestMapping(value="wishList", method=RequestMethod.GET)
-	public String wishList(HttpSession session, Model model, int lno) {
+	public String wishList(HttpSession session, Model model) {
 		log.info(">>>>> 위시리스트 목록 출력");
 		String id = (String)session.getAttribute("id");
-		List<LectureDTO> list = service.wishList(id);
+		List<HashMap<String, String>> list = service.wishList(id);
 		model.addAttribute("lDto", list);
-		int result = service.cartCheck(lno, id);
-		model.addAttribute("result", result);
 		return "lecture/wish_list";
 	}
 	

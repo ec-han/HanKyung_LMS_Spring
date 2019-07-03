@@ -9,9 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.persistence.lecture.LectureDAO;
-import com.mysql.cj.Session;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +33,12 @@ public class LectureServiceImpl implements LectureService{
 		map.put("nList", nList);
 
 		return map;
+	}
+	
+	@Override
+	public List<LectureDTO> myList(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		return lDao.myList(id);
 	}
 
 	@Override
@@ -72,7 +78,7 @@ public class LectureServiceImpl implements LectureService{
 	}
 
 	@Override
-	public List<LectureDTO> wishList(String id) {
+	public List<HashMap<String, String>> wishList(String id) {
 		return lDao.wishList(id);
 	}
 

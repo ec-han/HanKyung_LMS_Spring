@@ -11,19 +11,20 @@
 <body>
 	<div class="container_all">
         <div class="lecture_container">
-    		<c:choose>
-    		<c:when test="${empty sessionScope.list}">
-   			<div class="lecture_box">
-   				<div class="empty_box">
-   				<div>
-   					<i class="fas fa-exclamation-circle empty_icon"></i>
-   				</div>
-   					추가된 강좌가 없습니다.
-   				</div>
+   		<c:choose>
+   		<c:when test="${empty sessionScope.list}">
+		<div class="lecture_box">
+			<div class="empty_box">
+				<div>
+					<i class="fas fa-exclamation-circle empty_icon"></i>
+				</div>
+				추가된 강좌가 없습니다.
 			</div>
-    		</c:when>
-    		<c:otherwise>
-			<c:forEach items="${sessionScope.list}" var="list" varStatus="status">
+		</div>
+   		</c:when>
+   		<c:otherwise>
+		<c:forEach items="${sessionScope.list}" var="list" varStatus="status">
+		<div class="lecture_flex">
 			<div class="lecture_box">
 				<div class="lecture_img_box">
 					<a href="${path}/lecture/view?lno=${list.lno}">
@@ -50,6 +51,7 @@
 					<a><span class="delete_btn" data-src="${list.lno}" data-index="${status.index}">장바구니 삭제</span></a>
 				</div>
 			</div>
+		</div>
 		</c:forEach>
 		</c:otherwise>
 		</c:choose>
@@ -61,26 +63,16 @@
 		            <span class="price_title">총계</span>
 		            <span class="price_num"><fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#,###원"/></span>
 		        </div>
-		        <!-- <div class="pay_info_box">
-		            <div class="pay_info_title">이름</div>
-		            <input type="text" id="input_name" name="name" class="input_box">
-		        </div>
 		        <div class="pay_info_box">
-		            <div class="pay_info_title">전화번호(숫자만)</div>
-		            <input type="text" id="input_phone" name="name" class="input_box">
-		        </div> -->
-		        <div class="pay_info_box">
-					<!-- <div class="pay_info_title">이메일</div>
-					<input type="text" id="input_email" name="name" class="input_box"> -->
 					<span class="pay_check">
 					    <input type="checkbox" id="onecheck">
-					    <label for="onecheck">
-					    	<div class="check_label">
-					    		<i class="fas fa-check-circle" id="check_icon"></i>
-					    		<span class="check_text">[필수] 구매조건 및 결제대항 서비스 약관 동의</span>
-					    	</div>
-					    </label>
-					    <span class="pay_view">(보기)</span>
+					    <div class="check_label">
+						    <label for="onecheck">
+						    		<i class="fas fa-check-circle" id="check_icon"></i>
+						    		<span class="check_text">[필수] 구매조건 및 결제대항 서비스 약관 동의</span>
+						    </label>
+						    <span class="pay_view">(보기)</span>
+					    </div>
 					</span>
 		        </div>
 		        <div class="err_msg">* 필수약관에 동의해주세요.</div>

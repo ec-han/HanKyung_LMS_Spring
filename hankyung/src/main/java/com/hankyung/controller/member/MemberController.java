@@ -3,6 +3,7 @@ package com.hankyung.controller.member;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.domain.member.MemberDTO;
 import com.hankyung.service.member.MemberService;
 

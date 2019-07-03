@@ -8,8 +8,8 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
+import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureDTO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +29,11 @@ public class LectureDAOImpl implements LectureDAO{
 	@Override
 	public List<LectureDTO> newList() {
 		return sqlSession.selectList("lecture.newList");
+	}
+
+	@Override
+	public List<LectureDTO> myList(String id) {
+		return sqlSession.selectList("lecture.myList", id);
 	}
 	
 	@Override
@@ -90,7 +95,7 @@ public class LectureDAOImpl implements LectureDAO{
 	}
 
 	@Override
-	public List<LectureDTO> wishList(String id) {
+	public List<HashMap<String, String>> wishList(String id) {
 		return sqlSession.selectList("lecture.wishList", id);
 	}
 

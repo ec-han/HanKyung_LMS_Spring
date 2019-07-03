@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureDTO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +33,5 @@ public class CartDAOImpl implements CartDAO {
 			sqlSession.insert("cart.create", map);
 		}
 	}
-
 
 }
