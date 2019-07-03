@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.domain.member.MemberDTO;
+import com.hankyung.service.lecture.LectureService;
 import com.hankyung.service.member.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,9 @@ public class MemberController {
 	
 	@Inject
 	private MemberService service;
+	
+	@Inject
+	private LectureService lService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
@@ -79,6 +83,8 @@ public class MemberController {
 		} else {
 			log.info("로그인 성공");
 			model.addAttribute("session", session);
+			List<LectureDTO> list = lService.myList(session);
+			session.setAttribute("myList", list);
 			return "redirect:/";
 		}
 	}

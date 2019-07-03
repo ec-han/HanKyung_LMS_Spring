@@ -42,9 +42,11 @@ public class LectureController {
 			@RequestParam(defaultValue="new") String sort_option,
 			@RequestParam(defaultValue="all") String search_option,
 			@RequestParam(defaultValue="") String keyword,
-			@RequestParam(defaultValue="1") int curPage
+			@RequestParam(defaultValue="1") int curPage,
+			HttpSession session
 			) {
 		log.info(">>>>> 과정 및 강좌 목록 페이지 출력");
+		
 		// 레코드 갯수 계산
 		int count = service.countArticle(search_option, keyword);
 		//페이지 관련 설정

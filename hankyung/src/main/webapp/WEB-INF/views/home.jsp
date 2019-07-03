@@ -515,10 +515,10 @@
 			                        <div class="main_box">
 			                        	<div class="main_box_bar"></div>
 			                        	<div class="main_box_title">나의 강의목록</div>
-			                        	<c:if test="${empty myList}">
+			                        	<c:if test="${empty sessionScope.myList}">
 			                        		<div class="none_lecture">수강중인 강좌가 없습니다.</div>
 			                        	</c:if>
-			                        	<c:forEach items="${myList}" var="myList">
+			                        	<c:forEach items="${sessionScope.myList}" var="myList">
 			                        		<a href="${path}/main/" class="main_lecture">${myList.lname}</a>
 		                        		</c:forEach>
 			                        </div>

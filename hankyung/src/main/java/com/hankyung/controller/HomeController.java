@@ -36,12 +36,7 @@ public class HomeController {
 		HashMap<String, List<LectureDTO>> map = service.homeList();
 		
 		model.addAttribute("map", map);
-		session.setAttribute("id", "user01");
-		session.setAttribute("name", "테스트");
-		session.setAttribute("type", "2");
 		
-		List<LectureDTO> list = service.myList(session);
-		model.addAttribute("myList", list);
 		//for (LectureDTO lectureDTO : list) {
 		//	log.info(lectureDTO.toString());
 		//}

@@ -156,9 +156,8 @@
 	.main_box {
 		position: absolute;
 		display: none;
-		width: 300px;
 		top: 73px;
-		left: -100px;
+		left: -215px;
 		background: white;
 		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 		box-sizing: border-box;
@@ -173,7 +172,7 @@
 		top: 0px;
 		left: -1px;
 		height: 4px;
-		width: 350px;
+		width: 550px;
 		background: #79CDCF;
 	}
 	.main_box_title {
@@ -186,8 +185,14 @@
 	}
 	.main_lecture {
 		display: block;
-		width: 270px;
+		width: 450px;
 		margin: 5px 5px;
+	}
+	.none_lecture {
+		display: block;
+		width: 480px;
+		margin: 8px 5px 5px;
+		color: #dadada;
 	}
 	.main_lecture:first-child {
 		margin: 8px 5px 5px;
@@ -272,16 +277,17 @@
 	                    	<c:if test="${sessionScope.type == '2'}">
 			                	<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a class="home_navi home_navi2 main_btn" id="main">나의강의실</a>
+			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실</a>
 			                        </span>
 			                        <div class="main_box">
 			                        	<div class="main_box_bar"></div>
 			                        	<div class="main_box_title">나의 강의목록</div>
-			                        	<div>
-			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기1</a>
-			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작sdfsdf하기2</a>
-			                        		<a class="main_lecture">인터랙티브 웹 개발 제대로 시작하기3</a>
-			                        	</div>
+			                        	<c:if test="${empty myList}">
+			                        		<div class="none_lecture">수강중인 강좌가 없습니다.</div>
+			                        	</c:if>
+			                        	<c:forEach items="${sessionScope.myList}" var="myList">
+			                        		<a href="${path}/main/" class="main_lecture">${myList.lname}</a>
+		                        		</c:forEach>
 			                        </div>
 		                    	</div>
 	                    	</c:if>
