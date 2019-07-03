@@ -1,8 +1,14 @@
 -- 선미 6/25
 
 -- 회원테이블
+DROP SEQUENCE seq_hk_member;
+CREATE SEQUENCE seq_hk_member
+START WITH 1
+INCREMENT BY 1;
+
 DROP TABLE hk_member;
 CREATE TABLE hk_member(
+    mno NUMBER NOT NULL,
     id VARCHAR2(100) PRIMARY KEY, 
     name VARCHAR2(80) NOT NULL, 
     email VARCHAR2(300) NOT NULL,
@@ -16,12 +22,16 @@ CREATE TABLE hk_member(
 -- 0: 관리자
 -- 1: 선생님
 -- 2: 학생
-INSERT INTO hk_member(name, id, email, phone, pw, type)
-VALUES('관리자', 'admin', 'admin@gmail.com', '01011112222', '1234', '0');
-INSERT INTO hk_member(name, id, email, phone, pw, type)
-VALUES('최철웅', 'teacher01', 'teacher01@gmail.com', '01022223333', '1234', '1');
-INSERT INTO hk_member(name, id, email, phone, pw)
-VALUES('박선미', 'user01', 'user01@gmail.com', '01033334444', '1234');
+INSERT INTO hk_member(mno, name, id, email, phone, pw, type)
+VALUES(seq_hk_member.NEXTVAL,'관리자', 'admin', 'admin@gmail.com', '01011112222', '1234', '0');
+INSERT INTO hk_member(mno, name, id, email, phone, pw, type)
+VALUES(seq_hk_member.NEXTVAL,'최철웅', 'teacher01', 'teacher01@gmail.com', '01022223333', '1234', '1');
+INSERT INTO hk_member(mno, name, id, email, phone, pw)
+VALUES(seq_hk_member.NEXTVAL,'박선미', 'user01', 'user01@gmail.com', '01033334444', '1234');
+INSERT INTO hk_member(mno, name, id, email, phone, pw)
+VALUES(seq_hk_member.NEXTVAL,'한은체', 'user02', 'user02@gmail.com', '01011121222', '1234');
+INSERT INTO hk_member(mno, name, id, email, phone, pw)
+VALUES(seq_hk_member.NEXTVAL,'김도연', 'user03', 'user03@gmail.com', '01022232333', '1234');
 
 commit;
 
