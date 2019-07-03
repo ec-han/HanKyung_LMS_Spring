@@ -74,6 +74,21 @@
 .widget-toolbar > a > i {
     text-align: center;
 }
+#class-room-Table > thead > tr > th {
+	padding: 0;
+}
+.home-table {
+ 	clear: both;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    max-width: none;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.lecture-view-btn {
+    font-size: 1rem;
+    margin: 0;
+}
 </style>
 </head>
 <body>
@@ -96,7 +111,7 @@
 						</div>
 						<div class="card-body">
 							<div class="col-sm-12 table_wrapper">
-			            		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			            		<table class="table table-bordered home-table" id="noticeDataTable" width="100%" cellspacing="0">
 				                  <tbody>
 				                  <c:forEach items="${notice}" var="notice">
 				                    <tr>
@@ -145,7 +160,7 @@
 				</div>
 			<!-- 학습방 현황 출력 시작  -->
 				<div class="col-sm-12 table_wrapper">
-            		<table class="table table-bordered" id="dataTable" width="77.5rem" cellspacing="0">
+            		<table class="table table-bordered home-table" id="lecture-data-table" width="77.5rem" cellspacing="0">
 	                  <thead>
 	                    <tr class="text-primary" style="width: 10px">
 	                      <th style="width: 2rem">No.</th>
@@ -159,11 +174,16 @@
 	                  </thead>
 	                  <tbody style="background: white;">
 	                    <tr>
-	                      <td></td>
-	                      <td></td>
-	                      <td></td>
-	                      <td></td>
-	                      <td></td>
+	                      <td><span id="lecture-no">1</span>강</td>
+	                      <td class="text_truncate">Java의 역사와 특징</td>
+	                      <td class="text_truncate">수업에 대한 소개와 Java 언어에 대한 소개</td>
+	                      <td>
+	                      	<a href="#" class="lecture-view-btn">
+								<i class="fas fa-headphones"></i>
+								<span id="lecture-view-span">수업보기</span>
+							</a>
+	                      </td>
+	                      <td><span id="study-time">20분</span></td>
 	                      <td></td>
 	                      <td></td>
 	                    </tr>

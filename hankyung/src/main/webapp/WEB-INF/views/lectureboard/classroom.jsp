@@ -6,65 +6,11 @@
 <head>
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
 <title>학습방</title>
 <style type="text/css">
-.result-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    margin-bottom: 1px;
-}
-.result-list>li {
-    background: #fff;
-    box-shadow: 0 1px #ccc;
-    overflow: hidden;
-}
-.result-list .result-info {
-    width: 100%;
-}
-.result-list>li>div {
-    display: table-cell;
-    padding: 20px;
-    position: relative;
-    vertical-align: top;
-}
-.result-list .result-price {
-    border-left: 1px dashed #ddd;
-    font-size: 28px;
-    padding-top: 40px;
-    text-align: center;
-    max-width: 240px;
-    min-width: 240px;
-}
-.result-list>li>div {
-    display: table-cell;
-    padding: 20px;
-    position: relative;
-    vertical-align: top;
-}
-.title {
-	font-size: 1.5rem;
-}
-#classTable td {
-	box-shadow: 0 2px 35px 0 rgba(235, 237, 242, 0.7);
-}
-.lecture-view-btn {
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6rem;
-    background: #2D314F;
-    margin-top: 1rem;
-}
-#lecture-view-span {
-    color: white;
-}
-.lecture-view-btn > i {
-    padding-right: 0.3rem;
-    color: white;
-}
+
 </style>
 </head>
 <body>
