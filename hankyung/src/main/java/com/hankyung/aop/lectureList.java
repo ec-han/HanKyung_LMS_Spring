@@ -1,6 +1,5 @@
 package com.hankyung.aop;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component // 스프링 beans로 등록되기 위한 설정
 @Aspect    // AOP bean - 공통 업무를 지원하는 코드
 @Slf4j
-public class LogAdvice {
+public class lectureList {
 	// 포인트컷 - 실행 시점,
 	// Around(메서드 실행 전후)
 	// Before(메서드 실행 전)
@@ -35,15 +34,29 @@ public class LogAdvice {
 	
 	// execution경로에 //는 하위패키지들이 다 들어갈 수 있다는 의미 
 	// com.gaon.controller패키지 안에 있는 모든 컨트롤러 중에 Controller로 끝나는 클래스들 중 모든 메서드들
-	@Around("execution(* com.hankyung.controller.HomeController.*(..))"
+	@Around("execution(* com.hankyung.controller.cart.CartController.*(..))"
 			+ " or execution(* com.hankyung.controller.lecture.LectureController.*(..))")
-	public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable {
+	public Object lectureList(ProceedingJoinPoint joinPoint) throws Throwable {
 		// 메서드 시작시간
 		long start = System.currentTimeMillis();
+		
+		
+		// joinPoint.proceed(); 줄을 기준으로
+		// ↑위에가 호출 전
+		// ↓아래가 호출 후
+		Object result = joinPoint.proceed(); // 핵심업무 실행
+		
+		// joinPoint.getSignature().getDeclaringTypeName():메서드이름을 가져온다.(String으로)
+		// if(joinPoint.getSignature().getDeclaringTypeName().contains("made")){}:"made"라는 이름을 가진 모든 메서드들이 실행
 		HttpSession session;
 		for (Object object : joinPoint.getArgs()) {
+			// joinPoint:around 범위 내 실행이 되는 대상 메서드들의 모든 정보를 가지고 있음
+			// joinPoint.getArgs():대상 메서드가 가지고 있는 매개변수를 모두 가지고 있음
+			// 갯수도 정해지지 않아서(배열) 타입도 정해지지 않아서(Object타입) 그래서 Object[]
+			// instanceof:자식 객체의 원래 타입을 알려줌
+			// object가 HttpSession타입일 경우 true, 아니면 false를 반환
 			if(object instanceof HttpSession) {
-				session = (HttpSession) object;
+				session = (HttpSession)object;
 				if(session.getAttribute("myList")!=null) {
 					session.removeAttribute("myList");
 					List<LectureDTO> list = service.myList(session);
@@ -51,34 +64,6 @@ public class LogAdvice {
 				}
 			}
 		}
-		
-		// joinPoint.proceed(); 줄을 기준으로
-		// ↑위에가 호출 전
-		// ↓아래가 호출 후
-		Object result = joinPoint.proceed(); // 핵심업무 실행
-		
-		// 호출한 클래스 이름
-		String type = joinPoint.getSignature().getDeclaringTypeName();
-		
-		// 호출한 클래스의 이름에 따라 if문을 타고 출력
-		String name = "";
-		if (type.indexOf("Controller") > -1) {
-			name = "Controller \t:";
-		} else if (type.indexOf("Service") > -1) {
-			name = "ServiceImpl \t:";
-		} else if (type.indexOf("DAO") > -1) {
-			name = "DaoImpl \t:";
-		}
-		
-		// 호출한 클래스, method 정보
-		log.info(name+type+"."+joinPoint.getSignature().getName());
-		// method에 전달되는 매개변수들
-		log.info(Arrays.deepToString(joinPoint.getArgs()));
-		// 메서드 끝나는 시간
-		long end = System.currentTimeMillis();
-		long time = end - start;
-		log.info("실행시간 : " + time);
-		
 		return result;
 	}
 }
