@@ -12,6 +12,7 @@
 	.home_header_navi {
 		background: white;
 		width: 100%;
+		height: 73px;
 		min-width: 1350px;
 		font-family: 'Nunito', sans-serif;
 		font-size: 20px;
