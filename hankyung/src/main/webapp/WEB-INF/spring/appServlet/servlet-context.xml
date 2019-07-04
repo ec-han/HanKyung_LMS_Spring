@@ -22,6 +22,21 @@
 		
 	<!-- AOP의 설정으로 Proxy 객체를 자동으로 생성 -->
 	<aop:aspectj-autoproxy />
+	
+	<!-- 인터셉터 빈을 등록 -->
+	<beans:bean id="loginInterceptor" class="com.hankyung.interceptor.LoginInterceptor"></beans:bean>
+	
+	<!-- 인터셉터 호출을 위한 url mapping -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/update"/>
+			<mapping path="/member/pwupdate"/>
+			<mapping path="/member/delete"/>
+			<mapping path="/lecture/wishView"/>
+			<mapping path="/lecture/cartView"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />

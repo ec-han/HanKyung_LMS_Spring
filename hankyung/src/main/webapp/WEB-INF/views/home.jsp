@@ -72,7 +72,6 @@
       }
       .myclass {
       	margin: 0px 12px;
-      	width: 89px;
       }
       .home_navi {
           display: inline-block;
@@ -511,7 +510,8 @@
 	                    	<c:if test="${sessionScope.type == 2}">
 			                	<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실</a>
+			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실
+			                            <i class="fas fa-chevron-down"></i></a>
 			                        </span>
 			                        <div class="main_box">
 			                        	<div class="main_box_bar"></div>
