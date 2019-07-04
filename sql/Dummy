@@ -313,13 +313,9 @@ r.writer = m.name AND bno = 5 ORDER BY rno;
 DROP TABLE hk_wish;
 CREATE TABLE hk_wish(
     lno NUMBER NOT NULL,
-    id VARCHAR2(200) NOT NULL
+    id VARCHAR2(200) NOT NULL,
+    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
 );
-
-ALTER TABLE hk_wish
-ADD CONSTRAINT hk_wish_fk_lno
-FOREIGN KEY(lno) REFERENCES hk_lecture(lno)
-ON DELETE CASCADE;
 
 SELECT a.*
 FROM hk_lecture a, hk_wish b
@@ -330,13 +326,10 @@ WHERE a.lno = b.lno AND b.id='user01';
 DROP TABLE hk_cart;
 CREATE TABLE hk_cart(
     lno NUMBER NOT NULL,
-    id VARCHAR2(100) NOT NULL
+    id VARCHAR2(100) NOT NULL,
+    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
 );
 
-ALTER TABLE hk_cart
-ADD CONSTRAINT hk_cart_fk_lno
-FOREIGN KEY(lno) REFERENCES hk_lecture(lno)
-ON DELETE CASCADE;
 
 SELECT * FROM hk_cart;
 
