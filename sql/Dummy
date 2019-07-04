@@ -168,12 +168,12 @@ VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요
 
 
 
---강좌게시판
+--강좌게시판 7/4
+
 -- 0 공지사항
 -- 1 QnA
 -- 2 게시글
-
--- 한은체 6/28 수정된 sql문 시작
+-- 한은체 6/28
 --모든 게시글 시퀀스
 DROP SEQUENCE seq_hklboard;
 CREATE SEQUENCE seq_hklboard
@@ -196,8 +196,7 @@ CREATE SEQUENCE seq_hklboard_normal
 START WITH 1
 INCREMENT BY 1;
 
--- 컬럼 추가됨 lbnum replycnt
-DROP TABLE hk_lecture_board;
+DROP TABLE hk_lecture_board CASCADE CONSTRAINTS;
 CREATE TABLE hk_lecture_board(
     bno NUMBER PRIMARY KEY,
     lbnum NUMBER NOT NULL,
@@ -207,7 +206,10 @@ CREATE TABLE hk_lecture_board(
     writer VARCHAR(30) NOT NULL,
     viewcnt NUMBER DEFAULT 0,
     replycnt NUMBER DEFAULT 0,
-    regdate DATE DEFAULT SYSDATE   
+    regdate DATE DEFAULT SYSDATE,
+    ref NUMBER NOT NULL,
+    re_step NUMBER NOT NULL,
+    re_level NUMBER NOT NULL
 );
 -- replycnt NUMBER DEFAULT 0, 댓글 수 추가함(은체)
 INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer)
@@ -216,13 +218,57 @@ VALUES(seq_hklboard.NEXTVAL, seq_hklboard_normal.NEXTVAL, '안녕하세요1','�
 INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
 VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '첫 공지1','강의생성후 1첫 공지', 'USER01');
 
-INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
-VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01');
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01', seq_board.CURRVAL, 1, 0);
 
 commit;
--- 6/28 강좌 게시판 관련 sql 수정 
 
--- 7/1 강좌 게시판 관련 댓글 테이블 추가 
+DELETE FROM hk_lecture_board WHERE lbnum=21 AND btype='2';
+SELECT title, bno FROM hk_lecture_board WHERE btype='0';
+SELECT title, bno FROM hk_lecture_board WHERE btype='0';
+SELECT * FROM hk_lecture_board_reply;
+DELETE FROM hk_lecture_board_reply WHERE rno=37;
+DELETE FROM hk_lecture_board WHERE lbnum=4 AND btype='2'; 
+
+SELECT * FROM
+    (SELECT rownum AS rnum, A.* FROM
+        ( SELECT * FROM hk_lecture_board WHERE
+                    btype='0'
+                    AND title LIKE '%공지%'
+            ORDER BY bno DESC
+        )
+    A)
+WHERE rnum BETWEEN 1 AND 10
+ORDER BY regdate DESC;
+
+SELECT * FROM
+    (SELECT rownum AS rnum, A.* FROM
+        (SELECT title, bno, regdate 
+            FROM hk_lecture_board 
+            WHERE btype='0' 
+            ORDER BY regdate DESC
+        )
+    A)
+WHERE rnum BETWEEN 1 AND 5;
+
+SELECT title, bno FROM hk_lecture_board WHERE btype='0';
+
+SELECT btype, bno FROM hk_lecture_board GROUP BY btype;
+
+SELECT 과목, COUNT(*) AS 수강생수
+FROM 수강생
+WHERE 수강료>=100
+GROUP BY 과목
+HAVING COUNT(과목)>=2;
+
+SELECT *
+FROM hk_lecture_board;
+
+SELECT COUNT(*)
+FROM hk_lecture_board WHERE 
+title LIKE '%공지%' AND btype='1';
+
+-- hk_lecture_board 관련 댓글 테이블
 DROP SEQUENCE seq_lecture_board_reply;
 CREATE SEQUENCE seq_lecture_board_reply
 START WITH 1
@@ -241,13 +287,25 @@ INSERT INTO hk_lecture_board_reply(rno, content, writer, bno)
 VALUES(seq_reply.NEXTVAL, 'ㅎㅎ', '한은체', 10);
 INSERT INTO hk_lecture_board_reply(rno, content, writer, bno)
 VALUES(seq_reply.NEXTVAL, 'ㅋㅋ', '박선미', 1);
+
+DELETE FROM hk_lecture_board_reply;
+SELECT * FROM hk_lecture_board_reply;
 COMMIT;
+
+SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply WHERE 
+bno = 10 ORDER BY rno;
 
 SELECT rno, bno, content, writer, r.regdate 
 FROM hk_lecture_board_reply r, hk_member m 
 WHERE r.writer = m.name
 AND bno = 1
 ORDER BY rno;
+
+SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply r, hk_member m WHERE 
+bno = 10 ORDER BY rno;
+
+SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply r, hk_member m WHERE 
+r.writer = m.name AND bno = 5 ORDER BY rno;
 
 ---------------------------- 7/4
 
