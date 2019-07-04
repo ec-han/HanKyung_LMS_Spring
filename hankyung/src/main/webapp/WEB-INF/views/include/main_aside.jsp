@@ -16,7 +16,24 @@
           	</div>
           	<!-- Divider -->
           	<hr class="sidebar_divider" id="sidebar_divider_0">
-          	<!-- Nav Item - Dashboard -->
+          	<c:if test="${sessionScope.type == '0'}">
+          	<li class="nav_item">
+            	<a class="nav_link" href="#">
+              	<i class="fas fa-fw fa-tachometer-alt"></i>
+             	 <span>HOME</span></a>
+            </li>
+             <!-- Divider -->
+	        <hr class="sidebar_divider">
+	        </c:if>
+	        <c:if test="${sessionScope.type == '1'}">
+          	<li class="nav_item">
+            	<a class="nav_link" href="#">
+              	<i class="fas fa-fw fa-tachometer-alt"></i>
+             	 <span>HOME</span></a>
+            </li>
+             <!-- Divider -->
+	        <hr class="sidebar_divider">
+	        </c:if>
           	<c:if test="${sessionScope.type == '2'}">
           	<li class="nav_item">
             	<a class="nav_link" href="${path}/lectureboard/home?btype=0">
