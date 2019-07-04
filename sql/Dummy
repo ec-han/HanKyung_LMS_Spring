@@ -168,40 +168,6 @@ VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요
 
 
 
---장바구니
-DROP TABLE hk_cart;
-CREATE TABLE hk_cart(
-    id VARCHAR2(100) NOT NULL, 
-    lname VARCHAR2(300) NOT NULL,
-    limg VARCHAR(500) NOT NULL,
-    price NUMBER(20) DEFAULT 0, 
-    startdate DATE NOT NULL,
-    enddate DATE NOT NULL
-);
-
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('admin', 'Java기반 웹하이브리드 개발과정', 'lecture01.jpg', 3000000, '190618', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('admin', '캐드를 활용한 3D설계', 'lecture02.jpg', 3000000, '190702', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('admin', '빅데이터', 'lecture03.jpg', 3000000, '190820', '200618');
-
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('user01', 'Java기반 웹하이브리드 개발과정', 'lecture01.jpg', 3000000, '190618', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('user01', '캐드를 활용한 3D설계', 'lecture02.jpg', 3000000, '190702', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('user01', '빅데이터', 'lecture03.jpg', 3000000, '190820', '200618');
-
-SELECT * FROM hk_cart
-WHERE id = 'admin';
-commit;
-
-SELECT SUM(price) FROM hk_cart
-WHERE id = 'admin';
-
-
-
 --강좌게시판
 -- 0 공지사항
 -- 1 QnA
@@ -283,8 +249,9 @@ WHERE r.writer = m.name
 AND bno = 1
 ORDER BY rno;
 
----------------------------- 7/1
+---------------------------- 7/4
 
+--위시리스트
 DROP TABLE hk_wish;
 CREATE TABLE hk_wish(
     lno NUMBER NOT NULL,
@@ -300,5 +267,27 @@ SELECT a.*
 FROM hk_lecture a, hk_wish b
 WHERE a.lno = b.lno AND b.id='user01';
 
+
+--장바구니
+DROP TABLE hk_cart;
+CREATE TABLE hk_cart(
+    lno NUMBER NOT NULL,
+    id VARCHAR2(100) NOT NULL
+);
+
+ALTER TABLE hk_cart
+ADD CONSTRAINT hk_cart_fk_lno
+FOREIGN KEY(lno) REFERENCES hk_lecture(lno)
+ON DELETE CASCADE;
+
+SELECT * FROM hk_cart;
+
+SELECT * FROM hk_cart
+WHERE id = 'user01';
+
+SELECT a.*, c.lno as isempty
+		FROM hk_lecture a, hk_wish b, hk_cart c
+		WHERE a.lno = b.lno and b.lno=c.lno(+) AND b.id='user01'
+		ORDER BY a.lno DESC;
 
 commit;
