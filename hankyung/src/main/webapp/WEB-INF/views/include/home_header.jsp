@@ -284,7 +284,7 @@
 			                        		<div class="none_lecture">수강중인 강좌가 없습니다.</div>
 			                        	</c:if>
 			                        	<c:forEach items="${sessionScope.myList}" var="myList">
-			                        		<a href="${path}/main/" class="main_lecture">${myList.lname}</a>
+			                        		<a href="${path}/lectureboard/home?btype=0" class="main_lecture">${myList.lname}</a>
 		                        		</c:forEach>
 			                        </div>
 		                    	</div>

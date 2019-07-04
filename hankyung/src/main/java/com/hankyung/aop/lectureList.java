@@ -37,9 +37,6 @@ public class lectureList {
 	@Around("execution(* com.hankyung.controller.cart.CartController.*(..))"
 			+ " or execution(* com.hankyung.controller.lecture.LectureController.*(..))")
 	public Object lectureList(ProceedingJoinPoint joinPoint) throws Throwable {
-		// 메서드 시작시간
-		long start = System.currentTimeMillis();
-		
 		
 		// joinPoint.proceed(); 줄을 기준으로
 		// ↑위에가 호출 전
