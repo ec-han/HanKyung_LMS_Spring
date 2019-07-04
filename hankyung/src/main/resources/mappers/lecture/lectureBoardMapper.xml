@@ -91,6 +91,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</choose>
 	</select>
 	
+	<select id="myLecture" parameterType="hashmap" resultType="com.hankyung.domain.lecture.LectureDTO">
+		SELECT a.*, b.id
+		FROM hk_lecture a, hk_cart b
+		WHERE a.lno=b.lno AND b.id=#{id} AND a.lno=#{lno}
+	</select>
+	
 	<insert id="create">
 		<if test="btype == 0">
 			INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)

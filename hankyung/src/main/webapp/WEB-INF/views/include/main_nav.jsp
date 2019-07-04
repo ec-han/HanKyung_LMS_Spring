@@ -134,7 +134,8 @@
 			        <button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
 				</div> -->
 				<div class="sub_lecture_name">
-					<span>실전 자바 강좌 (ver.2018) - 초보부터 개발자 취업까지!!</span>
+					<span>${sessionScope.lDto.lname}</span>
+					<div class="sub_lecture_bar"></div>
 				</div>
 			</form>
         </ul>

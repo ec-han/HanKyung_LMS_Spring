@@ -256,10 +256,20 @@ sup { /* 첨자 텍스트 */
 .sub_lecture_name {
 	position: relative;
     top: 1rem;
-    font-size: 1.5rem;
+    font-size: 24px;
     letter-spacing: -1;
     font-weight: lighter;
+    padding-left: 30px;
     color: #858796;
+}
+.sub_lecture_bar {
+	position: absolute;
+	left: 16px;
+	top: 6.5px;
+	height: 24px;
+	width: 6px;
+	background: #858796;
+	margin-right: 10px;
 }
 #search_frm{
 	margin-right: auto;

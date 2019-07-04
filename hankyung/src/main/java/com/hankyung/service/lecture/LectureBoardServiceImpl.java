@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import com.hankyung.domain.lecture.LectureBoardDTO;
+import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.persistence.lecture.LectureBoardDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,12 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	public List<LectureBoardDTO> list(String viewoption, String search_option, String sort_option, String keyword, int start,
 			int end) {
 		return  lbDao.list(viewoption, search_option, sort_option, keyword, start, end);
+	}
+	
+	@Override
+	public LectureDTO myLecture(int lno, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		return lbDao.myLecture(lno, id);
 	}
 
 	@Override

@@ -5,9 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.hankyung.domain.lecture.LectureBoardDTO;
+import com.hankyung.domain.lecture.LectureDTO;
 
 public interface LectureBoardService {
 	public List<LectureBoardDTO> list(String viewoption, String search_option, String sort_option, String keyword, int start, int end);
+	public LectureDTO myLecture(int lno, HttpSession session);
 	public int create(LectureBoardDTO lbDto);
 	public int update(LectureBoardDTO lbDto);
 	public LectureBoardDTO read(LectureBoardDTO lbDto);

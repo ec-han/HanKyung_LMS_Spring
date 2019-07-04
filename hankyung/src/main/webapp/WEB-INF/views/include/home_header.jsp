@@ -252,7 +252,7 @@
 	                        		<c:if test="${sessionScope.type == 2}">
 		                        	<a href="${path}/lecture/wishView" class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
 		                        	<a href="${path}/lecture/cartView" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
-		                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
+		                        	<a href="${path}/member/update" class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
 		                        	</c:if>
 		                        	<a href="${path}/noticeView" class="member_update mypage_btn"><i class="fas fa-exclamation-circle icon_hover" id="notice_icon"></i>공지사항</a>
 		                        	<a href="${path}/qnaView" class="member_update mypage_btn"><i class="fas fa-question-circle icon_hover" id="qna_icon"></i>묻고답하기</a>
@@ -284,7 +284,7 @@
 			                        		<div class="none_lecture">수강중인 강좌가 없습니다.</div>
 			                        	</c:if>
 			                        	<c:forEach items="${sessionScope.myList}" var="myList">
-			                        		<a href="${path}/lectureboard/home?btype=0" class="main_lecture">${myList.lname}</a>
+			                        		<a href="${path}/lectureboard/home?btype=0&lno=${myList.lno}" class="main_lecture">${myList.lname}</a>
 		                        		</c:forEach>
 			                        </div>
 		                    	</div>

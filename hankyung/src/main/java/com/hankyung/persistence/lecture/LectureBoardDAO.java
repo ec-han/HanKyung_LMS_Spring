@@ -3,9 +3,11 @@ package com.hankyung.persistence.lecture;
 import java.util.List;
 
 import com.hankyung.domain.lecture.LectureBoardDTO;
+import com.hankyung.domain.lecture.LectureDTO;
 
 public interface LectureBoardDAO {
 	public List<LectureBoardDTO> list(String viewoption, String search_option, String sort_option, String keyword, int start, int end);
+	public LectureDTO myLecture(int lno, String id);
 	public int create(LectureBoardDTO lbDto);
 	public int update(LectureBoardDTO lbDto);
 	public LectureBoardDTO read(LectureBoardDTO lbDto);

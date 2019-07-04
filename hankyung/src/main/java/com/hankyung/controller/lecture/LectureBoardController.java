@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureBoardDTO;
+import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.service.Pager;
+import com.hankyung.service.cart.CartService;
 import com.hankyung.service.lecture.LectureBoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,11 +31,14 @@ public class LectureBoardController {
 	private LectureBoardService service;
 	
 	@GetMapping(value="home")
-	public String home(Model model, String btype) {
+	public String home(Model model, String btype, int lno, HttpSession session) {
 		
 		// bno랑 btype필요
 		List<LectureBoardDTO> list = service.noticeTitleList(btype);
+		LectureDTO lDto = service.myLecture(lno, session);
 		model.addAttribute("notice", list);
+		session.removeAttribute("lDto");
+		session.setAttribute("lDto", lDto);
 		return "lectureboard/lecturehome";
 	}
 	

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.hankyung.domain.lecture.LectureBoardDTO;
+import com.hankyung.domain.lecture.LectureDTO;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -29,6 +30,14 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 		map.put("end", end);
 		
 		return session.selectList("lectureboard.list", map);
+	}
+	
+	@Override
+	public LectureDTO myLecture(int lno, String id) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("lno", lno);
+		map.put("id", id);
+		return session.selectOne("lectureboard.myLecture", map);
 	}
 
 	@Override
@@ -86,6 +95,8 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 	public List<LectureBoardDTO> noticeTitleList(String btype) {
 		return session.selectList("lectureboard.noticeTitle", btype);
 	}
+
+
 
 	
 

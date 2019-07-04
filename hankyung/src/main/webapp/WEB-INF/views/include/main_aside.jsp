@@ -36,7 +36,7 @@
 	        </c:if>
           	<c:if test="${sessionScope.type == '2'}">
           	<li class="nav_item">
-            	<a class="nav_link" href="${path}/lectureboard/home?btype=0">
+            	<a class="nav_link" href="${path}/lectureboard/home?btype=0&lno=${sessionScope.lDto.lno}">
               	<i class="fas fa-fw fa-tachometer-alt"></i>
              	 <span>HOME</span></a>
             </li>
