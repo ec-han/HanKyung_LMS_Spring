@@ -8,32 +8,6 @@
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <title>공지사항</title>
-<style type="text/css">
-.section_box {
-	width: 100%;
-	min-width: 1350px;
-	padding: 150px 0px;
-}
-
-.info_title {
-	width: 1350px;
-    font-size: 35px;
-    margin: 0px auto;
-    padding: 0px 50px 30px;
-    position: relative;
-    box-sizing: border-box;
-}
-
-.info_title_bar {
-	position: absolute;
-	width: 7px;
-	height: 32px;
-	background-color: #444;
-	top: 11.5px;
-	left: 30px;
-}
-
-</style>
 </head>
 <body>
 	<%@ include file="../include/home_header.jsp" %>
@@ -49,7 +23,7 @@
 						<div class="table-responsive">
 			              	<div id="dataTable_wrapper" class="dataTables_wrapper">
 			              		<div class="row order-1" id="length_filter">
-			              			<c:if test="${!empty sessionScope.id}">
+			              			<c:if test="${!empty sessionScope.id && sessionScope.type == '0'}">
 				              		<div class="col-sm-12 col-md-6 order-1 margin-right board_regi_btn">
 				              			<i class="fas fa-pen-square"></i>
 				              		</div>

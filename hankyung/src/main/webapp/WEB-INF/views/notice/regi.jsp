@@ -5,12 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
-<title>게시글 등록</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<title>게시글 등록</title>
 <style type="text/css">
 #regi_table_wrap > table > thead > tr, #regi_table_wrap > table > tfoot > tr {
 	background: #eaecf4;
@@ -36,6 +34,10 @@
 	<%@ include file="../include/home_header.jsp" %>
 	<!-- 가장 큰 박스 -->
 	<div class="section_box">
+		<div class="regi-modi-big-wrap">
+			<div class="info_title">게시글 등록
+        		<div class="info_title_bar"></div>
+        	</div>
 	        <div class="card-big-wrapper">
 			<!-- 본문 내용에 따라 바뀔 곳 시작 : body라 생각하면 됨  -->
 				<div id="regi_content">
@@ -102,8 +104,10 @@
 				<!-- 본문 내용에 따라 바뀔 곳 끝   -->
 			</div>
 		</div>
+	</div>
 	<%@ include file="../include/home_footer.jsp" %>
 	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 	<script src="${path}/resources/js/summernote-ko-KR.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
