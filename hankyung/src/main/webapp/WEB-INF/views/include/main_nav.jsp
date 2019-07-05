@@ -8,22 +8,6 @@
 <div id="topNav" class="nav">
 	<nav class="navbar topbar navbar_expand">
         <ul class="navbar_nav">
-        <!-- Nav Item - Alerts -->
-			<!-- <li class="nav_item" id="service_item">
-				<a class="nav_link" id="serviceDropdown">
-				  <i class="fas fa-assistive-listening-systems"></i>
-				  <i class="fas fa-headset"></i>
-				</a>
-		        Dropdown - Alerts
-		        <div class="dropdown_list dropdown_menu" id="dropbox_service">
-		            <a class="dropdown_item d_flex align_items_center service_border" href="#">
-						<div class="item_area" id="collapseUsers">
-							<a class="collapse_item" id="#">공지사항</a>
-							<a class="collapse_item" id="#"">묻고 답하기</a>	
-						</div>
-		            </a>
-		        </div>
-	        </li>	  --> 
 	        <li class="nav_item" id="alert_item">
 		        <a class="nav_link" href="#" id="alertsDropdown">
 		           <i class="fas fa-bell fa-fw"></i>

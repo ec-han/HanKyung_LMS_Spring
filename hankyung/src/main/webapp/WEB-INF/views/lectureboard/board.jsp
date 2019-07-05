@@ -48,7 +48,6 @@
 }
 #sort_board {
     order: 2;
-    flex: 1;
     padding-top: 0.5rem;
 }
 #activeIdx {

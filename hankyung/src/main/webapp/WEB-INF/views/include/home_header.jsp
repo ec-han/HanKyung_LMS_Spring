@@ -255,8 +255,8 @@
 		                        	<a href="${path}/lecture/cartView" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
 		                        	<a href="${path}/member/update" class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
 		                        	</c:if>
-		                        	<a href="${path}/noticeView" class="member_update mypage_btn"><i class="fas fa-exclamation-circle icon_hover" id="notice_icon"></i>공지사항</a>
-		                        	<a href="${path}/qnaView" class="member_update mypage_btn"><i class="fas fa-question-circle icon_hover" id="qna_icon"></i>묻고답하기</a>
+		                        	<a href="${path}/board/list?btype=0" class="member_update mypage_btn"><i class="fas fa-exclamation-circle icon_hover" id="notice_icon"></i>공지사항</a>
+		                        	<a href="${path}/board/list?btype=1" class="member_update mypage_btn"><i class="fas fa-question-circle icon_hover" id="qna_icon"></i>묻고답하기</a>
 		                        </div>
 	                    	</div>
 	                    	<c:if test="${sessionScope.type == 0}">

@@ -20,14 +20,17 @@
             	<c:if test="${sessionScope.type == '0'}">
           		<a class="nav_link" href="#">
           		</c:if>
-          		<c:if test="${sessionScope.type == '1'}">
-          		<a class="nav_link" href="${path}/lectureboard/home?btype=0">
-          		</c:if>
-          		<c:if test="${sessionScope.type == '2'}">
-          		<a class="nav_link" href="${path}/lectureboard/home?btype=0">
-          		</c:if>
+          		<c:forEach items="${sessionScope.myList}" var="myList">
+	          		<c:if test="${sessionScope.type == '1'}">
+	          			<a class="nav_link" href="${path}/lectureboard/home?btype=0&lno=${myList.lno}">
+	          		</c:if>
+	          		<c:if test="${sessionScope.type == '2'}">
+	         			<a class="nav_link" href="${path}/lectureboard/home?btype=0&lno=${myList.lno}">
+	          		</c:if>
+          		</c:forEach>
+          		
               	<i class="fas fa-fw fa-tachometer-alt"></i>
-             	 <span>HOME</span></a>
+             	<span>HOME</span></a>
             </li>
              <!-- Divider -->
 	        <hr class="sidebar_divider">

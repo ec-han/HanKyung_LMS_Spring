@@ -45,15 +45,4 @@ public class HomeController {
 		return "home";
 	}
 	
-	@GetMapping("/noticeView")
-	public String noticeView() {
-		log.info(">>>>> 공지사항 페이지 출력");
-		return "/notice/home_notice";
-	}
-	
-	@GetMapping("/qnaView")
-	public String qnaView() {
-		log.info(">>>>> Q&A 페이지 출력");
-		return "/notice/home_qna";
-	}
 }

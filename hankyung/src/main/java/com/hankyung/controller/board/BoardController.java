@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,10 +27,11 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 	
+	
 	@RequestMapping(value ="create", method = RequestMethod.GET)
 	public String createView() {
 		log.info(">>> 게시글 등록 페이지 출력");
-		return "/main/regi";
+		return "/notice/regi";
 	}
 	
 	
@@ -67,10 +69,10 @@ public class BoardController {
 		mav.addObject("map", map);		// 데이터 전송
 		log.info(pager.toString());
 		if(btype==0) {
-			mav.setViewName("main/notice");	// 페이지 이동경로 
+			mav.setViewName("notice/home_notice");	// 페이지 이동경로 
 			log.info(">>> 공지사항 페이지 이동");
 		}else if(btype==1) {
-			mav.setViewName("main/qna");	// 페이지 이동경로 
+			mav.setViewName("notice/home_qna");	// 페이지 이동경로 
 			log.info(">>> 묻고답하기 페이지 이동");
 		}else {
 			mav.setViewName("/main/");
@@ -140,7 +142,7 @@ public class BoardController {
 		bDto = service.read(bDto);
 		log.info(bDto.toString());
 		model.addAttribute("update", bDto);
-		return "/main/update";
+		return "/notice/update";
 	}
 	
 	@RequestMapping(value="update", method=RequestMethod.POST)
@@ -162,9 +164,9 @@ public class BoardController {
 		} else {
 			log.info(">>>>게시글 수정 실패");
 			if(btype.equals("0")) {
-				return "/main/notice";  
+				return "/notice/home_notice";  
 			}else if(btype.equals("1")){
-				return "/main/qna";  
+				return "/notice/home_qna";  
 			}
 		}
 		return "/main/"; //if문 안탈경우의 처리가 필요함 
@@ -184,7 +186,7 @@ public class BoardController {
 		bDto = service.read(bDto);
 		model.addAttribute("one",bDto);
 		
-		return "main/view";
+		return "notice/view";
 	}
 	@RequestMapping(value="dbread", method=RequestMethod.GET)
 	public String viewOnly(BoardDTO bDto, Model model,HttpSession session) {// DB통한 게시글 등록 및 수정액션 후 view
@@ -193,6 +195,6 @@ public class BoardController {
 		bDto = service.read(bDto);
 		model.addAttribute("one",bDto);
 		
-		return "main/view";
+		return "notice/view";
 	}
 }

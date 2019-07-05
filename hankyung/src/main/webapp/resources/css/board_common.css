@@ -426,3 +426,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     padding-right: 0.3rem;
     color: white;
 }
+.card-big-wrapper {
+	width: 90%;
+    margin: 1rem 5rem;
+}
