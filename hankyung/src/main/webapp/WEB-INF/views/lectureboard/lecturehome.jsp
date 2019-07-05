@@ -99,6 +99,7 @@
 			<%@ include file="../include/main_nav.jsp" %>
 			<div class="content_area">
 				<div class="flex-wrap">
+					<c:if test="${sessionScope.type != '0'}">
 					<!-- 공지사항 출력  -->
 					<div class="card shadow order-1" id="notice-wrap">
 						<div class="card-header">
@@ -126,8 +127,40 @@
 			              	</div>
 	              		</div>
 	              	</div>
-				<!-- 공지사항 출력 끝   -->
-				<!-- Project Card  -->
+					<!-- 공지사항 출력 끝   -->
+					</c:if>
+					<c:if test="${sessionScope.type == '1'}">
+					<!-- 묻고답하기  출력  -->
+					<div class="card shadow order-1" id="notice-wrap">
+						<div class="card-header">
+							<h6 class="text-primary">묻고답하기</h6>
+							<div class="widget-toolbar">
+								<a href="${path}/lectureboard/list?viewoption=qna&search_option=all">
+									<i class="fa fa-plus"></i>
+								</a>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="col-sm-12 table_wrapper">
+			            		<table class="table table-bordered home-table" id="noticeDataTable" width="100%" cellspacing="0">
+				                  <tbody>
+				                  <c:forEach items="${qna}" var="qna">
+				                    <tr>
+				                      <td>
+				                      	<input type="hidden" name="bno" value="${qna.bno}">
+				                      	<a href="${path}/lectureboard/read?bno=${qna.bno}">${qna.title}</a>
+				                      </td>
+				                    </tr>
+				                   </c:forEach>
+				                  </tbody>
+			                	</table>
+			              	</div>
+	              		</div>
+	              	</div>
+	              	</c:if>
+					<!-- 묻고답하기 출력 끝   -->
+					<c:if test="${sessionScope.type == '2'}">
+					<!-- 학습현황 출력 시작  -->
 					<div class="card shadow order-2" id="study-info">
 						<div class="card-header">
 							<h6 class="text-primary">학습현황</h6>
@@ -156,9 +189,11 @@
 							</div>
 						</div>
 					</div>
-				<!-- Project Card 끝 -->
+					<!-- 학습현황 끝 -->
+					</c:if>
 				</div>
-			<!-- 학습방 현황 출력 시작  -->
+				<c:if test="${sessionScope.type == '2'}">
+				<!-- 학습방 현황 출력 시작  -->
 				<div class="col-sm-12 table_wrapper">
             		<table class="table table-bordered home-table" id="lecture-data-table" width="77.5rem" cellspacing="0">
 	                  <thead>
@@ -190,7 +225,8 @@
 	                  </tbody>
                 	</table>
               	</div>
-			<!-- 학습방 현황 출력 끝   -->
+				<!-- 학습방 현황 출력 끝   -->
+				</c:if>
 			
 			</div>
 			<%@ include file="../include/main_footer.jsp" %>

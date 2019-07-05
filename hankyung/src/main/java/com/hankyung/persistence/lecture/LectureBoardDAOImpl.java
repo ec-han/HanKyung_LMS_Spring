@@ -95,7 +95,11 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 	public List<LectureBoardDTO> noticeTitleList(String btype) {
 		return session.selectList("lectureboard.noticeTitle", btype);
 	}
-
+	
+	@Override
+	public List<LectureBoardDTO> questionTitle() {
+		return session.selectList("lectureboard.questionTitle");
+	}
 
 
 	

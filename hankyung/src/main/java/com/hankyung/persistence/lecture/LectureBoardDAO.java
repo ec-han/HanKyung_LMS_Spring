@@ -17,4 +17,5 @@ public interface LectureBoardDAO {
 	public void updateStep(int re_step, int ref);
 	public void answer(LectureBoardDTO lbDto);
 	public List<LectureBoardDTO> noticeTitleList(String btype);
+	public List<LectureBoardDTO> questionTitle();
 }

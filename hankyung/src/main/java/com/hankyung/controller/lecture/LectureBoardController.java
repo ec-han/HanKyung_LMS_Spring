@@ -39,6 +39,10 @@ public class LectureBoardController {
 		model.addAttribute("notice", list);
 		session.removeAttribute("lDto");
 		session.setAttribute("lDto", lDto);
+		
+		List<LectureBoardDTO> qlist = service.questionTitle();
+		model.addAttribute("qna", qlist);
+		
 		return "lectureboard/lecturehome";
 	}
 	
@@ -89,10 +93,12 @@ public class LectureBoardController {
 	
 	
 	@RequestMapping(value ="create", method = RequestMethod.GET)
-	public String createView() {
-		log.info(">>> 게시글 등록 페이지 출력");
+	public String createView(String viewoption, Model model) {
+		log.info(">>> 게시글 등록 페이지 출력"+viewoption);
+		model.addAttribute("viewoption",viewoption);
 		return "/lectureboard/regi";
 	}
+	
 	
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	public String createPlay(LectureBoardDTO lbDto, String viewoption) {

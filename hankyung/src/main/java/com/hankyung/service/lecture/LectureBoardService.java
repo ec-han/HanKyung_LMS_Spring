@@ -18,4 +18,5 @@ public interface LectureBoardService {
 	public int countArticle(String viewoption, String search_option, String keyword);
 	public void answer(LectureBoardDTO lbDto); // 답글 등록
 	public List<LectureBoardDTO> noticeTitleList(String btype);
+	public List<LectureBoardDTO> questionTitle();
 }

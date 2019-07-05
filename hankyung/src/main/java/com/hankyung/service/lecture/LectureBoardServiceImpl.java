@@ -94,5 +94,10 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	public List<LectureBoardDTO> noticeTitleList(String btype) {
 		return lbDao.noticeTitleList(btype);
 	}
+	
+	@Override
+	public List<LectureBoardDTO> questionTitle() {
+		return lbDao.questionTitle();
+	}
 
 }
