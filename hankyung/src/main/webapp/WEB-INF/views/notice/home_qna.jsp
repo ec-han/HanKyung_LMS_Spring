@@ -152,7 +152,7 @@
 				return false;
 				
 			}
-			alert(search_option+","+keyword);
+			alert(search_option+","+keyword+",BTYPE="+btype);
 			location.href="${path}/board/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>

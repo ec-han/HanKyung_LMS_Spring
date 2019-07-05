@@ -89,6 +89,17 @@
     font-size: 1rem;
     margin: 0;
 }
+.study-info-item-title {
+	font-size: 0.8rem;
+    font-weight: normal;
+    letter-spacing: 1;
+}
+.card-text-primary {
+	color: #4e73df;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0;
+}
 </style>
 </head>
 <body>
@@ -103,7 +114,7 @@
 					<!-- 공지사항 출력  -->
 					<div class="card shadow order-1" id="notice-wrap">
 						<div class="card-header">
-							<h6 class="text-primary">공지사항</h6>
+							<h6 class="card-text-primary">공지사항</h6>
 							<div class="widget-toolbar">
 								<a href="${path}/lectureboard/list?viewoption=notice&search_option=all">
 									<i class="fa fa-plus"></i>
@@ -133,7 +144,7 @@
 					<!-- 묻고답하기  출력  -->
 					<div class="card shadow order-1" id="notice-wrap">
 						<div class="card-header">
-							<h6 class="text-primary">묻고답하기</h6>
+							<h6 class="card-text-primary">묻고답하기</h6>
 							<div class="widget-toolbar">
 								<a href="${path}/lectureboard/list?viewoption=qna&search_option=all">
 									<i class="fa fa-plus"></i>
@@ -163,27 +174,27 @@
 					<!-- 학습현황 출력 시작  -->
 					<div class="card shadow order-2" id="study-info">
 						<div class="card-header">
-							<h6 class="text-primary">학습현황</h6>
+							<h6 class="card-text-primary">학습현황</h6>
 						</div>
 						<div class="card-body">
-							<h4 class="small">
+							<h3 class="study-info-item-title">
 								출결현황
 								<span>20%</span>	
-							</h4>
+							</h3>
 							<div class="progress">
 								<div class="progress-bar" id="bg-red" style="width: 20%"></div>
 							</div>
-							<h4 class="small">
+							<h3 class="study-info-item-title">
 								수강현황
 								<span>30%</span>	
-							</h4>
+							</h3>
 							<div class="progress">
 								<div class="progress-bar" id="bg-yellow" style="width: 30%"></div>
 							</div>
-							<h4 class="small">
+							<h3 class="study-info-item-title">
 								과제현황
 								<span>50%</span>	
-							</h4>
+							</h3>
 							<div class="progress">
 								<div class="progress-bar" id="bg-green" style="width: 50%"></div>
 							</div>
@@ -197,14 +208,14 @@
 				<div class="col-sm-12 table_wrapper">
             		<table class="table table-bordered home-table" id="lecture-data-table" width="77.5rem" cellspacing="0">
 	                  <thead>
-	                    <tr class="text-primary" style="width: 10px">
-	                      <th style="width: 2rem">No.</th>
-	                      <th style="width: 10rem">수업내용</th>
-	                      <th style="width: 10rem">수업목표</th>
-	                      <th style="width: 5rem">수업보기</th>
-	                      <th style="width: 3rem">수업시간</th>
-	                      <th style="width: 3rem">보조파일</th>
-	                      <th style="width: 3rem">출석확인</th>
+	                    <tr class="card-text-primary" style="width: 100%">
+	                      <th style="width: 5%">No.</th>
+	                      <th style="width: 20%">수업내용</th>
+	                      <th style="width: 20%">수업목표</th>
+	                      <th style="width: 15%">수업보기</th>
+	                      <th style="width: 15%">수업시간</th>
+	                      <th style="width: 15%">보조파일</th>
+	                      <th style="width: 10%">출석확인</th>
 	                    </tr>
 	                  </thead>
 	                  <tbody style="background: white;">

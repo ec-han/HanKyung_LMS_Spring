@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							title LIKE #{keyword}
 						</if>
 						<if test="search_option == 'content'">
-							title LIKE #{content}
+							content LIKE #{content}
 						</if>
 						<if test="search_option == 'writer'">
 							writer LIKE #{keyword}
@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					<otherwise>
 						<if test="search_option == 'all'">
 							(title LIKE #{keyword}
+							OR content LIKE #{keyword}
 							OR writer LIKE #{keyword})
 						</if>
 					</otherwise>
@@ -82,10 +83,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<if test="search_option == 'writer'">
 					writer LIKE #{keyword}
 				</if>
+				<if test="search_option == 'content'">
+					content LIKE #{keyword}
+				</if>
 			</when>
 			<otherwise>
-				(title LIKE #{keyword}
-				OR writer LIKE #{keyword})
+				<if test="search_option == 'all'">
+					(title LIKE #{keyword}
+					OR content LIKE #{keyword}
+					OR writer LIKE #{keyword})
+				</if>
 			</otherwise>
 		</choose>
 	</select>
