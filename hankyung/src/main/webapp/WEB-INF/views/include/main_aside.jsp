@@ -28,8 +28,8 @@
 	         			<a class="nav_link" href="${path}/lectureboard/home?btype=0&lno=${myList.lno}">
 	          		</c:if>
           		</c:forEach>
-          		
-              	<i class="fas fa-fw fa-tachometer-alt"></i>
+          		<i class="fas fa-home"></i>
+              	<!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
              	<span>HOME</span></a>
             </li>
              <!-- Divider -->
