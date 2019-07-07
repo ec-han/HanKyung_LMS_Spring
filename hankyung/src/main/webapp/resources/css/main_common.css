@@ -107,14 +107,9 @@ sup { /* 첨자 텍스트 */
 }
 .sidebar_brand {
     height: auto;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 800;
     padding: 1rem 1rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .05rem;
     z-index: 1;
+    justify-content: center;
 }
 .sidebar_brand-text {
     display: inline;
@@ -468,7 +463,6 @@ sup { /* 첨자 텍스트 */
 }
 .d_flex {
     display: flex;
-   /*  justify-content: center; */
     align-items: center;
 }
 .topbar_divider {
