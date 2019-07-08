@@ -391,8 +391,8 @@ SELECT * FROM hk_score
 commit;
 
 ALTER TABLE hk_score
-ADD CONSTRAINT hk_score_fk_name
-FOREIGN KEY(name) REFERENCES hk_member(name);
+ADD CONSTRAINT hk_score_fk_id
+FOREIGN KEY(id) REFERENCES hk_member(id);
 commit;
 
 --상담테이블
