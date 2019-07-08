@@ -91,8 +91,8 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	}
 
 	@Override
-	public List<LectureBoardDTO> noticeTitleList(String btype) {
-		return lbDao.noticeTitleList(btype);
+	public List<LectureBoardDTO> noticeTitleList() {
+		return lbDao.noticeTitleList();
 	}
 	
 	@Override

@@ -27,4 +27,5 @@ public class CartController {
 		session.removeAttribute("list");
 		return "redirect:/";
 	}
+	
 }

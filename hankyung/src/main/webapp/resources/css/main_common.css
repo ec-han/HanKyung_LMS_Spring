@@ -266,7 +266,7 @@ sup { /* 첨자 텍스트 */
 	background: #858796;
 	margin-right: 10px;
 }
-#search_frm{
+.lecture_name_info {
 	margin-right: auto;
 }
 

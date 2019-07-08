@@ -31,12 +31,14 @@ public class LectureBoardController {
 	private LectureBoardService service;
 	
 	@GetMapping(value="home")
-	public String home(Model model, String btype, int lno, HttpSession session) {
-		
+	public String home(Model model, int lno, HttpSession session) {
+		String type = (String)session.getAttribute("type");
 		// bno랑 btype필요
-		List<LectureBoardDTO> list = service.noticeTitleList(btype);
+		if (!type.equals("0")) {
+			List<LectureBoardDTO> list = service.noticeTitleList();
+			model.addAttribute("notice", list);
+		}
 		LectureDTO lDto = service.myLecture(lno, session);
-		model.addAttribute("notice", list);
 		session.removeAttribute("lDto");
 		session.setAttribute("lDto", lDto);
 		

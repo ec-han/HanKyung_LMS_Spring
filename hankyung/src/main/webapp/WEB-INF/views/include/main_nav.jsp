@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ include file="../include/common.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,17 +112,29 @@
 				  	</c:choose>
 				</div>
 			</li>
-	        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-			<form class="search_form" id="search_frm" name="search_frm" method="GET" action="">
-		   		<!-- <div id="searchArea">
-			        <input type="search" id="searchBar" name="searchBar" placeholder="검색">
-			        <button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
-				</div> -->
+			<c:if test="${sessionScope.type == 0}">
+			<div class="lecture_name_info">
+				<div class="sub_lecture_name">
+					<span>${sessionScope.lname}</span>
+				</div>
+			</div>
+			</c:if>
+			<c:if test="${sessionScope.type == 1}">
+			<div class="lecture_name_info">
+				<div class="sub_lecture_name">
+					<span>${sessionScope.lname}</span>
+					<div class="sub_lecture_bar"></div>
+				</div>
+			</div>
+			</c:if>
+			<c:if test="${sessionScope.type == 2}">
+			<div class="lecture_name_info">
 				<div class="sub_lecture_name">
 					<span>${sessionScope.lDto.lname}</span>
 					<div class="sub_lecture_bar"></div>
 				</div>
-			</form>
+			</div>
+			</c:if>
         </ul>
     </nav>
 </div>

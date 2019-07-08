@@ -152,7 +152,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    (SELECT rownum AS rnum, A.* FROM
 		        (SELECT title, bno 
 		            FROM hk_lecture_board 
-		            WHERE btype=#{btype}
+		            WHERE btype='0'
 		            ORDER BY regdate DESC
 		        )
 		    A)

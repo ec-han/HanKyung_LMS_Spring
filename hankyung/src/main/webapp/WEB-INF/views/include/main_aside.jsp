@@ -21,10 +21,10 @@
           		<a class="nav_link" href="#">
           		</c:if>
           		<c:if test="${sessionScope.type == '1'}">
-          			<a class="nav_link" href="${path}/lectureboard/home?btype=0&lno=${sessionScope.lDto.lno}">
+          			<a class="nav_link" href="${path}/lectureboard/home?lno=${sessionScope.lDto.lno}">
           		</c:if>
           		<c:if test="${sessionScope.type == '2'}">
-         			<a class="nav_link" href="${path}/lectureboard/home?btype=0&lno=${sessionScope.lDto.lno}">
+         			<a class="nav_link" href="${path}/lectureboard/home?lno=${sessionScope.lDto.lno}">
           		</c:if>
           		<i class="fas fa-home"></i>
               	<!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
