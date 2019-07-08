@@ -132,4 +132,10 @@ public class LectureServiceImpl implements LectureService{
 	public int cartCheck(int lno, String id) {
 		return lDao.cartCheck(lno, id);
 	}
+
+	@Override
+	public LectureDTO teacherList(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		return lDao.teacherList(id);
+	}
 }

@@ -106,4 +106,9 @@ public class LectureDAOImpl implements LectureDAO{
 		map.put("id", id);
 		return sqlSession.selectOne("lecture.cartCheck", map);
 	}
+
+	@Override
+	public LectureDTO teacherList(String id) {
+		return sqlSession.selectOne("teacherList", id);
+	}
 }

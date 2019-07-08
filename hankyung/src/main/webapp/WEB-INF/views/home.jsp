@@ -496,14 +496,14 @@
 	                    	<c:if test="${sessionScope.type == 0}">
 	                    		<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">LMS관리</a>
+			                            <a href="${path}/lectureboard/adminHome" class="home_navi_btn right_navi" id="main">LMS관리</a>
 			                        </span>
 		                    	</div>
 	                    	</c:if>
 	                    	<c:if test="${sessionScope.type == 1}">
 			                	<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">나의강의실</a>
+			                            <a href="${path}/lectureboard/home?lno=${sessionScope.tList.lno}" class="home_navi_btn right_navi" id="main">나의강의실</a>
 			                        </span>
 		                    	</div>
 	                    	</c:if>
@@ -520,7 +520,7 @@
 			                        		<div class="none_lecture">수강중인 강좌가 없습니다.</div>
 			                        	</c:if>
 			                        	<c:forEach items="${sessionScope.myList}" var="myList">
-			                        		<a href="${path}/lectureboard/home?btype=0&lno=${myList.lno}" class="main_lecture">${myList.lname}</a>
+			                        		<a href="${path}/lectureboard/home?lno=${myList.lno}" class="main_lecture">${myList.lname}</a>
 		                        		</c:forEach>
 			                        </div>
 		                    	</div>

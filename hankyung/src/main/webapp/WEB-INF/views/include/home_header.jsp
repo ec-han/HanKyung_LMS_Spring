@@ -269,7 +269,7 @@
 	                    	<c:if test="${sessionScope.type == 1}">
 			                	<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a href="${path}/lectureboard/home?lno=${myList.lno}" class="home_navi home_navi2 home_navi" id="main">나의강의실</a>
+			                            <a href="${path}/lectureboard/home?lno=${sessionScope.tList.lno}" class="home_navi home_navi2 home_navi" id="main">나의강의실</a>
 			                        </span>
 		                    	</div>
 	                    	</c:if>

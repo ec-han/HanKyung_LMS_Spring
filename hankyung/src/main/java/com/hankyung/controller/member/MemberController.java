@@ -83,8 +83,15 @@ public class MemberController {
 		} else {
 			log.info("로그인 성공");
 			model.addAttribute("session", session);
-			List<LectureDTO> list = lService.myList(session);
-			session.setAttribute("myList", list);
+			String type = (String)session.getAttribute("type");
+			if (type.equals("1")) {
+				LectureDTO tList = lService.teacherList(session);
+				session.removeAttribute("tList");
+				session.setAttribute("tList", tList);
+			} else if (type.equals("2")) {
+				List<LectureDTO> list = lService.myList(session);
+				session.setAttribute("myList", list);
+			}
 			return "redirect:/";
 		}
 	}

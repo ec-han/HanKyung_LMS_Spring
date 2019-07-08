@@ -109,7 +109,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      <select id="wishList" parameterType="String" resultType="hashmap">
      	SELECT a.*, c.lno as isempty
 		FROM hk_lecture a, hk_wish b, hk_cart c
-		WHERE a.lno = b.lno and b.lno=c.lno(+) AND b.id=#{id}
+		WHERE a.lno = b.lno AND b.lno=c.lno(+) AND b.id=#{id}
 		ORDER BY a.lno DESC
      </select>
 
@@ -117,6 +117,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      	SELECT COUNT(*)
      	FROM hk_cart
      	WHERE lno = #{lno} AND id = #{id}
+     </select>
+     
+     <select id="teacherList" parameterType="String" resultType="com.hankyung.domain.lecture.LectureDTO">
+     	SELECT a.*
+     	FROM hk_lecture a, hk_cart b
+     	WHERE a.lno = b.lno AND b.id = #{id}
      </select>
      
 </mapper>

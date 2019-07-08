@@ -22,5 +22,6 @@ public interface LectureService {
 	public int cartAdd(int lno, String id, HttpSession session);
 	public void cartDelete(int index, HttpSession session);
 	public int cartCheck(int lno, String id);
+	public LectureDTO teacherList(HttpSession session);
 	
 }

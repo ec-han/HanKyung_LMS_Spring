@@ -30,6 +30,7 @@ public class LectureBoardController {
 	@Inject
 	private LectureBoardService service;
 	
+	// 선생님, 학생용
 	@GetMapping(value="home")
 	public String home(Model model, int lno, HttpSession session) {
 		String type = (String)session.getAttribute("type");
@@ -37,14 +38,19 @@ public class LectureBoardController {
 		if (!type.equals("0")) {
 			List<LectureBoardDTO> list = service.noticeTitleList();
 			model.addAttribute("notice", list);
+		} else {
+			LectureDTO lDto = service.myLecture(lno, session);
+			session.removeAttribute("lDto");
+			session.setAttribute("lDto", lDto);
+			List<LectureBoardDTO> qlist = service.questionTitle();
+			model.addAttribute("qna", qlist);
 		}
-		LectureDTO lDto = service.myLecture(lno, session);
-		session.removeAttribute("lDto");
-		session.setAttribute("lDto", lDto);
-		
-		List<LectureBoardDTO> qlist = service.questionTitle();
-		model.addAttribute("qna", qlist);
-		
+		return "lectureboard/lecturehome";
+	}
+	
+	// 관리자용
+	@GetMapping(value="adminHome")
+	public String home(Model model, HttpSession session) {
 		return "lectureboard/lecturehome";
 	}
 	

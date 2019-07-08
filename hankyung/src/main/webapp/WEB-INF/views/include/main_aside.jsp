@@ -18,10 +18,10 @@
           	<hr class="sidebar_divider" id="sidebar_divider_0">
           	<li class="nav_item">
             	<c:if test="${sessionScope.type == '0'}">
-          		<a class="nav_link" href="#">
+          		<a class="nav_link" href="${path}/lectureboard/adminHome">
           		</c:if>
           		<c:if test="${sessionScope.type == '1'}">
-          			<a class="nav_link" href="${path}/lectureboard/home?lno=${sessionScope.lDto.lno}">
+          			<a class="nav_link" href="${path}/lectureboard/home?lno=${sessionScope.tList.lno}">
           		</c:if>
           		<c:if test="${sessionScope.type == '2'}">
          			<a class="nav_link" href="${path}/lectureboard/home?lno=${sessionScope.lDto.lno}">

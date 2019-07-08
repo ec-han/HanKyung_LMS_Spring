@@ -122,7 +122,7 @@
 			<c:if test="${sessionScope.type == 1}">
 			<div class="lecture_name_info">
 				<div class="sub_lecture_name">
-					<span>${sessionScope.lname}</span>
+					<span>${sessionScope.tList.lname}</span>
 					<div class="sub_lecture_bar"></div>
 				</div>
 			</div>

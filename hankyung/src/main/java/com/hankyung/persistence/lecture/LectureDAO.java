@@ -20,4 +20,5 @@ public interface LectureDAO {
 	public int wishTotal(int lno, String id);
 	public List<HashMap<String, String>> wishList(String id);
 	public int cartCheck(int lno, String id);
+	public LectureDTO teacherList(String id);
 }
