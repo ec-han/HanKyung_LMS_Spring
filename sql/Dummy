@@ -219,7 +219,7 @@ INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
 VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '첫 공지1','강의생성후 1첫 공지', 'USER01');
 
 INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
-VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01', seq_board.CURRVAL, 1, 0);
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01', seq_hklboard.CURRVAL, 1, 0);
 
 commit;
 
