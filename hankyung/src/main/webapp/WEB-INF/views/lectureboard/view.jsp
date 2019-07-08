@@ -185,6 +185,9 @@
 #btn_rpl {
     transform: rotate(180deg);
 }
+.table_wrapper {
+	margin: 0;
+}
 </style>
 </head>
 <body>
@@ -252,13 +255,11 @@
 												<i class="far fa-list-alt" id="btn_list"></i>
 											</a>
 											
-											<!-- 답글 버튼 -->
-											<c:if test="${one.btype=='1'}">
-											<c:if test="${!empty sessionScope.id}">
+											<!-- 답글 버튼 : 묻고 답하기 게시판이고 선생님만 답글을 달 수 있어야 함-->
+											<c:if test="${sessionScope.type == '1' && !empty sessionScope.id && one.btype=='1'}">
 											<a href="${path}/lectureboard/answer?bno=${one.bno}">
 												<i class="fas fa-reply" id="btn_rpl"></i>
 											</a>
-											</c:if>
 											</c:if>
 										</div>
 									</div>

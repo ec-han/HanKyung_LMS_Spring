@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,11 +28,11 @@ public class HomeController {
 	@Inject
 	private LectureService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	// private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
-		logger.info(">>>>> 메인페이지입니다");
+		log.info(">>>>> 메인페이지입니다.");
 		
 		HashMap<String, List<LectureDTO>> map = service.homeList();
 		
@@ -43,4 +44,5 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 }

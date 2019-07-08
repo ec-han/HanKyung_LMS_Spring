@@ -40,7 +40,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						OR content LIKE #{keyword})
 					</otherwise>
 				</choose>
-					ORDER BY bno DESC
+				<if test="sort_option == 'new'">
+					ORDER BY ref DESC, re_step ASC, bno DESC
+				</if>
+				<if test="sort_option == 'reply'">
+					ORDER BY replycnt DESC, ref DESC, re_step ASC, bno DESC
+				</if> 
+				<if test="sort_option == 'view'">
+					ORDER BY viewcnt DESC, ref DESC, re_step ASC, bno DESC
+				</if>
 				)
 			A)
 		WHERE rnum BETWEEN #{start} AND #{end}
@@ -83,6 +91,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</choose>
 	</select>
 	
+	<select id="myLecture" parameterType="hashmap" resultType="com.hankyung.domain.lecture.LectureDTO">
+		SELECT a.*, b.id
+		FROM hk_lecture a, hk_cart b
+		WHERE a.lno=b.lno AND b.id=#{id} AND a.lno=#{lno}
+	</select>
+	
 	<insert id="create">
 		<if test="btype == 0">
 			INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
@@ -123,14 +137,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="updateStep">
-		UPDATE tbl_board
+		UPDATE hk_lecture_board
 		SET re_step = re_step + 1
 		WHERE re_step > #{re_step} AND ref=#{ref} 
 	</update>
 	
 	<insert id="answer">
-		INSERT INTO tbl_board(bno,title,content,writer,ref,re_step,re_level)
-		VALUES(seq_board.NEXTVAL,#{title},#{content},#{writer},#{ref},#{re_step},#{re_level})
+		INSERT INTO hk_lecture_board(bno, lbnum, btype, title,content,writer,ref,re_step,re_level)
+		VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL, #{btype}, #{title},#{content},#{writer},#{ref},#{re_step},#{re_level})
 	</insert>
+	
+	<select id="noticeTitle" resultType="com.hankyung.domain.lecture.LectureBoardDTO">
+		SELECT * FROM
+		    (SELECT rownum AS rnum, A.* FROM
+		        (SELECT title, bno 
+		            FROM hk_lecture_board 
+		            WHERE btype=#{btype}
+		            ORDER BY regdate DESC
+		        )
+		    A)
+		WHERE rnum BETWEEN 1 AND 5
+	</select>
+	
+	<select id="questionTitle" resultType="com.hankyung.domain.lecture.LectureBoardDTO">
+		SELECT * FROM
+		    (SELECT rownum AS rnum, A.* FROM
+		        (SELECT title, bno 
+		            FROM hk_lecture_board 
+		            WHERE btype='1' AND re_level = 0
+		            ORDER BY regdate DESC
+		        )
+		     A)
+		WHERE rnum BETWEEN 1 AND 5
+	</select>
 	
 </mapper>

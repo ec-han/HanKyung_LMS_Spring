@@ -4,31 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
-<link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
-<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
+<link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <title>공지사항</title>
-<style type="text/css">
-</style>
 </head>
 <body>
-
-	<div class="content_area_wrapper">
-		<%@ include file="../include/main_aside.jsp" %>
-		<div class="nav_content_footer">
-			<%@ include file="../include/main_nav.jsp" %>
-			<div class="content_area">
-				<!-- DataTales Example -->
-		        <div class="card shadow">
-		            <div class="card-header">
-		              <h6 class="text-primary">공지사항</h6>
-		            </div>
+	<%@ include file="../include/home_header.jsp" %>
+	<!-- 가장 큰 박스 -->
+	<div class="section_box">
+		<div>
+			<div class="info_title">공지사항
+	        	<div class="info_title_bar"></div>
+	        </div>
+	        <div class="card-big-wrapper">
+	        	<div class="card shadow">
 		            <div class="card-body">
 						<div class="table-responsive">
 			              	<div id="dataTable_wrapper" class="dataTables_wrapper">
 			              		<div class="row order-1" id="length_filter">
-			              			<c:if test="${!empty sessionScope.id}">
+			              			<c:if test="${!empty sessionScope.id && sessionScope.type == '0'}">
 				              		<div class="col-sm-12 col-md-6 order-1 margin-right board_regi_btn">
 				              			<i class="fas fa-pen-square"></i>
 				              		</div>
@@ -132,16 +127,11 @@
 		              	</div>
 	            	</div>
 	          	</div>
-	          	
-	          	
-			</div>
-			<%@ include file="../include/main_footer.jsp" %>
+	        </div>
 		</div>
 	</div>
-
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<%@ include file="../include/home_footer.jsp" %>
+	
 	<script type="text/javascript">
 		$(function(){
 		    $('.board_regi_btn').click(function(){

@@ -346,3 +346,111 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     font-weight: lighter;
     padding-top: 0.5rem;
 }
+@keyframes twinkle {
+	0% {opacity: 0;}
+	100%{opacity: 1;}
+}
+.replyCnt_Color {
+	background-color: #dddfeb;
+    font-size: 10.5px;
+    color: #4e73df;
+    font-weight: bold;
+    border-radius: 1rem;
+    padding: 0.8px 6px;	
+}
+.new_time {
+	background-color: #4e73df;
+	font-size: 11px;
+	color: white;
+	border-radius: 1rem;
+	padding: 2px 5px;
+	animation-name: twinkle;
+	animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+}
+
+/* home 관련 css */
+.result-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 1px;
+}
+.result-list>li {
+    background: #fff;
+    box-shadow: 0 1px #ccc;
+    overflow: hidden;
+}
+.result-list .result-info {
+    width: 100%;
+}
+.result-list>li>div {
+    display: table-cell;
+    padding: 20px;
+    position: relative;
+    vertical-align: top;
+}
+.result-list .result-price {
+    border-left: 1px dashed #ddd;
+    font-size: 28px;
+    padding-top: 40px;
+    text-align: center;
+    max-width: 240px;
+    min-width: 240px;
+}
+.result-list>li>div {
+    display: table-cell;
+    padding: 20px;
+    position: relative;
+    vertical-align: top;
+}
+.title {
+	font-size: 1.5rem;
+}
+#classTable td {
+	box-shadow: 0 2px 35px 0 rgba(235, 237, 242, 0.7);
+}
+.lecture-view-btn {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    background: #2D314F;
+    margin-top: 1rem;
+}
+#lecture-view-span {
+    color: white;
+}
+.lecture-view-btn > i {
+    padding-right: 0.3rem;
+    color: white;
+}
+.card-big-wrapper {
+	width: 90%;
+    margin: 1rem 5rem;
+}
+.regi-modi-big-wrap {
+    margin: 0rem 5rem;
+}
+.section_box {
+	width: 100%;
+	min-width: 1350px;
+	padding: 150px 0px;
+}
+.info_title {
+	width: 1350px;
+    font-size: 35px;
+    margin: 0px auto;
+    padding: 0px 50px 30px;
+    position: relative;
+    box-sizing: border-box;
+}
+.info_title_bar {
+	position: absolute;
+	width: 7px;
+	height: 32px;
+	background-color: #444;
+	top: 11.5px;
+	left: 30px;
+}

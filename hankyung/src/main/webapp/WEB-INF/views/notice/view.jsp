@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
-<link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <title>게시글 상세페이지</title>
 <style type="text/css">
@@ -184,18 +183,20 @@
 </style>
 </head>
 <body>
-	<div class="content_area_wrapper">
-		<%@ include file="../include/main_aside.jsp" %>
-		<div class="nav_content_footer">
-			<%@ include file="../include/main_nav.jsp" %>
-			<div class="content_area">
-			<!-- 본문 내용에 따라 바뀔 곳 시작 : body라 생각하면 됨  -->
+	<%@ include file="../include/home_header.jsp" %>
+	<!-- 가장 큰 박스 -->
+	<div class="section_box">
+		<div class="regi-modi-big-wrap">
+			<div class="info_title">상세 게시글
+        		<div class="info_title_bar"></div>
+       		</div>
+	        <div class="card-big-wrapper">
 				<div id="regi_content">
 					<div>
 						<div class="page_body">
 							<div class="bd_hd">
 								<div class="box-body">
-									<div class="row order-2 table_wrapper">
+									<div class="order-2 table_wrapper">
 			              				<div class="col-sm-12 table_wrapper" id="regi_table_wrap">
 											<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							                  <thead>
@@ -247,12 +248,12 @@
 											<a href="${path}/board/list?btype=${one.btype}">
 												<i class="far fa-list-alt" id="btn_list"></i>
 											</a>
-											<c:if test="${!empty sessionScope.id}">
-											<a>
+											<!-- 답글 버튼 : 묻고 답하기 게시판이고 관리자만 답글을 달 수 있어야 함-->
+											<c:if test="${sessionScope.type == '0' && !empty sessionScope.id && one.btype=='1'}">
+											<a href="${path}/lectureboard/answer?bno=${one.bno}">
 												<i class="fas fa-reply" id="btn_rpl"></i>
 											</a>
 											</c:if>
-											
 										</div>
 									</div>
 									<!-- 모달 창  -->
@@ -277,9 +278,9 @@
 					</div>
 				</div>
 			</div>
-			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
+	<%@ include file="../include/home_footer.jsp" %>
 	
 	<script type="text/javascript">
 	$(function(){

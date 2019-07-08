@@ -67,7 +67,6 @@
 							<div class="bd_hd">
 								<form class="register_form" id="register_frm" method="POST" action="${path}/lectureboard/answer">
 									<input type="hidden" value="${one.bno}" name="bno">
-									<input type="hidden" value="${one.writer}" name="writer">
 									<div class="box-body">
 										<div class="row order-2 table_wrapper">
 				              				<div class="col-sm-12 table_wrapper" id="regi_table_wrap">
@@ -102,7 +101,7 @@
 														<td>
 															<div class="tb-center">작성자</div>
 															<fieldset class="field_border">
-																<input class="form-control" id="regi_writer" value="${sessionScope.name}" readonly="readonly">
+																<input class="form-control" id="regi_writer" name="writer" value="${sessionScope.name}" readonly="readonly">
 															</fieldset>
 														</td>
 													</tr>
@@ -115,7 +114,7 @@
 												<i class="fas fa-pen-square"></i>
 											</div>
 											<div class="btn_left board_regi_btn">
-												<a href="${path}/main/">
+												<a href="${path}/lectureboard/list?viewoption=${one.btype}">
 													<i class="far fa-list-alt" id="btn_list"></i>
 												</a>
 											</div>

@@ -168,46 +168,12 @@ VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요
 
 
 
---장바구니
-DROP TABLE hk_cart;
-CREATE TABLE hk_cart(
-    id VARCHAR2(100) NOT NULL, 
-    lname VARCHAR2(300) NOT NULL,
-    limg VARCHAR(500) NOT NULL,
-    price NUMBER(20) DEFAULT 0, 
-    startdate DATE NOT NULL,
-    enddate DATE NOT NULL
-);
+--강좌게시판 7/4
 
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('admin', 'Java기반 웹하이브리드 개발과정', 'lecture01.jpg', 3000000, '190618', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('admin', '캐드를 활용한 3D설계', 'lecture02.jpg', 3000000, '190702', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('admin', '빅데이터', 'lecture03.jpg', 3000000, '190820', '200618');
-
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('user01', 'Java기반 웹하이브리드 개발과정', 'lecture01.jpg', 3000000, '190618', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('user01', '캐드를 활용한 3D설계', 'lecture02.jpg', 3000000, '190702', '200618');
-INSERT INTO hk_cart(id, lname, limg, price, startdate, enddate)
-VALUES('user01', '빅데이터', 'lecture03.jpg', 3000000, '190820', '200618');
-
-SELECT * FROM hk_cart
-WHERE id = 'admin';
-commit;
-
-SELECT SUM(price) FROM hk_cart
-WHERE id = 'admin';
-
-
-
---강좌게시판
 -- 0 공지사항
 -- 1 QnA
 -- 2 게시글
-
--- 한은체 6/28 수정된 sql문 시작
+-- 한은체 6/28
 --모든 게시글 시퀀스
 DROP SEQUENCE seq_hklboard;
 CREATE SEQUENCE seq_hklboard
@@ -230,8 +196,7 @@ CREATE SEQUENCE seq_hklboard_normal
 START WITH 1
 INCREMENT BY 1;
 
--- 컬럼 추가됨 lbnum replycnt
-DROP TABLE hk_lecture_board;
+DROP TABLE hk_lecture_board CASCADE CONSTRAINTS;
 CREATE TABLE hk_lecture_board(
     bno NUMBER PRIMARY KEY,
     lbnum NUMBER NOT NULL,
@@ -241,7 +206,10 @@ CREATE TABLE hk_lecture_board(
     writer VARCHAR(30) NOT NULL,
     viewcnt NUMBER DEFAULT 0,
     replycnt NUMBER DEFAULT 0,
-    regdate DATE DEFAULT SYSDATE   
+    regdate DATE DEFAULT SYSDATE,
+    ref NUMBER NOT NULL,
+    re_step NUMBER NOT NULL,
+    re_level NUMBER NOT NULL
 );
 -- replycnt NUMBER DEFAULT 0, 댓글 수 추가함(은체)
 INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer)
@@ -250,13 +218,57 @@ VALUES(seq_hklboard.NEXTVAL, seq_hklboard_normal.NEXTVAL, '안녕하세요1','�
 INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
 VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '첫 공지1','강의생성후 1첫 공지', 'USER01');
 
-INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
-VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01');
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01', seq_board.CURRVAL, 1, 0);
 
 commit;
--- 6/28 강좌 게시판 관련 sql 수정 
 
--- 7/1 강좌 게시판 관련 댓글 테이블 추가 
+DELETE FROM hk_lecture_board WHERE lbnum=21 AND btype='2';
+SELECT title, bno FROM hk_lecture_board WHERE btype='0';
+SELECT title, bno FROM hk_lecture_board WHERE btype='0';
+SELECT * FROM hk_lecture_board_reply;
+DELETE FROM hk_lecture_board_reply WHERE rno=37;
+DELETE FROM hk_lecture_board WHERE lbnum=4 AND btype='2'; 
+
+SELECT * FROM
+    (SELECT rownum AS rnum, A.* FROM
+        ( SELECT * FROM hk_lecture_board WHERE
+                    btype='0'
+                    AND title LIKE '%공지%'
+            ORDER BY bno DESC
+        )
+    A)
+WHERE rnum BETWEEN 1 AND 10
+ORDER BY regdate DESC;
+
+SELECT * FROM
+    (SELECT rownum AS rnum, A.* FROM
+        (SELECT title, bno, regdate 
+            FROM hk_lecture_board 
+            WHERE btype='0' 
+            ORDER BY regdate DESC
+        )
+    A)
+WHERE rnum BETWEEN 1 AND 5;
+
+SELECT title, bno FROM hk_lecture_board WHERE btype='0';
+
+SELECT btype, bno FROM hk_lecture_board GROUP BY btype;
+
+SELECT 과목, COUNT(*) AS 수강생수
+FROM 수강생
+WHERE 수강료>=100
+GROUP BY 과목
+HAVING COUNT(과목)>=2;
+
+SELECT *
+FROM hk_lecture_board;
+
+SELECT COUNT(*)
+FROM hk_lecture_board WHERE 
+title LIKE '%공지%' AND btype='1';
+
+-- hk_lecture_board 관련 댓글 테이블
 DROP SEQUENCE seq_lecture_board_reply;
 CREATE SEQUENCE seq_lecture_board_reply
 START WITH 1
@@ -275,7 +287,13 @@ INSERT INTO hk_lecture_board_reply(rno, content, writer, bno)
 VALUES(seq_reply.NEXTVAL, 'ㅎㅎ', '한은체', 10);
 INSERT INTO hk_lecture_board_reply(rno, content, writer, bno)
 VALUES(seq_reply.NEXTVAL, 'ㅋㅋ', '박선미', 1);
+
+DELETE FROM hk_lecture_board_reply;
+SELECT * FROM hk_lecture_board_reply;
 COMMIT;
+
+SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply WHERE 
+bno = 10 ORDER BY rno;
 
 SELECT rno, bno, content, writer, r.regdate 
 FROM hk_lecture_board_reply r, hk_member m 
@@ -283,22 +301,44 @@ WHERE r.writer = m.name
 AND bno = 1
 ORDER BY rno;
 
----------------------------- 7/1
+SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply r, hk_member m WHERE 
+bno = 10 ORDER BY rno;
 
+SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply r, hk_member m WHERE 
+r.writer = m.name AND bno = 5 ORDER BY rno;
+
+---------------------------- 7/4
+
+--위시리스트
 DROP TABLE hk_wish;
 CREATE TABLE hk_wish(
     lno NUMBER NOT NULL,
-    id VARCHAR2(200) NOT NULL
+    id VARCHAR2(200) NOT NULL,
+    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
 );
-
-ALTER TABLE hk_wish
-ADD CONSTRAINT hk_wish_fk_lno
-FOREIGN KEY(lno) REFERENCES hk_lecture(lno)
-ON DELETE CASCADE;
 
 SELECT a.*
 FROM hk_lecture a, hk_wish b
 WHERE a.lno = b.lno AND b.id='user01';
 
+
+--장바구니
+DROP TABLE hk_cart;
+CREATE TABLE hk_cart(
+    lno NUMBER NOT NULL,
+    id VARCHAR2(100) NOT NULL,
+    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
+);
+
+
+SELECT * FROM hk_cart;
+
+SELECT * FROM hk_cart
+WHERE id = 'user01';
+
+SELECT a.*, c.lno as isempty
+		FROM hk_lecture a, hk_wish b, hk_cart c
+		WHERE a.lno = b.lno and b.lno=c.lno(+) AND b.id='user01'
+		ORDER BY a.lno DESC;
 
 commit;

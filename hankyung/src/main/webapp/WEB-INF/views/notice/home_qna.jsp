@@ -4,27 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
-<link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
-<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
-<title>묻고답하기</title>
-<style type="text/css">
-
-</style>
+<link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
+<title>IT지원(IT서비스 개선 요청)</title>
 </head>
 <body>
-
-	<div class="content_area_wrapper">
-		<%@ include file="../include/main_aside.jsp" %>
-		<div class="nav_content_footer">
-			<%@ include file="../include/main_nav.jsp" %>
-			<div class="content_area">
-				<!-- DataTales Example -->
-		        <div class="card shadow">
-		            <div class="card-header">
-		              <h6 class="text-primary">묻고 답하기</h6>
-		            </div>
+	<%@ include file="../include/home_header.jsp" %>
+	<!-- 가장 큰 박스 -->
+	<div class="section_box">
+		<div>
+			<div class="info_title">묻고답하기
+	        	<div class="info_title_bar"></div>
+	        </div>
+	        <div class="card-big-wrapper">
+	        	 <div class="card shadow">
 		            <div class="card-body">
 						<div class="table-responsive">
 			              	<div id="dataTable_wrapper" class="dataTables_wrapper">
@@ -134,14 +128,11 @@
 		              	</div>
 	            	</div>
 	          	</div>
-	          	
-	          	
-			</div>
-			<%@ include file="../include/main_footer.jsp" %>
+	        </div>
 		</div>
 	</div>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<%@ include file="../include/home_footer.jsp" %>
+	
 	<script type="text/javascript">
 		$(function(){
 			$('.board_regi_btn').click(function(){
@@ -161,7 +152,7 @@
 				return false;
 				
 			}
-			alert(search_option+","+keyword);
+			alert(search_option+","+keyword+",BTYPE="+btype);
 			location.href="${path}/board/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>

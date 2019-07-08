@@ -69,11 +69,9 @@
       }
       .right_navi {
       	margin: 0px 12px;
-      	width: 76px;
       }
       .myclass {
       	margin: 0px 12px;
-      	width: 89px;
       }
       .home_navi {
           display: inline-block;
@@ -352,7 +350,7 @@
 		font-size: 14px;
 		font-weight: 400;
 		overflow: hidden;
-		padding-top: 5px;
+		padding-top: 7px;
 		border-radius: 0px 0px 5px 5px;
 	}
 	.mypage_box_bar {
@@ -366,28 +364,35 @@
 	.mypage_btn {
 		display: block;
 		margin: 4px 0px 4px 19px;
-		padding: 3px;
+		padding: 3px 0px 3px 22px;
+		position: relative;
+		color: #444;
 		transition: .2s;
 	}
 	.mypage_btn:last-child {
 		margin: 4px 0px 8px 19px;
-		padding: 3px;
 	}
 	.mypage_btn:hover {
 		color: #79CDCF;
 	}
+	#wish_icon {
+		left: 2px;
+	}
+	#cart_icon {
+		left: 0.5px;
+	}
 	.icon_hover {
+		position: absolute;
+		top: 5.5px;
+		left: 1px;
 		color: #79CDCF;
 		padding-right: 5px;
-	}
-	.mypage_btn {
-		color: #444;
 	}
 	.main_box {
 		position: absolute;
 		display: none;
 		top: 51px;
-		left: -187px;
+		left: -204.5px;
 		background: white;
 		box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 		box-sizing: border-box;
@@ -410,23 +415,20 @@
 		padding: 5px 2px 9px;
 		font-size: 15px;
 		color: #79CDCF;
-		margin: 0px 5px;
+		margin: 0px 5px 9px;
 		border-bottom: 1px solid #ededed;
 	}
 	.main_lecture {
 		display: block;
-		width: 450px;
-		margin: 5px 5px;
+		width: 480px;
+		margin: 6px 5px;
 		color: #444;
 	}
 	.none_lecture {
 		display: block;
 		width: 480px;
-		margin: 8px 5px 5px;
+		margin: 6px 5px;
 		color: #dadada;
-	}
-	.main_lecture:first-child {
-		margin: 8px 5px 5px;
 	}
 	.main_lecture:last-child {
 		margin: 5px 5px 0px;
@@ -451,11 +453,9 @@
 	                <c:if test="${!empty sessionScope.id}">
 	                	<div class="home_navi_div mypage">
 	                        <span class="home_navi_span">
-	                            <a class="home_navi_btn name_btn name" <c:out value="${sessionScope.type =='2'?'id=name':'id=notname'}"/>>
+	                            <a class="home_navi_btn name_btn name" id="name">
 	                            	<span id="name_point">${sessionScope.name}</span>님
-	                            	<c:if test="${sessionScope.type == '2'}">
 	                            		<i class="fas fa-chevron-down"></i>
-	                            	</c:if>
 	                            </a>
 	                            
 	                        </span>
@@ -463,13 +463,13 @@
 	                        <div class="mypage_arrow"></div> -->
                         	<div class="mypage_box">
                         		<div class="mypage_box_bar"></div>
-                        		<c:if test="${sessionScope.type == '2'}">
+                        		<c:if test="${sessionScope.type == 2}">
 	                        	<a href="${path}/lecture/wishView" class="wishlist mypage_btn"><i class="fas fa-heart icon_hover" id="wish_icon"></i>위시리스트</a>
 	                        	<a href="${path}/lecture/cartView" class="lecture_cart mypage_btn"><i class="fas fa-shopping-cart icon_hover" id="cart_icon"></i>장바구니</a>
-	                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
+	                        	<a href="${path}/member/update" class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
 	                        	</c:if>
-	                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="notice_icon"></i>공지사항</a>
-	                        	<a class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="notice_icon"></i>묻고답하기</a>
+	                        	<a href="${path}/board/list?btype=0" class="member_update mypage_btn"><i class="fas fa-exclamation-circle icon_hover" id="notice_icon"></i>공지사항</a>
+	                        	<a href="${path}/board/list?btype=1" class="member_update mypage_btn"><i class="fas fa-question-circle icon_hover" id="qna_icon"></i>묻고답하기</a>
 	                        </div>
 	                   	</div>
                    	</c:if>
@@ -493,24 +493,25 @@
                     </div>
                     <c:choose>
 		                <c:when test="${!empty sessionScope.id}">
-	                    	<c:if test="${sessionScope.type == '0'}">
+	                    	<c:if test="${sessionScope.type == 0}">
 	                    		<div class="home_navi_div">
 			                        <span class="home_navi_span">
 			                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">LMS관리</a>
 			                        </span>
 		                    	</div>
 	                    	</c:if>
-	                    	<c:if test="${sessionScope.type == '1'}">
+	                    	<c:if test="${sessionScope.type == 1}">
 			                	<div class="home_navi_div">
 			                        <span class="home_navi_span">
 			                            <a href="${path}/main/" class="home_navi_btn right_navi" id="main">나의강의실</a>
 			                        </span>
 		                    	</div>
 	                    	</c:if>
-	                    	<c:if test="${sessionScope.type == '2'}">
+	                    	<c:if test="${sessionScope.type == 2}">
 			                	<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실</a>
+			                            <a class="home_navi_btn myclass main_btn" id="main">나의강의실
+			                            <i class="fas fa-chevron-down"></i></a>
 			                        </span>
 			                        <div class="main_box">
 			                        	<div class="main_box_bar"></div>
@@ -519,7 +520,7 @@
 			                        		<div class="none_lecture">수강중인 강좌가 없습니다.</div>
 			                        	</c:if>
 			                        	<c:forEach items="${sessionScope.myList}" var="myList">
-			                        		<a href="${path}/main/" class="main_lecture">${myList.lname}</a>
+			                        		<a href="${path}/lectureboard/home?btype=0&lno=${myList.lno}" class="main_lecture">${myList.lname}</a>
 		                        		</c:forEach>
 			                        </div>
 		                    	</div>
@@ -555,13 +556,13 @@
             <div class="header_center">
             	<c:choose>
 	            	<c:when test="${!empty sessionScope.id}">
-		            	<c:if test="${sessionScope.type == '0'}">
+		            	<c:if test="${sessionScope.type == 0}">
 		            		<div class="center_title1">${sessionScope.name}님, 반갑습니다!</div>
 		            	</c:if>
-		            	<c:if test="${sessionScope.type == '1'}">
+		            	<c:if test="${sessionScope.type == 1}">
 		            		<div class="center_title1">${sessionScope.name}님, 어서오세요!</div>
 		            	</c:if>
-		            	<c:if test="${sessionScope.type == '2'}">
+		            	<c:if test="${sessionScope.type == 2}">
 		            		<div class="center_title1">${sessionScope.name}님, 반갑습니다!</div>
 		            	</c:if>
 	                </c:when>
