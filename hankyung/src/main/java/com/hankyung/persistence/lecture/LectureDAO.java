@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.hankyung.domain.lecture.LectureDTO;
+import com.hankyung.domain.lecture.ScoreDTO;
 
 public interface LectureDAO {
 	public List<LectureDTO> popularList();
@@ -21,4 +22,5 @@ public interface LectureDAO {
 	public List<HashMap<String, String>> wishList(String id);
 	public int cartCheck(int lno, String id);
 	public LectureDTO teacherList(String id);
+	public List<ScoreDTO> scorelist();
 }

@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hankyung.domain.lecture.ScoreDTO;
 import com.hankyung.domain.member.MemberDTO;
 import com.hankyung.service.board.BoardService;
+import com.hankyung.service.lecture.LectureService;
 import com.hankyung.service.member.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,8 @@ public class MainController {
 	private BoardService service;
 	@Inject
 	private MemberService mservice;
+	@Inject
+	private LectureService lservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String test() {
@@ -78,7 +82,16 @@ public class MainController {
 		return "main/management_list";
 	}
 	
-	
+	@RequestMapping(value = "/management_score", method = RequestMethod.GET)
+	public String management_score(Model model) {
+		log.info("학생관리시스템 점수");
+		
+		List<ScoreDTO> list = lservice.scorelist();
+		log.info(list.toString());
+		
+		model.addAttribute("list", list);
+		return "main/management_score";
+	}
 	
 	
 }

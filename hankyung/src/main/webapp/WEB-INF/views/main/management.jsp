@@ -149,6 +149,12 @@
 	background-color: #404988;
 	color: white;
 }
+#management_list{
+
+}
+#management_score{
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -170,11 +176,17 @@
 			<div class="content_area">
 				<div class="container_box">
 					<div class="container_header">
-						<span class="student">전체학생</span>
-						<span class="student">담당 학생</span>
+						<span class="student info">개인정보</span>
+						<span class="student score">성적</span>
+						<span class="student cnsln">상담</span>
 					</div>
-					<div class="search_box"></div>
-					<div id="management_list"></div>
+					<!-- 학생 아이디 정보 조회 -->
+					<div id="management_list"></div> 
+					<!-- 학생 수업 점수 조회 -->
+					<div id="management_score"></div>
+					<!-- 학생 상담일지 조회 -->
+					<!-- <div id="management_cnsln"></div> -->
+					
 					
 				</div>
 			</div>
@@ -186,6 +198,25 @@
 	<script type="text/javascript">
 		$(function(){
 			management_list();
+			
+			$(".student").eq(0).css("color", "red");
+			
+			$(".student").click(function(){
+				$(".student").css("color", "black").css("font-size", "20px");
+				$(this).css("color", "red");
+			});
+
+			$(".score").click(function(){
+				management_score();
+				$("#management_list").css("display", "none");
+				$("#management_score").css("display", "block");
+			});
+			$(".info").click(function(){
+				management_list();
+				$("#management_score").css("display", "none");
+				$("#management_list").css("display", "block");
+			});
+			
 			
 		});
 	
@@ -230,7 +261,6 @@
 			var valNum = $(this).parent().children("div").eq(0).children("input").val();
 			var valName = $(this).parent().children("div").eq(1).children("input").val();
 			var valId = $(this).parent().children("div").eq(4).children("input").val();
-			$(".delete_mem").text(name);
 			$(this).parent().children(".drop_btn_box").css("display", "block");
 			$(this).parent().children(".btn_box").css("display", "none");			
 		});
@@ -241,6 +271,7 @@
 		});
 		
 		$(document).on("click", ".dropy_btn", function(){
+			var valId = $(this).parent().children("div").eq(4).children("input").val();
 			$.ajax({
 				url:"${path}/member/drop?valId="+valId,
 				type: "POST",
@@ -248,20 +279,7 @@
 					management_list();
 				},
 				error:function(){
-					alert("aaaaaaSystem Error!!");
-				}
-			});
-		});
-		
-		$(document).on("click", ".dropy_btn", function(){
-			$.ajax({
-				url:"${path}/member/drop?valId="+valId,
-				type: "POST",
-				success: function(){
-					management_list();
-				},
-				error:function(){
-					alert("aaaaaaSystem Error!!");
+					alert("System Error!!");
 				}
 			});
 		});
@@ -272,6 +290,18 @@
 				url: "${path}/main/management_list",
 				success: function(result){
 					$("#management_list").html(result);
+				}, error: function(){
+					alert("management error!!");
+				}
+			});
+		}
+		
+		function management_score(){
+			$.ajax({
+				type: "GET",
+				url: "${path}/main/management_score",
+				success: function(result){
+					$("#management_score").html(result);
 				}, error: function(){
 					alert("management error!!");
 				}

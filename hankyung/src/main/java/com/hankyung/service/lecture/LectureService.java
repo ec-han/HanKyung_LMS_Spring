@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureDTO;
+import com.hankyung.domain.lecture.ScoreDTO;
 
 public interface LectureService {
 	public HashMap<String, List<LectureDTO>> homeList();
@@ -23,5 +24,6 @@ public interface LectureService {
 	public void cartDelete(int index, HttpSession session);
 	public int cartCheck(int lno, String id);
 	public LectureDTO teacherList(HttpSession session);
+	public List<ScoreDTO> scorelist();
 	
 }

@@ -125,4 +125,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      	WHERE a.lno = b.lno AND b.id = #{id}
      </select>
      
+     <select id="scorelist" resultType="com.hankyung.domain.lecture.ScoreDTO">
+     	SELECT m.name, s.*
+     	FROM hk_member m, hk_score s
+     	WHERE m.id = s.id
+     	ORDER BY m.mno
+     </select>
+     
 </mapper>

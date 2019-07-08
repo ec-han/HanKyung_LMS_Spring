@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureDTO;
+import com.hankyung.domain.lecture.ScoreDTO;
 import com.hankyung.persistence.lecture.LectureDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -137,5 +138,10 @@ public class LectureServiceImpl implements LectureService{
 	public LectureDTO teacherList(HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		return lDao.teacherList(id);
+	}
+	
+	@Override
+	public List<ScoreDTO> scorelist() {
+		return lDao.scorelist();
 	}
 }

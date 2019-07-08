@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureDTO;
+import com.hankyung.domain.lecture.ScoreDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -110,5 +111,10 @@ public class LectureDAOImpl implements LectureDAO{
 	@Override
 	public LectureDTO teacherList(String id) {
 		return sqlSession.selectOne("teacherList", id);
+	}
+	
+	@Override
+	public List<ScoreDTO> scorelist() {
+		return sqlSession.selectList("lecture.scorelist");
 	}
 }
