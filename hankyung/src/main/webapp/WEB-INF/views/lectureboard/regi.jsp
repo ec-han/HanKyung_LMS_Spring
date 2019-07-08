@@ -18,6 +18,7 @@
 }
 #regi_table_wrap > table > tbody > tr {
 	background: #f8f9fc;
+	height: 20rem;
 }
 .btn_right {
 	float: right;
@@ -52,6 +53,25 @@
     position: relative;
     top: 5px;
 }
+
+#close_file_btn {
+	cursor: pointer;
+}
+.form-group .board_div {
+	border: 1.5px dashed #dadada;
+    background: white;
+	text-align: center;
+	height: 13rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #515151;
+}
+.uploadedList {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
 </style>
 </head>
 <body>
@@ -75,15 +95,14 @@
 														<th>
 															<c:if test="${empty one.bno}">
 															<div class="regi-tb-center" id="viewoptionheader">게시판</div>
-															<input type="hidden" value="${viewoption}" id="viewoption-info">
 															<c:choose>
 																<c:when test="${sessionScope.type == '1'}">
 																<div id="dataTable_filter" class="dataTables_filter">
 										              				<label>
 										              					<select id="viewoption" class="sel-viewoption" name="viewoption">
-																			<option value="2">일반게시글</option>
-																			<option value="1">묻고답하기</option>
+																			<option value="2" selected="selected">일반게시글</option>
 																			<option value="0">공지</option>
+																			<option value="1">묻고답하기</option>
 																		</select>
 										              				</label>
 										              			</div>
@@ -92,7 +111,7 @@
 										              			<div id="dataTable_filter" class="dataTables_filter">
 										              				<label>
 										              					<select id="viewoption" class="sel-viewoption" name="viewoption">
-																			<option value="2">일반게시글</option>
+																			<option value="2" selected="selected">일반게시글</option>
 																			<option value="1">묻고답하기</option>
 																		</select>
 										              				</label>
@@ -129,6 +148,22 @@
 															</fieldset>
 														</td>
 													</tr>
+													<!-- <tr>
+														<td>
+															게시글 첨부파일 등록 
+															<div class="write_input_wrap form-group">
+																<div class="board_div fileDrop">
+																	<p>
+																		<i class="fas fa-paperclip"></i>
+																		첨부파일을 드래그 해주세요.
+																	</p>
+																</div>
+															</div>
+															<div class="write_input_wrap">
+																<ul id="uplodedList" class="mailbox-attachments clearfix uploadedList"></ul>
+															</div>
+														</td>
+													</tr> -->
 												  </tfoot>
 				                				</table>
 											</div>
@@ -162,23 +197,47 @@
 	<script src="${path}/resources/js/summernote-ko-KR.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var vinfo = $("#viewoption-info").val();
-			// alert(vinfo);
-			// 0일반1묻고2공지
-			if(vinfo=="qna"){ 
-				//alert("if문 탐");
-				$(".sel-viewoption option:eq(1)").prop("selected", true);
-			} else if(vinfo=="notice"){
-				$(".sel-viewoption option:eq(2)").prop("selected", true);
-			} else if(vinfo=="normal"){
-				$(".sel-viewoption option:eq(0)").prop("selected", true);
-			}
-			 
+			// Drag & Drop 기본효과 막음
+			// : 작업 안 하면 실제 파일이 열림 
+			$('.fileDrop').on('dragenter dragover', function(e){
+				e.preventDefault();
+			});
+			$('.fileDrop').on('drop', function(e){
+				e.preventDefault();
+				
+				// Ajax 파일 -> D:\\upload
+				// 첫번째 첨부파일
+				// 드래그에 전달된 첨부팡리 전부 
+				var files = e.originalEvent.dataTransfer.files; // 드래그한 첨부파일 전부가 담김
+				var file = files[0]; // 여러 파일 드래그앤 드롭 해도 그 중 files에 있는 0번지에 있는 가장 첫번째 파일 하나면 꺼내옴
+//				alert("file: "+file);
+				// 폼 데이터에 첨부파일 추가
+				var formData = new FormData(); // 폼 객체
+				formData.append("file", file); // 폼에 파일변수 추가 
+				// 서버에 파일 업로드(백그라운드에서 실행됨)
+				// contentType: false => multipart/form-data로 처리 
+				$.ajax({
+					url: "${path}/upload/uploadAjax",
+					data: formData,
+					dataType: "text",
+					processData: false,
+					contentType: false,
+					type: "post",
+					success: function(data){
+						console.log(data);
+						//data: 업로드한 파일 정보와 http 상태 코드 
+						printFiles(data); // 첨부파일 출력 메서드 호출 
+					}
+				});
+			});
+			
+			
+			
 	   		$('#summernote').summernote({
 	   			lang: 'ko-KR',
 	   	        placeholder: '글을 입력해주세요.',
 	   	        tabsize: 2,
-	   	        height: 100,
+	   	        height: 250,
 	   	        minHeight: null,             // set minimum height of editor
 	   	        maxHeight: null,             // set maximum height of editor
 	   	        focus: true,                  // set focus to editable area after initializing summernote
@@ -186,6 +245,7 @@
 	   		  	codeviewIframeFilter: true,
 	   		  	codeviewFilterRegex: 'custom-regex',
 	   		  	codeviewIframeWhitelistSrc: ['my-own-domainname'],
+	   		 	disableDragAndDrop : true,
 	   		 	toolbar: [
 		   		    // [groupName, [list of button]]
 		   		    ['style', ['bold', 'italic', 'underline', 'clear']],
