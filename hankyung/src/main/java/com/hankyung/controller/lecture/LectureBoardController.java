@@ -38,7 +38,6 @@ public class LectureBoardController {
 		if (!type.equals("0")) {
 			List<LectureBoardDTO> list = service.noticeTitleList();
 			model.addAttribute("notice", list);
-		} else {
 			LectureDTO lDto = service.myLecture(lno, session);
 			session.removeAttribute("lDto");
 			session.setAttribute("lDto", lDto);

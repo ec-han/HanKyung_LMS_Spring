@@ -262,7 +262,7 @@
 	                    	<c:if test="${sessionScope.type == 0}">
 	                    		<div class="home_navi_div">
 			                        <span class="home_navi_span">
-			                            <a href="${path}/main/" class="home_navi home_navi2 home_navi" id="main">LMS관리</a>
+			                            <a href="${path}/lectureboard/adminHome" class="home_navi home_navi2 home_navi" id="main">LMS관리</a>
 			                        </span>
 		                    	</div>
 	                    	</c:if>
