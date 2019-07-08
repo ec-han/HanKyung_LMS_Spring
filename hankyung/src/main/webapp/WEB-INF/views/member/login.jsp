@@ -109,7 +109,7 @@
 			</div>
 			<div class="text_box">
 				<form action="${path}/member/login" method="POST" name="frm_mem" id="frm_mem">
-					<div class="title">Welcome Back!</div>
+					<div class="title">환영합니다 ^^!</div>
 					
 					<div class="info">
 						<span class="input_box">

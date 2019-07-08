@@ -30,12 +30,12 @@
 		/*border: 1px solid red;*/
 	}
 	.contents{
-		position: relative;
 		height: 45px;
 		border: 1px solid blue;
 		box-sizing: border-box;
 		padding: 10px;
 		border-radius: 30px;
+		display: flex;
 	}
 	.modal_box{
 		position: absolute;
@@ -84,11 +84,11 @@
 		overflow: auto;
 	}
 	.detail_btn{
-		position: absolute;
 		right: 10px;
 		top: 9px;
 		font-size: 25px;
 		cursor: pointer;
+		margin-left: auto;
 	}
 	.err_msg{
 		line-height: 45px;
@@ -162,7 +162,7 @@
 			</div>
 			
 			<div class="text_box">
-				<div class="check_msg"> 동 의 </div>
+				<div class="check_msg"> 이 용 약 관 </div>
 				<div class="check">
 					<input type="checkbox" id="allcheck">
 					<label for="allcheck">

@@ -89,7 +89,7 @@
 			</div>
 			<div class="text_box">
 				<form action="${path}/member/create" method="POST" id="frm_mem" name="frm_mem">
-					<div class="title">Create an Account!</div>
+					<div class="title">회 원 가 입</div>
 					
 					<div class="info">
 						<span class="input_box fristbox">
