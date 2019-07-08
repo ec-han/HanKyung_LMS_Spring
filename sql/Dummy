@@ -342,3 +342,65 @@ SELECT a.*, c.lno as isempty
 		ORDER BY a.lno DESC;
 
 commit;
+
+
+
+
+
+
+--강의 과목테이블
+DROP TABLE hk_subject;
+CREATE TABLE hk_subject(
+    lcode VARCHAR2(80) NOT NULL, 
+    lname VARCHAR2(1000) NOT NULL,
+    subject1 VARCHAR2(200),
+    subject2 VARCHAR2(200),
+    subject3 VARCHAR2(200),
+    subject4 VARCHAR2(200),
+    subject5 VARCHAR2(200)
+);
+INSERT INTO hk_subject(lname, lcode, subject1, subject2, subject3, subject4, subject5)
+VALUES('Vue.js 시작하기 - Age of Vue.js', '0001','과목1','과목2','과목3','과목4','과목5');
+
+--성적테이블
+이름 아이디 과목코드 과목9개(디폴트 0) 
+DROP TABLE hk_score;
+CREATE TABLE hk_score(
+    id  VARCHAR2(100) NOT NULL,
+    lcode VARCHAR2(80) NOT NULL, 
+    sub_score1 VARCHAR2(20) DEFAULT 0,
+    sub_score2 VARCHAR2(20) DEFAULT 0,
+    sub_score3 VARCHAR2(20) DEFAULT 0,
+    sub_score4 VARCHAR2(20) DEFAULT 0,
+    sub_score5 VARCHAR2(20) DEFAULT 0
+);
+INSERT INTO hk_score(id, lcode)
+VALUES('user03', '0001');
+INSERT INTO hk_score(id, lcode)
+VALUES('user02', '0001');
+INSERT INTO hk_score(id, lcode)
+VALUES('user01', '0001');
+
+select s.*, j.*
+from hk_score s, hk_subject j
+where s.lcode = j.lcode;
+
+SELECT * FROM hk_member;
+
+SELECT * FROM hk_score 
+commit;
+
+ALTER TABLE hk_score
+ADD CONSTRAINT hk_score_fk_name
+FOREIGN KEY(name) REFERENCES hk_member(name);
+commit;
+
+--상담테이블
+SELECT m.name, s.*
+     	FROM hk_member m, hk_score s
+     	WHERE m.id = s.id
+
+SELECT m.name, s.*
+     	FROM hk_member m, hk_score s
+     	WHERE m.id = s.id
+     	ORDER BY m.mno
