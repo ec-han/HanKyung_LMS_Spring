@@ -32,7 +32,7 @@
 				              			<div id="dataTable_filter" class="dataTables_filter">
 				              				<label>
 				              					<select id="selsearch" name="selsearch">
-													<option value="all" selected="selected">제목+내용</option>
+													<option value="all" selected="selected">전체검색</option>
 													<option value="title">제목</option>
 													<option value="content">내용</option>
 													<option value="writer">작성자</option>
@@ -152,7 +152,6 @@
 				return false;
 				
 			}
-			alert(search_option+","+keyword+",BTYPE="+btype);
 			location.href="${path}/board/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>

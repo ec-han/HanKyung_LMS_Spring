@@ -19,6 +19,7 @@
 	<context:component-scan base-package="com.hankyung.service" />
 	<context:component-scan base-package="com.hankyung.persistence" />
 	<context:component-scan base-package="com.hankyung.aop" />
+	<context:component-scan base-package="com.hankyung.upload" />
 		
 	<!-- AOP의 설정으로 Proxy 객체를 자동으로 생성 -->
 	<aop:aspectj-autoproxy />
@@ -56,15 +57,15 @@
 	<context:component-scan base-package="com.hankyung.*" />
 	
 	<!-- 파일 업로드 관련 설정 -->
-	<!-- <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		파일 업로드 최대 용량(byte)
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!--  파일 업로드 최대 용량(byte) -->
 		<beans:property name="maxUploadSize" value="10485760"/>
-	</beans:bean> -->
+	</beans:bean>
 	<!-- 파일업로드를 위한 디렉토리 설정 -->
 	<!-- String uploadPath = new String("D:\upload");와 아래 세 줄이 동일 -->
-	<!-- <beans:bean id="uploadPath" class="java.lang.String">
+	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg value="D:\upload"/>
-	</beans:bean> -->
+	</beans:bean>
 	
 
 </beans:beans>

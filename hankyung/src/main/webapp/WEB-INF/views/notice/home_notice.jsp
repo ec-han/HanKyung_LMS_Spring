@@ -32,9 +32,10 @@
 				              			<div id="dataTable_filter" class="dataTables_filter">
 				              				<label>
 				              					<select id="selsearch" name="selsearch">
-													<option value="all" selected="selected">제목+내용</option>
+													<option value="all" selected="selected">전체검색</option>
 													<option value="title">제목</option>
 													<option value="content">내용</option>
+													<option value="writer">작성자</option>
 												</select>
 				              					<input type="search" class="form-control form-control-sm" id="search_board" name="search_board">
 				              					<button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
@@ -151,7 +152,6 @@
 				return false;
 				
 			}
-			alert(search_option+","+keyword);
 			location.href="${path}/board/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>

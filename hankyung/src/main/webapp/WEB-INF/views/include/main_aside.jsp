@@ -35,15 +35,15 @@
 	        <!-- 관리자 -->
 	        <c:if test="${sessionScope.type == '0'}">
 			<li class="nav_item active">
-				<a class="nav_link collapsed" href="#">
-				  <i class="fas fa-chalkboard-teacher"></i>
+				<a class="nav_link collapsed" href="${path}/main/insert">
+				  <i class="fas fa-chalkboard-teacher" id="teacher-manage-icon"></i>
 				  <span>선생님 관리</span>
 				</a>
-				<a class="nav_link collapsed" href="#">
+				<a class="nav_link collapsed" href="${path}/main/management">
 				  <i class="far fa-address-book"></i>
 				  <span>학생 관리</span>
 				</a>
-				<a class="nav_link collapsed" href="${path}/mainLecture/list">
+				<a class="nav_link collapsed" href="${path}/main/insert_lecture">
 				  <i class="fas fa-headphones"></i>
 				  <span>과정 관리</span>
 				</a>
@@ -75,7 +75,7 @@
 				  <span>학습방</span>
 				</a>
 				<a class="nav_link collapsed" href="${path}/lectureboard/list?viewoption=notice&search_option=all">
-				  <i class="fa fa-coffee"></i>
+				  <i class="fa fa-coffee" id="coffee-board"></i>
 				  <span>게시판</span>
 				</a>
 				<a class="nav_link collapsed" href="#">
@@ -95,19 +95,15 @@
 			<!-- 선생님 -->
 	        <c:if test="${sessionScope.type == '1'}">
 			<li class="nav_item">
-				<a class="nav_link collapsed">
-				  <i class="fas fa-fw fa-cog"></i>
-				  <span>과정관리</span>
-				</a>
-				<a class="nav_link collapsed" href="${path}/lectureboard/list?viewoption=notice&search_option=all">
-				  <i class="fa fa-coffee"></i>
-				  <span>게시판</span>
-				</a>
 				<a class="nav_link collapsed" href="#">
 				  <i class="fas fa-file-invoice"></i>
 				  <span>수업 계획표</span>
 				</a>
-				<a class="nav_link collapsed">
+				<a class="nav_link collapsed" href="${path}/lectureboard/list?viewoption=notice&search_option=all">
+				  <i class="fa fa-coffee" id="coffee-board"></i>
+				  <span>게시판</span>
+				</a>
+				<a class="nav_link collapsed" href="${path}/main/management">
 				  <i class="far fa-address-book"></i>
 				  <span>학생관리</span>
 				</a>

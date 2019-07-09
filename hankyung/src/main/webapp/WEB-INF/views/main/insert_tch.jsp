@@ -140,7 +140,7 @@
 						</div>	
 					</div>
 					<div class="btn_box">
-						<button class="insert_btn o_btn" type="button">강 사 등 록</button>
+						<button class="insert_btn o_btn" type="button">선 생 님 등 록</button>
 					</div>
 				</div>
 			</div>

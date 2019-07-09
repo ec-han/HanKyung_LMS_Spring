@@ -135,16 +135,29 @@ sup { /* 첨자 텍스트 */
     cursor: pointer;
 }
 #accordionSidebar .nav_link > span{
-    color: rgba(255,255,255,.8);
+	color: rgba(255,255,255,.8);
+    position: relative;
+    left: 1.5rem;
+    top: -0.2rem;
 }
 #accordionSidebar .nav_link > span:hover{
     color: white;
     /* font-weight: bold; */
 }
 #accordionSidebar .nav_link > i {
-    color: rgba(255,255,255,.3);
-    font-size: .75rem;
-    margin-right: .25rem;
+color: rgba(255,255,255,.3);
+    font-size: 1rem;
+    position: absolute;
+    left: 1rem;
+}
+#teacher-manage-icon {
+	left: 0.8rem!important;
+}
+#coffee-board {
+	left: 0.8rem!important;
+}
+#coffee-board {
+	left: 0.9rem!important;
 }
 .collapse{
     display: none;
