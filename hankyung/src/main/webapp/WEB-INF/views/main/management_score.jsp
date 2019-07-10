@@ -99,7 +99,6 @@
 	color: white;
 	width: 50px;
 	height: 38px;
-	top: 0px;
 }
 
 .update_btn{
@@ -222,9 +221,9 @@
 		</c:forEach>
 	</div>		
 	<script type="text/javascript">
-		/* $(function(){
+		 $(function(){
 			
-			$('.update_btn').click(function(event) {
+			 /*	$('.update_btn').click(function(event) {
 				var flag = $(this).parent().children("input").val();
 				alert(flag);
 				if(flag > 0){

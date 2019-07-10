@@ -80,4 +80,10 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.update("member.admin_update", mDto);
 	}
 
+	@Override
+	public void create_check(MemberDTO mDto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

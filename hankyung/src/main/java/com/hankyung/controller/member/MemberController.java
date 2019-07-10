@@ -64,10 +64,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createPlay(MemberDTO mDto) {
+	public String createPlay(MemberDTO mDto, HttpSession session) {
 		log.info("회원가입");
 		service.create(mDto);
 		log.info("회원가입 완료");
+		if(session != null) {
+			return "main/management";
+		}
 		return "redirect:/member/login";
 	}
 	
@@ -229,7 +232,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/pw_check", method=RequestMethod.POST)
-	public int pw_check(HttpSession session, MemberDTO mDto, Model model) {
+	public int pw_check(HttpSession session, MemberDTO mDto) {
 		log.info("비밀번호 확인");
 		String id = (String)session.getAttribute("id");
 		mDto.setId(id);
@@ -239,10 +242,19 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/insert_tch", method=RequestMethod.POST)
-	public String tch_insert(HttpSession session, MemberDTO mDto, Model model) {
+	public String tch_insert(HttpSession session, MemberDTO mDto) {
 		log.info("선생님 추가");
 		service.create(mDto);
 		log.info("선생님 추가 완료");
+
+		return "redirect:/main/";
+	}
+	
+	@RequestMapping(value="/create_check", method=RequestMethod.POST)
+	public String create_check(MemberDTO mDto) {
+		log.info("중복회원 체크");
+		service.create_check(mDto);
+		log.info("중복회원 체크 완료");
 
 		return "redirect:/main/";
 	}

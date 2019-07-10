@@ -37,6 +37,11 @@
 	border: 2px solid lightgray;
 	border-bottom: 0px;
 }
+.insert_box_header{
+	display: none;
+	background-color: white;
+	position: relative;
+}
 .list_box_header{
 	display: flex;
 	background-color: white;
@@ -53,13 +58,16 @@
 	font-size: 15px;
 	font-weight: 600;
 }
+.insert_box_header > div > input{
+	text-align: center;
+	height: 38px;
+}
 .list_box_header > div > input{
 	text-align: center;
 }
 .info_line{
 	border-left: 2px solid lightgray;
 	border-bottom: 2px solid lightgray;
-	
 }
 .flex_line2{
 	flex:2;
@@ -87,9 +95,7 @@
     color: white;
     width: 50px;
     height: 38px;
-    top: 0px;
 }
-
 .update_btn{
     right: -55px;
 }
@@ -106,6 +112,21 @@
     width: 50px;
     height: 38px;
     top: 0px;
+}
+.insert_btn_box{
+	position: absolute;
+    border:2px solid #404988;
+    background-color: #404988;
+    border-radius:5px;
+    color: white;
+    width: 50px;
+    height: 38px;
+}
+.insertn_btn{
+	right: -55px;
+}
+.inserty_btn{
+	right: -110px;
 }
 .dropn_btn{
     right: -55px;
@@ -149,6 +170,10 @@
     background-color: #404988;
     color: white;
 }
+#frm_mem{
+	padding: 0;
+	margin: 0;
+}
 </style>
 </head>
 <body>
@@ -161,45 +186,71 @@
 			<div class="id info_line flex_line2">아이디</div>
 			<div class="pw info_line flex_line2">비밀번호</div>
 		</div>	
+		<form action="${path}/member/create" method="POST" id="frm_mem" name="frm_mem">
+			<div class="insert_box_header">
+				<div class="num">
+					<input id="insert_num" name="insert_num" class="info_box" readonly="readonly" ="text-align:center;">
+				</div>
+				<div class="name info_line flex_line2">
+					<input id="insert_name" name="name" class="info_box">
+				</div>
+				<div class="email info_line flex_line3">
+					<input id="insert_email" name="email"class="info_box">
+				</div>
+				<div class="phone info_line flex_line3">
+					<input id="insert_phone" name="phone" class="info_box">
+				</div>
+				<div class="id info_line flex_line2">
+					<input id="insert_id" name="id" class="imput_id info_box">
+				</div>
+				<div class="pw info_line flex_line2">
+					<input id="insert_pw" name="pw" type="password" class="info_box">
+				</div>
+				<input type="hidden" name="type" value="2">
+	            <button class="insertn_btn insert_btn_box" type="button">취소</button>
+	            <button class="inserty_btn insert_btn_box" type="button">확인</button>
+			</div>
+		</form>
 		
 		<c:forEach items="${list}" var="mDto" varStatus="status">
-				<div class="list_box_header">
-					<div class="num">
-						<input id="input_num" name="num" class="info_box" value="${status.index+1}" readonly="readonly" style = "text-align:center;">
-					</div>
-					<div class="name info_line flex_line2">
-						<input id="input_name" name="name" class="info_box" value="${mDto.name}" readonly="readonly">
-					</div>
-					<div class="email info_line flex_line3">
-						<input id="input_email" name="email"class="info_box" value="${mDto.email}" readonly="readonly">
-					</div>
-					<div class="phone info_line flex_line3">
-						<input id="input_phone" name="phone" class="info_box" value="${mDto.phone}" readonly="readonly">
-					</div>
-					<div class="id info_line flex_line2">
-						<input id="input_id" name="id" class="imput_id info_box" value="${mDto.id}" readonly="readonly">
-					</div>
-					<div class="pw info_line flex_line2">
-						<input id="input_pw" name="pw" type="password" class="info_box" value="${mDto.pw}" readonly="readonly">
-					</div>
-					<input type="hidden" value="1">
-                    <button class="update_btn btn_box">수정</button>
-                    <button class="delete_btn btn_box">삭제</button>
-                    <button class="dropn_btn drop_btn_box">NO</button>
-                    <button class="dropy_btn drop_btn_box">YES</button>
+			<div class="list_box_header">
+				<div class="num">
+					<input id="input_num" name="num" class="info_box" value="${status.index+1}" readonly="readonly" style = "text-align:center;">
 				</div>
+				<div class="name info_line flex_line2">
+					<input id="input_name" name="name" class="info_box" value="${mDto.name}" readonly="readonly">
+				</div>
+				<div class="email info_line flex_line3">
+					<input id="input_email" name="email"class="info_box" value="${mDto.email}" readonly="readonly">
+				</div>
+				<div class="phone info_line flex_line3">
+					<input id="input_phone" name="phone" class="info_box" value="${mDto.phone}" readonly="readonly">
+				</div>
+				<div class="id info_line flex_line2">
+					<input id="input_id" name="id" class="imput_id info_box" value="${mDto.id}" readonly="readonly">
+				</div>
+				<div class="pw info_line flex_line2">
+					<input id="input_pw" name="pw" type="password" class="info_box" value="${mDto.pw}" readonly="readonly">
+				</div>
+				<input type="hidden" value="1">
+                <button class="update_btn btn_box">수정</button>
+                <button class="delete_btn btn_box">삭제</button>
+                <button class="dropn_btn drop_btn_box">취소</button>
+                <button class="dropy_btn drop_btn_box">확인</button>
+			</div>
 		</c:forEach>	
 	</div>
 	    <script type="text/javascript">
         $(function(){
-            
+        	var num =  parseInt($('.list_box_header').last().children().eq(0).children("input").val())+1;
+        	$('#insert_num').val(num);
+        	
             $('.update_btn').click(function(event) {
                 var flag = $(this).parent().children("input").val();
-                alert(flag);
                 if(flag > 0){
                     $(this).parent().children("div").children("input").removeAttr("readonly");
                     $(this).parent().children("div").children("input").eq(4).attr("readonly", "readonly");
-                    $(this).parent().children("div").children("input").css("background-color", "#CEFBC9");
+                    $(this).parent().children("div").children("input").css("background-color", "#E6FFFF");
                     $(this).text("확인");
                     $(this).next().css("display", "none");
                     $(this).parent().children("input").val(0);
@@ -227,11 +278,18 @@
                             alert("aaaa Error!!");
                         }
                     });
-                    
-                    
-
                 }
             });
+            
+            $('.insert_btn').click(function(event) {
+            	$('.insert_box_header').css("display", "flex");       	
+            });
+            $('.insertn_btn').click(function(event) {
+            	$('.insert_box_header').css("display", "none");       	
+            });
+            
+            
+            
             
         });
         

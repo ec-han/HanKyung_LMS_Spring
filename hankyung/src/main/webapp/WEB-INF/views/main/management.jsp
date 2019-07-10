@@ -17,6 +17,7 @@
 	height: 500px;
 }
 .container_header{
+	position:relative;
 	margin: 0 auto;
 	width: 80%;
 	height: 64px;
@@ -87,7 +88,6 @@
 	color: white;
 	width: 50px;
 	height: 38px;
-	top: 0px;
 }
 
 .update_btn{
@@ -155,6 +155,12 @@
 #management_score{
 	display: none;
 }
+
+.insert_btn{
+	right: 15;
+	top: 14px; 
+	font-size: 14px;
+}
 </style>
 </head>
 <body>
@@ -179,6 +185,7 @@
 						<span class="student info">개인정보</span>
 						<span class="student score">성적</span>
 						<span class="student cnsln">상담</span>
+						<button class="insert_btn btn_box">추가</button>
 					</div>
 					<!-- 학생 아이디 정보 조회 -->
 					<div id="management_list"></div> 
@@ -219,43 +226,21 @@
 			
 			
 		});
-	
-		$(document).on("click", ".update_btn", function(){
-			if(flag > 0){
-				$(this).parent().children("div").children("input").removeAttr("readonly");
-				$("#input_id").attr("readonly", "readonly");
-				$(this).parent().children("div").children("input").css("background-color", "#CEFBC9");
-				$(this).text("확인");
-				$(this).next().css("display", "none");
-				flag = 0;
-			}else{
-				var valName = $(this).parent().children("div").eq(1).children("input").val();
-				var valMail = $(this).parent().children("div").eq(2).children("input").val();
-				var valPhone = $(this).parent().children("div").eq(3).children("input").val();
-				var valId = $(this).parent().children("div").eq(4).children("input").val();
-				var valPw = $(this).parent().children("div").eq(5).children("input").val();
-				
-				$(this).parent().children("div").children("input").attr("readonly", "readonly");
-				$(this).parent().children("div").children("input").css("background-color", "#eaeaea");
-				$(this).text("수정");
-				$(this).next().css("display", "block");
-				flag = 1;
-				
-				$.ajax({
-					url:"${path}/member/admin_update?id="+valId+"&pw="+valPw+"&name="+valName+"&email="+valMail+"&phone="+valPhone,
-					type: "POST",
-					success: function(){
-
-					},
-					error:function(){
-						alert("aaaa Error!!");
-					}
-				});
-				
-				
-
-			}
-		});
+		
+		$(document).on("click", ".dropy_btn", function(){
+   			var valId = $(this).parent().children("div").eq(4).children("input").val();
+   			alert(valId);
+   			$.ajax({
+   				url:"${path}/member/drop?valId="+valId,
+   				type: "POST",
+   				success: function(){
+   					management_list();
+   				},
+   				error:function(){
+   					alert("System Error!!");
+   				}
+   			});
+   		}); 
 		
 		$(document).on("click", ".delete_btn", function(){
 			var valNum = $(this).parent().children("div").eq(0).children("input").val();
@@ -270,19 +255,48 @@
 			$(this).parent().children(".btn_box").css("display", "block");
 		});
 		
-		$(document).on("click", ".dropy_btn", function(){
-			var valId = $(this).parent().children("div").eq(4).children("input").val();
+		
+		$(document).on("click", ".inserty_btn", function(){
+        	var name = $('#insert_name').val();
+        	var email = $('#insert_email').val();
+        	var phone = $('#insert_phone').val();
+        	var id = $('#insert_id').val();
+        	var pw = $('#insert_pw').val();
+			/* 중복체크 */
 			$.ajax({
-				url:"${path}/member/drop?valId="+valId,
 				type: "POST",
-				success: function(){
-					management_list();
-				},
-				error:function(){
-					alert("System Error!!");
+				url: "${path}/member/create_check",
+				success: function(result){
+					$("#management_list").html(result);
+				}, error: function(){
+					alert("management error!!");
 				}
 			});
-		});
+			
+        	alert("이름 : "+name+"/메일 : "+email+"/번호 : "+phone+"/아이디 : "+id+"/비밀번호 : "+pw);
+        	if(name == '' | name == null){
+        		$('#insert_name').focus();
+        		alert("이름을 입력해주세요");
+        	}else if(email == '' | email == null){
+        		$('#insert_email').focus();
+        		alert("메일을 입력해주세요");
+        	}else if(phone == '' | phone == null){
+        		$('#insert_phone').focus();
+        		alert("전화번호을 입력해주세요");
+        	}else if(id == '' | id == null){
+        		$('#insert_id').focus();
+        		alert("아이디를 입력해주세요");
+        	}else if(pw == '' | pw == null){
+        		$('#insert_pw').focus();
+        		alert("비밀번호를 입력해주세요");
+        	}else{
+        		$('#frm_mem').submit();
+        		$('.insert_box_header').css("display", "none");
+        		management_list();
+        	}
+        	    	
+        });
+		
 		
 		function management_list(){
 			$.ajax({
