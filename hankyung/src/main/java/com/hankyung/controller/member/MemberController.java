@@ -250,13 +250,14 @@ public class MemberController {
 		return "redirect:/main/";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/create_check", method=RequestMethod.POST)
-	public String create_check(MemberDTO mDto) {
+	public int create_check(MemberDTO mDto) {
 		log.info("중복회원 체크");
-		service.create_check(mDto);
+		log.info(mDto.toString());
+		int result = service.create_check(mDto);
 		log.info("중복회원 체크 완료");
-
-		return "redirect:/main/";
+		return result;
 	}
 	
 	

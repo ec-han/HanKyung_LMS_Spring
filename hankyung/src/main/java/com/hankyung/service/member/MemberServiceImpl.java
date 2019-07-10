@@ -97,9 +97,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void create_check(MemberDTO mDto) {
-		// TODO Auto-generated method stub
-		
+	public int create_check(MemberDTO mDto) {
+		return mDao.create_check(mDto);
 	}
 
 }

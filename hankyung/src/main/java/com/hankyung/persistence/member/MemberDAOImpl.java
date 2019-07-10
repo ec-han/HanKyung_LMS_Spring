@@ -81,9 +81,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void create_check(MemberDTO mDto) {
-		// TODO Auto-generated method stub
-		
+	public int create_check(MemberDTO mDto) {
+		return sqlSession.selectOne("member.create_check", mDto);
 	}
 
 }

@@ -217,11 +217,13 @@
 				management_score();
 				$("#management_list").css("display", "none");
 				$("#management_score").css("display", "block");
+				$(".insert_btn").css("display", "none");
 			});
 			$(".info").click(function(){
 				management_list();
 				$("#management_score").css("display", "none");
 				$("#management_list").css("display", "block");
+				$(".insert_btn").css("display", "block");
 			});
 			
 			
@@ -264,36 +266,37 @@
         	var pw = $('#insert_pw').val();
 			/* 중복체크 */
 			$.ajax({
+				url: "${path}/member/create_check?id="+id+"&email="+email+"&phone="+phone,
 				type: "POST",
-				url: "${path}/member/create_check",
 				success: function(result){
-					$("#management_list").html(result);
+					if(result > 0){
+						alert("이미 가입된 회원 또는 아이디입니다.");
+					}else{
+			        	if(name == '' | name == null){
+			        		$('#insert_name').focus();
+			        		alert("이름을 입력해주세요");
+			        	}else if(email == '' | email == null){
+			        		$('#insert_email').focus();
+			        		alert("메일을 입력해주세요");
+			        	}else if(phone == '' | phone == null){
+			        		$('#insert_phone').focus();
+			        		alert("전화번호을 입력해주세요");
+			        	}else if(id == '' | id == null){
+			        		$('#insert_id').focus();
+			        		alert("아이디를 입력해주세요");
+			        	}else if(pw == '' | pw == null){
+			        		$('#insert_pw').focus();
+			        		alert("비밀번호를 입력해주세요");
+			        	}else{
+			        		$('#frm_mem').submit();
+			        		$('.insert_box_header').css("display", "none");
+			        	}
+					}
+
 				}, error: function(){
 					alert("management error!!");
 				}
 			});
-			
-        	alert("이름 : "+name+"/메일 : "+email+"/번호 : "+phone+"/아이디 : "+id+"/비밀번호 : "+pw);
-        	if(name == '' | name == null){
-        		$('#insert_name').focus();
-        		alert("이름을 입력해주세요");
-        	}else if(email == '' | email == null){
-        		$('#insert_email').focus();
-        		alert("메일을 입력해주세요");
-        	}else if(phone == '' | phone == null){
-        		$('#insert_phone').focus();
-        		alert("전화번호을 입력해주세요");
-        	}else if(id == '' | id == null){
-        		$('#insert_id').focus();
-        		alert("아이디를 입력해주세요");
-        	}else if(pw == '' | pw == null){
-        		$('#insert_pw').focus();
-        		alert("비밀번호를 입력해주세요");
-        	}else{
-        		$('#frm_mem').submit();
-        		$('.insert_box_header').css("display", "none");
-        		management_list();
-        	}
         	    	
         });
 		

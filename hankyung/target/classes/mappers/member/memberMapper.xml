@@ -79,4 +79,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY mno
 	</select>
 	
+	<select id="create_check" parameterType="com.hankyung.domain.member.MemberDTO" resultType="int">
+		SELECT COUNT(*) 
+		FROM hk_member
+		WHERE id = #{id} OR phone = #{phone} OR email = #{email}
+	</select>
+
+	
 </mapper>

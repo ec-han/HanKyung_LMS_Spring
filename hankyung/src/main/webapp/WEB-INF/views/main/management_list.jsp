@@ -213,7 +213,7 @@
 		</form>
 		
 		<c:forEach items="${list}" var="mDto" varStatus="status">
-			<div class="list_box_header">
+			<div class="list_box_header cnt_num">
 				<div class="num">
 					<input id="input_num" name="num" class="info_box" value="${status.index+1}" readonly="readonly" style = "text-align:center;">
 				</div>
@@ -242,8 +242,6 @@
 	</div>
 	    <script type="text/javascript">
         $(function(){
-        	var num =  parseInt($('.list_box_header').last().children().eq(0).children("input").val())+1;
-        	$('#insert_num').val(num);
         	
             $('.update_btn').click(function(event) {
                 var flag = $(this).parent().children("input").val();
@@ -282,10 +280,13 @@
             });
             
             $('.insert_btn').click(function(event) {
-            	$('.insert_box_header').css("display", "flex");       	
+            	$('.insert_box_header').css("display", "flex");   
+            	var num =  parseInt($('.cnt_num').length)+1;
+            	$('#insert_num').val(num);
             });
             $('.insertn_btn').click(function(event) {
-            	$('.insert_box_header').css("display", "none");       	
+            	$('.insert_box_header').css("display", "none");
+            	$('.insert_box_header').children("div").children("input").slice(1).val("");
             });
             
             

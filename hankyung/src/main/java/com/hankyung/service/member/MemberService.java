@@ -20,5 +20,5 @@ public interface MemberService {
 	public int pw_check(MemberDTO mDto);	
 	public List<MemberDTO> list(String type);
 	public void admin_update(MemberDTO mDto);
-	public void create_check(MemberDTO mDto);
+	public int create_check(MemberDTO mDto);
 }
