@@ -155,6 +155,9 @@
 #management_score{
 	display: none;
 }
+#management_detail_cnsln{
+	display: none;
+}
 
 .insert_btn{
 	right: 15;
@@ -193,7 +196,8 @@
 					<div id="management_score"></div>
 					<!-- 학생 상담일지 조회 -->
 					<div id="management_cnsln"></div>
-					
+					<!-- 학생 상담일지 디테일 페이지 -->
+					<div id="management_detail_cnsln"></div>
 					
 				</div>
 			</div>
@@ -203,6 +207,7 @@
 
 
 	<script type="text/javascript">
+		var num = 0;
 		$(function(){
 			management_list();
 			
@@ -238,6 +243,17 @@
 			
 		});
 		
+		$(document).on("click", ".cnsln_box", function(){
+			$("#management_cnsln").css("display", "none");
+			$("#management_detail_cnsln").css("display", "block");
+			var id_cnsln = $(this).parent().children("div").eq(2).children("input").val();
+			num = $(this).parent().children("div").eq(0).children("input").val();
+			alert(id_cnsln + ", " + num);
+			management_detail_cnsln(id_cnsln);
+			$('#detail_num').val(num);
+		});
+		
+		
 		$(document).on("click", ".dropy_btn", function(){
    			var valId = $(this).parent().children("div").eq(4).children("input").val();
    			$.ajax({
@@ -247,7 +263,7 @@
    					management_list();
    				},
    				error:function(){
-   					alert("System Error!!");
+   					alert("drop management_list Error!!");
    				}
    			});
    		}); 
@@ -302,7 +318,7 @@
 					}
 
 				}, error: function(){
-					alert("management error!!");
+					alert("create id error!!");
 				}
 			});
         	    	
@@ -316,7 +332,7 @@
 				success: function(result){
 					$("#management_list").html(result);
 				}, error: function(){
-					alert("management error!!");
+					alert("management_list error!!");
 				}
 			});
 		}
@@ -328,7 +344,7 @@
 				success: function(result){
 					$("#management_score").html(result);
 				}, error: function(){
-					alert("management error!!");
+					alert("management_score error!!");
 				}
 			});
 		}
@@ -340,7 +356,19 @@
 				success: function(result){
 					$("#management_cnsln").html(result);
 				}, error: function(){
-					alert("management error!!");
+					alert("management_cnsln error!!");
+				}
+			});
+		}
+		
+		function management_detail_cnsln(id){
+			$.ajax({
+				type: "GET",
+				url: "${path}/main/management_detail_cnsln?id="+id,
+				success: function(result){
+					$("#management_detail_cnsln").html(result);
+				}, error: function(){
+					alert("management_detail_cnsln error!!");
 				}
 			});
 		}

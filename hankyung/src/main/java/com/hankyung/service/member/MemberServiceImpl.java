@@ -107,4 +107,9 @@ public class MemberServiceImpl implements MemberService{
 		return mDao.cnslnlist();
 	}
 
+	@Override
+	public CnslnDTO cnslnone(String id) {
+		return mDao.cnslnone(id);
+	}
+
 }

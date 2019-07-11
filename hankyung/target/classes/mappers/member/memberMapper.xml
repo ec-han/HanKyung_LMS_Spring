@@ -92,4 +92,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY m.mno
 	</select>
 	
+	<select id="cnslnone" resultType="com.hankyung.domain.member.CnslnDTO">
+		SELECT * FROM hk_cnsln
+		WHERE id = #{id}
+	</select>
+	
 </mapper>

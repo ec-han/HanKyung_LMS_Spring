@@ -23,4 +23,5 @@ public interface MemberService {
 	public void admin_update(MemberDTO mDto);
 	public int create_check(MemberDTO mDto);
 	public List<CnslnDTO> cnslnlist();
+	public CnslnDTO cnslnone(String id);
 }

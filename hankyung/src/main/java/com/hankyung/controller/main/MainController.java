@@ -96,12 +96,21 @@ public class MainController {
 	
 	@RequestMapping(value = "/management_cnsln", method = RequestMethod.GET)
 	public String management_cnsln(Model model) {
-		log.info("학생관리시스템 점수");
+		log.info("학생관리시스템 상담");
 		List<CnslnDTO> list = mservice.cnslnlist();
 		log.info(list.toString());
 		
 		model.addAttribute("list", list);
 		return "main/management_cnsln";
+	}
+	
+	@RequestMapping(value = "/management_detail_cnsln", method = RequestMethod.GET)
+	public String management_detail_cnsln(String id, Model model) {
+		log.info("학생관리시스템 상담");
+		CnslnDTO cDto = mservice.cnslnone(id);
+		log.info(cDto.toString());
+		model.addAttribute("cDto", cDto);
+		return "main/management_detail_cnsln";
 	}
 	
 	

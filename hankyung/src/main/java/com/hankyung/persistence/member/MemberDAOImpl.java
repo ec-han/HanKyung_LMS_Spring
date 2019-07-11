@@ -91,4 +91,9 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectList("member.cnslnlist");
 	}
 
+	@Override
+	public CnslnDTO cnslnone(String id) {
+		return sqlSession.selectOne("member.cnslnone", id);
+	}
+
 }
