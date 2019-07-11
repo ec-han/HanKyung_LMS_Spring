@@ -192,7 +192,7 @@
 					<!-- 학생 수업 점수 조회 -->
 					<div id="management_score"></div>
 					<!-- 학생 상담일지 조회 -->
-					<!-- <div id="management_cnsln"></div> -->
+					<div id="management_cnsln"></div>
 					
 					
 				</div>
@@ -216,14 +216,23 @@
 			$(".score").click(function(){
 				management_score();
 				$("#management_list").css("display", "none");
+				$("#management_cnsln").css("display", "none");
 				$("#management_score").css("display", "block");
 				$(".insert_btn").css("display", "none");
 			});
 			$(".info").click(function(){
 				management_list();
 				$("#management_score").css("display", "none");
+				$("#management_cnsln").css("display", "none");
 				$("#management_list").css("display", "block");
 				$(".insert_btn").css("display", "block");
+			});
+			$(".cnsln").click(function(){
+				management_cnsln();
+				$("#management_list").css("display", "none");
+				$("#management_score").css("display", "none");
+				$("#management_cnsln").css("display", "block");
+				$(".insert_btn").css("display", "none");
 			});
 			
 			
@@ -231,7 +240,6 @@
 		
 		$(document).on("click", ".dropy_btn", function(){
    			var valId = $(this).parent().children("div").eq(4).children("input").val();
-   			alert(valId);
    			$.ajax({
    				url:"${path}/member/drop?valId="+valId,
    				type: "POST",
@@ -319,6 +327,18 @@
 				url: "${path}/main/management_score",
 				success: function(result){
 					$("#management_score").html(result);
+				}, error: function(){
+					alert("management error!!");
+				}
+			});
+		}
+		
+		function management_cnsln(){
+			$.ajax({
+				type: "GET",
+				url: "${path}/main/management_cnsln",
+				success: function(result){
+					$("#management_cnsln").html(result);
 				}, error: function(){
 					alert("management error!!");
 				}

@@ -2,6 +2,7 @@ package com.hankyung.persistence.member;
 
 import java.util.List;
 
+import com.hankyung.domain.member.CnslnDTO;
 import com.hankyung.domain.member.MemberDTO;
 
 public interface MemberDAO {
@@ -18,4 +19,5 @@ public interface MemberDAO {
 	public List<MemberDTO> list(String type);
 	public void admin_update(MemberDTO mDto);
 	public int create_check(MemberDTO mDto);
+	public List<CnslnDTO> cnslnlist();
 }

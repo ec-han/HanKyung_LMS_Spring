@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hankyung.domain.lecture.ScoreDTO;
+import com.hankyung.domain.member.CnslnDTO;
 import com.hankyung.domain.member.MemberDTO;
 import com.hankyung.service.board.BoardService;
 import com.hankyung.service.lecture.LectureService;
@@ -91,6 +92,16 @@ public class MainController {
 		
 		model.addAttribute("list", list);
 		return "main/management_score";
+	}
+	
+	@RequestMapping(value = "/management_cnsln", method = RequestMethod.GET)
+	public String management_cnsln(Model model) {
+		log.info("학생관리시스템 점수");
+		List<CnslnDTO> list = mservice.cnslnlist();
+		log.info(list.toString());
+		
+		model.addAttribute("list", list);
+		return "main/management_cnsln";
 	}
 	
 	

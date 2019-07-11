@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import com.hankyung.domain.member.CnslnDTO;
 import com.hankyung.domain.member.MemberDTO;
 import com.hankyung.persistence.member.MemberDAO;
 
@@ -99,6 +100,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int create_check(MemberDTO mDto) {
 		return mDao.create_check(mDto);
+	}
+
+	@Override
+	public List<CnslnDTO> cnslnlist() {
+		return mDao.cnslnlist();
 	}
 
 }

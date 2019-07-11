@@ -84,6 +84,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM hk_member
 		WHERE id = #{id} OR phone = #{phone} OR email = #{email}
 	</select>
-
+	
+	<select id="cnslnlist" resultType="com.hankyung.domain.member.CnslnDTO">
+		SELECT c.*
+		FROM hk_member m, hk_cnsln c
+		WHERE m.id = c.id(+) AND type = 2
+		ORDER BY m.mno
+	</select>
 	
 </mapper>

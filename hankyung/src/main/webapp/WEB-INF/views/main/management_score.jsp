@@ -107,7 +107,7 @@
 .delete_btn{
 	right: -110px;
 }
-.drop_btn_box{
+.update_btn_box{
 	position: absolute;
 	display:none;
 	border:2px solid #404988;
@@ -193,30 +193,24 @@
 				<div class="name info_line flex_line2">
 					<input id="input_name" name="name" class="info_box" value="${sDto.name}" readonly="readonly">
 				</div>
-				<div class="name info_line flex_line2">
+				<div class="id info_line flex_line2">
 					<input id="input_id" name="id" class="info_box" value="${sDto.id}" readonly="readonly">
 				</div>
-				<div class="email info_line flex_line3">
+				<div class="info_line flex_line3">
 					<input id="input_sub1" name="sub1"class="info_box sub" maxlength="3" value="${sDto.sub_score1}" readonly="readonly" numberOnly>
 				</div>
-				<div class="phone info_line flex_line3">
+				<div class="info_line flex_line3">
 					<input id="input_sub2" name="sub2" class="info_box sub" maxlength="3" value="${sDto.sub_score2}" readonly="readonly" numberOnly>
 				</div>
-				<div class="id info_line flex_line3">
+				<div class="info_line flex_line3">
 					<input id="input_sub3" name="sub3" class="info_box sub" maxlength="3" value="${sDto.sub_score3}" readonly="readonly" numberOnly>
 				</div>
-				<div class="pw info_line flex_line3">
+				<div class="info_line flex_line3">
 					<input id="input_sub4" name="sub4" class="info_box sub" maxlength="3" value="${sDto.sub_score4}" readonly="readonly" numberOnly>
 				</div>
-				<div class="pw info_line flex_line3">
+				<div class="info_line flex_line3">
 					<input id="input_sub5" name="sub5" class="info_box sub" maxlength="3" value="${sDto.sub_score5}" readonly="readonly" numberOnly>
 				</div>
-
-<!--				<input type="hidden" value="1">
- 				<button class="update_btn btn_box">수정</button>
-				<button class="delete_btn btn_box">삭제</button>
-				<button class="dropn_btn drop_btn_box">NO</button>
-				<button class="dropy_btn drop_btn_box">YES</button> -->
 			</div>
 		</c:forEach>
 	</div>		

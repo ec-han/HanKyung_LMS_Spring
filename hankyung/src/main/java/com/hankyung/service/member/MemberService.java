@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.hankyung.domain.member.CnslnDTO;
 import com.hankyung.domain.member.MemberDTO;
 
 public interface MemberService {
@@ -21,4 +22,5 @@ public interface MemberService {
 	public List<MemberDTO> list(String type);
 	public void admin_update(MemberDTO mDto);
 	public int create_check(MemberDTO mDto);
+	public List<CnslnDTO> cnslnlist();
 }
