@@ -132,4 +132,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      	ORDER BY m.mno
      </select>
      
+     <select id="mainLectureList" resultType="com.hankyung.domain.lecture.LectureDTO">
+     	SELECT *
+     	FROM hk_lecture
+     	ORDER BY lno DESC
+     </select>
+     
 </mapper>

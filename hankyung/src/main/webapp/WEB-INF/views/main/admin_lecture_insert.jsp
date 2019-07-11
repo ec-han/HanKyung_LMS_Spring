@@ -10,31 +10,42 @@
 <title>선생님 등록</title>
 <style type="text/css">
 .info_container{
-	margin: 100px auto;
+	margin: 0px auto;
 	width: 900px;
 	height: 580px;
-	border: 1px solid black;
 	padding: 40px; 
+}
+.section_title {
+	font-size: 20px;
+	padding-left: 12px;
+	position: relative;
+	margin-bottom: 30px;
+}
+.section_bar {
+	display: inline-block;
+	position: absolute;
+	width: 6px;
+	height: 20px;
+	background: #444;
+	left: 0;
+	top: 5px;
 }
 .img_container{
 	width : 100%;
 	height : 160px;
 	display: flex;
 	margin-bottom: 20px;
+	border: 1px solid red;
 }
-
 .text_box{
 	width:100%;
 	padding : 15px;
-	background-color: white;
 }
 .lecture_box{
-	border: 1px solid black;
 	width: 100%;
 	display: flex;
 }
 .info{
-	margin: 0 0 20px;
 	height: 40px;
 	display: flex;
 	justify-content: space-between;
@@ -87,11 +98,15 @@
 }
 .img_box{
 	border: 1px solid black;
-	width: 35%;
-	height: 160px;
+	width: 250px;
+	height: 161.6px;
 	text-align: center;
 	line-height: 160px;
 	font-size: 20px;
+	overflow: hidden;
+}
+.img_box > img {
+	width: 100%;
 }
 .lecture_name{
 	width: 65%;
@@ -108,22 +123,23 @@
 		<%@ include file="../include/main_aside.jsp" %>
 		<div class="nav_content_footer">
 			<%@ include file="../include/main_nav.jsp" %>
-			
 			<div class="content_area">
+				<div class="section_title">
+					과정관리
+					<span class="section_bar"></span>
+				</div>
 				<div class="info_container">
-					<div class="lecture_box">
-						<div class="text_box">
-							<input type="file" name="b_file" id="b_file">
-							<form action="${path}/member/tch_insert" method="POST" id="frm_mem" name="frm_mem">
+					<div class="text_box">
+						<input type="file" name="b_file" id="b_file">
+						<form action="${path}/member/tch_insert" method="POST" id="frm_mem" name="frm_mem">
 							<div class="img_container">
 								<div class="img_box">
-									
-									이미지 등록
+									<img src="${path}/resources/img/lecture01.jpg">
 								</div>
 								<div class="lecture_name">
 									<div class="info">
 										<span class="input_box">
-											<input type="text" id="input_limg" name="limg" class="input_class" placeholder="수업 이미지">
+											<input type="text" id="input_limg" name="limg" class="input_class" value="lecture01.jpg" readonly="readonly">
 										</span>						
 									</div>
 									<div class="info">
@@ -168,8 +184,7 @@
 									<input type="text" id="input_price" name="price" class="input_class" placeholder="가격">
 								</span>								
 							</div>
-							</form>
-						</div>
+						</form>
 					</div>
 					<div class="btn_box">
 						<button class="insert_btn o_btn" type="button">수 업 등 록</button>
@@ -212,7 +227,7 @@
 				
 			});
 			
-			img_box
+			
 			$('.insert_btn').click(function(event) {
 				var phone = $.trim($('#input_phone1').val()+$('#input_phone2').val()+$('#input_phone3').val());
 				$('#phone').val(phone);

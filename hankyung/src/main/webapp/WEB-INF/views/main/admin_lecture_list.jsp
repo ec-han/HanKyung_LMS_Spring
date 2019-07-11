@@ -9,230 +9,227 @@
 <meta charset="UTF-8">
 <title>학생관리</title>
 <style type="text/css">
-.content_area{
-	background-color: #F8F9FC;
-}
-.container_box{
-	/* border:1px solid black; */
-	height: 500px;
-}
-.container_header{
-	margin: 0 auto;
+.section_list {
+	min-width: 1200px;
 	width: 80%;
-	height: 64px;
-	border: 2px solid lightgray;
-	border-bottom:0px;
-	padding: 16px 20px;
+	margin: 0px auto;
+}
+.section_title {
 	font-size: 20px;
-}
-.student{
-	display:inline-block;
-	width: 100px;
-	border-right:1px dashed gray;
-	text-align: center;
-}
-.list_box{
-	margin: 0 auto;
-	width: 80%;
-	border: 2px solid lightgray;
-	border-bottom: 0px;
-}
-.list_box_header{
-	display: flex;
-	background-color: white;
+	padding-left: 12px;
 	position: relative;
+	margin-bottom: 30px;
 }
-.list_box_title{
+.section_bar {
+	display: inline-block;
+	position: absolute;
+	width: 6px;
+	height: 20px;
+	background: #444;
+	left: 0;
+	top: 5px;
+}
+.list_box_title {
+	display: flex;
 	background-color: #efefef;
-}
-.list_box_header > div{
-	text-align: center;
-	height: 40px;
-	line-height: 40px;
-	color: gray;
-	font-size: 15px;
+	border-top: 2px solid #dadada;
+	border-bottom: 2px solid #dadada;
 	font-weight: 600;
 }
-.list_box_header > div > input{
+.info_line {
 	text-align: center;
+	border-left: 1px solid #dadada;
+	padding: 8px 10px;
 }
-.info_line{
-	border-left: 2px solid lightgray;
-	border-bottom: 2px solid lightgray;
-	
+.info_line:last-child {
+	border-right: 1px solid #dadada;
 }
-.flex_line2{
-	flex:2;
-}
-.flex_line3{
-	flex:3;
-}
-.num{
+.info_num {
 	flex: 1;
-	border-bottom: 2px solid lightgray;
 }
-.info_box{
-	border: none;
-	outline: none;
-	padding: 10px;
-	width: 100%;
-	height: 100%;
-	background-color: white;
+.info_lname {
+	flex: 8;
 }
-.btn_box{
-	position: absolute;
-	border:2px solid #404988;
-	background-color: #404988;
-	border-radius:5px;
-	color: white;
-	width: 50px;
-	height: 38px;
-	top: 0px;
+.info_tname {
+	flex: 2;
+}
+.info_date {
+	flex: 4;
+}
+.info_btn {
+	flex: 1.5;
+}
+#info_btn {
+	padding: 8px 1px;
+}
+.list_wrap {
+	position: relative;
+}
+.list_box_lecture {
+	display: flex;
+	border-bottom: 1px solid #dadada;
+	background: white;
+}
+.list_box_lecture:last-child {
+	border-bottom: 2px solid #dadada;
+}
+.list_box_content {
+	border: 1px solid #dadada;
+	border-top: 0px;
+	padding: 30px;
+	background: white;
+	display: none;
+}
+.lecture_line {
+	text-align: center;
+	line-height: 40px;
+	border-left: 1px solid #dadada;
+	padding: 0px 10px;
+	height: 40px;
+}
+.lecture_line:last-child {
+	border-right: 1px solid #dadada;
+}
+#lecture_lname {
+	text-align: left;
+	box-sizing: border-box;
+	transition: .2s;
+}
+#lecture_lname:hover {
+	cursor: pointer;
+	color: #79CDCF;
 }
 
-.update_btn{
-	right: -55px;
+
+
+
+
+
+
+#list_btn {
+	padding: 1px;
 }
-.delete_btn{
-	right: -110px;
-}
-.drop_btn_box{
-	position: absolute;
-	display:none;
-	border:2px solid #404988;
-	background-color: #404988;
-	border-radius:5px;
-	color: white;
-	width: 50px;
-	height: 38px;
-	top: 0px;
-}
-.dropn_btn{
-	right: -55px;
-}
-.dropy_btn{
-	right: -110px;
-}
-.modal_back{
-	position: absolute;
-	display: none;
-	top: 0;
-	left: 0;
-	width:100vw;
-	height:100vh;
-	background-color: rgba(0,0,0,0.3);
-	z-index: 10;
-}
-.modal_text{
-	position:relative;
-	padding: 50px;
-	margin: 200px auto 0;
-	width: 400px;
-	height: 200px;
-	background-color: white;
+#list_btn a span {
+	display: inline-block;
+	width: 47.5%;
+	height: 37px;
+	line-height: 38px;
 	text-align: center;
-	font-size: 15px;
-}
-.modal_btn_box{
-	position: absolute;
-	bottom: 50;
-	width: 300px;
-	height: 50px;
-	display: flex;
-	line-height: 50px;
-	justify-content: space-between;
-}
-.modal_btn{
-	width:140px;
-	border: 1px solid #404988;
-	border-radius: 5px;
-	background-color: #404988;
 	color: white;
+	border-radius: 5px;
+	transition: .2s;
+}
+#update_btn {
+	background: #FFC000;
+}
+#delete_btn {
+	background: #79CDCF;
+}
+#list_btn a span:hover {
+	background: #2D314F;
+}
+
+
+
+
+
+.section_btn {
+	height: 50px;
+}
+.insert_btn {
+	float: right;
+	width: 100px;
+	background: #79CDCF;
+	border-radius: 20px;
+	padding: 7px 0px;
+	text-align: center;
+	color: white;
+	transition: .2s;
+}
+.insert_btn:hover {
+	background: #2D314F;
 }
 </style>
 </head>
 <body>
-	<div class="list_box">
-		<div class="list_box_header list_box_title">
-			<div class="num">No.</div>
-			<div class="name info_line flex_line2">이름</div>
-			<div class="email info_line flex_line3">이메일</div>
-			<div class="phone info_line flex_line3">전화번호</div>
-			<div class="id info_line flex_line2">아이디</div>
-			<div class="pw info_line flex_line2">비밀번호</div>
-		</div>	
-		
-		<c:forEach items="${list}" var="mDto" varStatus="status">
-				<div class="list_box_header">
-					<div class="num">
-						<input id="input_num" name="num" class="info_box" value="${status.index+1}" readonly="readonly" style = "text-align:center;">
+	<div class="content_area_wrapper">
+		<%@ include file="../include/main_aside.jsp" %>
+		<div class="nav_content_footer">
+			<%@ include file="../include/main_nav.jsp" %>
+			<div class="content_area">
+				<div class="section_list">
+					<div class="section_title">
+						과정관리
+						<span class="section_bar"></span>
 					</div>
-					<div class="name info_line flex_line2">
-						<input id="input_name" name="name" class="info_box" value="${mDto.name}" readonly="readonly">
+					<div class="section_btn">
+						<a href="${path}/mainlecture/insert">
+							<div class="insert_btn">강좌등록</div>
+						</a>
 					</div>
-					<div class="email info_line flex_line3">
-						<input id="input_email" name="email"class="info_box" value="${mDto.email}" readonly="readonly">
+					<div class="list_box">
+						<div class="list_box_title">
+							<div class="info_line info_num">No.</div>
+							<div class="info_line info_lname">강좌명</div>
+							<div class="info_line info_tname">담당 선생님</div>
+							<div class="info_line info_date">강좌기간</div>
+							<div class="info_line info_btn" id="info_btn">비고</div>
+						</div>
+						<c:forEach items="${list}" var="list" varStatus="status">
+						<div class="list_wrap">
+							<div class="list_box_lecture" id="list_box_lecture" data-index="${status.index}">
+								<div class="lecture_line info_num lecture_num">${list.lno}</div>
+								<a class="lecture_line info_lname lecture_lname" id="lecture_lname">${list.lname}</a>
+								<div class="lecture_line info_tname lecture_tname">${list.tname}</div>
+								<div class="lecture_line info_date lecture_date">${list.startdate}~</div>
+								<div class="lecture_line info_btn" id="list_btn">
+									<a><span id="update_btn">수정</span></a>
+									<a><span id="delete_btn">삭제</span></a>
+								</div>
+							</div>
+							<div class="list_box_content">
+								efsdfsadfsdaf
+							</div>
+							
+						</div>
+						</c:forEach>
 					</div>
-					<div class="phone info_line flex_line3">
-						<input id="input_phone" name="phone" class="info_box" value="${mDto.phone}" readonly="readonly">
-					</div>
-					<div class="id info_line flex_line2">
-						<input id="input_id" name="id" class="imput_id info_box" value="${mDto.id}" readonly="readonly">
-					</div>
-					<div class="pw info_line flex_line2">
-						<input id="input_pw" name="pw" type="password" class="info_box" value="${mDto.pw}" readonly="readonly">
-					</div>
-					<input type="hidden" value="1">
-					<button class="update_btn btn_box">수정</button>
-					<button class="delete_btn btn_box">삭제</button>
-					<button class="dropn_btn drop_btn_box">NO</button>
-					<button class="dropy_btn drop_btn_box">YES</button>
 				</div>
-		</c:forEach>	
-	</div>		
+			</div>
+			
+		<%@ include file="../include/main_footer.jsp" %>
+		</div>
+	</div>
 	<script type="text/javascript">
 		$(function(){
-			
-			$('.update_btn').click(function(event) {
-				var flag = $(this).parent().children("input").val();
-				alert(flag);
-				if(flag > 0){
-					$(this).parent().children("div").children("input").removeAttr("readonly");
-					$(this).parent().children("div").children("input").eq(4).attr("readonly", "readonly");
-					$(this).parent().children("div").children("input").css("background-color", "#CEFBC9");
-					$(this).text("확인");
-					$(this).next().css("display", "none");
-					$(this).parent().children("input").val(0);
-					
-				}else{
-					var valName = $(this).parent().children("div").eq(1).children("input").val();
-					var valMail = $(this).parent().children("div").eq(2).children("input").val();
-					var valPhone = $(this).parent().children("div").eq(3).children("input").val();
-					var valId = $(this).parent().children("div").eq(4).children("input").val();
-					var valPw = $(this).parent().children("div").eq(5).children("input").val();
-					
-					$(this).parent().children("div").children("input").attr("readonly", "readonly");
-					$(this).parent().children("div").children("input").css("background-color", "#eaeaea");
-					$(this).text("수정");
+			var lFlag = 0;
+			$('.list_box_lecture').click(function(){
+				if (lFlag==0) {
 					$(this).next().css("display", "block");
-					$(this).parent().children("input").val(1);
-					
-					$.ajax({
-						url:"${path}/member/admin_update?id="+valId+"&pw="+valPw+"&name="+valName+"&email="+valMail+"&phone="+valPhone,
-						type: "POST",
-						success: function(){
-
-						},
-						error:function(){
-							alert("aaaa Error!!");
-						}
-					});
-					
-					
-
+					$(this).css("background", "#efefef");
+					lFlag = 1;
+					return lFlag;
+				} else {
+					$(this).next().css("display", "none");
+					$(this).css("background", "white");
+					lFlag = 0;
+					return lFlag;
 				}
 			});
 			
+			
+			$('#searchbtnArea').click(function(){
+				var search_option = $('#selsearch').val();
+				var keyword = $.trim($('#search_board').val());
+				
+				if(keyword == null || keyword.length == 0){
+					$('#search_board').focus();
+					$('#search_board').css('border','2px solid #79CDCF');
+					 // 검색 시 페이지네이션이 밑으로 밀리는 현상 방지 
+					$('#dataTable_paginate').css('bottom','1rem');
+					return false;
+				}
+			});
 		});
 		
 	</script>

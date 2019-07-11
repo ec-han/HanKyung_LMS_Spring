@@ -577,7 +577,7 @@
                 <div>
                 	<c:choose>
 	                	<c:when test="${!empty sessionScope.id}">
-		                    <a href="${path}/main/" class="center_bottom">
+		                    <a href="${path}/lecture/list" class="center_bottom">
 		                        <span class="center_btn">START</span>
 		                    </a>
 	                    </c:when>

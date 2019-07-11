@@ -43,7 +43,7 @@
 				  <i class="far fa-address-book"></i>
 				  <span>학생 관리</span>
 				</a>
-				<a class="nav_link collapsed" href="${path}/main/insert_lecture">
+				<a class="nav_link collapsed" href="${path}/mainlecture/list">
 				  <i class="fas fa-headphones"></i>
 				  <span>과정 관리</span>
 				</a>
