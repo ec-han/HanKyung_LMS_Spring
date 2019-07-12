@@ -269,6 +269,29 @@ SELECT COUNT(*)
 FROM hk_lecture_board WHERE 
 title LIKE '%공지%' AND btype='1';
 
+-- 한경 게시판 첨부파일 테이블 
+-- DRAG & DROP을 활용한 첨부파일
+-- 첨부파일 이름은 uuid를 사용하기 때문에 중복 안됨 
+DROP TABLE hklb_attach CASCADE CONSTRAINTS;
+CREATE TABLE hklb_attach(
+    fullname VARCHAR2(150) NOT NULL,
+    bno NUMBER NOT NULL,
+    regdate DATE DEFAULT SYSDATE
+);
+ALTER TABLE hklb_attach ADD CONSTRAINT pk_hklb_attach
+PRIMARY KEY(fullname);
+
+SELECT * FROM hklb_attach;
+
+DELETE FROM hklb_attach;
+
+ALTER TABLE hklb_attach
+ADD CONSTRAINT fk_hklb_attach_bno
+FOREIGN KEY(bno) REFERENCES hk_lecture_board(bno)
+ON DELETE CASCADE;
+
+commit;
+
 -- hk_lecture_board 관련 댓글 테이블
 DROP SEQUENCE seq_lecture_board_reply;
 CREATE SEQUENCE seq_lecture_board_reply
