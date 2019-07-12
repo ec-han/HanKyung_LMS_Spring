@@ -171,4 +171,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE rnum BETWEEN 1 AND 5
 	</select>
 	
+	<!-- 첨부파일 동작 -->
+	<insert id="addAttach">
+		INSERT INTO hklb_attach(fullName, bno)
+		VALUES(#{fullName},seq_hklboard.CURRVAL)
+	</insert>
 </mapper>

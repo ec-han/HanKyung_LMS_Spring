@@ -389,10 +389,16 @@
 			
 		    // 이미지 파일이면
 		    if (checkImageType(fullName)) {
+		    	alert("이미지 파일 체크");
 		        imgSrc = "${path}/upload/displayFile?fileName=" + fullName; // 썸네일 이미지 링크
+		        // /2019/07/s_7bd89afd-ccf6-41b9-88a7-ce15008384bb_Tulips
+		        // 실제 uuid가 붙은 원본 파일 이름 찾아줌 
 		        uuidFileName = fullName.substr(14);
+		        // /2019/07/12/7bd89afd-ccf6-41b9-88a7-ce15008384bb_Tulips
+		        // 0,12 0부터 11까지 자르고, 14부터 ~~ 쭉을 합침. 12,13이 빠짐 12,13은 s_임. 
+		        // 파일이름을 잘라서 실제 원본 파일 이름 구해줌 
 		        var originalImg = fullName.substr(0, 12) + fullName.substr(14);
-		        // 원본 이미지 요청 링크
+		        // 원본 이미지 요청 링크(파일 다운로드 요청 링크)
 		        originalFileUrl = "${path}/upload/displayFile?fileName=" + originalImg;
 		    } else {
 		        imgSrc = "${path}/resources/img/file-icon.png"; // 파일 아이콘 이미지 링크
@@ -400,9 +406,10 @@
 		        // 파일 다운로드 요청 링크
 		        originalFileUrl = "${path}/upload/displayFile?fileName=" + fullName;
 		    }
+		    // 라이언13.jpg
 		    originalFileName = uuidFileName.substr(uuidFileName.indexOf("_") + 1);
-		 // 전체 파일명의 크기가 14보다 작으면 그대로 이름 출력,
-		    // 14보다 크면 실행
+		    // 전체 파일명의 크기가 14보다 작으면 그대로 이름 출력,
+		    // 14보다 크면 실행(파일이름이 엄청 길면 한 줄 내려오거나 잘리니까 줄이고 ...으로 축약)
 		    if(originalFileName.length > 14) {
 		    	// 앞에서부터 11글자 자름
 		    	var shortName = originalFileName.substr(0, 10);
@@ -419,6 +426,7 @@
 		}
 		//첨부파일 출력
 		function printFiles(data) {
+			// data = /2019/07/12/s_jfsdkljflsjdf_라이언13.jpg
 		    // 파일 정보 처리
 		    var fileInfo = getFileInfo(data);
 		    /* console.log(fileInfo); */
@@ -463,7 +471,7 @@
 			var listCnt = 0;
 			$.ajax({
 				type: "post",
-				url: "${path}/board/getAttach/${one.bno}",
+				url: "${path}/lectureboard/getAttach/${one.bno}",
 				async: false,
 				success: function(list){
 					// list : json

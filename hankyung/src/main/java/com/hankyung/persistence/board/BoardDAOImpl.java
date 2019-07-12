@@ -7,13 +7,13 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.hankyung.domain.board.BoardDTO;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
-@Service
+@Repository
 public class BoardDAOImpl  implements BoardDAO{
 	
 	@Inject

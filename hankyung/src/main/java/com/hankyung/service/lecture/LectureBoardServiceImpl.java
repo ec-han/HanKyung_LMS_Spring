@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hankyung.domain.lecture.LectureBoardDTO;
 import com.hankyung.domain.lecture.LectureDTO;
@@ -29,10 +30,25 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 		String id = (String)session.getAttribute("id");
 		return lbDao.myLecture(lno, id);
 	}
-
+	
+	@Transactional
 	@Override
 	public int create(LectureBoardDTO lbDto) {
-		return  lbDao.create(lbDto);
+		
+		// 게시글 등록 
+		int result = lbDao.create(lbDto);
+		
+		// attach 테이블에 첨부파일 이름 추가
+		String[] files = lbDto.getFiles();
+		log.info("파일 이름 추가 후 출력" + lbDto.toString());
+		if(files==null) { // 첨부파일 없으면 skip
+			
+		}
+		for (String name : files) {
+			lbDao.addAttach(name); // attach 테이블에 insert 
+			log.info(name+"파일첨부 DAO 다녀옴");
+		}
+		return result;
 	}
 
 	@Override

@@ -21,6 +21,7 @@ public class LectureBoardDTO {
 	private String writer;
 	private int viewcnt;
 	private int replycnt;
+	private String[] files; // 첨부파일 이름 배열
 	private Date regdate;
 	private int ref;	// 게시글 그룹
 	private int re_step;	// 그룹 내 정렬(출력) 순서

@@ -22,16 +22,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hankyung.service.board.BoardService;
+import com.hankyung.service.lecture.LectureBoardService;
 import com.hankyung.util.MediaUtils;
 import com.hankyung.util.UploadFileUtils;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Controller
 public class AjaxUploadController {
 	// 로깅을 위한 변수
 	private static final Logger logger = LoggerFactory.getLogger(AjaxUploadController.class);
 	
 	@Inject
-	BoardService boardService;
+	LectureBoardService boardService;
 
 	// 업로드 디렉토리 servlet-context.xml에 설정되어 있음
 	@Resource(name = "uploadPath")
@@ -51,10 +54,11 @@ public class AjaxUploadController {
 		return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
 	}
 
-	// 이미지 표시 기능
-	@ResponseBody // view가 아닌 data 리턴
+	// 이미지 표시 기능 // view가 아닌 data 리턴
+	@ResponseBody 
 	@RequestMapping("upload/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
+		log.info("displayFile메서드 옴");
 		// 서버의 파일을 다운로드하기 위한 스트림
 		InputStream in = null; // java.io
 		ResponseEntity<byte[]> entity = null;
@@ -66,6 +70,7 @@ public class AjaxUploadController {
 			HttpHeaders headers = new HttpHeaders();
 			// InputStream 생성
 			in = new FileInputStream(uploadPath + fileName);
+			log.info("파일네임: "+fileName);
 //			if (mType != null) { // 이미지 파일이면
 //				headers.setContentType(mType);
 //			} else { // 이미지가 아니면

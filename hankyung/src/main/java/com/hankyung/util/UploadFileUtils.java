@@ -11,6 +11,8 @@ import javax.imageio.ImageIO;
 import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
 
+import com.hankyung.util.MediaUtils;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -32,9 +34,11 @@ public class UploadFileUtils {
 		String uploadedFileName = null;
 		// 이미지 파일은 썸네일 사용
 		
-		  if(MediaUtils.getMediaType(formatName)!=null) { // 썸네일 생성 uploadedFileName =
-		  makeThumbnail(uploadPath, savedPath, savedName); } else { uploadedFileName =
-		  makeIcon(uploadPath, savedPath, savedName); }
+		 if(MediaUtils.getMediaType(formatName)!=null) { // 썸네일 생성 
+			  uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName); 
+	      } else { 
+	    	  uploadedFileName = makeIcon(uploadPath, savedPath, savedName); 
+	      }
 		 
 		return uploadedFileName;
 				
@@ -51,6 +55,7 @@ public class UploadFileUtils {
 	
 	
 	  private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception { 
+	  log.info("makeThumbnail 메서드옴");  	
 	  // 이미지 파일을 읽기 위한 버퍼 
 	  BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path, fileName )); 
 	  // 100픽셀 단위의 썸네일 생성
@@ -61,6 +66,7 @@ public class UploadFileUtils {
 	  String formatName = fileName.substring(fileName.lastIndexOf(".") + 1); 
 	  // 썸네일 생성
 	  ImageIO.write(destImg, formatName.toUpperCase(), newFile); 
+	  log.info(thumbnailName);
 	  // 썸네일의 이름을 리턴함
 	  return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar,'/');
 	  }
