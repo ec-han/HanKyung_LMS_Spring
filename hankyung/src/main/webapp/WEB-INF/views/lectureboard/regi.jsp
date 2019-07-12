@@ -95,14 +95,15 @@
 														<th>
 															<c:if test="${empty one.bno}">
 															<div class="regi-tb-center" id="viewoptionheader">게시판</div>
+															<input type="hidden" value="${viewoption}" id="viewoption-info">
 															<c:choose>
 																<c:when test="${sessionScope.type == '1'}">
 																<div id="dataTable_filter" class="dataTables_filter">
 										              				<label>
 										              					<select id="viewoption" class="sel-viewoption" name="viewoption">
-																			<option value="2" selected="selected">일반게시글</option>
-																			<option value="0">공지</option>
+																			<option value="2">일반게시글</option>
 																			<option value="1">묻고답하기</option>
+																			<option value="0">공지</option>
 																		</select>
 										              				</label>
 										              			</div>
@@ -111,7 +112,7 @@
 										              			<div id="dataTable_filter" class="dataTables_filter">
 										              				<label>
 										              					<select id="viewoption" class="sel-viewoption" name="viewoption">
-																			<option value="2" selected="selected">일반게시글</option>
+																			<option value="2">일반게시글</option>
 																			<option value="1">묻고답하기</option>
 																		</select>
 										              				</label>
@@ -218,6 +219,15 @@
 		var deleteFileList = new Array();
 		
 		$(document).ready(function() {
+			
+			var vinfo = $("#viewoption-info").val();
+			if(vinfo=="qna") {
+				$(".sel-viewoption option:eq(1)").prop("selected", true);
+			} else if(vinfo=="notice") {
+				$(".sel-viewoption option:eq(2)").prop("selected", true);
+			} else if(vinfo=="normal") {
+				$(".sel-viewoption option:eq(0)").prop("selected", true);
+			}
 			
 			$('#summernote').summernote({
 	   			lang: 'ko-KR',
