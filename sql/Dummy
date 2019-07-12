@@ -444,6 +444,51 @@ FOREIGN KEY(id) REFERENCES hk_member(id);
 commit;
 
 --상담테이블
+
+
+DROP TABLE hk_cnsln;
+CREATE TABLE hk_cnsln(
+    name VARCHAR2(1000) NOT NULL,
+    id VARCHAR2(80) NOT NULL, 
+    cnsln1 VARCHAR2(4000),
+    cnsln1_date DATE,
+    cnsln2 VARCHAR2(4000),
+    cnsln2_date DATE,
+    cnsln3 VARCHAR2(4000),
+    cnsln3_date DATE,
+    cnsln4 VARCHAR2(4000),
+    cnsln4_date DATE,
+    cnsln5 VARCHAR2(4000),
+    cnsln5_date DATE,
+    cnsln6 VARCHAR2(4000),
+    cnsln6_date DATE
+);
+
+INSERT INTO hk_cnsln(name, id, cnsln1)
+VALUES('김도연','user03', 'ㅎㅇ');
+INSERT INTO hk_cnsln(name, id)
+VALUES('한은채','user02');
+INSERT INTO hk_cnsln(name, id)
+VALUES('박선미','user01');
+INSERT INTO hk_cnsln(name, id)
+VALUES('황수연','user04');
+INSERT INTO hk_cnsln(name, id)
+VALUES('이인범','user05');
+INSERT INTO hk_cnsln(name, id)
+VALUES('최인준','user06');
+INSERT INTO hk_cnsln(name, id)
+VALUES('유수지','user07');
+
+commit;
+
+SELECT m.*, c.*
+FROM hk_member m, hk_cnsln c
+WHERE m.id = c.id(+) AND type = '2'
+ORDER BY m.mno
+
+SELECT * FROM hk_cnsln
+WHERE id = 'user03'
+
 SELECT m.name, s.*
      	FROM hk_member m, hk_score s
      	WHERE m.id = s.id
@@ -452,3 +497,4 @@ SELECT m.name, s.*
      	FROM hk_member m, hk_score s
      	WHERE m.id = s.id
      	ORDER BY m.mno
+
