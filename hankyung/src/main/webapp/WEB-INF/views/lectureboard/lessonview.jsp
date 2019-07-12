@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
 <meta charset="UTF-8">
-<title>학습방</title>
+<title>학습 상세</title>
 <style type="text/css">
 
 </style>
@@ -19,7 +19,7 @@
 		<div class="nav_content_footer">
 			<%@ include file="../include/main_nav.jsp" %>
 			<div class="content_area">
-				<table class="table table-bordered" id="classTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="classViewTable" width="100%" cellspacing="0">
 					<tbody>
 						<c:forEach items="${list}" var="list">
 						<tr>
@@ -40,7 +40,7 @@
 										</div>
 										<div class="result-price">
 											<span id="lecture-no">${list.class_no}</span>강
-											<a href="${path}/lecturelesson/lessonview" class="lecture-view-btn">
+											<a href="#" class="lecture-view-btn">
 												<i class="fas fa-headphones"></i>
 												<span id="lecture-view-span">수업보기</span>
 											</a>

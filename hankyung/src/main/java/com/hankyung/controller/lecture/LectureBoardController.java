@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hankyung.domain.cart.CartDTO;
 import com.hankyung.domain.lecture.LectureBoardDTO;
+import com.hankyung.domain.lecture.LectureLessonDTO;
 import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.service.Pager;
 import com.hankyung.service.cart.CartService;
@@ -236,8 +237,4 @@ public class LectureBoardController {
 		return "redirect:/lectureboard/list?viewoption="+lbDto.getBtype();
 	}
 	
-	@GetMapping(value="classroom")
-	public String classView() {
-		return "lectureboard/classroom";
-	}
 }

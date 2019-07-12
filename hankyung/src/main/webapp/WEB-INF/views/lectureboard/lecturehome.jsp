@@ -185,18 +185,18 @@
 								<div class="progress-bar" id="bg-red" style="width: 20%"></div>
 							</div>
 							<h3 class="study-info-item-title">
-								수강현황
-								<span>30%</span>	
-							</h3>
-							<div class="progress">
-								<div class="progress-bar" id="bg-yellow" style="width: 30%"></div>
-							</div>
-							<h3 class="study-info-item-title">
-								과제현황
+								과제제출
 								<span>50%</span>	
 							</h3>
 							<div class="progress">
-								<div class="progress-bar" id="bg-green" style="width: 50%"></div>
+								<div class="progress-bar" id="bg-yellow" style="width: 50%"></div>
+							</div>
+							<h3 class="study-info-item-title">
+								시험응시
+								<span>0%</span>	
+							</h3>
+							<div class="progress">
+								<div class="progress-bar" id="bg-green" style="width: 0%"></div>
 							</div>
 						</div>
 					</div>

@@ -70,7 +70,7 @@
 				</div>
 			</li>
 			<li class="nav_item">
-				<a class="nav_link collapsed" href="${path}/lectureboard/classroom">
+				<a class="nav_link collapsed" href="${path}/lecturelesson/classroom">
 				  <i class="fas fa-headphones"></i>
 				  <span>학습방</span>
 				</a>
