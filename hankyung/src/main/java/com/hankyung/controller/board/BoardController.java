@@ -72,8 +72,8 @@ public class BoardController {
 			mav.setViewName("notice/home_notice");	// 페이지 이동경로 
 			log.info(">>> 공지사항 페이지 이동");
 		}else if(btype==1) {
-			mav.setViewName("notice/home_qna");	// 페이지 이동경로 
-			log.info(">>> 묻고답하기 페이지 이동");
+			mav.setViewName("notice/home_request");	// 페이지 이동경로 
+			log.info(">>> IT서비스 개선 요청 페이지 이동");
 		}else {
 			mav.setViewName("/main/");
 			log.info(">>> 메인 페이지 이동");
@@ -96,7 +96,7 @@ public class BoardController {
 				log.info(">>>> 공지사항 게시글 등록 성공");
 				return "redirect:/board/dbread?bno="+bDto.getBno()+"&btype="+bDto.getBtype();   
 			}else if(btype==1){
-				log.info(">>>> QnA 게시글 등록 성공");
+				log.info(">>>> IT서비스 개선 요청 등록 성공");
 				//bDto = service.read(bDto);
 				//log.info(bDto.toString());
 				return "redirect:/board/dbread?bno="+bDto.getBno()+"&btype="+bDto.getBtype();   
@@ -122,7 +122,7 @@ public class BoardController {
 				log.info(">>>> 공지사항 게시글 삭제 성공");
 				return "redirect:/board/list?btype="+btype;  
 			}else if(btype.equals("1")){
-				log.info(">>>> QnA 게시글 삭제 성공");
+				log.info(">>>> IT서비스 개선 요청 삭제 성공");
 				return "redirect:/board/list?btype="+btype; 
 			}
 		} else {
@@ -158,7 +158,7 @@ public class BoardController {
 				log.info(">>>> 공지사항 게시글 수정 성공");
 				return "redirect:/board/dbread?bno="+bDto.getBno()+"&btype="+btype;   
 			}else if(btype.equals("1")){
-				log.info(">>>> QnA 게시글 수정 성공");
+				log.info(">>>> IT서비스 개선 요청 게시글 수정 성공");
 				return "redirect:/board/dbread?bno="+bDto.getBno()+"&btype="+btype;   
 			}
 		} else {
@@ -166,7 +166,7 @@ public class BoardController {
 			if(btype.equals("0")) {
 				return "/notice/home_notice";  
 			}else if(btype.equals("1")){
-				return "/notice/home_qna";  
+				return "/notice/home_request";  
 			}
 		}
 		return "/main/"; //if문 안탈경우의 처리가 필요함 

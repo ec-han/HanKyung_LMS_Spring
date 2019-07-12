@@ -248,12 +248,6 @@
 											<a href="${path}/board/list?btype=${one.btype}">
 												<i class="far fa-list-alt" id="btn_list"></i>
 											</a>
-											<!-- 답글 버튼 : 묻고 답하기 게시판이고 관리자만 답글을 달 수 있어야 함-->
-											<c:if test="${sessionScope.type == '0' && !empty sessionScope.id && one.btype=='1'}">
-											<a href="${path}/lectureboard/answer?bno=${one.bno}">
-												<i class="fas fa-reply" id="btn_rpl"></i>
-											</a>
-											</c:if>
 										</div>
 									</div>
 									<!-- 모달 창  -->

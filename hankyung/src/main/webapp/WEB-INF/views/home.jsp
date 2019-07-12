@@ -469,7 +469,7 @@
 	                        	<a href="${path}/member/update" class="member_update mypage_btn"><i class="fas fa-cogs fa-sm fa-fw mr-2 icon_hover" id="update_icon"></i>회원수정</a>
 	                        	</c:if>
 	                        	<a href="${path}/board/list?btype=0" class="member_update mypage_btn"><i class="fas fa-exclamation-circle icon_hover" id="notice_icon"></i>공지사항</a>
-	                        	<a href="${path}/board/list?btype=1" class="member_update mypage_btn"><i class="fas fa-question-circle icon_hover" id="qna_icon"></i>묻고답하기</a>
+	                        	<a href="${path}/board/list?btype=1" class="member_update mypage_btn"><i class="fas fa-question-circle icon_hover" id="qna_icon"></i> IT지원</a>
 	                        </div>
 	                   	</div>
                    	</c:if>

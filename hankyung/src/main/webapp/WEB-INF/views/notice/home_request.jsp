@@ -14,7 +14,7 @@
 	<!-- 가장 큰 박스 -->
 	<div class="section_box">
 		<div>
-			<div class="info_title">묻고답하기
+			<div class="info_title">IT서비스 개선 요청
 	        	<div class="info_title_bar"></div>
 	        </div>
 	        <div class="card-big-wrapper">

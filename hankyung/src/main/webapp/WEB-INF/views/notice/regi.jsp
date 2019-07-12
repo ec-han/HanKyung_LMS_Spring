@@ -107,8 +107,8 @@
 	</div>
 	<%@ include file="../include/home_footer.jsp" %>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
-	<script src="${path}/resources/js/summernote-ko-KR.js"></script>
+	<script src="${path}/resources/summernote/summernote-lite.js"></script>
+	<script src="${path}/resources/summernote/lang/summernote-ko-KR.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 	   		$('#summernote').summernote({

@@ -296,7 +296,7 @@
 			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
-	<script src="${path}/resources/js/summernote-ko-KR.js"></script>
+	<script src="${path}/resources/summernote/lang/summernote-ko-KR.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		comment_list();

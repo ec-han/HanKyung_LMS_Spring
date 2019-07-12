@@ -36,19 +36,21 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	public int create(LectureBoardDTO lbDto) {
 		
 		// 게시글 등록 
-		int result = lbDao.create(lbDto);
+		// int result = lbDao.create(lbDto);
 		
 		// attach 테이블에 첨부파일 이름 추가
 		String[] files = lbDto.getFiles();
 		log.info("파일 이름 추가 후 출력" + lbDto.toString());
 		if(files==null) { // 첨부파일 없으면 skip
-			
+			log.info("드래그앤드롭 파일 null");
+		} else {
+			for (String name : files) {
+				log.info("foreach시작");
+				lbDao.addAttach(name); // attach 테이블에 insert 
+				log.info(name+"파일첨부 DAO 다녀옴");
+			}
 		}
-		for (String name : files) {
-			lbDao.addAttach(name); // attach 테이블에 insert 
-			log.info(name+"파일첨부 DAO 다녀옴");
-		}
-		return result;
+		return lbDao.create(lbDto);
 	}
 
 	@Override

@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			VALUES(seq_hkboard.NEXTVAL, seq_hkboard_notice.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
 		</if>
 		<if  test="btype == 1">
-			VALUES(seq_hkboard.NEXTVAL, seq_hkboard_qna.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
+			VALUES(seq_hkboard.NEXTVAL, seq_hkboard_request.NEXTVAL, #{btype}, #{title}, #{content}, #{writer})
 		</if>
 		<selectKey keyProperty="bno" resultType="Integer" order="AFTER">
 			SELECT seq_hkboard.CURRVAL FROM dual
