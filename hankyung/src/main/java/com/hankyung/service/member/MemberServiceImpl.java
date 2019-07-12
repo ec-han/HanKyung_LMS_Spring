@@ -24,6 +24,11 @@ public class MemberServiceImpl implements MemberService{
 	public void create(MemberDTO mDto) {
 		mDao.create(mDto);
 	}
+	
+	@Override
+	public void create_cnsln(MemberDTO mDto) {
+		mDao.create_cnsln(mDto);
+	}
 
 	@Override
 	public boolean login(MemberDTO mDto, HttpSession session) {
@@ -111,5 +116,7 @@ public class MemberServiceImpl implements MemberService{
 	public CnslnDTO cnslnone(String id) {
 		return mDao.cnslnone(id);
 	}
+
+
 
 }

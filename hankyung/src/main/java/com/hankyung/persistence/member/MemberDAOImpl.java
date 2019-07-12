@@ -22,7 +22,11 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void create(MemberDTO mDto) {
 		sqlSession.insert("member.create", mDto);
-		
+	}
+	
+	@Override
+	public void create_cnsln(MemberDTO mDto) {
+		sqlSession.insert("member.create_cnsln", mDto);
 	}
 
 	@Override
@@ -95,5 +99,7 @@ public class MemberDAOImpl implements MemberDAO{
 	public CnslnDTO cnslnone(String id) {
 		return sqlSession.selectOne("member.cnslnone", id);
 	}
+
+
 
 }

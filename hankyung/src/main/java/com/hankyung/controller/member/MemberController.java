@@ -67,6 +67,7 @@ public class MemberController {
 	public String createPlay(MemberDTO mDto, HttpSession session) {
 		log.info("회원가입");
 		service.create(mDto);
+		service.create_cnsln(mDto);
 		log.info("회원가입 완료");
 		if(session != null) {
 			return "main/management";

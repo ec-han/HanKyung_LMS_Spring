@@ -97,4 +97,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id = #{id}
 	</select>
 	
+	<insert id="create_cnsln">
+		INSERT INTO hk_cnsln(name, id)
+		VALUES(#{name}, #{id})
+	</insert>
+	
 </mapper>

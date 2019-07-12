@@ -14,7 +14,7 @@
 }
 .container_box{
 	/* border:1px solid black; */
-	height: 500px;
+	min-height: 500px;
 }
 .container_header{
 	position:relative;
@@ -35,7 +35,6 @@
 .list_box{
 	margin: 0 auto;
 	width: 80%;
-	border: 2px solid lightgray;
 	border-bottom: 0px;
 }
 .list_box_header{
@@ -209,6 +208,7 @@
 	<script type="text/javascript">
 		var num = 0;
 		$(function(){
+			
 			management_list();
 			
 			$(".student").eq(0).css("color", "red");
@@ -222,6 +222,7 @@
 				management_score();
 				$("#management_list").css("display", "none");
 				$("#management_cnsln").css("display", "none");
+				$("#management_detail_cnsln").css("display", "none");
 				$("#management_score").css("display", "block");
 				$(".insert_btn").css("display", "none");
 			});
@@ -229,6 +230,7 @@
 				management_list();
 				$("#management_score").css("display", "none");
 				$("#management_cnsln").css("display", "none");
+				$("#management_detail_cnsln").css("display", "none");
 				$("#management_list").css("display", "block");
 				$(".insert_btn").css("display", "block");
 			});
@@ -236,6 +238,7 @@
 				management_cnsln();
 				$("#management_list").css("display", "none");
 				$("#management_score").css("display", "none");
+				$("#management_detail_cnsln").css("display", "none");
 				$("#management_cnsln").css("display", "block");
 				$(".insert_btn").css("display", "none");
 			});
@@ -250,7 +253,6 @@
 			num = $(this).parent().children("div").eq(0).children("input").val();
 			alert(id_cnsln + ", " + num);
 			management_detail_cnsln(id_cnsln);
-			$('#detail_num').val(num);
 		});
 		
 		

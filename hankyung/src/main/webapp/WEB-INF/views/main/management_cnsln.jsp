@@ -115,7 +115,7 @@
 	<script type="text/javascript">
 		$(function(){		
 			$('.cnsln_box').click(function(event) {
-				$(this).parent().children("div").eq(2).children("input").val();
+				$(this).parent().children("div").eq(0).children("input").val();
 				
 			});
 		});

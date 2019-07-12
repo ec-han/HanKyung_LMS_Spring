@@ -12,10 +12,6 @@
 .content_area{
 	background-color: #F8F9FC;
 }
-.container_box{
-	/* border:1px solid black; */
-	height: 500px;
-}
 .container_header{
 	margin: 0 auto;
 	width: 80%;
