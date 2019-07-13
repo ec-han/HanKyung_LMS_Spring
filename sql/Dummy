@@ -42,7 +42,7 @@ CREATE SEQUENCE seq_hk_lecture
 START WITH 1
 INCREMENT BY 1;
 
-DROP TABLE hk_lecture;
+DROP TABLE hk_lecture DROP TABLE hk_lecture CASCADE CONSTRAINTS;
 CREATE TABLE hk_lecture(
     lno NUMBER PRIMARY KEY,
     lname VARCHAR2(300) NOT NULL,
@@ -102,8 +102,6 @@ INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supm
 VALUES(seq_hk_lecture.NEXTVAL, '리액트로 구현하는 블록체인 이더리움 Dapp', '0004', '최철웅', '디자인', '30', '22', '200000', '3000000', 'lecture07.png', '190820', '200618');
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '누구든지 하는 리액트: 초심자를 위한 react 핵심 강좌', '0002', '최철웅', '캐드', '30', '28', '200000', '3000000', 'lecture08.png', '190820', '200618');
-
-
 
 
 SELECT * FROM hk_lecture;
@@ -355,8 +353,6 @@ bno = 10 ORDER BY rno;
 SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply r, hk_member m WHERE 
 r.writer = m.name AND bno = 5 ORDER BY rno;
 
----------------------------- 7/4
-
 --위시리스트
 DROP TABLE hk_wish;
 CREATE TABLE hk_wish(
@@ -392,10 +388,6 @@ SELECT a.*, c.lno as isempty
 commit;
 
 
-
-
-
-
 --강의 과목테이블
 DROP TABLE hk_subject;
 CREATE TABLE hk_subject(
@@ -422,6 +414,11 @@ CREATE TABLE hk_score(
     sub_score4 VARCHAR2(20) DEFAULT 0,
     sub_score5 VARCHAR2(20) DEFAULT 0
 );
+
+ALTER TABLE hk_score
+ADD CONSTRAINT hk_score_fk_id
+FOREIGN KEY(id) REFERENCES hk_member(id);
+
 INSERT INTO hk_score(id, lcode)
 VALUES('user03', '0001');
 INSERT INTO hk_score(id, lcode)
@@ -438,13 +435,10 @@ SELECT * FROM hk_member;
 SELECT * FROM hk_score 
 commit;
 
-ALTER TABLE hk_score
-ADD CONSTRAINT hk_score_fk_id
-FOREIGN KEY(id) REFERENCES hk_member(id);
+
 commit;
 
 --상담테이블
-
 
 DROP TABLE hk_cnsln;
 CREATE TABLE hk_cnsln(
@@ -467,7 +461,7 @@ CREATE TABLE hk_cnsln(
 INSERT INTO hk_cnsln(name, id, cnsln1)
 VALUES('김도연','user03', 'ㅎㅇ');
 INSERT INTO hk_cnsln(name, id)
-VALUES('한은채','user02');
+VALUES('한은체','user02');
 INSERT INTO hk_cnsln(name, id)
 VALUES('박선미','user01');
 INSERT INTO hk_cnsln(name, id)
@@ -497,4 +491,4 @@ SELECT m.name, s.*
      	FROM hk_member m, hk_score s
      	WHERE m.id = s.id
      	ORDER BY m.mno
-
+commit;
