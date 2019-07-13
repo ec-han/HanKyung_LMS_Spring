@@ -22,4 +22,14 @@ public class LectureLessonServiceImpl implements LectureLessonService {
 		return llDao.list(lno);
 	}
 
+	@Override
+	public LectureLessonDTO read(LectureLessonDTO llDto) {
+		return llDao.read(llDto);
+	}
+
+	@Override
+	public int update(LectureLessonDTO llDto) {
+		return llDao.update(llDto);
+	}
+
 }

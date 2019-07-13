@@ -24,4 +24,14 @@ public class LectureLessonDAOImpl implements LectureLessonDAO {
 		return session.selectList("lecturelesson.list",lno);
 	}
 
+	@Override
+	public LectureLessonDTO read(LectureLessonDTO llDto) {
+		return session.selectOne("lecturelesson.read",llDto);
+	}
+
+	@Override
+	public int update(LectureLessonDTO llDto) {
+		return session.update("lecturelesson.update",llDto);
+	}
+
 }

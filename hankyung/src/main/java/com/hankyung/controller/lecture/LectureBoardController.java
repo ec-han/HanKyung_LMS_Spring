@@ -21,6 +21,7 @@ import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.service.Pager;
 import com.hankyung.service.cart.CartService;
 import com.hankyung.service.lecture.LectureBoardService;
+import com.hankyung.service.lecture.LectureLessonService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,8 @@ import lombok.extern.slf4j.Slf4j;
 public class LectureBoardController {
 	@Inject
 	private LectureBoardService service;
-	
+	@Inject
+	private LectureLessonService lservice;
 	// 선생님, 학생용
 	@GetMapping(value="home")
 	public String home(Model model, int lno, HttpSession session) {
@@ -44,6 +46,8 @@ public class LectureBoardController {
 			session.setAttribute("lDto", lDto);
 			List<LectureBoardDTO> qlist = service.questionTitle();
 			model.addAttribute("qna", qlist);
+			List<LectureLessonDTO> lecture = lservice.list(lno);
+			model.addAttribute("lecture",lecture);
 		}
 		return "lectureboard/lecturehome";
 	}

@@ -40,7 +40,7 @@
 										</div>
 										<div class="result-price">
 											<span id="lecture-no">${list.class_no}</span>강
-											<a href="${path}/lecturelesson/lessonview" class="lecture-view-btn">
+											<a href="${path}/lecturelesson/lessonview?lno=${list.lno}&class_no=${list.class_no}" class="lecture-view-btn">
 												<i class="fas fa-headphones"></i>
 												<span id="lecture-view-span">수업보기</span>
 											</a>

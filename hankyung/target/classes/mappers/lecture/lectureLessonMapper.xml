@@ -8,4 +8,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list" resultType="com.hankyung.domain.lecture.LectureLessonDTO">
 		SELECT * FROM hk_lecture_lesson WHERE lno=#{lno}
 	</select>
+	
+	<select id="read" resultType="com.hankyung.domain.lecture.LectureLessonDTO">
+		SELECT * FROM hk_lecture_lesson WHERE lno=#{lno} AND class_no = #{class_no}
+	</select>
+	
+	<update id="update">
+		UPDATE hk_lecture_lesson
+		SET admit_ck = #{admit_ck}
+		WHERE lno=#{lno} AND class_no = #{class_no}
+	</update>
 </mapper>

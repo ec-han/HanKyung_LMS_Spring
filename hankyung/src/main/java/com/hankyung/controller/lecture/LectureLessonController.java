@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.domain.lecture.LectureLessonDTO;
@@ -34,9 +36,21 @@ public class LectureLessonController {
 	
 	@GetMapping(value="lessonview")
 	public String lessonView(Model model, LectureLessonDTO llDto) {
-		//List<LectureLessonDTO> list = service.list(lno);
-		//LectureLessonDTO one = service.read(lno);
-		//model.addAttribute("one",one);
+		LectureLessonDTO one = service.read(llDto);
+		log.info("학습방 상세 출력>>>> " + llDto);
+		model.addAttribute("one",one);
 		return "lectureboard/lessonview";
+	}
+	
+	@ResponseBody
+	@PostMapping(value="lessonview")
+	public void lessonPlay(LectureLessonDTO llDto, String admit_ck) {
+		int result = service.update(llDto);
+		if(result > 0) {
+			log.info("출석체크 업데이트 완료");
+		} else {
+			log.info("출석체크 업데이트 실패");
+		}
+		log.info("admit_ck: "+admit_ck+", DTO: "+llDto.toString());
 	}
 }

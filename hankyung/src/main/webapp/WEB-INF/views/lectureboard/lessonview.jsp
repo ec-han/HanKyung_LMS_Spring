@@ -10,6 +10,64 @@
 <meta charset="UTF-8">
 <title>학습 상세</title>
 <style type="text/css">
+#lesson_table_wrap > table > thead > tr, #regi_table_wrap > table > tfoot > tr {
+	background: #f4f7ff; /* #eaecf4 */
+}
+#lesson_table_wrap > table > thead > tr:nth-child(2) {
+	background: #f8f9fc;
+}
+#lesson_table_wrap > table > tbody > tr:nth-child(1) {
+	background: white;
+}
+.btn_right {
+	float: right;
+    margin-right: 1rem;
+}
+.regi-tb-center {
+	font-size: 1rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    line-height: 23px;
+}
+#btn_modi_view {
+	color: #404988;
+}
+#lesson_table_wrap .table td, #lesson_table_wrap .table th {
+	padding: 1.4rem;
+    vertical-align: top;
+    border-top: 1px solid #e3e6f0;
+}
+#view_regi_num{
+	flex: 0.5;
+    float: left;
+    order: 1;
+}
+#view_regi_title {
+    flex: 9.5;
+    order: 2;
+    text-align: center;
+    justify-content: center;
+}
+
+
+#lecture_ck_btn {
+    display: inline-block;
+    padding: 0.1rem;
+    font-size: 1.4rem;
+    background: tomato;
+    float: right;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+#ck_msg {
+	color: red;
+	font-size: 1rem;
+}
+
+#lesson_table_wrap > table > tbody > tr:nth-child(2) {
+    background: #e3e6f0;
+}
 
 </style>
 </head>
@@ -19,48 +77,105 @@
 		<div class="nav_content_footer">
 			<%@ include file="../include/main_nav.jsp" %>
 			<div class="content_area">
-				<table class="table table-bordered" id="classViewTable" width="100%" cellspacing="0">
-					<tbody>
-						<c:forEach items="${list}" var="list">
-						<tr>
-							<td>
-								<ul class="result-list">
-									<li>
-										<div class="result-info">
-											<h4 class="title">
-												${list.class_title}
-											</h4>
-											<p class="location">
-												수업시간: <span id="study-time">${list.class_time}분</span>
-											</p>
-											<p class="desc">
-												수업내용: <span id="lecture-info">${list.class_content}</span><br> 
-												수업목표: <span id="lecture-goal">${list.class_target}</span>
-											</p>
+				<div id="regi_content">
+					<div>
+						<div class="page_body">
+							<div class="bd_hd">
+								<div class="box-body">
+									<div class="row order-2 table_wrapper">
+			              				<div class="col-sm-12 table_wrapper" id="lesson_table_wrap">
+											<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							                  <thead>
+							                  	<tr>
+													<th>
+														<div class="regi-tb-center">
+															<span id="view_regi_num">${one.class_no}강</span>
+															<span id="view_regi_title"><strong>${one.class_title}</strong></span>
+														</div>
+													</th>
+												</tr>
+												<tr>
+													<td>
+														<div class="regi-info">
+															<span class="info_date"><strong>수업시간 : </strong>${one.class_time}분</span>
+														</div>
+													</td>
+												</tr>
+							                  </thead>
+							                  <tbody>
+							                  	<tr>
+													<td>
+														<div class="data-bd-cont">
+															<br><span class="info_writer"><strong>수업내용: </strong>${one.class_content}</span><br>
+															<span class="info_viewcnt"><strong>수업목표: </strong>${one.class_target}</span><br>
+															<span><strong id="ck_msg">주의! </strong>수업종료 버튼을 클릭해야만 출석인정이 됩니다</span>
+														</div>
+													</td>
+												</tr>
+												<tr id="lesson_vd_area">
+													<td>
+														<iframe id="lesson_vd" width="560" height="315" src="https://www.youtube.com/embed/qR90tdW0Hbo?rel=0&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+													</td>
+												</tr>
+							                  </tbody>
+							                  <tfoot>
+											  </tfoot>
+			                				</table>
 										</div>
-										<div class="result-price">
-											<span id="lecture-no">${list.class_no}</span>강
-											<a href="#" class="lecture-view-btn">
-												<i class="fas fa-headphones"></i>
-												<span id="lecture-view-span">수업보기</span>
+									</div>
+									<div class="btn_area">
+										<div class="btn_right board_regi_btn">
+											<a class="lecture-view-btn" id="lecture_ck_btn">
+												<span id="lecture-view-span">수업종료</span>
 											</a>
 										</div>
-									</li>
-								</ul>
-							</td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+										<div class="btn_left board_regi_btn">
+											<a href="${path}/lecturelesson/classroom?lno=${one.lno}">
+												<i class="far fa-list-alt" id="btn_list"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
-
 	<script type="text/javascript">
-		$(function(){
-		  
+		// document ready되면 현재시간 구하고 강의시간의 95%가 지나고 난 후 수업종료 버튼 누르면 출석체크되게 
+		$(document).ready(function() {
+			var old = new Date();
+			var minutes = old.getMinutes();
+			var ctimes = ${one.class_time};
+			var admit = ctimes*0.01; // 0.9
+			alert(minutes+", 강의시간: "+ctimes+"출석인정시간: "+admit);
+			
+			$("#lecture-view-span").click(function(){
+				var now = new Date();
+				var min_gap = now-old;
+				var check = 0;
+				if(min_gap>=admit){
+					alert("출석체크가 완료됐습니다.");
+					check = 1;
+					$.ajax({
+						url: "${path}/lecturelesson/lessonview?class_no=${one.class_no}&lno=${one.lno}&admit_ck="+check,
+						type: "post",
+						success: function() {
+							alert("출석체크 성공");
+							console.log(check);
+						}, error: function() {
+							alert("system error!!!");
+						}
+					});	
+				} else {
+					alert("강의를 90%이상 시청해야 출석이 인정됩니다.");
+				}
+			});
 		});
+		
 	</script>
 </body>
 </html>

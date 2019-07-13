@@ -17,5 +17,6 @@ public class LectureLessonDTO {
 	private String class_time;
 	private String class_content;
 	private String class_target;
+	private String admit_ck;
 	private int lno;
 }

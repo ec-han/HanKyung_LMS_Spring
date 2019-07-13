@@ -100,6 +100,23 @@
     line-height: 1.2;
     margin: 0;
 }
+.fa-circle {
+	color: #1cc88a;
+}
+.fa-times {
+	color: #e74a3b;
+}
+#check_ok {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#check_no {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
 </style>
 </head>
 <body>
@@ -208,31 +225,40 @@
 				<div class="col-sm-12 table_wrapper">
             		<table class="table table-bordered home-table" id="lecture-data-table" width="77.5rem" cellspacing="0">
 	                  <thead>
-	                    <tr class="card-text-primary" style="width: 100%">
+	                    <tr class="card-text-primary" style="width: 90%">
 	                      <th style="width: 5%">No.</th>
+	                      <th style="width: 15%">수업명</th>
 	                      <th style="width: 20%">수업내용</th>
 	                      <th style="width: 20%">수업목표</th>
 	                      <th style="width: 15%">수업보기</th>
-	                      <th style="width: 15%">수업시간</th>
-	                      <th style="width: 15%">보조파일</th>
-	                      <th style="width: 10%">출석확인</th>
+	                      <th style="width: 10%">수업시간</th>
+	                      <th style="width: 5%">출석</th>
 	                    </tr>
 	                  </thead>
 	                  <tbody style="background: white;">
+	                  	<c:forEach items="${lecture}" var="lec">
 	                    <tr>
-	                      <td><span id="lecture-no">1</span>강</td>
-	                      <td class="text_truncate">Java의 역사와 특징</td>
-	                      <td class="text_truncate">수업에 대한 소개와 Java 언어에 대한 소개</td>
+	                      <td><span id="lecture-no">${lec.class_no}</span>강</td>
+	                      <td>${lec.class_title}</td>
+	                      <td class="text_truncate">${lec.class_content}</td>
+	                      <td class="text_truncate">${lec.class_target}</td>
 	                      <td>
-	                      	<a href="#" class="lecture-view-btn">
+	                      	<a href="${path}/lecturelesson/lessonview?lno=${lec.lno}&class_no=${lec.class_no}" class="lecture-view-btn">
 								<i class="fas fa-headphones"></i>
 								<span id="lecture-view-span">수업보기</span>
 							</a>
 	                      </td>
-	                      <td><span id="study-time">20분</span></td>
-	                      <td></td>
-	                      <td></td>
+	                      <td><span id="study-time">${lec.class_time}분</span></td>
+	                      <td>
+	                      <c:if test="${lec.admit_ck == '1'}">
+	                      	<i class="far fa-circle" id="check_ok"></i>
+	                      </c:if>
+	                      <c:if test="${lec.admit_ck == '0'}">
+	                      	<i class="fas fa-times" id="check_no"></i>
+	                      </c:if>	
+	                      </td>
 	                    </tr>
+	                    </c:forEach>
 	                  </tbody>
                 	</table>
               	</div>
