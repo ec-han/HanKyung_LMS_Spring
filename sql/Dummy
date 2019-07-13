@@ -123,6 +123,7 @@ CREATE TABLE hk_lecture_lesson(
     class_time VARCHAR2(10) NOT NULL,
     class_content VARCHAR2(300) NOT NULL,
     class_target VARCHAR2(300) NOT NULL,
+    admit_ck VARCHAR2(50) DEFAULT '0',
     lno NUMBER NOT NULL,
     FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE 
 );
