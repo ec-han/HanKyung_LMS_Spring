@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hankyung.domain.cart.CartDTO;
+import com.hankyung.domain.lecture.LectureAttendDTO;
 import com.hankyung.domain.lecture.LectureBoardDTO;
 import com.hankyung.domain.lecture.LectureLessonDTO;
 import com.hankyung.domain.lecture.LectureDTO;
@@ -48,9 +49,16 @@ public class LectureBoardController {
 			model.addAttribute("qna", qlist);
 			List<LectureLessonDTO> lecture = lservice.list(lno);
 			model.addAttribute("lecture",lecture);
-			log.info("lno: "+lno);
-			int ck = lservice.ckCount(lno);
+			log.info("ckCount에 lno랑 id 보낼 DTO"+lDto.toString());
+			int ck = lservice.ckCount(lDto);
 			model.addAttribute("ck",ck);
+			
+			List<LectureAttendDTO> attend = lservice.attend(lDto);
+			for (LectureAttendDTO aDto : attend) {
+				String attend_ck = aDto.getAttend_ck();
+				log.info(attend_ck);
+			}
+			model.addAttribute("attend",attend);
 		}
 		return "lectureboard/lecturehome";
 	}

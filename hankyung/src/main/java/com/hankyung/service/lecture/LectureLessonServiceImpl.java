@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.hankyung.domain.lecture.LectureAttendDTO;
+import com.hankyung.domain.lecture.LectureDTO;
 import com.hankyung.domain.lecture.LectureLessonDTO;
 import com.hankyung.persistence.lecture.LectureLessonDAO;
 
@@ -28,13 +30,18 @@ public class LectureLessonServiceImpl implements LectureLessonService {
 	}
 
 	@Override
-	public int update(LectureLessonDTO llDto) {
-		return llDao.update(llDto);
+	public int update(LectureLessonDTO llDto, String attend_ck, String id) {
+		return llDao.update(llDto, attend_ck, id);
 	}
 
 	@Override
-	public int ckCount(int lno) {
-		return llDao.ckCount(lno);
+	public int ckCount(LectureDTO lDto) {
+		return llDao.ckCount(lDto);
+	}
+
+	@Override
+	public List<LectureAttendDTO> attend(LectureDTO lDto) {
+		return llDao.attend(lDto);
 	}
 
 }

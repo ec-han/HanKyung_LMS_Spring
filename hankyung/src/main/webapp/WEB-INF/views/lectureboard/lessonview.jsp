@@ -161,7 +161,7 @@
 					alert("출석체크가 완료됐습니다.");
 					check = 1;
 					$.ajax({
-						url: "${path}/lecturelesson/lessonview?class_no=${one.class_no}&lno=${one.lno}&admit_ck="+check,
+						url: "${path}/lecturelesson/lessonview?class_no=${one.class_no}&lno=${one.lno}&attend_ck="+check,
 						type: "post",
 						success: function() {
 							// alert("출석체크 성공");

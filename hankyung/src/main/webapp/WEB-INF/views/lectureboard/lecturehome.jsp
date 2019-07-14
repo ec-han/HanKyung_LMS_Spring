@@ -236,7 +236,7 @@
 	                    </tr>
 	                  </thead>
 	                  <tbody style="background: white;">
-	                  	<c:forEach items="${lecture}" var="lec">
+	                   <c:forEach var="lec" items="${lecture}" varStatus="status">
 	                    <tr>
 	                      <td><span id="lecture-no">${lec.class_no}</span>강</td>
 	                      <td>${lec.class_title}</td>
@@ -250,12 +250,12 @@
 	                      </td>
 	                      <td><span id="study-time">${lec.class_time}분</span></td>
 	                      <td>
-	                      <c:if test="${lec.admit_ck == '1'}">
-	                      	<i class="far fa-circle" id="check_ok"></i>
-	                      </c:if>
-	                      <c:if test="${lec.admit_ck == '0'}">
-	                      	<i class="fas fa-times" id="check_no"></i>
-	                      </c:if>	
+		                      <c:if test="${attend[status.index].attend_ck == '1'}">
+		                      	<i class="far fa-circle" id="check_ok"></i>
+		                      </c:if>
+		                      <c:if test="${attend[status.index].attend_ck == '0'}"> 
+		                      	<i class="fas fa-times" id="check_no"></i>
+		                      </c:if>
 	                      </td>
 	                    </tr>
 	                    </c:forEach>

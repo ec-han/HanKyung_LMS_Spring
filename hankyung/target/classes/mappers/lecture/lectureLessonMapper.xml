@@ -14,14 +14,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="update">
-		UPDATE hk_lecture_lesson
-		SET admit_ck = #{admit_ck}
-		WHERE lno=#{lno} AND class_no = #{class_no}
+		UPDATE hk_lesson_attend
+		SET attend_ck = #{attend_ck}
+		WHERE lno=#{lno} AND class_no = #{class_no} AND id=#{id}
 	</update>
 	
 	<select id="count" resultType="int">
 		SELECT COUNT(*)*10
-		FROM hk_lecture_lesson 
-		WHERE lno=#{lno} AND admit_ck = '1'
+		FROM hk_lesson_attend
+		WHERE lno=#{lno} AND id=#{id} AND attend_ck = '1'
+	</select>
+	
+	<select id="attend" resultType="com.hankyung.domain.lecture.LectureAttendDTO">
+		SELECT attend_ck FROM hk_lesson_attend WHERE lno=#{lno} AND id=#{id}
 	</select>
 </mapper>
