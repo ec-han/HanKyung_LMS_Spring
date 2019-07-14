@@ -199,7 +199,7 @@
 								<span>${ck}%</span>	
 							</h3>
 							<div class="progress">
-								<div class="progress-bar" id="bg-red" style="width: 20%"></div>
+								<div class="progress-bar" id="bg-red" style="width: ${ck}%"></div>
 							</div>
 							<h3 class="study-info-item-title">
 								과제제출

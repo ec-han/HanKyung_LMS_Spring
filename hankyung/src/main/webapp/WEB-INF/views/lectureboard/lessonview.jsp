@@ -151,7 +151,7 @@
 			var minutes = old.getMinutes();
 			var ctimes = ${one.class_time};
 			var admit = ctimes*0.01; // 0.9
-			alert(minutes+", 강의시간: "+ctimes+"출석인정시간: "+admit);
+			// alert(minutes+", 강의시간: "+ctimes+"출석인정시간: "+admit);
 			
 			$("#lecture-view-span").click(function(){
 				var now = new Date();
@@ -164,7 +164,7 @@
 						url: "${path}/lecturelesson/lessonview?class_no=${one.class_no}&lno=${one.lno}&admit_ck="+check,
 						type: "post",
 						success: function() {
-							alert("출석체크 성공");
+							// alert("출석체크 성공");
 							console.log(check);
 						}, error: function() {
 							alert("system error!!!");
