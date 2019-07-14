@@ -116,7 +116,7 @@ CREATE SEQUENCE seq_hk_lecture_lesson
 START WITH 1
 INCREMENT BY 1;
 
-DROP TABLE hk_lecture_lesson;
+DROP TABLE hk_lecture_lesson CASCADE CONSTRAINTS;
 CREATE TABLE hk_lecture_lesson(
     class_no NUMBER PRIMARY KEY,
     class_title VARCHAR2(300) NOT NULL,
@@ -127,16 +127,40 @@ CREATE TABLE hk_lecture_lesson(
     lno NUMBER NOT NULL,
     FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE 
 );
-SELECT * FROM hk_lecture_lesson WHERE lno=28;
+SELECT * FROM hk_lecture_lesson WHERE lno=8;
+-- 10강
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'언어와 수업소개','13','Java의 역사와 특징','수업에 대한 소개와 JAVA 언어에 대한 소개',28);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'언어와 수업소개','13','Java의 역사와 특징','수업에 대한 소개와 JAVA 언어에 대한 소개',8);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'JAVA의 설치','15','Java 설치 방법과 Java 프로그램의 동작','Java 설치 및 프로그램 동작에 대한 이해',28);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'JAVA의 설치','15','Java 설치 방법과 Java 프로그램의 동작','Java 설치 및 프로그램 동작에 대한 이해',8);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'윈도우에서 JAVA 실행','9','윈도우에서의 JAVA 실행','Java 실행 동작에 대한 이해',28);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'윈도우에서 JAVA 실행','9','윈도우에서의 JAVA 실행','Java 실행 동작에 대한 이해',8);
+INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'개발도구와 이클립스','7','이클립스 설치 및 실행','이클립스 설치 및 실행',8);
+INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'이클립스의 기능과 사용법','23','이클립스의 기능과 사용법','이클립스의 기능과 사용법에 대한 이해',8);
+INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'숫자와 문자','7','숫자와 문자의 표현 방법과 연산 방법','숫자와 문자의 표현 방법과 연산 방법에 대한 이해',8);
+INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'변수','17','변수의 선언과 할당, 정수, 실수, 문자열','변수의 선언과 할당, 정수, 실수, 문자열에 대한 이해',8);
+INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'주석과 세미콜론','5','주석, JavaDoc 주석, 세미콜론','주석, JavaDoc 주석, 세미콜론에 대한 이해',8);
+INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'데이터 타입','20','데이터의 크기, 데이터타입 비교','데이터의 크기, 데이터타입 비교에 대한 이해',8);
+INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'상수의 데이터 타입','13','실수의 표현, 정수의 표현','실수의 표현, 정수의 표현에 대한 이해',8);
+
+SELECT * FROM hk_lecture_lesson WHERE lno=8 AND class_no = 1;
+
+SELECT COUNT(*)*10
+FROM hk_lecture_lesson 
+WHERE lno=8 AND admit_ck = '1';
+
+UPDATE hk_lecture_lesson
+SET admit_ck = '1'
+WHERE lno=8 AND class_no = 1;
 
 commit;
-
 --HK 게시판
 --모든 게시글 시퀀스
 DROP SEQUENCE seq_hkboard;
