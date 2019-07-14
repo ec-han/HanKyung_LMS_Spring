@@ -196,7 +196,7 @@
 						<div class="card-body">
 							<h3 class="study-info-item-title">
 								출결현황
-								<span>20%</span>	
+								<span>${ck}%</span>	
 							</h3>
 							<div class="progress">
 								<div class="progress-bar" id="bg-red" style="width: 20%"></div>

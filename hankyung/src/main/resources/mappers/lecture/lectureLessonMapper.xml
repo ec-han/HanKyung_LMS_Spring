@@ -18,4 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET admit_ck = #{admit_ck}
 		WHERE lno=#{lno} AND class_no = #{class_no}
 	</update>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*)*10
+		FROM hk_lecture_lesson 
+		WHERE lno=#{lno} AND admit_ck = '1'
+	</select>
 </mapper>

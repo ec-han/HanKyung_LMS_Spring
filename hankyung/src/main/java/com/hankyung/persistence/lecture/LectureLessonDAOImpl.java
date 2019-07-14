@@ -34,4 +34,9 @@ public class LectureLessonDAOImpl implements LectureLessonDAO {
 		return session.update("lecturelesson.update",llDto);
 	}
 
+	@Override
+	public int ckCount(int lno) {
+		return session.selectOne("lecturelesson.count",lno);
+	}
+
 }

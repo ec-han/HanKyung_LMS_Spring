@@ -32,4 +32,9 @@ public class LectureLessonServiceImpl implements LectureLessonService {
 		return llDao.update(llDto);
 	}
 
+	@Override
+	public int ckCount(int lno) {
+		return llDao.ckCount(lno);
+	}
+
 }

@@ -48,6 +48,9 @@ public class LectureBoardController {
 			model.addAttribute("qna", qlist);
 			List<LectureLessonDTO> lecture = lservice.list(lno);
 			model.addAttribute("lecture",lecture);
+			log.info("lno: "+lno);
+			int ck = lservice.ckCount(lno);
+			model.addAttribute("ck",ck);
 		}
 		return "lectureboard/lecturehome";
 	}

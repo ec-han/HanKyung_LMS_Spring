@@ -8,4 +8,5 @@ public interface LectureLessonDAO {
 	public List<LectureLessonDTO> list(int lno);
 	public LectureLessonDTO read(LectureLessonDTO llDto);
 	public int update(LectureLessonDTO llDto);
+	public int ckCount(int lno);
 }
