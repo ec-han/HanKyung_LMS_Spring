@@ -123,11 +123,11 @@ CREATE TABLE hk_lecture_lesson(
     class_time VARCHAR2(10) NOT NULL,
     class_content VARCHAR2(300) NOT NULL,
     class_target VARCHAR2(300) NOT NULL,
-    admit_ck VARCHAR2(50) DEFAULT '0',
     lno NUMBER NOT NULL,
-    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE 
+    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
 );
-SELECT * FROM hk_lecture_lesson WHERE lno=8;
+
+
 -- 10강
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
 VALUES(seq_hk_lecture_lesson.NEXTVAL,'언어와 수업소개','13','Java의 역사와 특징','수업에 대한 소개와 JAVA 언어에 대한 소개',8);
@@ -150,17 +150,78 @@ VALUES(seq_hk_lecture_lesson.NEXTVAL,'데이터 타입','20','데이터의 크�
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
 VALUES(seq_hk_lecture_lesson.NEXTVAL,'상수의 데이터 타입','13','실수의 표현, 정수의 표현','실수의 표현, 정수의 표현에 대한 이해',8);
 
-SELECT * FROM hk_lecture_lesson WHERE lno=8 AND class_no = 1;
+SELECT * FROM hk_lecture_lesson WHERE lno=8;
 
-SELECT COUNT(*)*10
-FROM hk_lecture_lesson 
-WHERE lno=8 AND admit_ck = '1';
-
-UPDATE hk_lecture_lesson
-SET admit_ck = '1'
-WHERE lno=8 AND class_no = 1;
+DELETE FROM hk_lecture_lesson;
 
 commit;
+
+-- 학습방 출석체크
+DROP TABLE hk_lesson_attend CASCADE CONSTRAINTS;
+CREATE TABLE hk_lesson_attend(
+    attend_ck VARCHAR2(50) DEFAULT '0',
+    lno NUMBER NOT NULL,
+    class_no NUMBER NOT NULL,
+    id VARCHAR2(200) NOT NULL,
+    FOREIGN KEY(class_no) REFERENCES hk_lecture_lesson(class_no) ON DELETE CASCADE,
+    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE,
+    FOREIGN KEY(id) REFERENCES hk_member(id) ON DELETE CASCADE
+);
+SELECT attend_ck FROM hk_lesson_attend WHERE lno=8 AND id='user01';
+
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'1','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'2','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'3','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'4','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'5','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'6','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'7','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'8','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'9','user01');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'10','user01');
+
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'1','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'2','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'3','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'4','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'5','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'6','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'7','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'8','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'9','user02');
+INSERT INTO hk_lesson_attend(lno, class_no, id)
+VALUES(8,'10','user02');
+
+commit;
+
+-- 출석
+UPDATE hk_lesson_attend
+SET attend_ck = '1'
+WHERE lno=8 AND class_no = 1 AND id='user01';
+-- 출석 현황
+SELECT COUNT(*)*10
+FROM hk_lesson_attend
+WHERE lno=8 AND id='user01' AND attend_ck = '1';
+
 --HK 게시판
 --모든 게시글 시퀀스
 DROP SEQUENCE seq_hkboard;
