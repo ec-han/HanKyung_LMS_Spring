@@ -145,26 +145,23 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		// document ready되면 현재시간 구하고 강의시간의 95%가 지나고 난 후 수업종료 버튼 누르면 출석체크되게 
 		$(document).ready(function() {
-			var old = new Date();
-			var minutes = old.getMinutes();
+			var old = new Date().getTime();
 			var ctimes = ${one.class_time};
-			var admit = ctimes*0.01; // 0.9
-			// alert(minutes+", 강의시간: "+ctimes+"출석인정시간: "+admit);
-			
+			var admit = ctimes*0.9;
+			console.info(old+"<<<현재시간, 강의시간: "+ctimes+"출석인정시간: "+admit);
 			$("#lecture-view-span").click(function(){
-				var now = new Date();
-				var min_gap = now-old;
+				var now = new Date().getTime();
+				var diff = (now-old)/1000/60;
 				var check = 0;
-				if(min_gap>=admit){
+				console.info(now+"<<종료버튼 누른 시간 , 수강시강: "+diff+"인정시간: "+admit);
+				if(diff>=admit){
 					alert("출석체크가 완료됐습니다.");
 					check = 1;
-					$.ajax({
+					 $.ajax({
 						url: "${path}/lecturelesson/lessonview?class_no=${one.class_no}&lno=${one.lno}&attend_ck="+check,
 						type: "post",
 						success: function() {
-							// alert("출석체크 성공");
 							console.log(check);
 						}, error: function() {
 							alert("system error!!!");
