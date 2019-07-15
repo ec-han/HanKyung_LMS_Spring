@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <link rel="stylesheet" href="${path}/resources/lightbox/css/lightbox.css">
 <script src="${path}/resources/lightbox/js/lightbox.js"></script>
+
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
@@ -151,7 +153,7 @@
 													</tr>
 													<tr>
 														<td>
-															게시글 첨부파일 등록 
+															<!-- 게시글 첨부파일 등록  -->
 															<div class="write_input_wrap form-group">
 																<div class="board_div fileDrop">
 																	<p>

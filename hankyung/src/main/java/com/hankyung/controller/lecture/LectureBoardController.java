@@ -9,9 +9,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hankyung.domain.cart.CartDTO;
@@ -34,6 +36,18 @@ public class LectureBoardController {
 	private LectureBoardService service;
 	@Inject
 	private LectureLessonService lservice;
+	
+	
+	// 첨부파일 목록을 리턴
+	// ArrayList를 json 배열로 변환하여 리턴
+	@RequestMapping("getAttach/{bno}")
+	@ResponseBody // view가 아닌 데이터 자체를 리턴 
+	public List<String> getAttach(@PathVariable int bno){ //@PathVariable : url에 있는 값을 받아 그대로 씀 (쿼리스트링 안 쓰고 하는 방법)
+		return service.getAttach(bno);
+	}
+	
+	
+	
 	// 선생님, 학생용
 	@GetMapping(value="home")
 	public String home(Model model, int lno, HttpSession session) {
@@ -251,5 +265,8 @@ public class LectureBoardController {
 		
 		return "redirect:/lectureboard/list?viewoption="+lbDto.getBtype();
 	}
+	
+	
+	
 	
 }

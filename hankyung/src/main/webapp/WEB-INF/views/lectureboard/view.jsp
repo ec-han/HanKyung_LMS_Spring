@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<link rel="stylesheet" href="${path}/resources/lightbox/css/lightbox.css">
+<script src="${path}/resources/lightbox/js/lightbox.js"></script>
+
 <link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/main_common.css?v=1">
 <link rel="stylesheet" href="${path}/resources/css/board_common.css?v=1">
@@ -188,6 +192,12 @@
 .table_wrapper {
 	margin: 0;
 }
+
+.has-img {
+	display: flex;
+}
+
+
 </style>
 </head>
 <body>
@@ -237,6 +247,13 @@
 												</tr>
 							                  </tbody>
 							                  <tfoot>
+							                  	<tr>
+							                  		<td>
+							                  			<div class="write_input_wrap">
+															<ul id="uploadedList" class="mailbox-attachments clearfix uploadedList"></ul>
+														</div>
+							                  		</td>
+							                  	</tr>
 											  </tfoot>
 			                				</table>
 										</div>
@@ -296,10 +313,44 @@
 			<%@ include file="../include/main_footer.jsp" %>
 		</div>
 	</div>
+	
+	
+	<script id="fileTemplate" type="text/x-handlebars-template">
+    <li>
+        <div class="mailbox-attachment-icon has-img">
+            <center><img src="{{imgSrc}}" alt="Attachment" class="s_img"></center>
+        </div>
+        <div class="mailbox-attachment-info">
+            <a href="{{originalFileUrl}}" class="mailbox-attachment-name">
+                <i class="fa fa-paperclip"></i> {{originalFileName}}
+            </a>
+        </div>
+    </li>
+	</script>
+	
 	<script src="${path}/resources/summernote/lang/summernote-ko-KR.js"></script>
 	<script type="text/javascript">
+	
+		//Handlebars 파일템플릿 컴파일
+		var fileTemplate = Handlebars.compile($("#fileTemplate").html());
+	
+		
 	$(document).ready(function(){
 		comment_list();
+		
+		// 첨부파일 출력
+		var listCnt = listAttach();
+		
+		// 첨부파일 0건일 때 '첨부파일이 없습니다' 출력
+		if(listCnt == 0){
+			alert("listAttach 실행!"+listCnt);
+			var text = '<span class="no_attach">첨부파일이 없습니다.</span>';
+			$('#uploadedList').html(text);
+		}
+		
+		
+		
+		
 		/* 글 삭제 모달 창 */
 		$('#btn_del').click(function(){
 			$('#bd_modal_all').css('display','block');
@@ -357,6 +408,121 @@
 				$("#commentList").html(result);
 			}
 		});
+	}
+	
+	//첨부파일 리스트를 출력하는 함수
+	function listAttach(){
+		var listCnt = 0;
+		$.ajax({
+			type: "post",
+			url: "${path}/lectureboard/getAttach/${one.bno}", // 쿼리스트링이 아니고 그냥 url임 EX) getAttach/25 값이 달라지니까 controller에서 @RequestMapping("getAttach/{bno}")게 받음
+			async: false,
+			success: function(list){
+				// list : json
+				console.log(list);
+				listCnt = list.length;
+
+				console.log(list.length);
+				/* 
+					jQuery each()는 반복문
+					i와 e는 index와 element로
+					json에서 { 0: "apple.png"}일 때
+					index는 0, element는 apple.png가 됨
+				*/
+				$(list).each(function(i, e){
+					/* console.log(list) */
+					printFiles(e); // 첨부파일 출력 메서드 호출
+				});
+			}
+		});
+		return listCnt;
+	}
+	
+	// 파일 정보 처리
+	function getFileInfo(fullName) {
+	    var originalFileName;   // 화면에 출력할 파일명
+	    var imgSrc;                   // 썸네일 or 파일아이콘 이미지 파일 출력 요청 URL
+	    var originalFileUrl;       // 원본파일 요청 URL
+	    var uuidFileName;       // 날짜경로를 제외한 나머지 파일명 (UUID_파일명.확장자)
+	    var basicFileName = fullName;      // 삭제시 값을 전달하기 위한 파일이름을 줄이지 않은 url
+		
+	    // 이미지 파일이면
+	    if (checkImageType(fullName)) {
+	    	alert("이미지 파일 체크");
+	        imgSrc = "${path}/upload/displayFile?fileName=" + fullName; // 썸네일 이미지 링크
+	        // /2019/07/s_7bd89afd-ccf6-41b9-88a7-ce15008384bb_Tulips
+	        // 실제 uuid가 붙은 원본 파일 이름 찾아줌 
+	        uuidFileName = fullName.substr(14);
+	        // /2019/07/12/7bd89afd-ccf6-41b9-88a7-ce15008384bb_Tulips
+	        // 0,12 0부터 11까지 자르고, 14부터 ~~ 쭉을 합침. 12,13이 빠짐 12,13은 s_임. 
+	        // 파일이름을 잘라서 실제 원본 파일 이름 구해줌 
+	        var originalImg = fullName.substr(0, 12) + fullName.substr(14);
+	        // 원본 이미지 요청 링크(파일 다운로드 요청 링크)
+	        originalFileUrl = "${path}/upload/displayFile?fileName=" + originalImg;
+	    } else {
+	        imgSrc = "${path}/resources/img/file-icon.png"; // 파일 아이콘 이미지 링크
+	        uuidFileName = fullName.substr(12);
+	        // 파일 다운로드 요청 링크
+	        originalFileUrl = "${path}/upload/displayFile?fileName=" + fullName;
+	    }
+	    // 라이언13.jpg
+	    originalFileName = uuidFileName.substr(uuidFileName.indexOf("_") + 1);
+	    // 전체 파일명의 크기가 14보다 작으면 그대로 이름 출력,
+	    // 14보다 크면 실행(파일이름이 엄청 길면 한 줄 내려오거나 잘리니까 줄이고 ...으로 축약)
+	    if(originalFileName.length > 14) {
+	    	// 앞에서부터 11글자 자름
+	    	var shortName = originalFileName.substr(0, 10);
+	    	// .을 기준으로 배열 생성
+	    	var formatVal = originalFileName.split(".");
+		// formatVal = originalFileName.substr(originalFileName.length-3);
+		// 파일명에 .이 여러개 들어가 있을수도 있음
+		// 배열크기를 구해와서 무조건 맨 마지막 확장자부분 출력되게 함
+		var arrNum = formatVal.length - 1
+		// 맨 처음 문자열 10글자 + ... + 확장자
+		originalFileName = shortName + "..." + formatVal[arrNum];
+	    }
+	    return {originalFileName: originalFileName, imgSrc: imgSrc, originalFileUrl: originalFileUrl, fullName: fullName, basicFileName: basicFileName};
+	}
+	//첨부파일 출력
+	function printFiles(data) {
+		// data = /2019/07/12/s_jfsdkljflsjdf_라이언13.jpg
+	    // 파일 정보 처리
+	    var fileInfo = getFileInfo(data);
+	    /* console.log(fileInfo); */
+	    // Handlebars 파일 템플릿에 파일 정보들을 바인딩하고 HTML 생성
+	    var html = fileTemplate(fileInfo);
+	    html += "<input type='hidden' class='file' value='"
+			+fileInfo.fullName+"'>";
+	    // Handlebars 파일 템플릿 컴파일을 통해 생성된 HTML을 DOM에 주입
+	    $(".uploadedList").append(html);
+	    // 이미지 파일인 경우 aaaaaaaaaaa파일 템플릿에 lightbox 속성 추가
+	    if (fileInfo.fullName.substr(12, 2) === "s_") {
+	        // 마지막에 추가된 첨부파일 템플릿 선택자
+	        var that = $(".uploadedList li").last();
+	        // lightbox 속성 추가
+	        that.find(".mailbox-attachment-name").attr("data-lightbox", "uploadImages");
+	        // 파일 아이콘에서 이미지 아이콘으로 변경
+	        that.find(".fa-paperclip").attr("class", "fa fa-camera");
+	    }
+	}
+	function getOriginalName(fileName){
+		if(checkImageType(fileName)){ //이미지 파일이면 skip
+			return;
+		}
+		var idx=fileName.indexOf("_")+1; //uuid를 제외한 파일이름
+		return fileName.substr(idx);
+	}
+	function getImageLink(fileName){
+		if(!checkImageType(fileName)){//이미지 파일이 아니면 skip
+			return;
+		}
+		var front=fileName.substr(0,12);//연월일 경로
+		var end=fileName.substr(14);// s_ 제거
+		return front+end;
+	}
+	function checkImageType(fileName){
+		var pattern=/jpg|gif|png|jpeg/i; //정규표현식(대소문자 무시)
+		return fileName.match(pattern); //규칙에 맞으면 true
 	}
 	
 	// 댓글 삭제 버튼 눌렀을 때 동작

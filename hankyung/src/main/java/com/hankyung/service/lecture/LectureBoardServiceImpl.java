@@ -53,6 +53,7 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int update(LectureBoardDTO lbDto) {
 		return lbDao.update(lbDto);
@@ -90,12 +91,13 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	public int countArticle(String viewoption, String search_option, String keyword) {
 		return lbDao.countArticle(viewoption, search_option, keyword);
 	}
-
+	
 	@Override
 	public LectureBoardDTO read(LectureBoardDTO lbDto) {
 		return lbDao.read(lbDto);
 	}
-
+	
+	@Transactional
 	@Override
 	public void answer(LectureBoardDTO lbDto) {
 		// 비즈니스로직: 답글 등록
@@ -116,6 +118,11 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	@Override
 	public List<LectureBoardDTO> questionTitle() {
 		return lbDao.questionTitle();
+	}
+
+	@Override
+	public List<String> getAttach(int bno) {
+		return lbDao.getAttach(bno);
 	}
 
 }

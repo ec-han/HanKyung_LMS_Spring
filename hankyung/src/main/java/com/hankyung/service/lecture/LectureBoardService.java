@@ -19,4 +19,5 @@ public interface LectureBoardService {
 	public void answer(LectureBoardDTO lbDto); // 답글 등록
 	public List<LectureBoardDTO> noticeTitleList();
 	public List<LectureBoardDTO> questionTitle();
+	public List<String> getAttach(int bno); // 첨부파일 목록
 }

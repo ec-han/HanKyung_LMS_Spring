@@ -19,4 +19,5 @@ public interface LectureBoardDAO {
 	public List<LectureBoardDTO> noticeTitleList();
 	public List<LectureBoardDTO> questionTitle();
 	public void addAttach(String fullName); // 첨부파일 동작
+	public List<String> getAttach(int bno); // 첨부파일 목록
 }

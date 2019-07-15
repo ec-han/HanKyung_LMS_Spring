@@ -176,4 +176,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO hklb_attach(fullName, bno)
 		VALUES(#{fullName},seq_hklboard.CURRVAL)
 	</insert>
+	
+	<select id="getAttach" resultType="String">
+		SELECT fullname FROM hklb_attach
+		WHERE bno = #{bno}
+		ORDER BY regdate DESC
+	</select>
+	
 </mapper>

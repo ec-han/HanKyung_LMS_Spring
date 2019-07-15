@@ -107,6 +107,11 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 		session.insert("lectureboard.addAttach", fullName);
 	}
 
+	@Override
+	public List<String> getAttach(int bno) {
+		return session.selectList("lectureboard.getAttach",bno);
+	}
+
 
 	
 
