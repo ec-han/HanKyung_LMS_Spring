@@ -102,12 +102,14 @@ public class AjaxUploadController {
 	@RequestMapping(value="upload/deleteFile", method=RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName){
 		logger.info("fileName:"+fileName); 
-		//확장자 검사
+		//확장자 검사 formatName엔 jpg 등 확장자가 들어있음
 		String formatName=fileName.substring(fileName.lastIndexOf(".")+1);
 		MediaType mType=MediaUtils.getMediaType(formatName);
 		if(mType != null) { //이미지 파일이면 원본이미지 삭제
-			String front=fileName.substring(0, 12);
-			String end=fileName.substring(14);
+			String front=fileName.substring(0, 12); // 0~12면 0~11까지 읽어서 /2019/07/15/까지 들어감
+			log.info("front: "+front);
+			String end=fileName.substring(14); // 14번째부터 s_다음부터 읽음(실제 파일의 이름이 들어옴)
+			log.info("end: "+end+"font+end: "+(front+end));
 			//File.separatorChar : 유닉스 / 윈도우즈\	
 			new File(uploadPath+(front+end).replace('/',File.separatorChar)).delete();
 		}
@@ -115,7 +117,7 @@ public class AjaxUploadController {
 		new File(uploadPath+fileName.replace('/',File.separatorChar)).delete();
 		//레코드 삭제
 		/* boardService.deleteFile(fileName); */
-		
+				// ResponseEntity 결과랑 상태코드를 같이 알려주는 것
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	}
 	

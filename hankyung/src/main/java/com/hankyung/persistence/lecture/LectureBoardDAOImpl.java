@@ -42,6 +42,7 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 
 	@Override
 	public int create(LectureBoardDTO lbDto) {
+		log.info(lbDto.toString());
 		return session.insert("lectureboard.create",lbDto);
 	}
 

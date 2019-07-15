@@ -161,7 +161,7 @@
 																</div>
 															</div>
 															<div class="write_input_wrap">
-																<ul id="uplodedList" class="mailbox-attachments clearfix uploadedList"></ul>
+																<ul id="uploadedList" class="mailbox-attachments clearfix uploadedList"></ul>
 															</div>
 														</td>
 													</tr>
@@ -322,6 +322,7 @@
 						success: function(result) {
 							if(result == "deleted") {
 								that.parents("li").remove();
+								// 삭제버튼 누른 것의 부모들 중의(parents) li를 삭제
 							}
 						}, error: function() {
 							alert("System Error!!!");
@@ -368,6 +369,7 @@
 //					alert('유효성 체크2 완료');
 				} 
 				
+				// 첨부파일 등록
 				var str="";
 				// uploadedList 내부의 .file 태그 각각 반복
 				$("#uploadedList .file").each(function(i){
