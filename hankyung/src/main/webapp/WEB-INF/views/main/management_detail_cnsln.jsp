@@ -210,7 +210,7 @@
 					<span class="updater">최종수정</span> ${cDto.cnsln2_writer}
 				</div>
 				<div>
-					<span class="updater">수정날짜</span> 12/03/21 16:51
+					<span class="updater">수정날짜</span> <fmt:formatDate pattern="yy/MM/dd HH:mm" value="${cDto.cnsln2_date}" />
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
@@ -233,7 +233,7 @@
 					<span class="updater">최종수정</span> ${cDto.cnsln3_writer}
 				</div>
 				<div>
-					<span class="updater">수정날짜</span> 12/03/21 16:51
+					<span class="updater">수정날짜</span> <fmt:formatDate pattern="yy/MM/dd HH:mm" value="${cDto.cnsln3_date}" />
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
@@ -246,7 +246,7 @@
 			<div class="content_header">4회차</div>
 			<div class="content_body">
 				<div>상담내용</div>
-				<<div class="content_box">
+				<div class="content_box">
 					<textarea name="content" class="cnsln_content" readonly="readonly">${cDto.cnsln4}</textarea>
 				</div>
 			</div>
@@ -255,7 +255,7 @@
 					<span class="updater">최종수정</span> ${cDto.cnsln4_writer}
 				</div>
 				<div>
-					<span class="updater">수정날짜</span> 12/03/21 16:51
+					<span class="updater">수정날짜</span> <fmt:formatDate pattern="yy/MM/dd HH:mm" value="${cDto.cnsln4_date}" />
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
@@ -278,7 +278,7 @@
 					<span class="updater">최종수정</span> ${cDto.cnsln5_writer}
 				</div>
 				<div>
-					<span class="updater">수정날짜</span> 12/03/21 16:51
+					<span class="updater">수정날짜</span> <fmt:formatDate pattern="yy/MM/dd HH:mm" value="${cDto.cnsln5_date}" />
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
@@ -301,7 +301,7 @@
 					<span class="updater">최종수정</span> ${cDto.cnsln6_writer}
 				</div>
 				<div>
-					<span class="updater">수정날짜</span> 12/03/21 16:51
+					<span class="updater">수정날짜</span> <fmt:formatDate pattern="yy/MM/dd HH:mm" value="${cDto.cnsln6_date}" />
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
