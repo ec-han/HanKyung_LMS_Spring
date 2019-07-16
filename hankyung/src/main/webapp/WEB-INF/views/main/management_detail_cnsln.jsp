@@ -177,7 +177,7 @@
 					<span class="updater">최종수정</span> ${cDto.cnsln1_writer}
 				</div>
 				<div>
-					<span class="updater">수정날짜</span> 12/03/21 16:51
+					<span class="updater">수정날짜</span> <fmt:formatDate pattern="yy/MM/dd HH:mm" value="${cDto.cnsln1_date}" />
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
@@ -313,6 +313,11 @@
 				$(this).css("display", "none");
 				$(this).parent().children(".cnsln_update_btn").css("display", "block");
 			});
+			
+			
+			
+			
+			
 			
 		});
 		
