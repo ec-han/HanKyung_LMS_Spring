@@ -154,7 +154,7 @@
 				var now = new Date().getTime();
 				var diff = (now-old)/1000/60;
 				var check = 0;
-				console.info(now+"<<종료버튼 누른 시간 , 수강시강: "+diff+"인정시간: "+admit);
+				console.info(now+"<<종료버튼 누른 시간 , 수강시간: "+diff+"인정시간: "+admit);
 				if(diff>=admit){
 					alert("출석체크가 완료됐습니다.");
 					check = 1;
