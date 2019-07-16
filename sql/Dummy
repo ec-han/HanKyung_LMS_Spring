@@ -423,9 +423,30 @@ CREATE TABLE hk_wish(
 DROP TABLE hk_cart;
 CREATE TABLE hk_cart(
     lno NUMBER NOT NULL,
-    id VARCHAR2(100) NOT NULL,
-    FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
+    id VARCHAR2(100) NOT NULL
 );
+
+ALTER TABLE hk_cart
+ADD CONSTRAINT hk_cart_fk_lno
+FOREIGN KEY(lno) REFERENCES hk_lecture(lno)
+ON DELETE CASCADE;
+
+SELECT * FROM hk_cart;
+
+SELECT * FROM hk_cart
+WHERE id = 'user01';
+
+SELECT a.*, c.lno as isempty
+		FROM hk_lecture a, hk_wish b, hk_cart c
+		WHERE a.lno = b.lno and b.lno=c.lno(+) AND b.id='user01'
+		ORDER BY a.lno DESC;
+        
+SELECT * FROM (SELECT rownum AS rnum, A.* FROM (SELECT title, bno FROM hk_lecture_board WHERE 
+btype='0' ORDER BY regdate DESC ) A) WHERE rnum BETWEEN 1 AND 5;
+
+SELECT a.*, b.id
+FROM hk_lecture a, hk_cart b
+WHERE a.lno=b.lno AND b.id='user01' AND a.lno=39;
 
 commit;
 
