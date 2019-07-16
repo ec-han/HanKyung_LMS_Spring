@@ -103,10 +103,6 @@ VALUES(seq_hk_lecture.NEXTVAL, '리액트로 구현하는 블록체인 이더리
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '누구든지 하는 리액트: 초심자를 위한 react 핵심 강좌', '0002', '최철웅', '캐드', '30', '28', '200000', '3000000', 'lecture08.png', '190820', '200618');
 
-
-SELECT * FROM hk_lecture;
-SELECT COUNT(*) FROM hk_lecture;
-
 commit;
 
 -- 학습방 실전 자바 강좌 (ver.2018) - 초보부터 개발자 취업까지!! 학습할 수업 목록 lcode '0003'
@@ -150,10 +146,6 @@ VALUES(seq_hk_lecture_lesson.NEXTVAL,'데이터 타입','20','데이터의 크�
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
 VALUES(seq_hk_lecture_lesson.NEXTVAL,'상수의 데이터 타입','13','실수의 표현, 정수의 표현','실수의 표현, 정수의 표현에 대한 이해',8);
 
-SELECT * FROM hk_lecture_lesson WHERE lno=8;
-
-DELETE FROM hk_lecture_lesson;
-
 commit;
 
 -- 학습방 출석체크
@@ -167,7 +159,6 @@ CREATE TABLE hk_lesson_attend(
     FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE,
     FOREIGN KEY(id) REFERENCES hk_member(id) ON DELETE CASCADE
 );
-SELECT attend_ck FROM hk_lesson_attend WHERE lno=8 AND id='user01';
 
 INSERT INTO hk_lesson_attend(lno, class_no, id)
 VALUES(8,'1','user01');
@@ -214,13 +205,13 @@ VALUES(8,'10','user02');
 commit;
 
 -- 출석
-UPDATE hk_lesson_attend
-SET attend_ck = '1'
-WHERE lno=8 AND class_no = 1 AND id='user01';
+-- UPDATE hk_lesson_attend
+-- SET attend_ck = '1'
+-- WHERE lno=8 AND class_no = 1 AND id='user01';
 -- 출석 현황
-SELECT COUNT(*)*10
-FROM hk_lesson_attend
-WHERE lno=8 AND id='user01' AND attend_ck = '1';
+-- SELECT COUNT(*)*10
+-- FROM hk_lesson_attend
+-- WHERE lno=8 AND id='user01' AND attend_ck = '1';
 
 --HK 게시판
 --모든 게시글 시퀀스
@@ -332,51 +323,6 @@ VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의
 
 commit;
 
-DELETE FROM hk_lecture_board WHERE lbnum=21 AND btype='2';
-SELECT title, bno FROM hk_lecture_board WHERE btype='0';
-SELECT title, bno FROM hk_lecture_board WHERE btype='0';
-SELECT * FROM hk_lecture_board_reply;
-DELETE FROM hk_lecture_board_reply WHERE rno=37;
-DELETE FROM hk_lecture_board WHERE lbnum=4 AND btype='2'; 
-
-SELECT * FROM
-    (SELECT rownum AS rnum, A.* FROM
-        ( SELECT * FROM hk_lecture_board WHERE
-                    btype='0'
-                    AND title LIKE '%공지%'
-            ORDER BY bno DESC
-        )
-    A)
-WHERE rnum BETWEEN 1 AND 10
-ORDER BY regdate DESC;
-
-SELECT * FROM
-    (SELECT rownum AS rnum, A.* FROM
-        (SELECT title, bno, regdate 
-            FROM hk_lecture_board 
-            WHERE btype='0' 
-            ORDER BY regdate DESC
-        )
-    A)
-WHERE rnum BETWEEN 1 AND 5;
-
-SELECT title, bno FROM hk_lecture_board WHERE btype='0';
-
-SELECT btype, bno FROM hk_lecture_board GROUP BY btype;
-
-SELECT 과목, COUNT(*) AS 수강생수
-FROM 수강생
-WHERE 수강료>=100
-GROUP BY 과목
-HAVING COUNT(과목)>=2;
-
-SELECT *
-FROM hk_lecture_board;
-
-SELECT COUNT(*)
-FROM hk_lecture_board WHERE 
-title LIKE '%공지%' AND btype='1';
-
 -- 한경 게시판 첨부파일 테이블 
 -- DRAG & DROP을 활용한 첨부파일
 -- 첨부파일 이름은 uuid를 사용하기 때문에 중복 안됨 
@@ -388,10 +334,6 @@ CREATE TABLE hklb_attach(
 );
 ALTER TABLE hklb_attach ADD CONSTRAINT pk_hklb_attach
 PRIMARY KEY(fullname);
-
-SELECT * FROM hklb_attach;
-
-DELETE FROM hklb_attach;
 
 ALTER TABLE hklb_attach
 ADD CONSTRAINT fk_hklb_attach_bno
@@ -420,24 +362,7 @@ VALUES(seq_reply.NEXTVAL, 'ㅎㅎ', '한은체', 10);
 INSERT INTO hk_lecture_board_reply(rno, content, writer, bno)
 VALUES(seq_reply.NEXTVAL, 'ㅋㅋ', '박선미', 1);
 
-DELETE FROM hk_lecture_board_reply;
-SELECT * FROM hk_lecture_board_reply;
 COMMIT;
-
-SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply WHERE 
-bno = 10 ORDER BY rno;
-
-SELECT rno, bno, content, writer, r.regdate 
-FROM hk_lecture_board_reply r, hk_member m 
-WHERE r.writer = m.name
-AND bno = 1
-ORDER BY rno;
-
-SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply r, hk_member m WHERE 
-bno = 10 ORDER BY rno;
-
-SELECT rno, bno, content, writer, r.regdate FROM hk_lecture_board_reply r, hk_member m WHERE 
-r.writer = m.name AND bno = 5 ORDER BY rno;
 
 --위시리스트
 DROP TABLE hk_wish;
@@ -447,11 +372,6 @@ CREATE TABLE hk_wish(
     FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
 );
 
-SELECT a.*
-FROM hk_lecture a, hk_wish b
-WHERE a.lno = b.lno AND b.id='user01';
-
-
 --장바구니
 DROP TABLE hk_cart;
 CREATE TABLE hk_cart(
@@ -459,17 +379,6 @@ CREATE TABLE hk_cart(
     id VARCHAR2(100) NOT NULL,
     FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE
 );
-
-
-SELECT * FROM hk_cart;
-
-SELECT * FROM hk_cart
-WHERE id = 'user01';
-
-SELECT a.*, c.lno as isempty
-		FROM hk_lecture a, hk_wish b, hk_cart c
-		WHERE a.lno = b.lno and b.lno=c.lno(+) AND b.id='user01'
-		ORDER BY a.lno DESC;
 
 commit;
 
@@ -489,7 +398,7 @@ INSERT INTO hk_subject(lname, lcode, subject1, subject2, subject3, subject4, sub
 VALUES('Vue.js 시작하기 - Age of Vue.js', '0001','과목1','과목2','과목3','과목4','과목5');
 
 --성적테이블
-이름 아이디 과목코드 과목9개(디폴트 0) 
+--이름 아이디 과목코드 과목5개(디폴트 0) 
 DROP TABLE hk_score;
 CREATE TABLE hk_score(
     id  VARCHAR2(100) NOT NULL,
@@ -512,16 +421,6 @@ VALUES('user02', '0001');
 INSERT INTO hk_score(id, lcode)
 VALUES('user01', '0001');
 
-select s.*, j.*
-from hk_score s, hk_subject j
-where s.lcode = j.lcode;
-
-SELECT * FROM hk_member;
-
-SELECT * FROM hk_score 
-commit;
-
-
 commit;
 
 --상담테이블
@@ -532,24 +431,43 @@ CREATE TABLE hk_cnsln(
     id VARCHAR2(80) NOT NULL, 
     cnsln1 VARCHAR2(4000),
     cnsln1_date DATE,
+    cnsln1_writer  VARCHAR2(200),
     cnsln2 VARCHAR2(4000),
     cnsln2_date DATE,
+    cnsln2_writer  VARCHAR2(200),
     cnsln3 VARCHAR2(4000),
     cnsln3_date DATE,
+    cnsln3_writer  VARCHAR2(200),
     cnsln4 VARCHAR2(4000),
     cnsln4_date DATE,
+    cnsln4_writer  VARCHAR2(200),
     cnsln5 VARCHAR2(4000),
     cnsln5_date DATE,
+    cnsln5_writer  VARCHAR2(200),
     cnsln6 VARCHAR2(4000),
-    cnsln6_date DATE
+    cnsln6_date DATE,
+    cnsln6_writer  VARCHAR2(200)
 );
 
+UPDATE hk_cnsln
+SET cnsln1_writer = '최철웅',
+    cnsln1_date = sysdate
+WHERE id = 'user03';
+UPDATE hk_cnsln
+SET cnsln1_writer = '최철웅',
+    cnsln1_date = sysdate
+WHERE id = 'user01';
+UPDATE hk_cnsln
+SET cnsln1_writer = '최철웅',
+    cnsln1_date = sysdate
+WHERE id = 'user02';
+
 INSERT INTO hk_cnsln(name, id, cnsln1)
-VALUES('김도연','user03', 'ㅎㅇ');
+VALUES('김도연','user03', '상담내용');
 INSERT INTO hk_cnsln(name, id)
-VALUES('한은체','user02');
+VALUES('한은체','user02', '상담내용');
 INSERT INTO hk_cnsln(name, id)
-VALUES('박선미','user01');
+VALUES('박선미','user01', '상담내용');
 INSERT INTO hk_cnsln(name, id)
 VALUES('황수연','user04');
 INSERT INTO hk_cnsln(name, id)
@@ -559,22 +477,4 @@ VALUES('최인준','user06');
 INSERT INTO hk_cnsln(name, id)
 VALUES('유수지','user07');
 
-commit;
-
-SELECT m.*, c.*
-FROM hk_member m, hk_cnsln c
-WHERE m.id = c.id(+) AND type = '2'
-ORDER BY m.mno
-
-SELECT * FROM hk_cnsln
-WHERE id = 'user03'
-
-SELECT m.name, s.*
-     	FROM hk_member m, hk_score s
-     	WHERE m.id = s.id
-
-SELECT m.name, s.*
-     	FROM hk_member m, hk_score s
-     	WHERE m.id = s.id
-     	ORDER BY m.mno
 commit;
