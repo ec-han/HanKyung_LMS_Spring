@@ -22,4 +22,5 @@ public interface MemberDAO {
 	public int create_check(MemberDTO mDto);
 	public List<CnslnDTO> cnslnlist();
 	public CnslnDTO cnslnone(String id);
+	public void cnsln_update(CnslnDTO cDto);
 }

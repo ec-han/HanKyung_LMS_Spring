@@ -117,6 +117,11 @@ public class MemberServiceImpl implements MemberService{
 		return mDao.cnslnone(id);
 	}
 
+	@Override
+	public void cnsln_update(CnslnDTO cDto) {
+		mDao.cnsln_update(cDto);
+	}
+
 
 
 }

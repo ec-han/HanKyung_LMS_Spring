@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hankyung.domain.lecture.LectureDTO;
+import com.hankyung.domain.member.CnslnDTO;
 import com.hankyung.domain.member.MemberDTO;
 import com.hankyung.service.lecture.LectureService;
 import com.hankyung.service.member.MemberService;
@@ -260,6 +261,16 @@ public class MemberController {
 		log.info("중복회원 체크 완료");
 		return result;
 	}
+	
+	@RequestMapping(value="/cnsln_update", method=RequestMethod.POST)
+	public String cnlsn_update(CnslnDTO cDto, String id, String num, String writer) {
+		log.info("상담일지 업데이트");
+		cDto.setId(id);
+		service.cnsln_update(cDto);
+
+		return "redirect:/main/management";
+	}
+	
 	
 	
 }

@@ -36,4 +36,8 @@ public class CnslnDTO {
 	private String cnsln5_writer;
 	private String cnsln6_writer;
 	
+	private String num;
+	private String writer;
+	private String content;
+
 }

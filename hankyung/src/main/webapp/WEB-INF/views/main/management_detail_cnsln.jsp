@@ -19,6 +19,7 @@
 	border: 1px solid gray;
 	width: 30%;
 	height: 500px;
+	background: #fbbd03;
 }
 .content_header{
 	height: 7%;
@@ -70,6 +71,13 @@
 }
 .cnsln_ok_btn{
 	display: none;
+}
+.cnsln_content{
+	border:none;
+	outline: none;
+	height: 100%;
+	width: 100%;
+	resize: none;
 }
 </style>
 </head>
@@ -159,17 +167,19 @@
 		
 		</div>
 	</div>	
-	<%-- <form action="${path}/member/cnlsn_update" method="POST" id="frm_mem" name="frm_mem">
-		<input id="insert_num" name="insert_num" class="info_box" readonly="readonly" ="text-align:center;">
-		<input id="insert_num" name="insert_num" class="info_box" readonly="readonly" ="text-align:center;">
-	</form> --%>
+	<form action="${path}/member/cnsln_update" method="POST" id="frm_cnsln" name="frm_cnsln">
+		<input type="hidden" id="writer" name="writer" value="${sessionScope.name}">
+		<input type="hidden" id="id" name="id" value="${cDto.id}">
+		<input type="hidden" id="content" name="content">
+		<input type="hidden" id="cnsln_num" name="num">
+	</form>
 	<div class="cnsln_conteiner">
 		<div class="cnsln_content_box">
 			<div class="content_header">1회차</div>
 			<div class="content_body">
 				<div>상담내용</div>
 				<div class="content_box">
-					${cDto.cnsln1}
+					<textarea name="content" class="cnsln_content" readonly="readonly">${cDto.cnsln1}</textarea>
 				</div>
 			</div>
 			<div class="content_footer">
@@ -180,8 +190,8 @@
 					<span class="updater">수정날짜</span> <fmt:formatDate pattern="yy/MM/dd HH:mm" value="${cDto.cnsln1_date}" />
 				</div>
 				
-				<button class="cnsln_update_btn cnsln_btn">수정</button>
-                <button class="cnsln_ok_btn cnsln_btn">확인</button>
+				<button class="cnsln_update_btn cnsln_btn">수정 </button>
+                <button class="cnsln_ok_btn cnsln_btn">확인 <input type="hidden" value="1"></button>
 			</div>
 		</div>
 		
@@ -192,7 +202,7 @@
 			<div class="content_body">
 				<div>상담내용</div>
 				<div class="content_box">
-					${cDto.cnsln2}
+					<textarea name="content" class="cnsln_content" readonly="readonly">${cDto.cnsln2}</textarea>
 				</div>
 			</div>
 			<div class="content_footer">
@@ -204,7 +214,7 @@
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
-                <button class="cnsln_ok_btn cnsln_btn">확인</button>
+                <button class="cnsln_ok_btn cnsln_btn">확인  <input type="hidden" value="2"></button>
 			</div>
 		</div>
 		
@@ -215,7 +225,7 @@
 			<div class="content_body">
 				<div>상담내용</div>
 				<div class="content_box">
-					${cDto.cnsln3}
+					<textarea name="content" class="cnsln_content" readonly="readonly">${cDto.cnsln3}</textarea>
 				</div>
 			</div>
 			<div class="content_footer">
@@ -227,7 +237,7 @@
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
-                <button class="cnsln_ok_btn cnsln_btn">확인</button>
+                <button class="cnsln_ok_btn cnsln_btn">확인 <input type="hidden" value="3"></button>
 			</div>
 		</div>
 	</div>
@@ -237,7 +247,7 @@
 			<div class="content_body">
 				<div>상담내용</div>
 				<<div class="content_box">
-					${cDto.cnsln4}
+					<textarea name="content" class="cnsln_content" readonly="readonly">${cDto.cnsln4}</textarea>
 				</div>
 			</div>
 			<div class="content_footer">
@@ -249,7 +259,7 @@
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
-                <button class="cnsln_ok_btn cnsln_btn">확인</button>
+                <button class="cnsln_ok_btn cnsln_btn">확인 <input type="hidden" value="4"></button>
 			</div>
 		</div>
 		
@@ -260,7 +270,7 @@
 			<div class="content_body">
 				<div>상담내용</div>
 				<div class="content_box">
-					${cDto.cnsln5}
+					<textarea name="content" class="cnsln_content" readonly="readonly">${cDto.cnsln5}</textarea>
 				</div>
 			</div>
 			<div class="content_footer">
@@ -272,7 +282,7 @@
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
-                <button class="cnsln_ok_btn cnsln_btn">확인</button>
+                <button class="cnsln_ok_btn cnsln_btn">확인 <input type="hidden" value="5"></button>
 			</div>
 		</div>
 		
@@ -283,7 +293,7 @@
 			<div class="content_body">
 				<div>상담내용</div>
 				<div class="content_box">
-					${cDto.cnsln6}
+					<textarea name="content" class="cnsln_content" readonly="readonly">${cDto.cnsln6}</textarea>
 				</div>
 			</div>
 			<div class="content_footer">
@@ -295,7 +305,7 @@
 				</div>
 				
 				<button class="cnsln_update_btn cnsln_btn">수정</button>
-                <button class="cnsln_ok_btn cnsln_btn">확인</button>
+                <button class="cnsln_ok_btn cnsln_btn">확인 <input type="hidden" value="6"></button>
 			</div>
 		</div>
 	</div>
@@ -304,19 +314,26 @@
 	<script type="text/javascript">
 		$(function(){	
 			$('#detail_num').val(num);
-			
 			$(".cnsln_update_btn").click(function(){
 				$(this).css(".display", "none");
 				$(this).parent().children(".cnsln_ok_btn").css("display", "block");
+				$(this).parent().parent().children(".content_body").children(".content_box").children().removeAttr("readonly");
+				
+				
 			});
 			$(".cnsln_ok_btn").click(function(){
 				$(this).css("display", "none");
 				$(this).parent().children(".cnsln_update_btn").css("display", "block");
+				$(this).parent().parent().children(".content_body").children(".content_box").children().attr("readonly", "readonly");
+				
+				var cnsln_num = $(this).children("input").val();
+				var content = $(this).parent().parent().children(".content_body").children(".content_box").children().val();
+				var name = $("#writer").val();
+				$("#content").val(content);
+				$("#cnsln_num").val(cnsln_num);
+				
+				$("#frm_cnsln").submit();
 			});
-			
-			
-			
-			
 			
 			
 		});

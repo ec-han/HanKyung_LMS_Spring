@@ -102,4 +102,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{name}, #{id})
 	</insert>
 	
+	<update id="cnsln_update1" parameterType="com.hankyung.domain.member.CnslnDTO">
+		UPDATE hk_cnsln
+			<if test="num == 1">
+			   SET cnsln1 = #{content},
+		      	   cnsln1_writer  = #{writer},
+		     	   cnsln1_date = SYSDATE
+			</if>
+			<if test="num == 2">
+				SET cnsln2 = #{content},
+		      		cnsln2_writer = #{writer},
+		     		cnsln2_date = SYSDATE
+			</if>
+			<if test="num == 3">
+				SET cnsln3 = #{content},
+		      		cnsln3_writer = #{writer},
+		     		cnsln3_date = SYSDATE
+			</if>
+			<if test="num == 4">
+				SET cnsln4 = #{content},
+		      		cnsln4_writer  = #{writer},
+		     		cnsln4_date = SYSDATE
+			</if>
+			<if test="num == 5">
+				SET cnsln5 = #{content},
+		      		cnsln5_writer = #{writer},
+		     		cnsln5_date = SYSDATE
+			</if>
+			<if test="num == 6">
+				SET cnsln6 = #{content},
+		      		cnsln6_writer = #{writer},
+		     		cnsln6_date = SYSDATE
+			</if>
+		 WHERE id = #{id}
+	</update>
+	
+	
 </mapper>

@@ -25,6 +25,7 @@
 	border-bottom:0px;
 	padding: 16px 20px;
 	font-size: 20px;
+	background: #a7dedf;
 }
 .student{
 	display:inline-block;
@@ -251,7 +252,6 @@
 			$("#management_detail_cnsln").css("display", "block");
 			var id_cnsln = $(this).parent().children("div").eq(2).children("input").val();
 			num = $(this).parent().children("div").eq(0).children("input").val();
-			alert(id_cnsln + ", " + num);
 			management_detail_cnsln(id_cnsln);
 		});
 		

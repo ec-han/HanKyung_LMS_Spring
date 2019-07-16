@@ -100,6 +100,13 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectOne("member.cnslnone", id);
 	}
 
+	@Override
+	public void cnsln_update(CnslnDTO cDto) {
+		log.info(cDto.toString());
+		
+		sqlSession.update("member.cnsln_update1", cDto);
+	}
+
 
 
 }
