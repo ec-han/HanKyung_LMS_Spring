@@ -451,7 +451,7 @@ WHERE a.lno=b.lno AND b.id='user01' AND a.lno=39;
 
 -- 선생님 강의 등록시키기
 INSERT INTO hk_cart(lno, id)
-VALUES(36, 'teacher01');
+VALUES(10, 'teacher01');
 
 commit;
 
