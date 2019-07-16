@@ -18,15 +18,22 @@ public class CnslnDTO {
 	private String name;
 	private String id;
 	private String cnsln1;
-	private Date cnsln1_date;
 	private String cnsln2;
-	private Date cnsln2_date;
 	private String cnsln3;
-	private Date cnsln3_date;
 	private String cnsln4;
-	private Date cnsln4_date;
 	private String cnsln5;
-	private Date cnsln5_date;
 	private String cnsln6;
-	private Date cnsln6_date;	
+	private Date cnsln1_date;
+	private Date cnsln2_date;
+	private Date cnsln3_date;
+	private Date cnsln4_date;
+	private Date cnsln5_date;
+	private Date cnsln6_date;
+	private String cnsln1_writer;
+	private String cnsln2_writer;
+	private String cnsln3_writer;
+	private String cnsln4_writer;
+	private String cnsln5_writer;
+	private String cnsln6_writer;
+	
 }

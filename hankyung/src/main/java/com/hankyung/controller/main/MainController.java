@@ -78,9 +78,7 @@ public class MainController {
 		log.info("학생관리시스템 리스트");
 		String type = "2";
 		List<MemberDTO> list = mservice.list(type);
-		for (MemberDTO mDTO : list) {
-			log.info(mDTO.toString());
-		}
+
 		model.addAttribute("list", list);
 		return "main/management_list";
 	}

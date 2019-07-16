@@ -174,7 +174,7 @@
 			</div>
 			<div class="content_footer">
 				<div>
-					<span class="updater">최종수정</span> 김둘리
+					<span class="updater">최종수정</span> ${cDto.cnsln1_writer}
 				</div>
 				<div>
 					<span class="updater">수정날짜</span> 12/03/21 16:51
@@ -197,7 +197,7 @@
 			</div>
 			<div class="content_footer">
 				<div>
-					<span class="updater">최종수정</span> 김둘리
+					<span class="updater">최종수정</span> ${cDto.cnsln2_writer}
 				</div>
 				<div>
 					<span class="updater">수정날짜</span> 12/03/21 16:51
@@ -220,7 +220,7 @@
 			</div>
 			<div class="content_footer">
 				<div>
-					<span class="updater">최종수정</span> 김둘리
+					<span class="updater">최종수정</span> ${cDto.cnsln3_writer}
 				</div>
 				<div>
 					<span class="updater">수정날짜</span> 12/03/21 16:51
@@ -242,7 +242,7 @@
 			</div>
 			<div class="content_footer">
 				<div>
-					<span class="updater">최종수정</span> 김둘리
+					<span class="updater">최종수정</span> ${cDto.cnsln4_writer}
 				</div>
 				<div>
 					<span class="updater">수정날짜</span> 12/03/21 16:51
@@ -265,7 +265,7 @@
 			</div>
 			<div class="content_footer">
 				<div>
-					<span class="updater">최종수정</span> 김둘리
+					<span class="updater">최종수정</span> ${cDto.cnsln5_writer}
 				</div>
 				<div>
 					<span class="updater">수정날짜</span> 12/03/21 16:51
@@ -288,7 +288,7 @@
 			</div>
 			<div class="content_footer">
 				<div>
-					<span class="updater">최종수정</span> 김둘리
+					<span class="updater">최종수정</span> ${cDto.cnsln6_writer}
 				</div>
 				<div>
 					<span class="updater">수정날짜</span> 12/03/21 16:51
