@@ -95,6 +95,16 @@
 	box-sizing: border-box;
 	transition: .2s;
 }
+.lecture_tname_position {
+	position: absolute;
+	width: 560px;
+	height: 40px;
+	z-index: -1;
+	cursor: pointer;
+	left: 89px;
+	top: 0;
+	display: none;
+}
 #lecture_lname:hover {
 	cursor: pointer;
 	color: #79CDCF;
@@ -190,7 +200,7 @@
 							<div class="list_box_content">
 								efsdfsadfsdaf
 							</div>
-							
+							<div class="lecture_tname_position"></div>
 						</div>
 						</c:forEach>
 					</div>
@@ -202,19 +212,17 @@
 	</div>
 	<script type="text/javascript">
 		$(function(){
-			var lFlag = 0;
 			$('.list_box_lecture').click(function(){
-				if (lFlag==0) {
-					$(this).next().css("display", "block");
-					$(this).css("background", "#efefef");
-					lFlag = 1;
-					return lFlag;
-				} else {
-					$(this).next().css("display", "none");
-					$(this).css("background", "white");
-					lFlag = 0;
-					return lFlag;
-				}
+				$(this).next().css("display", "block");
+				$(this).css("background", "#efefef");
+				$(this).next().next().css("display", "block")
+										.css("z-index", "5");
+			});
+			$('.lecture_tname_position').click(function(){
+				$(this).prev().css("display", "none");
+				$(this).prev().prev().css("background", "white");
+				$(this).css("display", "block")
+						.css("z-index", "-1");
 			});
 			
 			

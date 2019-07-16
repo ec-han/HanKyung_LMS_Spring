@@ -69,9 +69,8 @@
 					    <div class="check_label">
 						    <label for="onecheck">
 						    		<i class="fas fa-check-circle" id="check_icon"></i>
-						    		<span class="check_text">[필수] 구매조건 및 결제대항 서비스 약관 동의</span>
+						    		<span class="check_text">[필수] 구매조건 및 결제대행 서비스 약관 동의</span>
 						    </label>
-						    <span class="pay_view">(보기)</span>
 					    </div>
 					</span>
 		        </div>

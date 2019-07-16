@@ -185,7 +185,7 @@
 					}
 				});
 				
-				<img alt="" src="${path}/img/">  
+				/* <img alt="" src="${path}/img/">   */
 				
 			});
 			
