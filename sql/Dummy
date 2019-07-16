@@ -4,7 +4,7 @@ CREATE SEQUENCE seq_hk_member
 START WITH 1
 INCREMENT BY 1;
 
-DROP TABLE hk_member;
+DROP TABLE hk_member CASCADE CONSTRAINTS;
 CREATE TABLE hk_member(
     mno NUMBER NOT NULL,
     id VARCHAR2(100) PRIMARY KEY, 
@@ -42,7 +42,7 @@ CREATE SEQUENCE seq_hk_lecture
 START WITH 1
 INCREMENT BY 1;
 
-DROP TABLE hk_lecture DROP TABLE hk_lecture CASCADE CONSTRAINTS;
+DROP TABLE hk_lecture CASCADE CONSTRAINTS;
 CREATE TABLE hk_lecture(
     lno NUMBER PRIMARY KEY,
     lname VARCHAR2(300) NOT NULL,
@@ -92,7 +92,7 @@ INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supm
 VALUES(seq_hk_lecture.NEXTVAL, 'Flutter 중급 - Http통신, 상태관리', '0003', '최철웅', 'DB', '30', '7', '200000', '3000000', 'lecture02.png', '190820', '200618');
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '파이썬 입문과 크롤링 기초 부트캠프', '0001', '최철웅', '웹개발', '30', '10', '200000', '3000000', 'lecture03.png', '190820', '200618');
-INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, startdate, enddate)
+INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '예제로 배우는 스프링 입문', '0004', '최철웅', '디자인', '30', '12', '200000', '3000000', 'lecture04.png', '190820', '200618');
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, 'React로 NodeBird SNS 만들기', '0002', '최철웅', '캐드', '30', '18', '200000', '3000000', 'lecture05.png', '190820', '200618');
@@ -102,6 +102,9 @@ INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supm
 VALUES(seq_hk_lecture.NEXTVAL, '리액트로 구현하는 블록체인 이더리움 Dapp', '0004', '최철웅', '디자인', '30', '22', '200000', '3000000', 'lecture07.png', '190820', '200618');
 INSERT INTO hk_lecture(lno, lname, lcode, tname, ltype, totalmem, rgstrmem, supmoney, price, limg, startdate, enddate)
 VALUES(seq_hk_lecture.NEXTVAL, '누구든지 하는 리액트: 초심자를 위한 react 핵심 강좌', '0002', '최철웅', '캐드', '30', '28', '200000', '3000000', 'lecture08.png', '190820', '200618');
+
+SELECT * FROM hk_lecture;
+SELECT COUNT(*) FROM hk_lecture;
 
 commit;
 
@@ -268,8 +271,7 @@ VALUES(seq_hkboard.NEXTVAL, seq_hkboard_evltn.NEXTVAL, '2', '평가1','좋아요
 commit;
 
 
---강좌게시판 7/4
-
+--강좌게시판
 -- 0 공지사항
 -- 1 QnA
 -- 2 게시글
@@ -296,6 +298,8 @@ CREATE SEQUENCE seq_hklboard_normal
 START WITH 1
 INCREMENT BY 1;
 
+SELECT * FROM hk_lecture_board;
+DELETE FROM hk_lecture_board;
 DROP TABLE hk_lecture_board CASCADE CONSTRAINTS;
 CREATE TABLE hk_lecture_board(
     bno NUMBER PRIMARY KEY,
@@ -311,16 +315,59 @@ CREATE TABLE hk_lecture_board(
     re_step NUMBER NOT NULL,
     re_level NUMBER NOT NULL
 );
--- replycnt NUMBER DEFAULT 0, 댓글 수 추가함
-INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer)
-VALUES(seq_hklboard.NEXTVAL, seq_hklboard_normal.NEXTVAL, '안녕하세요1','강의생성후 첫 게시글', 'USER01');
 
-INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer)
-VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '첫 공지1','강의생성후 1첫 공지', 'USER01');
+-- 아우터 조인
+SELECT COUNT(*) FROM hklb_attach WHERE bno=9;
+SELECT * FROM hklb_attach;
+DELETE FROM hklb_attach;
+
+SELECT hk_lecture_board.bno, hklb_attach.fullname as isempty
+FROM hk_lecture_board LEFT OUTER JOIN hklb_attach
+ON hk_lecture_board.bno = hklb_attach.bno
+ORDER BY bno DESC;
+
+SELECT a.*, c.lno as isempty
+		FROM hk_lecture a, hk_wish b, hk_cart c
+		WHERE a.lno = b.lno AND b.lno=c.lno(+) AND b.id='user01'
+		ORDER BY a.lno DESC;
+
+commit;
+delete from hk_lecture_board;
+-- replycnt NUMBER DEFAULT 0, 댓글 수 추가함(은체)
+INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_normal.NEXTVAL, '안녕하세요1','게시글', '한은체', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_normal.NEXTVAL, '안녕하세요2','게시글', '박선미', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_normal.NEXTVAL, '안녕하세요3','게시글', '김도연', 0, 1, 0);
 
 INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
-VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '첫 질문1','강의생성후 1첫 질문', 'USER01', seq_hklboard.CURRVAL, 1, 0);
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '공지1','공지', '최철웅', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '공지2','공지', '최철웅', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '공지3','공지', '최철웅', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '공지4','공지', '최철웅', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '공지5','공지', '최철웅', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '공지6','공지', '최철웅', 0, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_notice.NEXTVAL, '0', '공지7','공지', '최철웅', 0, 1, 0);
 
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '질문1','질문', '한은체', seq_hklboard.CURRVAL, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '질문2','질문', '박선미', seq_hklboard.CURRVAL, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '질문3','질문', '한은체', seq_hklboard.CURRVAL, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '질문4','질문', '김도연', seq_hklboard.CURRVAL, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '질문5','질문', '김도연', seq_hklboard.CURRVAL, 1, 0);
+INSERT INTO hk_lecture_board(bno, lbnum, btype, title, content, writer, ref, re_step, re_level)
+VALUES(seq_hklboard.NEXTVAL, seq_hklboard_qna.NEXTVAL,'1', '질문6','질문', '박선미', seq_hklboard.CURRVAL, 1, 0);
 commit;
 
 -- 한경 게시판 첨부파일 테이블 
