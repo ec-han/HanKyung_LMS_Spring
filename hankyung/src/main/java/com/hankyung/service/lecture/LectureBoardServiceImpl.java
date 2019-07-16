@@ -1,5 +1,6 @@
 package com.hankyung.service.lecture;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -123,6 +124,11 @@ public class LectureBoardServiceImpl implements LectureBoardService{
 	@Override
 	public List<String> getAttach(int bno) {
 		return lbDao.getAttach(bno);
+	}
+
+	@Override
+	public List<HashMap<String, String>> attachList() {
+		return lbDao.attachList();
 	}
 
 }

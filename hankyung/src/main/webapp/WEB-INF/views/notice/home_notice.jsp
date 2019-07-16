@@ -37,7 +37,7 @@
 													<option value="content">내용</option>
 													<option value="writer">작성자</option>
 												</select>
-				              					<input type="search" class="form-control form-control-sm" id="search_board" name="search_board">
+				              					<input type="search" class="form-control form-control-sm" id="search_notice" name="search_notice">
 				              					<button type="button" id="searchbtnArea"><i class="fas fa-search" id="search_btn"></i></button>
 				              				</label>
 				              			</div>
@@ -143,15 +143,20 @@
 		
 		$(document).on("click","#searchbtnArea", function(){
 			var search_option = $('#selsearch').val();
-			var keyword = $.trim($('#search_board').val());
+			var keyword = $.trim($('#search_notice').val());
 			var btype = 0;
 			
+			console.info(keyword);
+			
 			if(keyword == null || keyword.length == 0){
-				$('#search_board').focus();
-				$('#search_board').css('border','2px solid #79CDCF');
+				$('#search_notice').focus();
+				$('#search_notice').css('border','2px solid #79CDCF');
 				return false;
 				
 			}
+			
+			console.info(search_option+","+keyword);
+			
 			location.href="${path}/board/list?btype="+btype+"&search_option="+search_option+"&keyword="+keyword;
 		});
 	</script>

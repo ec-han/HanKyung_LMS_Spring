@@ -112,6 +112,13 @@ public class LectureBoardController {
 		
 		// 페이지에 출력할 게시글 목록 
 		List<LectureBoardDTO> list = service.list(viewoption, search_option, sort_option, keyword, start, end);
+		
+		// 첨부파일 유무 출력 
+		List<HashMap<String, String>> attachList = service.attachList();
+		for (HashMap<String, String> hashMap : attachList) {
+			log.info(hashMap.toString());
+		}
+		
 		ModelAndView mav = new ModelAndView(); // 화면 갈 때 보내는 거 
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("list", list);	
@@ -121,6 +128,7 @@ public class LectureBoardController {
 		map.put("search_option", search_option);
 		map.put("sort_option", sort_option);
 		map.put("keyword", keyword);
+		map.put("attach", attachList);
 		mav.addObject("map", map);
 		
 		mav.setViewName("lectureboard/board");

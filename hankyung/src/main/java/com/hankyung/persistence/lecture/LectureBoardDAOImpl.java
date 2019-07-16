@@ -112,6 +112,13 @@ public class LectureBoardDAOImpl implements LectureBoardDAO {
 		return session.selectList("lectureboard.getAttach",bno);
 	}
 
+	@Override
+	public List<HashMap<String, String>> attachList() {
+		return session.selectList("lectureboard.attachList");
+	}
+
+
+
 
 	
 

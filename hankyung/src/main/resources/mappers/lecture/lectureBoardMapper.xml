@@ -183,4 +183,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY regdate DESC
 	</select>
 	
+	<select id="attachList" resultType="hashmap">
+		SELECT hk_lecture_board.bno, hklb_attach.fullname as isempty
+		FROM hk_lecture_board LEFT OUTER JOIN hklb_attach
+		ON hk_lecture_board.bno = hklb_attach.bno
+		ORDER BY bno DESC
+	</select>
 </mapper>

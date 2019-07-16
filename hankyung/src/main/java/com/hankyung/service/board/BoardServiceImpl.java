@@ -1,12 +1,12 @@
 package com.hankyung.service.board;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hankyung.domain.board.BoardDTO;
 import com.hankyung.persistence.board.BoardDAO;
@@ -20,22 +20,26 @@ public class BoardServiceImpl implements BoardService{
 	@Inject
 	private BoardDAO bDao;
 	
+	@Transactional
 	@Override
 	public List<BoardDTO> list(int btype, String sort_option, String search_option, String keyword, int start,
 			int end) {
 		return  bDao.list(btype, sort_option, search_option, keyword, start, end);
 	}
-
+	
+	@Transactional
 	@Override
 	public int create(BoardDTO bDto) {
 		return bDao.create(bDto);
 	}
-
+	
+	@Transactional
 	@Override
 	public BoardDTO read(BoardDTO bDto) {
 		return bDao.read(bDto);
 	}
-
+	
+	@Transactional
 	@Override
 	public void increaseViewCnt(BoardDTO bDto, HttpSession session) {
 		long update_time=0;
@@ -67,7 +71,8 @@ public class BoardServiceImpl implements BoardService{
 	public int update(BoardDTO bDto) {
 		return bDao.update(bDto);
 	}
-
+	
+	@Transactional
 	@Override
 	public int countArticle(int btype, String search_option, String keyword) {
 		return bDao.countArticle(btype, search_option, keyword);

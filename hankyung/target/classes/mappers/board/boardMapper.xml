@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="board">
-	<select id="list" parameterType="int" resultType="com.hankyung.domain.board.BoardDTO">
+	<select id="list" resultType="com.hankyung.domain.board.BoardDTO">
 		 	SELECT * FROM
 			(SELECT rownum AS rnum, A.* FROM
 				( SELECT * FROM hk_board 
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							title LIKE #{keyword}
 						</if>
 						<if test="search_option == 'content'">
-							content LIKE #{content}
+							content LIKE #{keyword}
 						</if>
 						<if test="search_option == 'writer'">
 							writer LIKE #{keyword}

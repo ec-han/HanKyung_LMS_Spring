@@ -47,17 +47,13 @@ public class BoardController {
 
 		// 페이지 관련 설정
 		Pager pager = new Pager(count, curPage);
-	//	pager.setTotPage(36);
-	//	pager.setPageEnd(10);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 		// 페이지에 출력할 게시글 목록 
 		List<BoardDTO> list = service.list(btype, sort_option, search_option, keyword, start, end);
-//				Model: 데이터 보내는 것 View: 페이지 이동
-		ModelAndView mav = new ModelAndView(); // 화면 갈 때 보내는 거 
+		ModelAndView mav = new ModelAndView(); 
 		HashMap<String, Object> map = new HashMap<>();
-//		map.put("btype", btype);
-		map.put("list", list);	// mapper에서 sql문 실행결과를 담은 list를 map에 넣음 
+		map.put("list", list);	
 		for (BoardDTO boardDTO : list) {
 			log.info(boardDTO.toString());
 		}
@@ -66,13 +62,13 @@ public class BoardController {
 		map.put("sort_option", sort_option); 
 		map.put("search_option", search_option);
 		map.put("keyword", keyword);
-		mav.addObject("map", map);		// 데이터 전송
+		mav.addObject("map", map);		
 		log.info(pager.toString());
 		if(btype==0) {
-			mav.setViewName("notice/home_notice");	// 페이지 이동경로 
+			mav.setViewName("notice/home_notice");	
 			log.info(">>> 공지사항 페이지 이동");
 		}else if(btype==1) {
-			mav.setViewName("notice/home_request");	// 페이지 이동경로 
+			mav.setViewName("notice/home_request");	
 			log.info(">>> IT서비스 개선 요청 페이지 이동");
 		}else {
 			mav.setViewName("/main/");

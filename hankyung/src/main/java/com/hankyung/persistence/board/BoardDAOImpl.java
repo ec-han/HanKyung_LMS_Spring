@@ -30,6 +30,8 @@ public class BoardDAOImpl  implements BoardDAO{
 		map.put("start", start);
 		map.put("end", end);
 		
+		log.info("keyword: "+keyword);
+		
 		return session.selectList("board.list", map);
 	}
 

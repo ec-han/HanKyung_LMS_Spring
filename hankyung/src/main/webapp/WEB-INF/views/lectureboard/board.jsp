@@ -67,6 +67,10 @@
     color: #FFC000;
     font-weight: bold;
 }
+#attach_icon {
+    font-size: 1.3rem;
+    color: #555;
+}
 </style>
 </head>
 <body>
@@ -154,7 +158,7 @@
 						                    </tr>
 						                  </thead>
 						                  <tbody>
-						                  <c:forEach items="${map.list}" var="bDto">
+						                  <c:forEach items="${map.list}" var="bDto" varStatus="status">
 						                 	<jsp:useBean id="now" class="java.util.Date"/>
 											<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today"/>
 											<fmt:formatDate value="${bDto.regdate}" pattern="yyyy-MM-dd" var="regdate"/>
@@ -198,8 +202,14 @@
 												</c:choose>		
 											  </td>
 						                      <td>${bDto.viewcnt}</td>
-						                      <td></td>
+						                      <!-- 첨부파일  -->
+						                      <td>
+						                      <c:if test="${!empty map.attach[status.index].ISEMPTY}">
+						                     	<i class="fas fa-paperclip" id="attach_icon"></i>
+						                      </c:if>
+						                      </td>
 						                    </tr>
+						                    <input type="hidden" value="${bDto.bno}" name="bno">
 						                   </c:forEach>
 						                  </tbody>
 				                		</table>

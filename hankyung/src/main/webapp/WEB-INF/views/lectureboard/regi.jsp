@@ -290,7 +290,7 @@
 				// 드래그에 전달된 첨부팡리 전부 
 				var files = e.originalEvent.dataTransfer.files; // 드래그한 첨부파일 전부가 담김
 				var file = files[0]; // 여러 파일 드래그앤 드롭 해도 그 중 files에 있는 0번지에 있는 가장 첫번째 파일 하나면 꺼내옴
-				alert("file: "+file);
+				//alert("file: "+file);
 				// 폼 데이터에 첨부파일 추가
 				var formData = new FormData(); // 폼 객체
 				formData.append("file", file); // 폼에 파일변수 추가 
@@ -403,7 +403,7 @@
 			
 		    // 이미지 파일이면
 		    if (checkImageType(fullName)) {
-		    	alert("이미지 파일 체크");
+		    	
 		        imgSrc = "${path}/upload/displayFile?fileName=" + fullName; // 썸네일 이미지 링크
 		        // /2019/07/s_7bd89afd-ccf6-41b9-88a7-ce15008384bb_Tulips
 		        // 실제 uuid가 붙은 원본 파일 이름 찾아줌 

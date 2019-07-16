@@ -1,5 +1,6 @@
 package com.hankyung.persistence.lecture;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.hankyung.domain.lecture.LectureBoardDTO;
@@ -20,4 +21,5 @@ public interface LectureBoardDAO {
 	public List<LectureBoardDTO> questionTitle();
 	public void addAttach(String fullName); // 첨부파일 동작
 	public List<String> getAttach(int bno); // 첨부파일 목록
+	public List<HashMap<String, String>> attachList();
 }

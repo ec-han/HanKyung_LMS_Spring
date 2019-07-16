@@ -1,5 +1,6 @@
 package com.hankyung.service.lecture;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,4 +21,5 @@ public interface LectureBoardService {
 	public List<LectureBoardDTO> noticeTitleList();
 	public List<LectureBoardDTO> questionTitle();
 	public List<String> getAttach(int bno); // 첨부파일 목록
+	public List<HashMap<String, String>> attachList();
 }
