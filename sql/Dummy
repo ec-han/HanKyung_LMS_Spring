@@ -449,10 +449,7 @@ CREATE TABLE hk_cnsln(
     cnsln6_writer  VARCHAR2(200)
 );
 
-UPDATE hk_cnsln
-SET cnsln1_writer = '최철웅',
-    cnsln1_date = sysdate
-WHERE id = 'user01'OR id = 'user02' OR id = 'user03';
+
 
 INSERT INTO hk_cnsln(name, id, cnsln1)
 VALUES('김도연','user03', '상담내용');
@@ -460,13 +457,11 @@ INSERT INTO hk_cnsln(name, id)
 VALUES('한은체','user02', '상담내용');
 INSERT INTO hk_cnsln(name, id)
 VALUES('박선미','user01', '상담내용');
-INSERT INTO hk_cnsln(name, id)
-VALUES('황수연','user04');
-INSERT INTO hk_cnsln(name, id)
-VALUES('이인범','user05');
-INSERT INTO hk_cnsln(name, id)
-VALUES('최인준','user06');
-INSERT INTO hk_cnsln(name, id)
-VALUES('유수지','user07');
+
+
+UPDATE hk_cnsln
+SET cnsln1_writer = '최철웅',
+    cnsln1_date = sysdate
+WHERE id = 'user01'OR id = 'user02' OR id = 'user03';
 
 commit;
