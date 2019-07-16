@@ -452,15 +452,7 @@ CREATE TABLE hk_cnsln(
 UPDATE hk_cnsln
 SET cnsln1_writer = '최철웅',
     cnsln1_date = sysdate
-WHERE id = 'user03';
-UPDATE hk_cnsln
-SET cnsln1_writer = '최철웅',
-    cnsln1_date = sysdate
-WHERE id = 'user01';
-UPDATE hk_cnsln
-SET cnsln1_writer = '최철웅',
-    cnsln1_date = sysdate
-WHERE id = 'user02';
+WHERE id = 'user01'OR id = 'user02' OR id = 'user03';
 
 INSERT INTO hk_cnsln(name, id, cnsln1)
 VALUES('김도연','user03', '상담내용');
