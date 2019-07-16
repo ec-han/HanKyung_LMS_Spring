@@ -500,9 +500,9 @@ CREATE TABLE hk_cnsln(
 
 INSERT INTO hk_cnsln(name, id, cnsln1)
 VALUES('김도연','user03', '상담내용');
-INSERT INTO hk_cnsln(name, id)
+INSERT INTO hk_cnsln(name, id, cnsln1)
 VALUES('한은체','user02', '상담내용');
-INSERT INTO hk_cnsln(name, id)
+INSERT INTO hk_cnsln(name, id, cnsln1)
 VALUES('박선미','user01', '상담내용');
 
 
