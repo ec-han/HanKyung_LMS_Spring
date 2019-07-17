@@ -107,10 +107,10 @@
 				  <i class="far fa-address-book"></i>
 				  <span>학생관리</span>
 				</a>
-				<a class="nav_link collapsed">
+				<!-- <a class="nav_link collapsed">
 				  <i class="far fa-comments"></i>
 				  <span>상담일지</span>
-				</a>
+				</a> -->
 				<!-- Divider -->
 		        <hr class="sidebar_divider">
 		        <!-- Sidebar Toggler (Sidebar) -->

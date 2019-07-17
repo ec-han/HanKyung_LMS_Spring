@@ -24,6 +24,7 @@
 	border-bottom:0px;
 	padding: 16px 20px;
 	font-size: 20px;
+	cursor: pointer;
 }
 .student{
 	display:inline-block;
@@ -93,12 +94,13 @@
 }
 .btn_box{
 	position: absolute;
-	border:2px solid #404988;
-	background-color: #404988;
+	border: 2px solid #FFC000;
+    background-color: #FFC000;
 	border-radius:5px;
 	color: white;
 	width: 50px;
 	height: 38px;
+	cursor: pointer;
 }
 
 .update_btn{
@@ -165,6 +167,7 @@
 	margin: 0 auto;
 	width: 80%;
 	border: 2px solid lightgray;
+    background: #e1f0f0;
 	border-bottom: 0px;
 	height: 50px;
 	text-align: center;

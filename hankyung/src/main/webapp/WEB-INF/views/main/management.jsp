@@ -25,7 +25,8 @@
 	border-bottom:0px;
 	padding: 16px 20px;
 	font-size: 20px;
-	background: #a7dedf;
+	background: #79CDCF;
+	cursor: pointer;
 }
 .student{
 	display:inline-block;
@@ -82,12 +83,13 @@
 }
 .btn_box{
 	position: absolute;
-	border:2px solid #404988;
-	background-color: #404988;
+	border: 2px solid #FFC000;
+    background-color: #FFC000;
 	border-radius:5px;
 	color: white;
 	width: 50px;
 	height: 38px;
+	cursor: pointer;
 }
 
 .update_btn{
@@ -212,11 +214,11 @@
 			
 			management_list();
 			
-			$(".student").eq(0).css("color", "red");
+			$(".student").eq(0).css("color", "white");
 			
 			$(".student").click(function(){
 				$(".student").css("color", "black").css("font-size", "20px");
-				$(this).css("color", "red");
+				$(this).css("color", "white");
 			});
 
 			$(".score").click(function(){
