@@ -122,6 +122,11 @@ public class MemberServiceImpl implements MemberService{
 		mDao.cnsln_update(cDto);
 	}
 
+	@Override
+	public int id_check(String id) {
+		return mDao.id_check(id);
+	}
+
 
 
 }

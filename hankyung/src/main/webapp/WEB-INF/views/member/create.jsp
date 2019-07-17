@@ -224,7 +224,18 @@
 		var idflag = 0;
 		$('#input_id').keyup(function(event) {
 			var memId = $.trim(uid.val());
-			var checkResult = joinValidate.checkId(memId);
+			var id_check = 0;
+			 $.ajax({
+                 url:"${path}/member/id_check?id="+memId,
+                 type: "POST",
+                 async: false,
+                 success: function(result){
+                	 id_check = result;
+                 },
+                 error:function(){
+                     alert("aaaa Error!!");
+                 }
+             });
 			
 			if (memId == '' || memId.length ==0) {
 				$('.err_msg').css('color', '#ff1212')
@@ -247,7 +258,14 @@
 				idflag = 0;
 				return false;
 				
-			} else {
+			}  else if (id_check > 0) {
+				$('.err_msg').css('color', '#ff1212')
+							 .text('* 이미 사용중인 아이디입니다.');
+				$('.input_box').eq(1).css('border', '1px solid #ff1212');
+				idflag = 0;
+				return false;
+				
+			}else {
 				/* if(ajaxCheck(memId) == "1"){
 					flag = 1;
 					return true;
@@ -258,6 +276,8 @@
 				idflag = 1;
 				return true;
 			}
+			
+			
 			idflag = 0;
 			return false;
 		});

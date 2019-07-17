@@ -100,6 +100,14 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	@ResponseBody
+	@RequestMapping(value="/id_check", method = RequestMethod.POST)	
+	public int id_check(String id) {
+		log.info("아이디 중복체크");
+		int result = service.id_check(id);
+		
+		return result;
+	}
 	
 	@RequestMapping(value="/logout", method = RequestMethod.GET)	
 	public String logout(HttpSession session) {

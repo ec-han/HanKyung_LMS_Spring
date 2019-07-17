@@ -11,6 +11,7 @@ public interface MemberService {
 	public void create(MemberDTO mDto);
 	public void create_cnsln(MemberDTO mDto);
 	public boolean login(MemberDTO mDto, HttpSession session);
+	public int id_check(String id);
 	public int loss_info(MemberDTO mDto);
 	public String loss_id(MemberDTO mDto, HttpSession session);
 	public int loss_pw(MemberDTO mDto, HttpSession session);

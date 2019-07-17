@@ -107,6 +107,11 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.update("member.cnsln_update1", cDto);
 	}
 
+	@Override
+	public int id_check(String id) {
+		return sqlSession.selectOne("member.id_check", id);
+	}
+
 
 
 }
