@@ -343,7 +343,7 @@
 		
 		// 첨부파일 0건일 때 '첨부파일이 없습니다' 출력
 		if(listCnt == 0){
-			alert("listAttach 실행!"+listCnt);
+			//alert("listAttach 실행!"+listCnt);
 			var text = '<span class="no_attach">첨부파일이 없습니다.</span>';
 			$('#uploadedList').html(text);
 		}
@@ -448,7 +448,7 @@
 		
 	    // 이미지 파일이면
 	    if (checkImageType(fullName)) {
-	    	alert("이미지 파일 체크");
+	    	//alert("이미지 파일 체크");
 	        imgSrc = "${path}/upload/displayFile?fileName=" + fullName; // 썸네일 이미지 링크
 	        // /2019/07/s_7bd89afd-ccf6-41b9-88a7-ce15008384bb_Tulips
 	        // 실제 uuid가 붙은 원본 파일 이름 찾아줌 
