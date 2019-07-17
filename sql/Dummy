@@ -129,25 +129,31 @@ CREATE TABLE hk_lecture_lesson(
 
 -- 10강
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'언어와 수업소개','13','Java의 역사와 특징','수업에 대한 소개와 JAVA 언어에 대한 소개',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'언어와 수업소개','13','Java의 역사와 특징','수업에 대한 소개와 JAVA 언어에 대한 소개',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'JAVA의 설치','15','Java 설치 방법과 Java 프로그램의 동작','Java 설치 및 프로그램 동작에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'JAVA의 설치','15','Java 설치 방법과 Java 프로그램의 동작','Java 설치 및 프로그램 동작에 대한 이해',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'윈도우에서 JAVA 실행','9','윈도우에서의 JAVA 실행','Java 실행 동작에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'윈도우에서 JAVA 실행','9','윈도우에서의 JAVA 실행','Java 실행 동작에 대한 이해',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'개발도구와 이클립스','7','이클립스 설치 및 실행','이클립스 설치 및 실행',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'개발도구와 이클립스','7','이클립스 설치 및 실행','이클립스 설치 및 실행',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'이클립스의 기능과 사용법','23','이클립스의 기능과 사용법','이클립스의 기능과 사용법에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'이클립스의 기능과 사용법','23','이클립스의 기능과 사용법','이클립스의 기능과 사용법에 대한 이해',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'숫자와 문자','7','숫자와 문자의 표현 방법과 연산 방법','숫자와 문자의 표현 방법과 연산 방법에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'숫자와 문자','7','숫자와 문자의 표현 방법과 연산 방법','숫자와 문자의 표현 방법과 연산 방법에 대한 이해',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'변수','17','변수의 선언과 할당, 정수, 실수, 문자열','변수의 선언과 할당, 정수, 실수, 문자열에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'변수','17','변수의 선언과 할당, 정수, 실수, 문자열','변수의 선언과 할당, 정수, 실수, 문자열에 대한 이해',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'주석과 세미콜론','5','주석, JavaDoc 주석, 세미콜론','주석, JavaDoc 주석, 세미콜론에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'주석과 세미콜론','5','주석, JavaDoc 주석, 세미콜론','주석, JavaDoc 주석, 세미콜론에 대한 이해',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'데이터 타입','20','데이터의 크기, 데이터타입 비교','데이터의 크기, 데이터타입 비교에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'데이터 타입','20','데이터의 크기, 데이터타입 비교','데이터의 크기, 데이터타입 비교에 대한 이해',9);
 INSERT INTO hk_lecture_lesson(class_no, class_title, class_time, class_content, class_target, lno)
-VALUES(seq_hk_lecture_lesson.NEXTVAL,'상수의 데이터 타입','13','실수의 표현, 정수의 표현','실수의 표현, 정수의 표현에 대한 이해',8);
+VALUES(seq_hk_lecture_lesson.NEXTVAL,'상수의 데이터 타입','13','실수의 표현, 정수의 표현','실수의 표현, 정수의 표현에 대한 이해',9);
+
+SELECT * FROM hk_lecture_lesson WHERE lno=9;
+
+SELECT * FROM hk_lecture_lesson;
+
+DELETE FROM hk_lecture_lesson;
 
 commit;
 
@@ -162,59 +168,67 @@ CREATE TABLE hk_lesson_attend(
     FOREIGN KEY(lno) REFERENCES hk_lecture(lno) ON DELETE CASCADE,
     FOREIGN KEY(id) REFERENCES hk_member(id) ON DELETE CASCADE
 );
+SELECT attend_ck FROM hk_lesson_attend WHERE lno=28 AND id='user01';
+
+DELETE FROM hk_lesson_attend;
+
+SELECT * FROM hk_lesson_attend;
 
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'1','user01');
+VALUES(9,'1','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'2','user01');
+VALUES(9,'2','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'3','user01');
+VALUES(9,'3','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'4','user01');
+VALUES(9,'4','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'5','user01');
+VALUES(9,'5','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'6','user01');
+VALUES(9,'6','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'7','user01');
+VALUES(9,'7','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'8','user01');
+VALUES(9,'8','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'9','user01');
+VALUES(9,'9','user01');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'10','user01');
+VALUES(9,'10','user01');
 
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'1','user02');
+VALUES(9,'1','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'2','user02');
+VALUES(9,'2','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'3','user02');
+VALUES(9,'3','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'4','user02');
+VALUES(9,'4','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'5','user02');
+VALUES(9,'5','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'6','user02');
+VALUES(9,'6','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'7','user02');
+VALUES(9,'7','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'8','user02');
+VALUES(9,'8','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'9','user02');
+VALUES(9,'9','user02');
 INSERT INTO hk_lesson_attend(lno, class_no, id)
-VALUES(8,'10','user02');
+VALUES(9,'10','user02');
 
 commit;
 
 -- 출석
--- UPDATE hk_lesson_attend
--- SET attend_ck = '1'
--- WHERE lno=8 AND class_no = 1 AND id='user01';
+UPDATE hk_lesson_attend
+SET attend_ck = '1'
+WHERE lno=8 AND class_no = 1 AND id='user01';
 -- 출석 현황
--- SELECT COUNT(*)*10
--- FROM hk_lesson_attend
--- WHERE lno=8 AND id='user01' AND attend_ck = '1';
+SELECT COUNT(*)*10
+FROM hk_lesson_attend
+WHERE lno=8 AND id='user02' AND attend_ck = '1';
+
+SELECT *
+FROM hk_lesson_attend;
 
 --HK 게시판
 --모든 게시글 시퀀스
